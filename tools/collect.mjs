@@ -47,6 +47,10 @@ const SOURCES = argOf("--sources", "data/sources.json");
 const SELFTEST = args.includes("--selftest");
 const REPLAY = argOf("--replay", null);
 const PROBE = argOf("--probe", null);
+const LOGIN = argOf("--login", null);
+const USE_AUTH = args.includes("--auth");
+const AUTH_DIR = ".auth";           /* 세션 파일 — .gitignore 에 들어 있습니다 */
+const LOCAL_FEED = "data/feed.local.js";
 
 /* ── 텍스트에서 건질 값 ───────────────────────────────────── */
 const MONEY = /(\d[\d,]*)\s*원/;
@@ -175,12 +179,50 @@ function fromCaptures(captures, src) {
 }
 
 /* ── 소스 한 곳 수집 ──────────────────────────────────────── */
+import { existsSync } from "node:fs";
+
+function authPathFor(id) { return join(ROOT, AUTH_DIR, id + ".json"); }
+function hasAuth(id) { return existsSync(authPathFor(id)); }
+
+/* 사람이 직접 로그인해서 세션만 저장합니다 — 아이디·비밀번호는 코드에도 CI 에도 두지 않습니다 */
+async function login(sourceId) {
+  if (process.env.CI) {
+    console.error("로그인 수집은 CI 에서 돌리지 않습니다. 본인 컴퓨터에서 실행하세요.");
+    process.exit(1);
+  }
+  const reg = JSON.parse(await readFile(join(ROOT, "data/sources.json"), "utf8"));
+  const src = [].concat(reg.programs, reg.public).find((x) => x.id === sourceId);
+  if (!src) { console.error(`sources.json 에 id "${sourceId}" 가 없습니다.`); process.exit(1); }
+
+  const browser = await chromium.launch({ headless: false, executablePath: process.env.CHROMIUM_PATH || undefined });
+  const ctx = await browser.newContext({ userAgent: UA, locale: "ko-KR" });
+  const page = await ctx.newPage();
+  await page.goto(src.catalogUrl || src.url);
+
+  console.log("\n브라우저가 열렸습니다. 직접 로그인한 뒤 혜택 목록 화면까지 가 주세요.");
+  console.log("다 되면 이 터미널에서 Enter 를 누르세요. (세션만 저장하고 비밀번호는 저장하지 않습니다)");
+  await new Promise((resolve) => process.stdin.once("data", resolve));
+
+  await mkdir(join(ROOT, AUTH_DIR), { recursive: true });
+  await ctx.storageState({ path: authPathFor(sourceId) });
+  await browser.close();
+  console.log(`\n세션을 ${AUTH_DIR}/${sourceId}.json 에 저장했습니다 (git 에 올라가지 않습니다).`);
+  console.log("이제 npm run collect -- --auth --only " + sourceId + " 로 수집하면 됩니다.");
+  console.log("결과는 " + LOCAL_FEED + " 에만 쌓이고 공개 feed 나 레포에는 들어가지 않습니다.");
+  process.exit(0);
+}
+
 async function collectSource(browser, src) {
   const row = { id: src.id, app: src.app, name: src.program || src.name, url: src.url,
                 kind: src.program ? "program" : "public", status: "error", count: 0, structured: 0 };
   if (!src.url) { row.status = "no-url"; return { row, raw: [], structured: [], hints: [] }; }
 
-  const ctx = await browser.newContext({ userAgent: UA, locale: "ko-KR", viewport: { width: 1280, height: 2200 } });
+  const useAuth = USE_AUTH && hasAuth(src.id);
+  const ctx = await browser.newContext({
+    userAgent: UA, locale: "ko-KR", viewport: { width: 1280, height: 2200 },
+    ...(useAuth ? { storageState: authPathFor(src.id) } : {})
+  });
+  row.auth = useAuth || undefined;
   const page = await ctx.newPage();
   const captures = [];
 
@@ -237,14 +279,20 @@ async function collectSource(browser, src) {
     raw.push(...picked.raw);
 
     if (DUMP) {
-      await mkdir(join(ROOT, "tools/captures"), { recursive: true });
+      if (useAuth) {
+        /* 로그인 세션의 응답에는 개인정보가 들어 있어 공개 위치에 저장하지 않습니다 */
+        await mkdir(join(ROOT, ".auth-captures"), { recursive: true });
+      } else {
+        await mkdir(join(ROOT, "tools/captures"), { recursive: true });
+      }
+      const dumpDir = useAuth ? ".auth-captures" : "tools/captures";
       if (captures.length) {
-        await writeFile(join(ROOT, "tools/captures", src.id + ".json"),
+        await writeFile(join(ROOT, dumpDir, src.id + ".json"),
           JSON.stringify(captures.map((c) => ({ url: c.url, size: c.size, body: c.body })), null, 2));
       }
       /* 목록을 서버에서 그려 내려주는 곳은 JSON 이 없으므로 HTML 을 남깁니다 */
       const html = await page.content().catch(() => null);
-      if (html) await writeFile(join(ROOT, "tools/captures", src.id + ".html"), html);
+      if (html) await writeFile(join(ROOT, dumpDir, src.id + ".html"), html);
     }
 
     /* 로그인 화면으로 튕긴 경우: 메뉴 문구 몇 개가 혜택처럼 걸려도 ok 로 보면 안 됩니다 */
@@ -395,6 +443,11 @@ async function probe(url) {
 
 async function main() {
   if (SELFTEST) return selftest();
+  if (LOGIN) return login(LOGIN);
+  if (USE_AUTH && process.env.CI) {
+    console.error("--auth 는 CI 에서 쓸 수 없습니다. 개인 세션으로 받은 혜택은 공개 feed 에 넣지 않습니다.");
+    process.exit(1);
+  }
   if (REPLAY) return replay(REPLAY);
   if (PROBE) return probe(PROBE);
 
@@ -454,6 +507,25 @@ async function main() {
       };
       console.log("(부분 수집 — 나머지 소스 결과는 그대로 두었습니다)");
     }
+  }
+
+  /* 로그인 세션으로 모은 것은 개인 혜택이므로 공개 feed 와 분리해 로컬 파일로만 씁니다 */
+  const authIds = new Set(rows.filter((r) => r.auth).map((r) => r.id));
+  if (authIds.size) {
+    const personal = {
+      collectedAt: feed.collectedAt,
+      sources: rows.filter((r) => authIds.has(r.id)),
+      structured: structured.filter((b) => authIds.has(b.source)),
+      raw: raw.filter((r) => authIds.has(r.source))
+    };
+    await writeFile(join(ROOT, LOCAL_FEED),
+      "/* 내 계정으로 받은 개인 혜택입니다. git 에 올라가지 않습니다. */\n" +
+      "window.DISCOUNT_FEED_LOCAL = " + JSON.stringify(personal, null, 2) + ";\n");
+    console.log("\n로그인 수집분 " + personal.structured.length + "건 → " + LOCAL_FEED + " (레포에는 올라가지 않습니다)");
+
+    feed.sources = feed.sources.filter((r) => !authIds.has(r.id));
+    feed.structured = feed.structured.filter((b) => !authIds.has(b.source));
+    feed.raw = feed.raw.filter((r) => !authIds.has(r.source));
   }
 
   const body = JSON.stringify(feed, null, 2);

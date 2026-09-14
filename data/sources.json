@@ -228,6 +228,101 @@
         "shinhan-myshop-coupon"
       ],
       "note": "마이샵 쿠폰 목록(MOBFM501R21.ajax). 가맹점·금액·최소결제·기간이 모두 내려옵니다."
+    },
+    {
+      "id": "kakaopay-main",
+      "app": "kakaopay",
+      "name": "카카오페이 (탐색)",
+      "url": "https://pay.kakao.com/",
+      "keywords": [
+        "할인",
+        "적립",
+        "쿠폰",
+        "혜택",
+        "캐시백"
+      ],
+      "explore": true,
+      "note": "혜택 목록 주소 미확인. 메인에서 메뉴 링크와 XHR 를 훑습니다."
+    },
+    {
+      "id": "naverpay-main",
+      "app": "naverpay",
+      "name": "네이버페이 (탐색)",
+      "url": "https://new-m.pay.naver.com/",
+      "keywords": [
+        "할인",
+        "적립",
+        "쿠폰",
+        "혜택",
+        "캐시백"
+      ],
+      "explore": true,
+      "note": "혜택 목록 주소 미확인. 메인에서 메뉴 링크와 XHR 를 훑습니다."
+    },
+    {
+      "id": "ssgpay-main",
+      "app": "ssgpay",
+      "name": "SSG페이 (탐색)",
+      "url": "https://www.ssgpay.com/",
+      "keywords": [
+        "할인",
+        "적립",
+        "쿠폰",
+        "혜택"
+      ],
+      "explore": true
+    },
+    {
+      "id": "nhpay-main",
+      "app": "nhpay",
+      "name": "NH페이 (탐색)",
+      "url": "https://card.nonghyup.com/",
+      "keywords": [
+        "할인",
+        "적립",
+        "쿠폰",
+        "혜택"
+      ],
+      "explore": true
+    },
+    {
+      "id": "kbpay-main",
+      "app": "kbpay",
+      "name": "KB Pay (탐색)",
+      "url": "https://m.kbcard.com/",
+      "keywords": [
+        "할인",
+        "적립",
+        "쿠폰",
+        "혜택"
+      ],
+      "explore": true
+    },
+    {
+      "id": "hyundai-main",
+      "app": "hyundai",
+      "name": "현대카드 (탐색)",
+      "url": "https://www.hyundaicard.com/",
+      "keywords": [
+        "할인",
+        "적립",
+        "쿠폰",
+        "혜택"
+      ],
+      "explore": true
+    },
+    {
+      "id": "lotte-main",
+      "app": "lotte",
+      "name": "롯데카드 (탐색)",
+      "url": "https://www.lottecard.co.kr/",
+      "keywords": [
+        "할인",
+        "적립",
+        "쿠폰",
+        "혜택"
+      ],
+      "explore": true
     }
   ]
 }

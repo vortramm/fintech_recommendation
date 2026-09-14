@@ -2,3 +2,8 @@ node_modules/
 tools/captures/
 *.har
 !tools/fixtures/*.har
+
+# 로그인 세션과 개인 혜택 — 절대 커밋하지 않습니다
+.auth/
+.auth-captures/
+data/feed.local.js

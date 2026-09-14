@@ -3,7 +3,8 @@
   "use strict";
 
   var DB = window.DISCOUNT_DB;
-  var FEED = window.DISCOUNT_FEED || null;   /* tools/collect.mjs 가 만든 자동 수집 결과 */
+  var FEED = window.DISCOUNT_FEED || null;              /* 공개 소스 자동 수집 결과 */
+  var FEED_LOCAL = window.DISCOUNT_FEED_LOCAL || null;  /* 내 계정으로 받은 개인 혜택 (이 브라우저에만) */
   var STORE_KEY = "pay-discount:owned-apps";
 
   var MERCHANTS = DB.merchants.slice();
@@ -23,11 +24,21 @@
 
   /* 자동 수집한 혜택은 번들 데이터와 같은 자격으로 순위에 들어갑니다.
      목록에 없던 가맹점이면 결제처로 새로 만들어 검색까지 되게 합니다. */
+  function feedBenefits() {
+    var pub = (FEED && FEED.structured ? FEED.structured : []).map(function (b) {
+      var c = {}; for (var k in b) if (Object.prototype.hasOwnProperty.call(b, k)) c[k] = b[k];
+      c.origin = "feed"; return c;
+    });
+    var mine = (FEED_LOCAL && FEED_LOCAL.structured ? FEED_LOCAL.structured : []).map(function (b) {
+      var c = {}; for (var k in b) if (Object.prototype.hasOwnProperty.call(b, k)) c[k] = b[k];
+      c.origin = "local"; return c;
+    });
+    return pub.concat(mine);
+  }
+
   var ALL_BENEFITS = DB.benefits.concat(
-    (FEED && FEED.structured ? FEED.structured : []).map(function (b) {
-      var copy = {};
-      for (var k in b) if (Object.prototype.hasOwnProperty.call(b, k)) copy[k] = b[k];
-      copy.origin = "feed";
+    feedBenefits().map(function (b) {
+      var copy = b;
       if (!copy.merchant && copy.merchantName) {
         var hit = findMerchantByName(copy.merchantName);
         if (!hit) {
@@ -346,7 +357,9 @@
 
   /* ── 결과 조각 ────────────────────────────────────────── */
   function originTag(b) {
-    return b.origin === "feed" ? '<span class="tag feed">자동 수집</span>' : "";
+    if (b.origin === "local") return '<span class="tag local">내 계정</span>';
+    if (b.origin === "feed") return '<span class="tag feed">자동 수집</span>';
+    return "";
   }
 
   function scopeTag(b) {
@@ -536,11 +549,12 @@
 
   /* 자동 수집한 공지 중 지금 보는 결제처와 이름이 겹치는 것 */
   function freshNotices(ctx) {
-    if (!FEED || !FEED.raw || !FEED.raw.length) return "";
+    var pool = ((FEED && FEED.raw) || []).concat((FEED_LOCAL && FEED_LOCAL.raw) || []);
+    if (!pool.length) return "";
     var names = [ctx.name];
     var m = ctx.merchantId ? merchantById(ctx.merchantId) : null;
     if (m) names = names.concat(m.aliases || []);
-    var hits = FEED.raw.filter(function (item) {
+    var hits = pool.filter(function (item) {
       var t = item.title.toLowerCase();
       return names.some(function (n) { return n && t.indexOf(n.toLowerCase()) !== -1; });
     }).slice(0, 8);
@@ -815,9 +829,11 @@
     var ok = (FEED.sources || []).filter(function (s) { return s.status === "ok"; }).length;
     var all = (FEED.sources || []).length;
     var cls = !all ? "idle" : ok === all ? "ok" : ok ? "partial" : "fail";
+    var mine = FEED_LOCAL && FEED_LOCAL.structured ? FEED_LOCAL.structured.length : 0;
     return '<span class="feed-dot ' + cls + '"></span>자동 갱신 ' + ago +
       (all ? " · 소스 " + ok + "/" + all : "") +
-      (FEED.raw && FEED.raw.length ? " · 공지 " + FEED.raw.length + "건" : "");
+      (FEED.raw && FEED.raw.length ? " · 공지 " + FEED.raw.length + "건" : "") +
+      (mine ? " · 내 계정 " + mine + "건" : "");
   }
 
   /* ── 시작 ─────────────────────────────────────────────── */
