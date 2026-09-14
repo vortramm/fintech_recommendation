@@ -32,7 +32,7 @@ window.DISCOUNT_DB = {
     kakaopay: { name: "카카오페이",        kind: "핀테크" },
     naverpay: { name: "네이버페이",        kind: "핀테크" },
     payco:    { name: "페이코",           kind: "핀테크" },
-    paybooc:  { name: "페이북 (신한카드)",  kind: "카드사" },
+    shinhan:  { name: "신한카드 (SOL페이)",  kind: "카드사" },
     kbpay:    { name: "KB Pay (국민카드)", kind: "카드사" },
     hyundai:  { name: "현대카드",          kind: "카드사" },
     samsung:  { name: "삼성카드",          kind: "카드사" },
@@ -40,7 +40,7 @@ window.DISCOUNT_DB = {
     woori:    { name: "우리WON카드",       kind: "카드사" },
     hana:     { name: "하나카드",          kind: "카드사" },
     nhpay:    { name: "NH페이 (농협카드)",  kind: "카드사" },
-    bccard:   { name: "BC카드 페이북",      kind: "카드사" },
+    bccard:   { name: "BC카드 (페이북)",     kind: "카드사" },
     ssgpay:   { name: "SSG페이",          kind: "간편결제" },
     smilepay: { name: "스마일페이",         kind: "간편결제" }
   },
@@ -224,8 +224,8 @@ window.DISCOUNT_DB = {
       benefitType: "할인", condition: "KB Pay 온라인쇼핑 쿠폰 받고 KB국민카드 결제" },
     { scope: "category", category: "online", app: "naverpay", kind: "rate", rate: 0.005, cap: 3000,
       benefitType: "적립", condition: "네이버페이 카드 결제 시 포인트 적립" },
-    { scope: "category", category: "online", app: "paybooc", kind: "rate", rate: 0.0055, cap: 5000, minAmount: 20000,
-      benefitType: "할인", condition: "페이북 쿠폰 다운로드 후 신한카드 결제" },
+    { scope: "category", category: "online", app: "shinhan", kind: "rate", rate: 0.0055, cap: 5000, minAmount: 20000,
+      benefitType: "할인", condition: "신한 SOL페이 쿠폰 받고 신한카드 결제" },
 
     /* 패션 · 리셀 */
     { scope: "category", category: "fashion", app: "toss", kind: "rate", rate: 0.02, cap: 5000, minAmount: 30000,
@@ -239,8 +239,8 @@ window.DISCOUNT_DB = {
       benefitType: "할인", condition: "삼성카드 앱 패션업종 쿠폰 등록" },
 
     /* 뷰티 */
-    { scope: "category", category: "beauty", app: "paybooc", kind: "rate", rate: 0.05, cap: 5000, minAmount: 30000,
-      benefitType: "할인", condition: "페이북 QR 결제 (신한카드)", monthlyCap: "월 1회" },
+    { scope: "category", category: "beauty", app: "shinhan", kind: "rate", rate: 0.05, cap: 5000, minAmount: 30000,
+      benefitType: "할인", condition: "신한 SOL페이 결제 · 마이샵 혜택 켜기", monthlyCap: "월 1회" },
     { scope: "category", category: "beauty", app: "payco", kind: "rate", rate: 0.02, cap: 3000, minAmount: 20000,
       benefitType: "적립", condition: "페이코에 카드 등록 후 결제" },
     { scope: "category", category: "beauty", app: "lotte", kind: "fixed", amount: 3000, minAmount: 50000,
@@ -258,8 +258,8 @@ window.DISCOUNT_DB = {
     /* 편의점 */
     { scope: "category", category: "cvs", app: "kakaopay", kind: "rate", rate: 0.05, cap: 1000, minAmount: 5000,
       benefitType: "할인", condition: "카카오페이 바코드 결제 (카드 연결)", monthlyCap: "월 4회" },
-    { scope: "category", category: "cvs", app: "paybooc", kind: "rate", rate: 0.05, cap: 1000, minAmount: 5000,
-      benefitType: "할인", condition: "페이북 QR 결제 (신한카드)", monthlyCap: "월 4회" },
+    { scope: "category", category: "cvs", app: "shinhan", kind: "rate", rate: 0.05, cap: 1000, minAmount: 5000,
+      benefitType: "할인", condition: "신한 SOL페이 결제 · 마이샵 혜택 켜기", monthlyCap: "월 4회" },
     { scope: "category", category: "cvs", app: "nhpay", kind: "rate", rate: 0.03, cap: 1000, minAmount: 5000,
       benefitType: "적립", condition: "NH페이 편의점 적립 (농협카드)" },
 
@@ -277,7 +277,7 @@ window.DISCOUNT_DB = {
     { scope: "category", category: "cafe", app: "toss", kind: "rate", rate: 0.1, cap: 500, minAmount: 3000,
       benefitType: "할인", condition: "토스 오프라인 카드 결제", monthlyCap: "일 1회" },
     { scope: "category", category: "cafe", app: "bccard", kind: "rate", rate: 0.03, cap: 1500, minAmount: 5000,
-      benefitType: "적립", condition: "BC카드 페이북 마이태그 설정" },
+      benefitType: "적립", condition: "페이북 마이태그 설정" },
 
     /* 외식 · 프랜차이즈 */
     { scope: "category", category: "dining", app: "hana", kind: "rate", rate: 0.05, cap: 3000, minAmount: 20000,
@@ -320,7 +320,7 @@ window.DISCOUNT_DB = {
     { scope: "category", category: "subscribe", app: "woori", kind: "rate", rate: 0.05, cap: 2000, minAmount: 5000,
       benefitType: "할인", condition: "우리WON카드 정기결제 쿠폰" },
     { scope: "category", category: "subscribe", app: "bccard", kind: "rate", rate: 0.03, cap: 1500, minAmount: 5000,
-      benefitType: "적립", condition: "BC카드 페이북 마이태그(디지털구독) 설정" },
+      benefitType: "적립", condition: "페이북 마이태그(디지털구독) 설정" },
 
     /* 주유 */
     { scope: "category", category: "fuel", app: "hana", kind: "tiered", minAmount: 30000,
@@ -345,11 +345,11 @@ window.DISCOUNT_DB = {
     { scope: "category", category: "telecom", app: "lotte", kind: "fixed", amount: 3000, minAmount: 50000,
       benefitType: "할인", condition: "롯데카드 통신비 자동이체 쿠폰" },
     { scope: "category", category: "telecom", app: "bccard", kind: "rate", rate: 0.01, cap: 3000,
-      benefitType: "적립", condition: "BC카드 페이북 마이태그(통신) 설정" },
+      benefitType: "적립", condition: "페이북 마이태그(통신) 설정" },
 
     /* 병원 · 약국 */
     { scope: "category", category: "health", app: "bccard", kind: "rate", rate: 0.05, cap: 5000, minAmount: 30000,
-      benefitType: "적립", condition: "BC카드 페이북 마이태그(병원·약국) 설정" },
+      benefitType: "적립", condition: "페이북 마이태그(병원·약국) 설정" },
     { scope: "category", category: "health", app: "kbpay", kind: "rate", rate: 0.02, cap: 3000, minAmount: 20000,
       benefitType: "할인", condition: "KB Pay 생활업종 쿠폰 받고 결제" },
 
@@ -380,7 +380,7 @@ window.DISCOUNT_DB = {
     { scope: "category", category: "pet", app: "woori", kind: "rate", rate: 0.05, cap: 3000, minAmount: 20000,
       benefitType: "할인", condition: "우리WON카드 펫 쿠폰 받고 결제" },
     { scope: "category", category: "pet", app: "bccard", kind: "rate", rate: 0.03, cap: 2000, minAmount: 10000,
-      benefitType: "적립", condition: "BC카드 페이북 마이태그(반려동물) 설정" },
+      benefitType: "적립", condition: "페이북 마이태그(반려동물) 설정" },
 
     /* ══ 가맹점 전용 제휴 ═══════════════════════════════════ */
 
@@ -422,8 +422,8 @@ window.DISCOUNT_DB = {
     { scope: "merchant", merchant: "musinsa", app: "lotte", kind: "fixed", amount: 5000, minAmount: 100000,
       benefitType: "할인", condition: "롯데카드 앱 무신사 쿠폰 등록" },
 
-    { scope: "merchant", merchant: "oliveyoung", app: "paybooc", kind: "rate", rate: 0.05, cap: 5000, minAmount: 30000,
-      benefitType: "할인", condition: "페이북 QR 결제 (신한카드)", monthlyCap: "월 1회" },
+    { scope: "merchant", merchant: "oliveyoung", app: "shinhan", kind: "rate", rate: 0.05, cap: 5000, minAmount: 30000,
+      benefitType: "할인", condition: "신한 SOL페이 결제 · 마이샵 혜택 켜기", monthlyCap: "월 1회" },
 
     { scope: "merchant", merchant: "baemin", app: "toss", kind: "rate", rate: 0.05, cap: 2000, minAmount: 15000,
       benefitType: "할인", condition: "배민 결제수단에 토스페이 연결", monthlyCap: "월 2회" },
@@ -432,8 +432,8 @@ window.DISCOUNT_DB = {
     { scope: "merchant", merchant: "coupangeats", app: "hyundai", kind: "rate", rate: 0.1, cap: 5000, minAmount: 20000,
       benefitType: "할인", condition: "현대카드 쿠팡이츠 제휴 쿠폰", monthlyCap: "월 2회" },
 
-    { scope: "merchant", merchant: "starbucks", app: "paybooc", kind: "rate", rate: 0.1, cap: 2000, minAmount: 10000,
-      benefitType: "할인", condition: "페이북 스타벅스 쿠폰 (신한카드)", monthlyCap: "월 1회" },
+    { scope: "merchant", merchant: "starbucks", app: "shinhan", kind: "rate", rate: 0.1, cap: 2000, minAmount: 10000,
+      benefitType: "할인", condition: "신한 SOL페이 스타벅스 쿠폰 · 마이샵", monthlyCap: "월 1회" },
     { scope: "merchant", merchant: "starbucks", app: "nhpay", kind: "rate", rate: 0.02, cap: 2000,
       benefitType: "적립", condition: "NH페이 카드 결제 적립" },
 

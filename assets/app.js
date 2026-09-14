@@ -3,7 +3,18 @@
   "use strict";
 
   var DB = window.DISCOUNT_DB;
+  var FEED = window.DISCOUNT_FEED || null;   /* tools/collect.mjs 가 만든 자동 수집 결과 */
   var STORE_KEY = "pay-discount:owned-apps";
+
+  /* 자동 수집으로 구조까지 읽어낸 혜택은 번들 데이터와 같은 자격으로 순위에 넣습니다. */
+  var ALL_BENEFITS = DB.benefits.concat(
+    (FEED && FEED.structured ? FEED.structured : []).map(function (b) {
+      var copy = {};
+      for (var k in b) if (Object.prototype.hasOwnProperty.call(b, k)) copy[k] = b[k];
+      copy.origin = "feed";
+      return copy;
+    })
+  );
 
   /* ── 포맷 ─────────────────────────────────────────────── */
   function won(n) { return Math.round(n).toLocaleString("ko-KR") + "원"; }
@@ -144,7 +155,7 @@
 
   /* ── 혜택 모으기 · 순위 ───────────────────────────────── */
   function candidates(ctx) {
-    return DB.benefits.filter(function (b) {
+    return ALL_BENEFITS.filter(function (b) {
       if (b.funding === "prepaid") return false;               /* 현금성(머니 충전) 결제 제외 */
       if (b.scope === "merchant") return ctx.merchantId === b.merchant;
       return b.category === ctx.category;
@@ -234,7 +245,8 @@
     appChips: $("#app-chips"),
     results: $("#results"),
     stampDate: $("#stamp-date"),
-    stampCount: $("#stamp-count")
+    stampCount: $("#stamp-count"),
+    feedStatus: $("#feed-status")
   };
 
   /* 검색 드롭다운 */
@@ -299,6 +311,10 @@
   }
 
   /* ── 결과 조각 ────────────────────────────────────────── */
+  function originTag(b) {
+    return b.origin === "feed" ? '<span class="tag feed">자동 수집</span>' : "";
+  }
+
   function scopeTag(b) {
     return b.scope === "merchant"
       ? '<span class="tag scope-merchant">가맹점 전용</span>'
@@ -307,7 +323,8 @@
 
   function metaTags(r) {
     var b = r.benefit;
-    var t = [scopeTag(b), '<span class="tag type-' + b.benefitType + '">' + b.benefitType + "</span>"];
+    var t = [scopeTag(b), originTag(b),
+      '<span class="tag type-' + b.benefitType + '">' + b.benefitType + "</span>"].filter(Boolean);
     if (r.capped) t.push('<span class="tag capped">한도 도달</span>');
     else if (b.cap != null) t.push('<span class="tag">한도 ' + won(b.cap) + "</span>");
     if (b.minAmount) t.push('<span class="tag">' + won(b.minAmount) + " 이상</span>");
@@ -483,12 +500,61 @@
     "</section>";
   }
 
+  /* 자동 수집한 공지 중 지금 보는 결제처와 이름이 겹치는 것 */
+  function freshNotices(ctx) {
+    if (!FEED || !FEED.raw || !FEED.raw.length) return "";
+    var names = [ctx.name];
+    var m = ctx.merchantId ? merchantById(ctx.merchantId) : null;
+    if (m) names = names.concat(m.aliases || []);
+    var hits = FEED.raw.filter(function (item) {
+      var t = item.title.toLowerCase();
+      return names.some(function (n) { return n && t.indexOf(n.toLowerCase()) !== -1; });
+    }).slice(0, 8);
+    if (!hits.length) return "";
+
+    return '<section class="list-card">' +
+      '<div class="section-title"><h2>요즘 뜬 혜택 공지</h2>' +
+      '<span class="hint">자동 수집 · 금액 계산에는 넣지 않았습니다</span></div>' +
+      '<ul class="notice-list">' + hits.map(function (i) {
+        return "<li>" +
+          '<a href="' + esc(i.url) + '" target="_blank" rel="noopener">' + esc(i.title) + "</a>" +
+          '<span class="notice-meta">' + esc(DB.apps[i.app] ? DB.apps[i.app].name : i.sourceName) +
+          (i.period ? " · " + esc(i.period) : "") + "</span>" +
+        "</li>";
+      }).join("") + "</ul></section>";
+  }
+
+  /* LINK · 마이샵 · 하나PICK · 꾹 처럼 앱에서 켜야 하는 개인화 혜택 */
+  function personalPrograms(highlightApps) {
+    var list = (FEED && FEED.personal) ? FEED.personal : [];
+    if (!list.length) return "";
+    var hi = highlightApps || [];
+    return '<section class="list-card">' +
+      '<div class="section-title"><h2>앱에서 직접 켜야 하는 혜택</h2>' +
+      '<span class="hint">개인화 혜택이라 자동으로 가져올 수 없습니다</span></div>' +
+      '<p class="program-why">삼성카드 LINK, 신한 마이샵, 하나PICK, 우리 꾹, 페이북 마이태그는 ' +
+      "로그인해야 목록이 보이고 사람마다 내용이 달라서, 결제 전에 앱에서 한 번 켜 줘야 적용됩니다." +
+      "며칠만 열리는 혜택도 대부분 여기에 뜹니다.</p>" +
+      '<ul class="program-list">' + list.map(function (p) {
+        var app = DB.apps[p.app];
+        var on = hi.indexOf(p.app) !== -1;
+        return '<li class="' + (on ? "on" : "") + '">' +
+          '<span class="program-app">' + esc(app ? app.name.replace(/\s*\(.*\)/, "") : p.app) + "</span>" +
+          '<span class="program-name">' + esc(p.program) + "</span>" +
+          (p.url
+            ? '<a href="' + esc(p.url) + '" target="_blank" rel="noopener">열기</a>'
+            : '<span class="program-todo">앱에서 확인</span>') +
+        "</li>";
+      }).join("") + "</ul></section>";
+  }
+
   var FOOTNOTE = '<section class="note-card">' +
     "<b>계산 방식</b> · 할인율 × 결제금액을 구한 뒤 할인 한도와 최소 결제금액을 적용해 실제로 깎이는 " +
     "금액으로 줄을 세웁니다. 같은 금액이면 적립보다 즉시할인을 앞에 둡니다. 월 한도·선착순 여부는 " +
     "계산에 넣지 않고 표시만 하니 앱에서 남은 횟수를 확인하세요. " +
     "머니 충전·선불 잔액 같은 <b>현금성 결제 혜택은 비교에서 제외</b>하고 카드 결제만 다룹니다.<br>" +
-    "<b>데이터</b> · " + esc(DB.source) + " 값은 <code>data/benefits.js</code> 한 파일에 모여 있습니다." +
+    "<b>데이터</b> · 기본값은 <code>data/benefits.js</code>, 자동 수집분은 <code>data/feed.js</code> 에 " +
+    "들어갑니다. 수집은 <code>tools/collect.mjs</code> 가 하고 GitHub Actions 가 하루 네 번 돌립니다." +
   "</section>";
 
   function renderEmpty() {
@@ -501,7 +567,7 @@
         "<div><b>2</b> 결제 금액 입력 <span>한도와 최소금액까지 반영해 계산합니다</span></div>" +
         "<div><b>3</b> 순위 확인 <span>실제로 깎이는 금액 순으로 정렬됩니다</span></div>" +
       "</div>" +
-    "</div>" + FOOTNOTE;
+    "</div>" + personalPrograms([]) + FOOTNOTE;
   }
 
   function renderResults() {
@@ -517,6 +583,8 @@
         esc(categoryName(ctx.category)) + (ctx.custom ? " (직접 입력)" : "") +
         " · 결제 금액을 넣으면 순위가 나옵니다</div>";
       html += renderPreview(ctx);
+      html += freshNotices(ctx);
+      html += personalPrograms(candidates(ctx).map(function (b) { return b.app; }));
       el.results.innerHTML = html + FOOTNOTE;
       return;
     }
@@ -543,6 +611,9 @@
       }
       html += renderChart(ctx, amount, ranked.eligible.slice(0, 3).map(function (r) { return r.benefit; }));
     }
+
+    html += freshNotices(ctx);
+    html += personalPrograms(ranked.eligible.map(function (r) { return r.benefit.app; }));
 
     if (ranked.blocked.length) {
       html += '<section class="list-card">' +
@@ -661,9 +732,27 @@
     renderResults();
   });
 
+  /* 헤더에 표시할 자동 갱신 상태 */
+  function feedStatusText() {
+    if (!FEED || !FEED.collectedAt) {
+      return '<span class="feed-dot idle"></span>자동 갱신 대기 중';
+    }
+    var mins = Math.round((Date.now() - new Date(FEED.collectedAt).getTime()) / 60000);
+    var ago = mins < 60 ? mins + "분 전"
+      : mins < 1440 ? Math.round(mins / 60) + "시간 전"
+      : Math.round(mins / 1440) + "일 전";
+    var ok = (FEED.sources || []).filter(function (s) { return s.status === "ok"; }).length;
+    var all = (FEED.sources || []).length;
+    var cls = !all ? "idle" : ok === all ? "ok" : ok ? "partial" : "fail";
+    return '<span class="feed-dot ' + cls + '"></span>자동 갱신 ' + ago +
+      (all ? " · 소스 " + ok + "/" + all : "") +
+      (FEED.raw && FEED.raw.length ? " · 공지 " + FEED.raw.length + "건" : "");
+  }
+
   /* ── 시작 ─────────────────────────────────────────────── */
   el.stampDate.textContent = DB.updatedAt;
-  el.stampCount.textContent = "결제처 " + DB.merchants.length + "곳 · 혜택 " + DB.benefits.length + "건";
+  el.stampCount.textContent = "결제처 " + DB.merchants.length + "곳 · 혜택 " + ALL_BENEFITS.length + "건";
+  el.feedStatus.innerHTML = feedStatusText();
   renderExamples();
   render();
 })();

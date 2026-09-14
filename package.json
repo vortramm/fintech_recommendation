@@ -1,0 +1,14 @@
+{
+  "name": "payment-discount-finder",
+  "version": "1.0.0",
+  "private": true,
+  "description": "결제처별로 가장 많이 깎이는 카드사앱·핀테크앱을 찾아주는 페이지",
+  "type": "module",
+  "scripts": {
+    "collect": "node tools/collect.mjs",
+    "serve": "python3 -m http.server 8080"
+  },
+  "devDependencies": {
+    "playwright": "^1.47.0"
+  }
+}

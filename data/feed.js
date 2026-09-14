@@ -1,0 +1,83 @@
+/* tools/collect.mjs 가 생성합니다. 직접 고치지 마세요. */
+window.DISCOUNT_FEED = {
+  "collectedAt": null,
+  "note": "아직 수집 전입니다. `npm run collect` 를 돌리거나 GitHub Actions 가 실행되면 이 파일이 갱신됩니다.",
+  "sources": [],
+  "personal": [
+    {
+      "id": "samsung-link",
+      "app": "samsung",
+      "program": "LINK",
+      "url": "https://www.samsungcard.com/personal/services/link/UHPPBE0401M1.jsp",
+      "listUrl": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
+      "verified": true,
+      "why": "혜택 목록이 로그인 후 개인화되어 내려옵니다. 비로그인 HTML은 '총 0개의 혜택'만 나옵니다."
+    },
+    {
+      "id": "shinhan-myshop",
+      "app": "shinhan",
+      "program": "마이샵",
+      "url": "https://www.shinhancard.com/pconts/html/benefit/myShop/intro/MOBFM501R01.html",
+      "verified": true,
+      "why": "매월 1일 개인별로 추천 혜택이 달라집니다. 신한 SOL페이 앱에서 혜택을 켜야 적용됩니다."
+    },
+    {
+      "id": "woori-kkook",
+      "app": "woori",
+      "program": "꾹",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
+      "verified": true,
+      "why": "'담기'를 눌러야 적용되는 개인화 혜택이라 비로그인 HTML에는 목록이 없습니다."
+    },
+    {
+      "id": "bc-mytag",
+      "app": "bccard",
+      "program": "마이태그",
+      "url": "https://www.bccard.com/app/card/ContentsLinkActn.do?pgm_id=ind1200",
+      "verified": true,
+      "why": "소개 페이지만 공개돼 있고 혜택 카탈로그는 페이북 앱 안에 있습니다."
+    },
+    {
+      "id": "hana-pick",
+      "app": "hana",
+      "program": "하나PICK",
+      "url": "https://www.hanacard.co.kr/OPP00000000M.web",
+      "verified": false,
+      "why": "하나PICK 전용 주소를 확인하지 못해 혜택 메인을 걸어 두었습니다. 정확한 주소를 알면 여기를 고쳐 주세요."
+    },
+    {
+      "id": "kb-pay",
+      "app": "kbpay",
+      "program": "KB Pay 혜택",
+      "url": null,
+      "verified": false,
+      "why": "앱 내 혜택 탭 기준. 공개 주소 확인 필요."
+    },
+    {
+      "id": "hyundai-coupon",
+      "app": "hyundai",
+      "program": "현대카드 쿠폰",
+      "url": null,
+      "verified": false,
+      "why": "앱 내 쿠폰함 기준. 공개 주소 확인 필요."
+    },
+    {
+      "id": "lotte-digiloca",
+      "app": "lotte",
+      "program": "디지로카 혜택",
+      "url": null,
+      "verified": false,
+      "why": "앱 내 혜택 탭 기준. 공개 주소 확인 필요."
+    },
+    {
+      "id": "toss-benefit",
+      "app": "toss",
+      "program": "토스 혜택",
+      "url": "https://pay.toss.im/",
+      "verified": false,
+      "why": "토스페이 혜택 목록은 앱 안에서 개인화되어 노출됩니다."
+    }
+  ],
+  "structured": [],
+  "raw": []
+};
