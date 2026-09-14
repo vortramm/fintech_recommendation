@@ -23,7 +23,7 @@
       "app": "shinhan",
       "program": "마이샵",
       "url": "https://www.shinhancard.com/pconts/html/benefit/myShop/intro/MOBFM501R01.html",
-      "catalogUrl": "https://www.shinhancard.com/pconts/html/benefit/myShop/intro/MOBFM501R01.html",
+      "catalogUrl": "https://www.shinhancard.com/mob/MOBFM501N/MOBFM501R81.shc",
       "collect": true,
       "keywords": [
         "할인",
@@ -31,7 +31,7 @@
         "캐시백",
         "마이샵"
       ],
-      "note": "매월 1일 제휴 목록이 갱신됩니다. 대상 선정은 개인화됩니다."
+      "note": "모바일 웹 마이샵 혜택 목록. 대상 선정은 개인화되지만 목록 자체는 공통입니다."
     },
     {
       "id": "woori-kkook",
@@ -69,7 +69,7 @@
       "app": "hana",
       "program": "하나PICK",
       "url": "https://www.hanacard.co.kr/OPP00000000M.web",
-      "catalogUrl": "https://www.hanacard.co.kr/OPP00000000M.web",
+      "catalogUrl": "https://m.hanacard.co.kr/main.web",
       "collect": true,
       "keywords": [
         "할인",
@@ -77,7 +77,7 @@
         "쿠폰",
         "PICK"
       ],
-      "note": "하나PICK 전용 주소 미확인. 앱/모바일(m.hanacard.co.kr)에서 주소를 잡아 catalogUrl 에 넣어 주세요 — docs/find-app-endpoints.md"
+      "note": "하나PICK 전용 주소 미확인. 모바일 메인에서 XHR 를 훑어봅니다 — 정확한 주소를 알면 catalogUrl 을 고쳐 주세요."
     },
     {
       "id": "kb-pay",
@@ -176,13 +176,13 @@
       "id": "hana-events",
       "app": "hana",
       "name": "하나카드 이벤트",
-      "url": "https://www.hanacard.co.kr/OPP35000000D.web?schID=ncd&mID=OPP35000000D&CT_ID=00001",
+      "url": "https://m.hanacard.co.kr/MKEVT1000M.web",
       "keywords": [
         "할인",
         "이벤트",
         "캐시백"
       ],
-      "note": "진행중인 이벤트 목록. CT_ID 로 분류가 나뉩니다."
+      "note": "모바일 진행중인 이벤트 목록."
     },
     {
       "id": "bc-events",
@@ -203,6 +203,18 @@
       "keywords": [
         "할인",
         "이벤트",
+        "캐시백"
+      ]
+    },
+    {
+      "id": "shinhan-myshop-coupon",
+      "app": "shinhan",
+      "name": "신한 마이샵 쿠폰",
+      "url": "https://www.shinhancard.com/mob/MOBFM501N/MOBFM501R31.shc",
+      "keywords": [
+        "할인",
+        "적립",
+        "쿠폰",
         "캐시백"
       ]
     }

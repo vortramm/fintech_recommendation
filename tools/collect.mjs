@@ -46,6 +46,7 @@ const DUMP = args.includes("--dump");
 const SOURCES = argOf("--sources", "data/sources.json");
 const SELFTEST = args.includes("--selftest");
 const REPLAY = argOf("--replay", null);
+const PROBE = argOf("--probe", null);
 
 /* ── 텍스트에서 건질 값 ───────────────────────────────────── */
 const MONEY = /(\d[\d,]*)\s*원/;
@@ -342,9 +343,40 @@ async function replay(dir) {
   console.log("\n구조화 " + structured.length + "건 · 공지 " + feed.raw.length + "건 → data/feed.js");
 }
 
+/* 주소 하나만 열어 보고 혜택 목록 응답이 있는지 봅니다 — sources.json 을 고치기 전에 확인용 */
+async function probe(url) {
+  const proxy = process.env.HTTPS_PROXY || process.env.https_proxy || null;
+  const browser = await chromium.launch({
+    executablePath: process.env.CHROMIUM_PATH || undefined,
+    proxy: proxy ? { server: proxy, bypass: "localhost,127.0.0.1,::1" } : undefined,
+    args: ["--no-sandbox"]
+  });
+  const { row, raw, hints } = await collectSource(browser, {
+    id: "probe", app: argOf("--app", "probe"), name: "probe", url,
+    keywords: ["할인", "적립", "쿠폰", "캐시백", "혜택"]
+  });
+  await browser.close();
+
+  console.log("상태: " + row.status + " · JSON 응답 " + (row.captures || 0) + "개 · 공지 " + raw.length + "건\n");
+  if (hints.length) {
+    console.log("혜택 목록처럼 보이는 응답");
+    hints.forEach((h, i) => {
+      console.log(" " + (i + 1) + ") " + h.url);
+      console.log("    path: " + h.path + " · " + h.rows + "행");
+      console.log("    keys: " + h.keys.join(", "));
+      console.log("    sample: " + h.sample.slice(0, 240));
+    });
+  } else {
+    console.log("혜택 목록처럼 보이는 JSON 응답이 없습니다.");
+    if (row.status === "login-required") console.log("→ 로그인 뒤에만 목록이 내려오는 화면입니다.");
+  }
+  raw.slice(0, 8).forEach((r) => console.log("  · " + r.title));
+}
+
 async function main() {
   if (SELFTEST) return selftest();
   if (REPLAY) return replay(REPLAY);
+  if (PROBE) return probe(PROBE);
 
   const regPath = SOURCES.startsWith("/") ? SOURCES : join(ROOT, SOURCES);
   const reg = JSON.parse(await readFile(regPath, "utf8"));
