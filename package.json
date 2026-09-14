@@ -11,9 +11,12 @@
     "collect:mine": "node tools/collect.mjs --auth --dump",
     "inspect": "node tools/collect.mjs --inspect .auth-captures",
     "selftest": "node tools/collect.mjs --selftest && node tools/from-har.mjs --selftest",
-    "serve": "python3 -m http.server 8080"
+    "serve": "node tools/serve.mjs"
   },
   "devDependencies": {
     "playwright": "^1.47.0"
+  },
+  "engines": {
+    "node": ">=18"
   }
 }
