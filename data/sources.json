@@ -47,7 +47,10 @@
         "꾹"
       ],
       "note": "공개 API(retrieveBnfMainList)에서 '꾹' 목록을 받습니다. 적용은 앱에서 '담기'를 눌러야 됩니다.",
-      "parser": "woori-kkook"
+      "parser": [
+        "woori-kkook",
+        "woori-kkook-etc"
+      ]
     },
     {
       "id": "bc-mytag",

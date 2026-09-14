@@ -100,10 +100,14 @@ function fromCaptures(captures, src) {
   const hints = [];
   const seenHint = new Set();
 
-  const parser = src.parser ? PARSERS[src.parser] : null;
+  const parsers = []
+    .concat(src.parser || [])
+    .map((name) => PARSERS[name])
+    .filter(Boolean);
 
   for (const cap of captures) {
-    if (parser && cap.url.includes(parser.match)) {
+    const parser = parsers.find((p) => cap.url.includes(p.match));
+    if (parser) {
       const rows = pluck(cap.body, parser.path);
       if (Array.isArray(rows)) {
         const got = parser.run(rows, src);
@@ -231,10 +235,15 @@ async function collectSource(browser, src) {
     const picked = fromCaptures(captures, src);
     raw.push(...picked.raw);
 
-    if (DUMP && captures.length) {
+    if (DUMP) {
       await mkdir(join(ROOT, "tools/captures"), { recursive: true });
-      await writeFile(join(ROOT, "tools/captures", src.id + ".json"),
-        JSON.stringify(captures.map((c) => ({ url: c.url, size: c.size, body: c.body })), null, 2));
+      if (captures.length) {
+        await writeFile(join(ROOT, "tools/captures", src.id + ".json"),
+          JSON.stringify(captures.map((c) => ({ url: c.url, size: c.size, body: c.body })), null, 2));
+      }
+      /* 목록을 서버에서 그려 내려주는 곳은 JSON 이 없으므로 HTML 을 남깁니다 */
+      const html = await page.content().catch(() => null);
+      if (html) await writeFile(join(ROOT, "tools/captures", src.id + ".html"), html);
     }
 
     row.captures = captures.length;

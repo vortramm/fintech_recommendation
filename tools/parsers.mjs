@@ -206,5 +206,7 @@ export function wooriKkook(rows, src) {
 
 export const PARSERS = {
   "samsung-link": { match: "/svc-link/not-logged-in/link", path: "payload.listLinkSvOjInqrVO", run: samsungLink },
-  "woori-kkook": { match: "retrieveBnfMainList", path: "bnfMainList", run: wooriKkook }
+  "woori-kkook": { match: "retrieveBnfMainList", path: "bnfMainList", run: wooriKkook },
+  /* 같은 모양의 카테고리 목록도 같은 파서로 읽습니다 */
+  "woori-kkook-etc": { match: "selectEtcCtgrList", path: "bnfMainList", run: wooriKkook }
 };
