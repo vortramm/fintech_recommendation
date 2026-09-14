@@ -1,6 +1,6 @@
 /* tools/collect.mjs 가 생성합니다. 직접 고치지 마세요. */
 window.DISCOUNT_FEED = {
-  "collectedAt": "2026-09-14T04:49:18.295Z",
+  "collectedAt": "2026-09-14T04:56:32.514Z",
   "sources": [
     {
       "id": "samsung-link",
@@ -49,18 +49,6 @@ window.DISCOUNT_FEED = {
       "structured": 0,
       "http": 200,
       "captures": 1
-    },
-    {
-      "id": "hana-pick",
-      "app": "hana",
-      "name": "하나PICK",
-      "url": "https://m.hanacard.co.kr/main.web",
-      "kind": "program",
-      "status": "ok",
-      "count": 1,
-      "structured": 0,
-      "http": 200,
-      "captures": 0
     },
     {
       "id": "toss-benefit",
@@ -123,18 +111,6 @@ window.DISCOUNT_FEED = {
       "captures": 3
     },
     {
-      "id": "hana-events",
-      "app": "hana",
-      "name": "하나카드 이벤트",
-      "url": "https://m.hanacard.co.kr/MKEVT1000M.web",
-      "kind": "public",
-      "status": "ok",
-      "count": 10,
-      "structured": 0,
-      "http": 200,
-      "captures": 0
-    },
-    {
       "id": "bc-events",
       "app": "bccard",
       "name": "BC카드 이벤트",
@@ -169,6 +145,30 @@ window.DISCOUNT_FEED = {
       "structured": 0,
       "http": 200,
       "captures": 10
+    },
+    {
+      "id": "hana-pick",
+      "app": "hana",
+      "name": "하나PICK",
+      "url": "https://m.hanacard.co.kr/main.web",
+      "kind": "program",
+      "status": "ok",
+      "count": 1,
+      "structured": 0,
+      "http": 200,
+      "captures": 0
+    },
+    {
+      "id": "hana-events",
+      "app": "hana",
+      "name": "하나카드 이벤트",
+      "url": "https://m.hanacard.co.kr/MKEVT1000M.web",
+      "kind": "public",
+      "status": "ok",
+      "count": 10,
+      "structured": 0,
+      "http": 200,
+      "captures": 0
     }
   ],
   "programs": [
@@ -217,7 +217,10 @@ window.DISCOUNT_FEED = {
         "꾹"
       ],
       "note": "공개 API(retrieveBnfMainList)에서 '꾹' 목록을 받습니다. 적용은 앱에서 '담기'를 눌러야 됩니다.",
-      "parser": "woori-kkook"
+      "parser": [
+        "woori-kkook",
+        "woori-kkook-etc"
+      ]
     },
     {
       "id": "bc-mytag",
@@ -4013,16 +4016,6 @@ window.DISCOUNT_FEED = {
       "won": 8000
     },
     {
-      "app": "hana",
-      "source": "hana-pick",
-      "sourceName": "하나PICK",
-      "title": "트래블로그 적립챌린지",
-      "url": "https://m.hanacard.co.kr/main.web",
-      "period": null,
-      "percent": null,
-      "won": null
-    },
-    {
       "app": "toss",
       "source": "toss-benefit",
       "sourceName": "토스 혜택",
@@ -4221,106 +4214,6 @@ window.DISCOUNT_FEED = {
       "period": null,
       "percent": null,
       "won": null
-    },
-    {
-      "app": "hana",
-      "source": "hana-events",
-      "sourceName": "하나카드 이벤트",
-      "title": "할인/캐쉬백",
-      "url": "javascript:void(0);",
-      "period": null,
-      "percent": null,
-      "won": null
-    },
-    {
-      "app": "hana",
-      "source": "hana-events",
-      "sourceName": "하나카드 이벤트",
-      "title": "에버랜드 본인+동반 3인 최대 42% 즉시할인 2026.09.11 ~ 2026.11.22",
-      "url": "https://m.hanacard.co.kr/MKEVT1000M.web",
-      "period": null,
-      "percent": 42,
-      "won": null
-    },
-    {
-      "app": "hana",
-      "source": "hana-events",
-      "sourceName": "하나카드 이벤트",
-      "title": "브랜드 위크 메가MGC커피 50% 할인! 9월 2026.09.14 ~ 2029.09.18",
-      "url": "https://m.hanacard.co.kr/MKEVT1000M.web",
-      "period": null,
-      "percent": 50,
-      "won": null
-    },
-    {
-      "app": "hana",
-      "source": "hana-events",
-      "sourceName": "하나카드 이벤트",
-      "title": "클럽디오아시스 스파&워터파크 최대 45% 현장할인 2026.09.01 ~ 2026.09.30",
-      "url": "https://m.hanacard.co.kr/MKEVT1000M.web",
-      "period": null,
-      "percent": 45,
-      "won": null
-    },
-    {
-      "app": "hana",
-      "source": "hana-events",
-      "sourceName": "하나카드 이벤트",
-      "title": "MOVING카드 5종 100% 연회비 캐시백 이벤트 2026.09.01 ~ 2026.09.30",
-      "url": "https://m.hanacard.co.kr/MKEVT1000M.web",
-      "period": null,
-      "percent": 100,
-      "won": null
-    },
-    {
-      "app": "hana",
-      "source": "hana-events",
-      "sourceName": "하나카드 이벤트",
-      "title": "삼성월렛 최대 5만원 캐시백 +배스킨라빈스 100% 2026.08.01 ~ 2026.09.30",
-      "url": "https://m.hanacard.co.kr/MKEVT1000M.web",
-      "period": null,
-      "percent": 100,
-      "won": null
-    },
-    {
-      "app": "hana",
-      "source": "hana-events",
-      "sourceName": "하나카드 이벤트",
-      "title": "다이소 할인권 받기 피싱케어 플러스 신규가입 이벤트! 2026.09.01 ~ 2026.09.30",
-      "url": "https://m.hanacard.co.kr/MKEVT1000M.web",
-      "period": null,
-      "percent": null,
-      "won": null
-    },
-    {
-      "app": "hana",
-      "source": "hana-events",
-      "sourceName": "하나카드 이벤트",
-      "title": "유니온페이(UPI) 중국, 베트남, 일본 10% 즉시할인 2026.09.01 ~ 2026.10.31",
-      "url": "https://m.hanacard.co.kr/MKEVT1000M.web",
-      "period": null,
-      "percent": 10,
-      "won": null
-    },
-    {
-      "app": "hana",
-      "source": "hana-events",
-      "sourceName": "하나카드 이벤트",
-      "title": "하나 나라사랑카드 나라사랑 BOOST 캐시백 최대 6만원 2026.07.01 ~ 2026.12.31",
-      "url": "https://m.hanacard.co.kr/MKEVT1000M.web",
-      "period": null,
-      "percent": null,
-      "won": null
-    },
-    {
-      "app": "hana",
-      "source": "hana-events",
-      "sourceName": "하나카드 이벤트",
-      "title": "나라사랑 혜택충전 하나 나라사랑카드 AI 스마트팩 9,900원 캐시백 지급! 2026.09.07 ~ 2026.09.30",
-      "url": "https://m.hanacard.co.kr/MKEVT1000M.web",
-      "period": null,
-      "percent": null,
-      "won": 9900
     },
     {
       "app": "shinhan",
@@ -4921,6 +4814,116 @@ window.DISCOUNT_FEED = {
       "period": "09.01~09.30",
       "percent": null,
       "won": 20000
+    },
+    {
+      "app": "hana",
+      "source": "hana-pick",
+      "sourceName": "하나PICK",
+      "title": "트래블로그 적립챌린지",
+      "url": "https://m.hanacard.co.kr/main.web",
+      "period": null,
+      "percent": null,
+      "won": null
+    },
+    {
+      "app": "hana",
+      "source": "hana-events",
+      "sourceName": "하나카드 이벤트",
+      "title": "할인/캐쉬백",
+      "url": "javascript:void(0);",
+      "period": null,
+      "percent": null,
+      "won": null
+    },
+    {
+      "app": "hana",
+      "source": "hana-events",
+      "sourceName": "하나카드 이벤트",
+      "title": "에버랜드 본인+동반 3인 최대 42% 즉시할인 2026.09.11 ~ 2026.11.22",
+      "url": "https://m.hanacard.co.kr/MKEVT1000M.web",
+      "period": null,
+      "percent": 42,
+      "won": null
+    },
+    {
+      "app": "hana",
+      "source": "hana-events",
+      "sourceName": "하나카드 이벤트",
+      "title": "브랜드 위크 메가MGC커피 50% 할인! 9월 2026.09.14 ~ 2029.09.18",
+      "url": "https://m.hanacard.co.kr/MKEVT1000M.web",
+      "period": null,
+      "percent": 50,
+      "won": null
+    },
+    {
+      "app": "hana",
+      "source": "hana-events",
+      "sourceName": "하나카드 이벤트",
+      "title": "클럽디오아시스 스파&워터파크 최대 45% 현장할인 2026.09.01 ~ 2026.09.30",
+      "url": "https://m.hanacard.co.kr/MKEVT1000M.web",
+      "period": null,
+      "percent": 45,
+      "won": null
+    },
+    {
+      "app": "hana",
+      "source": "hana-events",
+      "sourceName": "하나카드 이벤트",
+      "title": "MOVING카드 5종 100% 연회비 캐시백 이벤트 2026.09.01 ~ 2026.09.30",
+      "url": "https://m.hanacard.co.kr/MKEVT1000M.web",
+      "period": null,
+      "percent": 100,
+      "won": null
+    },
+    {
+      "app": "hana",
+      "source": "hana-events",
+      "sourceName": "하나카드 이벤트",
+      "title": "삼성월렛 최대 5만원 캐시백 +배스킨라빈스 100% 2026.08.01 ~ 2026.09.30",
+      "url": "https://m.hanacard.co.kr/MKEVT1000M.web",
+      "period": null,
+      "percent": 100,
+      "won": null
+    },
+    {
+      "app": "hana",
+      "source": "hana-events",
+      "sourceName": "하나카드 이벤트",
+      "title": "다이소 할인권 받기 피싱케어 플러스 신규가입 이벤트! 2026.09.01 ~ 2026.09.30",
+      "url": "https://m.hanacard.co.kr/MKEVT1000M.web",
+      "period": null,
+      "percent": null,
+      "won": null
+    },
+    {
+      "app": "hana",
+      "source": "hana-events",
+      "sourceName": "하나카드 이벤트",
+      "title": "유니온페이(UPI) 중국, 베트남, 일본 10% 즉시할인 2026.09.01 ~ 2026.10.31",
+      "url": "https://m.hanacard.co.kr/MKEVT1000M.web",
+      "period": null,
+      "percent": 10,
+      "won": null
+    },
+    {
+      "app": "hana",
+      "source": "hana-events",
+      "sourceName": "하나카드 이벤트",
+      "title": "하나 나라사랑카드 나라사랑 BOOST 캐시백 최대 6만원 2026.07.01 ~ 2026.12.31",
+      "url": "https://m.hanacard.co.kr/MKEVT1000M.web",
+      "period": null,
+      "percent": null,
+      "won": null
+    },
+    {
+      "app": "hana",
+      "source": "hana-events",
+      "sourceName": "하나카드 이벤트",
+      "title": "나라사랑 혜택충전 하나 나라사랑카드 AI 스마트팩 9,900원 캐시백 지급! 2026.09.07 ~ 2026.09.30",
+      "url": "https://m.hanacard.co.kr/MKEVT1000M.web",
+      "period": null,
+      "percent": null,
+      "won": 9900
     }
   ],
   "hints": [
