@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-09-14T05:03:48.110Z",
+  "collectedAt": "2026-09-14T05:16:14.999Z",
   "sources": [
     {
       "id": "samsung-link",
@@ -50,18 +50,6 @@
       "captures": 1
     },
     {
-      "id": "hana-pick",
-      "app": "hana",
-      "name": "하나PICK",
-      "url": "https://m.hanacard.co.kr/MKPICK1020M.web",
-      "kind": "program",
-      "status": "ok",
-      "count": 1,
-      "structured": 0,
-      "http": 200,
-      "captures": 0
-    },
-    {
       "id": "toss-benefit",
       "app": "toss",
       "name": "토스 혜택",
@@ -71,7 +59,7 @@
       "count": 2,
       "structured": 0,
       "http": 200,
-      "captures": 7
+      "captures": 6
     },
     {
       "id": "payco-coupon-program",
@@ -168,6 +156,90 @@
       "structured": 73,
       "http": 200,
       "captures": 10
+    },
+    {
+      "id": "kakaopay-main",
+      "app": "kakaopay",
+      "name": "카카오페이 (탐색)",
+      "url": "https://pay.kakao.com/",
+      "kind": "public",
+      "status": "empty",
+      "count": 0,
+      "structured": 0,
+      "http": 200,
+      "captures": 4
+    },
+    {
+      "id": "naverpay-main",
+      "app": "naverpay",
+      "name": "네이버페이 (탐색)",
+      "url": "https://new-m.pay.naver.com/",
+      "kind": "public",
+      "status": "login-required",
+      "count": 0,
+      "structured": 0,
+      "http": 200,
+      "captures": 1
+    },
+    {
+      "id": "ssgpay-main",
+      "app": "ssgpay",
+      "name": "SSG페이 (탐색)",
+      "url": "https://www.ssgpay.com/",
+      "kind": "public",
+      "status": "empty",
+      "count": 0,
+      "structured": 0,
+      "http": 200,
+      "captures": 1
+    },
+    {
+      "id": "nhpay-main",
+      "app": "nhpay",
+      "name": "NH페이 (탐색)",
+      "url": "https://card.nonghyup.com/",
+      "kind": "public",
+      "status": "empty",
+      "count": 0,
+      "structured": 0,
+      "http": 200,
+      "captures": 1
+    },
+    {
+      "id": "kbpay-main",
+      "app": "kbpay",
+      "name": "KB Pay (탐색)",
+      "url": "https://m.kbcard.com/",
+      "kind": "public",
+      "status": "ok",
+      "count": 8,
+      "structured": 0,
+      "http": 200,
+      "captures": 2
+    },
+    {
+      "id": "hyundai-main",
+      "app": "hyundai",
+      "name": "현대카드 (탐색)",
+      "url": "https://www.hyundaicard.com/",
+      "kind": "public",
+      "status": "login-required",
+      "count": 0,
+      "structured": 0,
+      "http": 200,
+      "captures": 1
+    },
+    {
+      "id": "lotte-main",
+      "app": "lotte",
+      "name": "롯데카드 (탐색)",
+      "url": "https://www.lottecard.co.kr/",
+      "kind": "public",
+      "status": "ok",
+      "count": 28,
+      "structured": 0,
+      "http": 200,
+      "captures": 4
     }
   ],
   "programs": [
@@ -245,14 +317,14 @@
       "program": "하나PICK",
       "url": "https://www.hanacard.co.kr/OPP00000000M.web",
       "catalogUrl": "https://m.hanacard.co.kr/MKPICK1020M.web",
-      "collect": true,
+      "collect": false,
       "keywords": [
         "할인",
         "적립",
         "쿠폰",
         "PICK"
       ],
-      "note": "하나PICK 목록. 모바일 페이지 HTML 의 메뉴 링크(/MKPICK1020M.web)에서 찾았습니다.",
+      "note": "하나PICK 목록(/MKPICK1020M.web)은 로그인 화면으로 넘어갑니다. 공개 카탈로그가 없어 수집하지 않고 바로가기만 제공합니다.",
       "verified": true
     },
     {
@@ -5376,16 +5448,6 @@
       "won": 20000
     },
     {
-      "app": "hana",
-      "source": "hana-pick",
-      "sourceName": "하나PICK",
-      "title": "트래블로그 적립챌린지",
-      "url": "https://m.hanacard.co.kr/MKPICK1020M.web",
-      "period": null,
-      "percent": null,
-      "won": null
-    },
-    {
       "app": "toss",
       "source": "toss-benefit",
       "sourceName": "토스 혜택",
@@ -6294,6 +6356,366 @@
       "period": "9.1~9.30",
       "percent": 5,
       "won": null
+    },
+    {
+      "app": "kbpay",
+      "source": "kbpay-main",
+      "sourceName": "KB Pay (탐색)",
+      "title": "스타샵 할인+",
+      "url": "https://m.kbcard.com/",
+      "period": null,
+      "percent": null,
+      "won": null
+    },
+    {
+      "app": "kbpay",
+      "source": "kbpay-main",
+      "sourceName": "KB Pay (탐색)",
+      "title": "KB Pay 첫 만남 기념 커피 쿠폰 받기",
+      "url": "https://m.kbcard.com/BON/DVIEW/MBBV0004?evntId=1001827",
+      "period": null,
+      "percent": null,
+      "won": null
+    },
+    {
+      "app": "kbpay",
+      "source": "kbpay-main",
+      "sourceName": "KB Pay (탐색)",
+      "title": "신차 결제하고 최대 1.3% 청구(캐시백)할인",
+      "url": "https://m.kbcard.com/BON/DVIEW/MBBV0004?evntId=1000020",
+      "period": null,
+      "percent": 1.3,
+      "won": null
+    },
+    {
+      "app": "kbpay",
+      "source": "kbpay-main",
+      "sourceName": "KB Pay (탐색)",
+      "title": "생활 속 혜택 리터당 주유 60원 대중교통 10% 할인 굿데이카드",
+      "url": "https://m.kbcard.com/CRD/DVIEW/MCAMCXHIACRC0002?mainCC=b&allianceCode=09061",
+      "period": null,
+      "percent": 10,
+      "won": 60
+    },
+    {
+      "app": "kbpay",
+      "source": "kbpay-main",
+      "sourceName": "KB Pay (탐색)",
+      "title": "심플하게 할인받자 전월 실적없이 국내 1% 해외가맹점 2% 할인 ALL 카드",
+      "url": "https://m.kbcard.com/cards/credit-cards/kb-all-card",
+      "period": null,
+      "percent": 1,
+      "won": null
+    },
+    {
+      "app": "kbpay",
+      "source": "kbpay-main",
+      "sourceName": "KB Pay (탐색)",
+      "title": "‘나’에게 진심 서비스 KB Pay 10% OTT 30% 할인 MY WE:SH 카드",
+      "url": "https://m.kbcard.com/CRD/DVIEW/MCAMCXHIACRC0002?mainCC=b&allianceCode=09923",
+      "period": null,
+      "percent": 10,
+      "won": null
+    },
+    {
+      "app": "kbpay",
+      "source": "kbpay-main",
+      "sourceName": "KB Pay (탐색)",
+      "title": "프로여행러를 위한 카드 국내 할인 혜택 해외 이용수수료 면제 트래블러스 체크카드 (토심이)",
+      "url": "https://m.kbcard.com/CRD/DVIEW/MCAMCXHIACRC0002?mainCC=b&allianceCode=09564",
+      "period": null,
+      "percent": null,
+      "won": null
+    },
+    {
+      "app": "kbpay",
+      "source": "kbpay-main",
+      "sourceName": "KB Pay (탐색)",
+      "title": "꽉 채운 일상 혜택에 KB Pay 2% 할인! 국민대표 체크카드 시즌2 노리2 체크카드 (KB Pay)",
+      "url": "https://m.kbcard.com/CRD/DVIEW/MCAMCXHIACRC0002?mainCC=b&allianceCode=07964",
+      "period": null,
+      "percent": 2,
+      "won": null
+    },
+    {
+      "app": "lotte",
+      "source": "lotte-main",
+      "sourceName": "롯데카드 (탐색)",
+      "title": "아동돌봄쿠폰",
+      "url": "https://www.lottecard.co.kr/",
+      "period": null,
+      "percent": null,
+      "won": null
+    },
+    {
+      "app": "lotte",
+      "source": "lotte-main",
+      "sourceName": "롯데카드 (탐색)",
+      "title": "롯데백화점 e쿠폰",
+      "url": "https://www.lottecard.co.kr/",
+      "period": null,
+      "percent": null,
+      "won": null
+    },
+    {
+      "app": "lotte",
+      "source": "lotte-main",
+      "sourceName": "롯데카드 (탐색)",
+      "title": "유심사 20% 즉시할인 2026.9.11 ~ 9.30 터치하기",
+      "url": "https://www.lottecard.co.kr/",
+      "period": "9.11 ~ 9.30",
+      "percent": 20,
+      "won": null
+    },
+    {
+      "app": "lotte",
+      "source": "lotte-main",
+      "sourceName": "롯데카드 (탐색)",
+      "title": "투어비스 5% 결제일 할인 2026.9.1 ~ 9.30 터치하기",
+      "url": "https://www.lottecard.co.kr/",
+      "period": "9.1 ~ 9.30",
+      "percent": 5,
+      "won": null
+    },
+    {
+      "app": "lotte",
+      "source": "lotte-main",
+      "sourceName": "롯데카드 (탐색)",
+      "title": "연회비캐시백 LOCA LIKIT 1.2 모든 가맹점 1.2% 할인",
+      "url": "https://www.lottecard.co.kr/",
+      "period": null,
+      "percent": 1.2,
+      "won": null
+    },
+    {
+      "app": "lotte",
+      "source": "lotte-main",
+      "sourceName": "롯데카드 (탐색)",
+      "title": "닥터피엘 12% 결제일 할인 2026.9.1 ~ 9.30 터치하기",
+      "url": "https://www.lottecard.co.kr/",
+      "period": "9.1 ~ 9.30",
+      "percent": 12,
+      "won": null
+    },
+    {
+      "app": "lotte",
+      "source": "lotte-main",
+      "sourceName": "롯데카드 (탐색)",
+      "title": "디지로카 Monaco 어디서나 1% 할인 배달의민족, 쿠팡이츠 5% 할인",
+      "url": "https://www.lottecard.co.kr/",
+      "period": null,
+      "percent": 1,
+      "won": null
+    },
+    {
+      "app": "lotte",
+      "source": "lotte-main",
+      "sourceName": "롯데카드 (탐색)",
+      "title": "연회비캐시백 LOCA LIKIT Eat 음식점, 배달앱, 커피 60% 할인",
+      "url": "https://www.lottecard.co.kr/",
+      "period": null,
+      "percent": 60,
+      "won": null
+    },
+    {
+      "app": "lotte",
+      "source": "lotte-main",
+      "sourceName": "롯데카드 (탐색)",
+      "title": "제주패스(전국) 5% 즉시 할인 쿠폰 2026.9.1 ~ 9.30 터치하기",
+      "url": "https://www.lottecard.co.kr/",
+      "period": "9.1 ~ 9.30",
+      "percent": 5,
+      "won": null
+    },
+    {
+      "app": "lotte",
+      "source": "lotte-main",
+      "sourceName": "롯데카드 (탐색)",
+      "title": "아고다 x 숙박 최대 10% 즉시할인 2026.9.1 ~ 9.30 터치하기",
+      "url": "https://www.lottecard.co.kr/",
+      "period": "9.1 ~ 9.30",
+      "percent": 10,
+      "won": null
+    },
+    {
+      "app": "lotte",
+      "source": "lotte-main",
+      "sourceName": "롯데카드 (탐색)",
+      "title": "연회비캐시백 LOCA LIKIT Play 주유, 영화, 스트리밍 60% 할인",
+      "url": "https://www.lottecard.co.kr/",
+      "period": null,
+      "percent": 60,
+      "won": null
+    },
+    {
+      "app": "lotte",
+      "source": "lotte-main",
+      "sourceName": "롯데카드 (탐색)",
+      "title": "돌하루팡(제주) 10% 즉시 할인 쿠폰 2026.9.1 ~ 9.30 터치하기",
+      "url": "https://www.lottecard.co.kr/",
+      "period": "9.1 ~ 9.30",
+      "percent": 10,
+      "won": null
+    },
+    {
+      "app": "lotte",
+      "source": "lotte-main",
+      "sourceName": "롯데카드 (탐색)",
+      "title": "Trip.comX항공권 최대 3% 즉시할인 2026.9.1 ~ 9.30 터치하기",
+      "url": "https://www.lottecard.co.kr/",
+      "period": "9.1 ~ 9.30",
+      "percent": 3,
+      "won": null
+    },
+    {
+      "app": "lotte",
+      "source": "lotte-main",
+      "sourceName": "롯데카드 (탐색)",
+      "title": "글로벌 eSIM 5GB 33.0% 즉시할인 2026.9.7 ~ 10.31 터치하기",
+      "url": "https://www.lottecard.co.kr/",
+      "period": "9.7 ~ 10.31",
+      "percent": 33,
+      "won": null
+    },
+    {
+      "app": "lotte",
+      "source": "lotte-main",
+      "sourceName": "롯데카드 (탐색)",
+      "title": "글로벌 eSIM 3GB 33.0% 즉시할인 2026.9.7 ~ 10.31 터치하기",
+      "url": "https://www.lottecard.co.kr/",
+      "period": "9.7 ~ 10.31",
+      "percent": 33,
+      "won": null
+    },
+    {
+      "app": "lotte",
+      "source": "lotte-main",
+      "sourceName": "롯데카드 (탐색)",
+      "title": "신세계면세점(온라인몰) 10% 결제일 할인 2026.9.10 ~ 9.18 터치하기",
+      "url": "https://www.lottecard.co.kr/",
+      "period": "9.10 ~ 9.18",
+      "percent": 10,
+      "won": null
+    },
+    {
+      "app": "lotte",
+      "source": "lotte-main",
+      "sourceName": "롯데카드 (탐색)",
+      "title": "연회비캐시백 LOCA LIKIT Shop 온라인 쇼핑, 미용실, 편의점 60% 할인",
+      "url": "https://www.lottecard.co.kr/",
+      "period": null,
+      "percent": 60,
+      "won": null
+    },
+    {
+      "app": "lotte",
+      "source": "lotte-main",
+      "sourceName": "롯데카드 (탐색)",
+      "title": "글로벌 eSIM 10GB 33.2% 즉시할인 2026.9.7 ~ 10.31 터치하기",
+      "url": "https://www.lottecard.co.kr/",
+      "period": "9.7 ~ 10.31",
+      "percent": 33.2,
+      "won": null
+    },
+    {
+      "app": "lotte",
+      "source": "lotte-main",
+      "sourceName": "롯데카드 (탐색)",
+      "title": "LOCA PLATINUM 마일리지형 1,500원당 1마일리지 적립스페셜기프트 서비스!",
+      "url": "https://www.lottecard.co.kr/",
+      "period": null,
+      "percent": null,
+      "won": 1500
+    },
+    {
+      "app": "lotte",
+      "source": "lotte-main",
+      "sourceName": "롯데카드 (탐색)",
+      "title": "[단하루9/14] 닥터피엘 28% 결제일 할인 2026.9.14 ~ 9.14 터치하기",
+      "url": "https://www.lottecard.co.kr/",
+      "period": "9.14 ~ 9.14",
+      "percent": 28,
+      "won": null
+    },
+    {
+      "app": "lotte",
+      "source": "lotte-main",
+      "sourceName": "롯데카드 (탐색)",
+      "title": "호텔스닷컴 아멕스카드 추가 20% 즉시 할인 2026.09.02 ~ 2026.10.07",
+      "url": "https://www.lottecard.co.kr/",
+      "period": null,
+      "percent": 20,
+      "won": null
+    },
+    {
+      "app": "lotte",
+      "source": "lotte-main",
+      "sourceName": "롯데카드 (탐색)",
+      "title": "[단하루9/14] 이니스프리 1만원 결제일 할인 2026.9.14 ~ 9.14 터치하기",
+      "url": "https://www.lottecard.co.kr/",
+      "period": "9.14 ~ 9.14",
+      "percent": null,
+      "won": null
+    },
+    {
+      "app": "lotte",
+      "source": "lotte-main",
+      "sourceName": "롯데카드 (탐색)",
+      "title": "[단하루9/14] 이니스프리 6천원 결제일 할인 2026.9.14 ~ 9.14 터치하기",
+      "url": "https://www.lottecard.co.kr/",
+      "period": "9.14 ~ 9.14",
+      "percent": null,
+      "won": null
+    },
+    {
+      "app": "lotte",
+      "source": "lotte-main",
+      "sourceName": "롯데카드 (탐색)",
+      "title": "마티나 골드 라운지 이용권 3만 3천원 즉시 할인 2026.9.1 ~ 9.30 터치하기",
+      "url": "https://www.lottecard.co.kr/",
+      "period": "9.1 ~ 9.30",
+      "percent": null,
+      "won": null
+    },
+    {
+      "app": "lotte",
+      "source": "lotte-main",
+      "sourceName": "롯데카드 (탐색)",
+      "title": "연회비캐시백 디지로카 Paris 어디서나 0.7% 할인 쿠팡, 네이버페이 최대 5% 할인",
+      "url": "https://www.lottecard.co.kr/",
+      "period": null,
+      "percent": 0.7,
+      "won": null
+    },
+    {
+      "app": "lotte",
+      "source": "lotte-main",
+      "sourceName": "롯데카드 (탐색)",
+      "title": "연회비캐시백 디지로카 Las Vegas 어디서나 최대 2% 할인 국내 가맹점 2~3개월 무이자 할부",
+      "url": "https://www.lottecard.co.kr/",
+      "period": null,
+      "percent": 2,
+      "won": null
+    },
+    {
+      "app": "lotte",
+      "source": "lotte-main",
+      "sourceName": "롯데카드 (탐색)",
+      "title": "롯데백화점 Flex 카드 국내외 가맹점 L.POINT 0.5%적립커피50%, 스트리밍 30% 결제일 할인!",
+      "url": "https://www.lottecard.co.kr/",
+      "period": null,
+      "percent": 0.5,
+      "won": null
+    },
+    {
+      "app": "lotte",
+      "source": "lotte-main",
+      "sourceName": "롯데카드 (탐색)",
+      "title": "경차 경차 Smart 롯데카드 경차·유류세 환급, 주유 할인 혜택 (휘발유·경유 리터당 250원, LPG 리터당 160.82원) 경차 Smart 롯데카드 자세히 보기 경차 Smart 롯데카드 내역 조회",
+      "url": "https://www.lottecard.co.kr/",
+      "period": null,
+      "percent": null,
+      "won": 250
     }
   ],
   "hints": [
@@ -6329,7 +6751,7 @@
         "disclaimer",
         "seoConfig"
       ],
-      "sample": "{\"id\":53021,\"updatedTime\":\"2026-09-14T13:35:24+09:00\",\"createdTime\":\"2026-09-10T10:42:46+09:00\",\"category\":\"인터뷰\",\"categories\":[{\"name\":\"인터뷰\",\"id\":149,\"slug\":\"interview\",\"parentId\":161,\"iconUrl\":null},{\"name\":\"영상\",\"id\":153,\"slug\":\"video\",\"parentId\":161,\"iconUrl\":null},{\"name\":\"시사·트렌드\",\"id\":1549,\"slug\":null,\"parentId\":null,\"iconUrl\":null},{\"name\":\"인터뷰\",\"id\":1551,\"slug\":null,\"parentId\":null,\"iconUrl\""
+      "sample": "{\"id\":53021,\"updatedTime\":\"2026-09-14T14:10:29+09:00\",\"createdTime\":\"2026-09-10T10:42:46+09:00\",\"category\":\"인터뷰\",\"categories\":[{\"name\":\"인터뷰\",\"id\":149,\"slug\":\"interview\",\"parentId\":161,\"iconUrl\":null},{\"name\":\"영상\",\"id\":153,\"slug\":\"video\",\"parentId\":161,\"iconUrl\":null},{\"name\":\"시사·트렌드\",\"id\":1549,\"slug\":null,\"parentId\":null,\"iconUrl\":null},{\"name\":\"인터뷰\",\"id\":1551,\"slug\":null,\"parentId\":null,\"iconUrl\""
     },
     {
       "source": "woori-events",
@@ -6405,6 +6827,40 @@
         "prgEvntOrderExist"
       ],
       "sample": "{\"evntSrno\":\"30006060\",\"evntItgTpcd\":\"1\",\"evntItgCfcd\":\"1\",\"evntSdt\":\"2026.07.01\",\"evntEdt\":\"2026.09.30\",\"cardEvntNm\":\"우리카드 할부 종합 안내\",\"evntSumTxt\":\"필요한 지출은 계속 생기는데, 일시불이 부담될 때는?&lt;br&gt;\\r\\n할부로 나눠서 결제하세요 !\\r\\n\",\"evntBnfImgCdNm\":\"5\",\"evntPriRk\":\"0\",\"priXpsTgtYn\":\"Y\",\"evntKwrdTagList\":\"#온라인 #쇼핑 #여행 #백화점 #무이자\",\"listCnt\":0,\"fileCoursWeb\":\"/webcontent/evntFileList/2026/6/29/8d08a2ae-b49b-4177-8923-7fe"
+    },
+    {
+      "source": "ssgpay-main",
+      "url": "https://www.ssgpay.com/web/customer/ajaxNoticeList",
+      "path": "noticeList.list",
+      "rows": 10,
+      "keys": [
+        "contextPath",
+        "mdn",
+        "userNo",
+        "appId",
+        "errorMessage",
+        "resultCode",
+        "resultMsg",
+        "returnUrl",
+        "route",
+        "gnbNum",
+        "startDate",
+        "endDate",
+        "instDate",
+        "updtDate",
+        "custId",
+        "totalCnt",
+        "rType",
+        "os",
+        "deviceNum",
+        "signTyp",
+        "startPage",
+        "endPage",
+        "searchCategory",
+        "currentPage",
+        "pageSize"
+      ],
+      "sample": "{\"contextPath\":null,\"mdn\":null,\"userNo\":null,\"appId\":null,\"errorMessage\":null,\"resultCode\":null,\"resultMsg\":null,\"returnUrl\":null,\"route\":\"W\",\"gnbNum\":null,\"startDate\":null,\"endDate\":null,\"instDate\":\"2026.09.11\",\"updtDate\":null,\"custId\":null,\"totalCnt\":null,\"rType\":null,\"os\":null,\"deviceNum\":null,\"signTyp\":null,\"startPage\":null,\"endPage\":null,\"searchCategory\":null,\"currentPage\":1,\"pageSize\":10,\"st"
     }
   ]
 }
