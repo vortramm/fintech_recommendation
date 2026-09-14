@@ -108,9 +108,10 @@ function fromCaptures(captures, src) {
   for (const cap of captures) {
     const parser = parsers.find((p) => cap.url.includes(p.match));
     if (parser) {
-      const rows = pluck(cap.body, parser.path);
-      if (Array.isArray(rows)) {
-        const got = parser.run(rows, src);
+      /* body: true 인 파서는 응답 전체를 받습니다 (컬럼별 배열처럼 모양이 다른 경우) */
+      const input = parser.body ? cap.body : pluck(cap.body, parser.path);
+      if (parser.body || Array.isArray(input)) {
+        const got = parser.run(input, src);
         structured.push(...got.structured);
         extraRaw.push(...got.raw);
         continue;
@@ -337,8 +338,10 @@ async function replay(dir) {
     console.log("· " + id.padEnd(24) + "구조화 " + got.structured.length + " · 공지 " + got.raw.length);
   }
 
-  feed.structured = structured;
-  feed.raw = (feed.raw || []).filter((r) => !addedRaw.some((a) => a.title === r.title)).concat(addedRaw);
+  /* 이번에 다시 파싱한 소스만 갈아끼우고 나머지는 그대로 둡니다 */
+  const touched = new Set(structured.concat(addedRaw).map((x) => x.source));
+  feed.structured = (feed.structured || []).filter((b) => !touched.has(b.source)).concat(structured);
+  feed.raw = (feed.raw || []).filter((r) => !touched.has(r.source)).concat(addedRaw);
   feed.programs = reg.programs;
   for (const row of feed.sources || []) {
     const mine = structured.filter((b) => b.source === row.id).length;

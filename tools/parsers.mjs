@@ -10,6 +10,8 @@
  *               모르는 한도를 0 으로 두면 순위가 통째로 뒤집히므로 계산에 넣지 않습니다.
  */
 
+const won = (n) => Math.round(n).toLocaleString("ko-KR") + "원";
+
 /* "5만원" "12,000원" "3천원" "1만" → 숫자 */
 export function parseWon(text) {
   if (text == null) return null;
@@ -204,9 +206,118 @@ export function wooriKkook(rows, src) {
   return { structured, raw };
 }
 
+/* 컬럼별 배열로 내려오는 응답을 행 객체로 바꿉니다
+   { 이름: ["A","B"], 값: [1,2] } → [{이름:"A",값:1},{이름:"B",값:2}] */
+export function zipColumns(obj) {
+  const keys = Object.keys(obj).filter((k) => Array.isArray(obj[k]));
+  if (!keys.length) return [];
+  const n = Math.max(...keys.map((k) => obj[k].length));
+  const rows = [];
+  for (let i = 0; i < n; i++) {
+    const row = {};
+    for (const k of keys) row[k] = obj[k][i];
+    rows.push(row);
+  }
+  return rows;
+}
+
+/* ── 신한 마이샵 · 쿠폰 목록 (MOBFM501R21) ───────────────
+   가맹점(SSG_NM) · 할인금액(MCT_PLF_OFF_AT) · 할인율(MCT_PLF_OFF_RAT)
+   · 최소결제(MCT_PLF_OFF_EF_MIN_TS_AT) · 기간(MCT_PLF_MO_STD~EDD) */
+export function shinhanMyshopCoupon(body, src) {
+  const grid = body && body.mbw_json && body.mbw_json.mbw_message && body.mbw_json.mbw_message.GRID1;
+  if (!grid) return { structured: [], raw: [] };
+
+  const structured = [], raw = [], now = today();
+  for (const row of zipColumns(grid)) {
+    const name = String(row.SSG_NM || "").replace(/\[[^\]]*\]/g, "").trim();
+    if (!name) continue;
+    if (expired(row.MCT_PLF_MO_EDD, now)) continue;
+
+    const amount = parseInt(String(row.MCT_PLF_OFF_AT || "0").replace(/[^0-9]/g, ""), 10) || null;
+    const rate = parseFloat(row.MCT_PLF_OFF_RAT || "0") || null;
+    /* 최소금액이 1원 같은 값이면 사실상 제한이 없는 것이라 표시하지 않습니다 */
+    const minRaw = parseInt(String(row.MCT_PLF_OFF_EF_MIN_TS_AT || "0").replace(/[^0-9]/g, ""), 10) || 0;
+    const min = minRaw >= 100 ? minRaw : null;
+    const prd = period(row.MCT_PLF_MO_STD, row.MCT_PLF_MO_EDD);
+    const title = String(row.MCT_CRD_SV_RG_TT || "");
+    const isPoint = /포인트|적립/.test(title);
+    const condition = "신한 SOL페이에서 마이샵 '혜택 ON' 후 결제" + (min ? " · " + won(min) + " 이상" : "");
+
+    if (amount) {
+      structured.push({
+        scope: "merchant", merchantName: name, app: src.app,
+        kind: "fixed", amount, minAmount: min || undefined,
+        benefitType: isPoint ? "적립" : "할인",
+        condition, monthlyCap: prd || undefined, source: src.id
+      });
+    } else if (rate) {
+      const cap = parseCap(title);
+      if (cap) {
+        structured.push({
+          scope: "merchant", merchantName: name, app: src.app,
+          kind: "rate", rate: rate > 1 ? rate / 100 : rate, cap,
+          minAmount: min || undefined,
+          benefitType: isPoint ? "적립" : "할인",
+          condition, monthlyCap: prd || undefined, source: src.id
+        });
+      } else {
+        raw.push({
+          app: src.app, source: src.id, sourceName: src.program || src.name,
+          title: name + " " + rate + "% " + (isPoint ? "적립" : "할인") + " (한도는 앱에서 확인)",
+          url: src.url, period: prd, percent: rate, won: null
+        });
+      }
+    }
+  }
+  return { structured, raw };
+}
+
+/* ── 신한 마이샵 · 추천 목록 (MOBFM501R81) ───────────────
+   rcmCotList_N 아래 브랜드명(rcmCotFstXpoTt)과 혜택 표기(rcmCotSecXpoTt)가 짝으로 옵니다 */
+export function shinhanMyshopList(body, src) {
+  const msg = body && body.mbw_json && body.mbw_json.mbw_message;
+  if (!msg) return { structured: [], raw: [] };
+
+  const structured = [], raw = [];
+  for (const key of Object.keys(msg)) {
+    if (!/^rcmCotList/.test(key)) continue;
+    const group = msg[key];
+    const names = group.rcmCotFstXpoTt || [];
+    const values = group.rcmCotSecXpoTt || [];
+    for (let i = 0; i < names.length; i++) {
+      const name = String(names[i] || "").trim();
+      const value = String(values[i] || "").trim();
+      if (!name || !value) continue;
+      const isPoint = /포인트|적립/.test(value);
+      const won_ = parseWon(value);
+      const pct = parsePercent(value);
+      if (won_) {
+        structured.push({
+          scope: "merchant", merchantName: name, app: src.app,
+          kind: "fixed", amount: won_,
+          benefitType: isPoint ? "적립" : "할인",
+          condition: "신한 SOL페이에서 마이샵 '혜택 ON' 후 결제",
+          source: src.id
+        });
+      } else if (pct) {
+        raw.push({
+          app: src.app, source: src.id, sourceName: src.program || src.name,
+          title: name + " " + value + " (한도는 앱에서 확인)",
+          url: src.url, period: null, percent: pct * 100, won: null
+        });
+      }
+    }
+  }
+  return { structured, raw };
+}
+
 export const PARSERS = {
   "samsung-link": { match: "/svc-link/not-logged-in/link", path: "payload.listLinkSvOjInqrVO", run: samsungLink },
   "woori-kkook": { match: "retrieveBnfMainList", path: "bnfMainList", run: wooriKkook },
   /* 같은 모양의 카테고리 목록도 같은 파서로 읽습니다 */
-  "woori-kkook-etc": { match: "selectEtcCtgrList", path: "bnfMainList", run: wooriKkook }
+  "woori-kkook-etc": { match: "selectEtcCtgrList", path: "bnfMainList", run: wooriKkook },
+  /* 컬럼별 배열로 내려와 응답 전체를 넘깁니다 */
+  "shinhan-myshop-coupon": { match: "MOBFM501R21", body: true, run: shinhanMyshopCoupon },
+  "shinhan-myshop-list": { match: "MOBFM501R81", body: true, run: shinhanMyshopList }
 };

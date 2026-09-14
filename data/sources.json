@@ -31,7 +31,10 @@
         "캐시백",
         "마이샵"
       ],
-      "note": "모바일 웹 마이샵 혜택 목록. 대상 선정은 개인화되지만 목록 자체는 공통입니다."
+      "note": "모바일 웹 마이샵 목록(MOBFM501R81.ajax). 대상 선정은 개인화되지만 목록은 공통입니다.",
+      "parser": [
+        "shinhan-myshop-list"
+      ]
     },
     {
       "id": "woori-kkook",
@@ -72,7 +75,7 @@
       "app": "hana",
       "program": "하나PICK",
       "url": "https://www.hanacard.co.kr/OPP00000000M.web",
-      "catalogUrl": "https://m.hanacard.co.kr/main.web",
+      "catalogUrl": "https://m.hanacard.co.kr/MKPICK1020M.web",
       "collect": true,
       "keywords": [
         "할인",
@@ -80,7 +83,8 @@
         "쿠폰",
         "PICK"
       ],
-      "note": "하나PICK 전용 주소 미확인. 모바일 메인에서 XHR 를 훑어봅니다 — 정확한 주소를 알면 catalogUrl 을 고쳐 주세요."
+      "note": "하나PICK 목록. 모바일 페이지 HTML 의 메뉴 링크(/MKPICK1020M.web)에서 찾았습니다.",
+      "verified": true
     },
     {
       "id": "kb-pay",
@@ -219,7 +223,11 @@
         "적립",
         "쿠폰",
         "캐시백"
-      ]
+      ],
+      "parser": [
+        "shinhan-myshop-coupon"
+      ],
+      "note": "마이샵 쿠폰 목록(MOBFM501R21.ajax). 가맹점·금액·최소결제·기간이 모두 내려옵니다."
     }
   ]
 }

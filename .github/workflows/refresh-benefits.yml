@@ -20,6 +20,11 @@ on:
 permissions:
   contents: write
 
+# 같은 워크플로가 겹쳐 돌면 서로의 푸시를 밀어냅니다
+concurrency:
+  group: refresh-benefits
+  cancel-in-progress: false
+
 jobs:
   refresh:
     runs-on: ubuntu-latest
@@ -69,5 +74,7 @@ jobs:
           else
             git add data/feed.js data/feed.json
             git commit -m "혜택 데이터 자동 갱신 ($(date -u +%Y-%m-%dT%H:%MZ))"
+            # 수집 중에 다른 커밋이 올라왔을 수 있으니 한 번 당겨 붙인 뒤 밉니다
+            git pull --rebase origin "$GITHUB_REF_NAME" || git rebase --abort
             git push
           fi
