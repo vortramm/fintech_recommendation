@@ -1,6 +1,6 @@
 /* tools/collect.mjs 가 생성합니다. 직접 고치지 마세요. */
 window.DISCOUNT_FEED = {
-  "collectedAt": "2026-09-14T05:16:14.999Z",
+  "collectedAt": "2026-09-14T05:19:15.490Z",
   "sources": [
     {
       "id": "samsung-link",
@@ -241,6 +241,18 @@ window.DISCOUNT_FEED = {
       "structured": 0,
       "http": 200,
       "captures": 4
+    },
+    {
+      "id": "bc-share-probe",
+      "app": "bccard",
+      "name": "페이북 공유링크 (조사용)",
+      "url": "https://ui.vpay.co.kr/s/IqZm/785?landingId=P0603PG005R&outCd=10001",
+      "kind": "public",
+      "status": "empty",
+      "count": 0,
+      "structured": 0,
+      "http": 200,
+      "captures": 0
     }
   ],
   "programs": [
