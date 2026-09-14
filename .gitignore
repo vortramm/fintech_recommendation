@@ -1,2 +1,4 @@
 node_modules/
 tools/captures/
+*.har
+!tools/fixtures/*.har

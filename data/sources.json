@@ -75,7 +75,7 @@
         "쿠폰",
         "PICK"
       ],
-      "note": "하나PICK 전용 주소를 확인하지 못해 혜택 메인을 걸어 두었습니다."
+      "note": "하나PICK 전용 주소 미확인. 앱/모바일(m.hanacard.co.kr)에서 주소를 잡아 catalogUrl 에 넣어 주세요 — docs/find-app-endpoints.md"
     },
     {
       "id": "kb-pay",
@@ -183,12 +183,13 @@
       "id": "hana-events",
       "app": "hana",
       "name": "하나카드 이벤트",
-      "url": "https://m.hanacard.co.kr/MKEVT1000M.web",
+      "url": "https://www.hanacard.co.kr/OPP35000000D.web?schID=ncd&mID=OPP35000000D&CT_ID=00001",
       "keywords": [
         "할인",
         "이벤트",
         "캐시백"
-      ]
+      ],
+      "note": "진행중인 이벤트 목록. CT_ID 로 분류가 나뉩니다."
     },
     {
       "id": "bc-events",

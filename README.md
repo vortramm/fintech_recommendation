@@ -114,6 +114,21 @@ LINK 페이지는 "총 0개의 혜택"만 보입니다). 그래서 수집기는 
 }
 ```
 
+### 주소를 못 찾은 프로그램은
+
+하나PICK · KB Pay · 현대카드 · 롯데카드는 공개 목록 주소를 아직 못 찾았습니다. 이 목록들은
+앱과 모바일 웹이 XHR 로 받아 그리므로, 앱 트래픽에서 주소를 잡아야 합니다. 방법은
+[docs/find-app-endpoints.md](docs/find-app-endpoints.md) 에 쉬운 순서대로 정리해 두었습니다
+(웹 쪽 `--dump` → 앱 공유하기 → WebView 원격 디버깅 → 프록시 캡처 → APK 정적 분석).
+
+캡처한 HAR 은 손으로 옮길 필요 없습니다.
+
+```bash
+node tools/from-har.mjs capture.har --write samsung-link
+```
+
+혜택 목록처럼 생긴 JSON 응답을 점수순으로 찾아 `pick` 매핑까지 만들어 `sources.json` 에 넣습니다.
+
 ### 직접 돌려보기
 
 ```bash
@@ -140,6 +155,8 @@ data/benefits.js      기본 혜택 데이터  ← 평소 고칠 곳
 data/sources.json     수집 대상 주소록  ← 혜택 페이지 주소를 여기에 모읍니다
 data/feed.js          자동 수집 결과 (생성 파일, 직접 수정 금지)
 tools/collect.mjs     수집기 (헤드리스 크로미엄)
+tools/from-har.mjs    앱 캡처(HAR) → pick 매핑 생성
+docs/find-app-endpoints.md   앱에서 혜택 목록 주소 찾는 방법
 .github/workflows/refresh-benefits.yml   6시간마다 수집 → 커밋
 ```
 
