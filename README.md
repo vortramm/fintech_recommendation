@@ -128,6 +128,26 @@ LINK 페이지는 "총 0개의 혜택"만 보입니다). 그래서 수집기는 
 }
 ```
 
+### 앱에서 본 혜택 직접 등록하기
+
+핀테크 앱(토스·카카오페이·페이코 등)은 혜택 목록을 웹에 내놓지 않습니다. 토스의 공유
+링크도 웹 페이지가 아니라 앱 딥링크(`servicetoss://pay-benefit/promotions/...`)로 끝납니다.
+그래서 앱에서 본 혜택은 공유 문구를 그대로 붙여넣어 등록합니다.
+
+```bash
+node tools/add-benefit.mjs "토스에서 11번가 3.5% 적립 쿠폰을 확인해보세요"
+node tools/add-benefit.mjs "..." --cap 10000 --min 20000 --until 2026-09-30
+node tools/add-benefit.mjs --list          # 등록된 것 보기
+node tools/add-benefit.mjs --remove 0      # 지우기
+```
+
+앱 이름과 결제처, 할인율·금액을 문구에서 알아서 찾아냅니다. 등록된 혜택은 `data/manual.js`
+에 쌓이고 화면에서 **"직접 입력"** 배지를 달고 순위에 들어갑니다. `--until` 을 주면 기간이
+지날 때 자동으로 빠집니다.
+
+한도를 모르는 할인율은 **"한도 미확인"** 으로 표시합니다. 금액이 커질수록 과대평가되니
+한도를 알면 `--cap` 으로 다시 등록해 주세요.
+
 ### 로그인이 필요한 프로그램은 (하나PICK · 마이태그)
 
 목록 주소가 로그인 화면으로 넘어갑니다. 로그인 뒤에 내려오는 건 공통 목록이 아니라
@@ -196,8 +216,10 @@ assets/app.js         할인 계산 · 순위 · 그래프 · 피드 병합
 data/benefits.js      기본 혜택 데이터  ← 평소 고칠 곳
 data/sources.json     수집 대상 주소록  ← 혜택 페이지 주소를 여기에 모읍니다
 data/feed.js          자동 수집 결과 (생성 파일, 직접 수정 금지)
+data/manual.js        직접 등록한 혜택 (add-benefit.mjs 가 생성)
 tools/collect.mjs     수집기 (헤드리스 크로미엄)
 tools/parsers.mjs     소스별 전용 파서 (삼성 LINK · 우리 꾹)
+tools/add-benefit.mjs 앱에서 본 혜택을 문구 붙여넣기로 등록
 tools/from-har.mjs    앱 캡처(HAR) → pick 매핑 생성
 docs/find-app-endpoints.md   앱에서 혜택 목록 주소 찾는 방법
 .github/workflows/refresh-benefits.yml   6시간마다 수집 → 커밋

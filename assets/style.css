@@ -603,3 +603,10 @@ button, input { font: inherit; color: inherit; }
   background: var(--accent-soft);
   font-weight: 500;
 }
+
+.tag.manual {
+  color: var(--ink-soft);
+  border-color: var(--line-strong);
+  background: var(--surface-2);
+  font-weight: 500;
+}

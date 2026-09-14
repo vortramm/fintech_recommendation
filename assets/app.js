@@ -5,6 +5,7 @@
   var DB = window.DISCOUNT_DB;
   var FEED = window.DISCOUNT_FEED || null;              /* 공개 소스 자동 수집 결과 */
   var FEED_LOCAL = window.DISCOUNT_FEED_LOCAL || null;  /* 내 계정으로 받은 개인 혜택 (이 브라우저에만) */
+  var MANUAL = window.DISCOUNT_MANUAL || null;          /* 앱에서 보고 직접 등록한 혜택 */
   var STORE_KEY = "pay-discount:owned-apps";
 
   var MERCHANTS = DB.merchants.slice();
@@ -33,7 +34,16 @@
       var c = {}; for (var k in b) if (Object.prototype.hasOwnProperty.call(b, k)) c[k] = b[k];
       c.origin = "local"; return c;
     });
-    return pub.concat(mine);
+    var today = new Date().toISOString().slice(0, 10);
+    var hand = ((MANUAL && MANUAL.benefits) || [])
+      .filter(function (b) { return !b.until || b.until >= today; })
+      .map(function (b) {
+        var c = {}; for (var k in b) if (Object.prototype.hasOwnProperty.call(b, k)) c[k] = b[k];
+        c.origin = "manual";
+        c.source = "manual";
+        return c;
+      });
+    return pub.concat(mine).concat(hand);
   }
 
   var ALL_BENEFITS = DB.benefits.concat(
@@ -357,6 +367,7 @@
 
   /* ── 결과 조각 ────────────────────────────────────────── */
   function originTag(b) {
+    if (b.origin === "manual") return '<span class="tag manual">직접 입력</span>';
     if (b.origin === "local") return '<span class="tag local">내 계정</span>';
     if (b.origin === "feed") return '<span class="tag feed">자동 수집</span>';
     return "";
@@ -374,6 +385,7 @@
       '<span class="tag type-' + b.benefitType + '">' + b.benefitType + "</span>"].filter(Boolean);
     if (r.capped) t.push('<span class="tag capped">한도 도달</span>');
     else if (b.cap != null) t.push('<span class="tag">한도 ' + won(b.cap) + "</span>");
+    else if (b.kind === "rate") t.push('<span class="tag capped">한도 미확인</span>');
     if (b.minAmount) t.push('<span class="tag">' + won(b.minAmount) + " 이상</span>");
     if (b.monthlyCap) t.push('<span class="tag">' + esc(b.monthlyCap) + "</span>");
     return '<div class="meta">' + t.join("") + "</div>";
