@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>어디서 결제할까</title>
+<meta name="description" content="결제처와 금액을 넣으면 카드사앱·핀테크앱 중 실제로 가장 많이 깎이는 앱을 찾아줍니다.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">결제 전 30초</p>
+      <h1>어디서 결제해야 <em>가장 많이 깎일까</em></h1>
+      <p>결제처와 금액을 넣으면 할인 한도까지 계산해서 앱 순위를 매깁니다.</p>
+    </div>
+    <div class="stamp">
+      <b>데이터 기준</b>
+      <span class="num" id="stamp-date">–</span>
+      <span>· 앱에서 한 번 더 확인하세요</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap layout">
+
+  <form class="panel" id="controls" autocomplete="off" onsubmit="return false">
+    <div class="field">
+      <label class="title" for="merchant-search">어디서 결제하나요</label>
+      <div class="search">
+        <input type="text" id="merchant-search" placeholder="결제처 검색 · 예: 11번가, 배민" aria-describedby="merchant-popular">
+        <ul class="suggest" id="merchant-suggest" hidden></ul>
+      </div>
+      <div class="chips" id="merchant-popular"></div>
+    </div>
+
+    <div class="field">
+      <label class="title" for="amount">얼마를 결제하나요</label>
+      <div class="amount-input">
+        <input type="text" id="amount" inputmode="numeric" aria-label="결제 금액(원)">
+        <span class="unit">원</span>
+      </div>
+      <div class="chips" id="amount-presets">
+        <button type="button" class="chip" data-amount="10000">1만</button>
+        <button type="button" class="chip" data-amount="30000">3만</button>
+        <button type="button" class="chip" data-amount="50000">5만</button>
+        <button type="button" class="chip" data-amount="100000">10만</button>
+        <button type="button" class="chip" data-amount="300000">30만</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="switch" for="only-owned">
+        <span>내가 쓰는 앱만 보기</span>
+        <input type="checkbox" id="only-owned">
+      </label>
+      <div class="chips" id="app-chips"></div>
+      <p class="owned-note">선택한 앱은 이 브라우저에 저장됩니다.</p>
+    </div>
+  </form>
+
+  <div class="results" id="results" aria-live="polite"></div>
+
+</main>
+
+<script src="data/benefits.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
