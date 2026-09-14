@@ -6,12 +6,38 @@
   var FEED = window.DISCOUNT_FEED || null;   /* tools/collect.mjs 가 만든 자동 수집 결과 */
   var STORE_KEY = "pay-discount:owned-apps";
 
-  /* 자동 수집으로 구조까지 읽어낸 혜택은 번들 데이터와 같은 자격으로 순위에 넣습니다. */
+  var MERCHANTS = DB.merchants.slice();
+
+  function findMerchantByName(name) {
+    var low = String(name || "").toLowerCase().trim();
+    if (!low) return null;
+    var exact = MERCHANTS.filter(function (m) {
+      return [m.name].concat(m.aliases || []).some(function (n) { return String(n).toLowerCase() === low; });
+    })[0];
+    if (exact) return exact;
+    return MERCHANTS.filter(function (m) {
+      var n = m.name.toLowerCase();
+      return n.indexOf(low) !== -1 || low.indexOf(n) !== -1;
+    })[0] || null;
+  }
+
+  /* 자동 수집한 혜택은 번들 데이터와 같은 자격으로 순위에 들어갑니다.
+     목록에 없던 가맹점이면 결제처로 새로 만들어 검색까지 되게 합니다. */
   var ALL_BENEFITS = DB.benefits.concat(
     (FEED && FEED.structured ? FEED.structured : []).map(function (b) {
       var copy = {};
       for (var k in b) if (Object.prototype.hasOwnProperty.call(b, k)) copy[k] = b[k];
       copy.origin = "feed";
+      if (!copy.merchant && copy.merchantName) {
+        var hit = findMerchantByName(copy.merchantName);
+        if (!hit) {
+          hit = { id: "feed:" + copy.merchantName, name: copy.merchantName,
+                  category: null, aliases: [], fromFeed: true };
+          MERCHANTS.push(hit);
+        }
+        copy.merchant = hit.id;
+        copy.scope = "merchant";
+      }
       return copy;
     })
   );
@@ -123,9 +149,10 @@
 
   /* ── 결제처 해석 ──────────────────────────────────────── */
   function merchantById(id) {
-    return DB.merchants.filter(function (m) { return m.id === id; })[0];
+    return MERCHANTS.filter(function (m) { return m.id === id; })[0];
   }
   function categoryName(id) {
+    if (!id) return "자동 수집 결제처";
     return DB.categories[id] ? DB.categories[id].name : id;
   }
 
@@ -134,7 +161,7 @@
     if (!q) return [];
     var cho = isChosungQuery(q);
     var scored = [];
-    DB.merchants.forEach(function (m) {
+    MERCHANTS.forEach(function (m) {
       var names = [m.name].concat(m.aliases || []);
       var best = -1;
       names.forEach(function (n) {
@@ -158,7 +185,7 @@
     return ALL_BENEFITS.filter(function (b) {
       if (b.funding === "prepaid") return false;               /* 현금성(머니 충전) 결제 제외 */
       if (b.scope === "merchant") return ctx.merchantId === b.merchant;
-      return b.category === ctx.category;
+      return ctx.category ? b.category === ctx.category : false;
     });
   }
 
@@ -198,6 +225,7 @@
     custom: null,        /* { name, category } — 목록에 없는 결제처를 직접 입력한 경우 */
     pendingQuery: null,  /* 업종 선택을 기다리는 검색어 */
     amount: null,
+    categoryOverride: null,  /* 자동 수집으로 생긴 결제처에 업종을 직접 지정한 경우 */
     onlyOwned: false,
     owned: []
   };
@@ -223,7 +251,13 @@
   function context() {
     if (state.merchantId) {
       var m = merchantById(state.merchantId);
-      return { name: m.name, category: m.category, merchantId: m.id, custom: false };
+      return {
+        name: m.name,
+        category: m.category || state.categoryOverride,
+        merchantId: m.id,
+        custom: false,
+        needsCategory: !m.category && !state.categoryOverride
+      };
     }
     if (state.custom) {
       return { name: state.custom.name, category: state.custom.category, merchantId: null, custom: true };
@@ -524,23 +558,38 @@
       }).join("") + "</ul></section>";
   }
 
-  /* LINK · 마이샵 · 하나PICK · 꾹 처럼 앱에서 켜야 하는 개인화 혜택 */
+  /* LINK · 마이샵 · 하나PICK · 꾹 — 공통 목록은 자동 수집하고, 적용은 앱에서 켜야 합니다 */
+  function programStatus(id) {
+    var row = ((FEED && FEED.sources) || []).filter(function (s) { return s.id === id; })[0];
+    if (!row) return { cls: "idle", label: "수집 전" };
+    if (row.status === "ok") {
+      return { cls: "ok", label: "수집 " + (row.structured || row.count) + "건" };
+    }
+    if (row.status === "login-required") return { cls: "warn", label: "로그인 필요" };
+    if (row.status === "blocked") return { cls: "warn", label: "차단됨" };
+    if (row.status === "no-url") return { cls: "idle", label: "주소 미확인" };
+    if (row.status === "empty") return { cls: "warn", label: "목록 없음" };
+    return { cls: "warn", label: "실패" };
+  }
+
   function personalPrograms(highlightApps) {
-    var list = (FEED && FEED.personal) ? FEED.personal : [];
+    var list = (FEED && (FEED.programs || FEED.personal)) || [];
     if (!list.length) return "";
     var hi = highlightApps || [];
     return '<section class="list-card">' +
       '<div class="section-title"><h2>앱에서 직접 켜야 하는 혜택</h2>' +
       '<span class="hint">개인화 혜택이라 자동으로 가져올 수 없습니다</span></div>' +
       '<p class="program-why">삼성카드 LINK, 신한 마이샵, 하나PICK, 우리 꾹, 페이북 마이태그는 ' +
-      "로그인해야 목록이 보이고 사람마다 내용이 달라서, 결제 전에 앱에서 한 번 켜 줘야 적용됩니다." +
-      "며칠만 열리는 혜택도 대부분 여기에 뜹니다.</p>" +
+      "이번 달 어떤 가맹점이 올라와 있는지(공통 목록)는 자동으로 가져오지만, 누구에게 열리는지는 " +
+      "계정마다 달라서 결제 전에 앱에서 한 번 켜 줘야 적용됩니다. 아래 상태는 공통 목록 수집 결과입니다.</p>" +
       '<ul class="program-list">' + list.map(function (p) {
         var app = DB.apps[p.app];
         var on = hi.indexOf(p.app) !== -1;
+        var st = programStatus(p.id);
         return '<li class="' + (on ? "on" : "") + '">' +
           '<span class="program-app">' + esc(app ? app.name.replace(/\s*\(.*\)/, "") : p.app) + "</span>" +
           '<span class="program-name">' + esc(p.program) + "</span>" +
+          '<span class="program-state ' + st.cls + '">' + esc(st.label) + "</span>" +
           (p.url
             ? '<a href="' + esc(p.url) + '" target="_blank" rel="noopener">열기</a>'
             : '<span class="program-todo">앱에서 확인</span>') +
@@ -570,6 +619,18 @@
     "</div>" + personalPrograms([]) + FOOTNOTE;
   }
 
+  /* 자동 수집으로 새로 생긴 결제처는 업종을 모릅니다 — 고르면 업종 혜택도 함께 봅니다 */
+  function categoryPrompt(ctx) {
+    if (!ctx.needsCategory) return "";
+    return '<div class="fallback inline">' +
+      "<p><b>" + esc(ctx.name) + "</b>" + josaSuffix(ctx.name, "은/는") +
+      " 자동 수집으로 들어온 결제처라 업종을 모릅니다. 고르면 업종 혜택도 같이 비교합니다.</p>" +
+      '<div class="chips">' + Object.keys(DB.categories).map(function (c) {
+        return '<button type="button" class="chip" data-setcat="' + c + '">' +
+          esc(DB.categories[c].name) + "</button>";
+      }).join("") + "</div></div>";
+  }
+
   function renderResults() {
     var ctx = context();
     if (!ctx) { el.results.innerHTML = renderEmpty(); return; }
@@ -579,6 +640,7 @@
     var html = "";
 
     if (!amount) {
+      html += categoryPrompt(ctx);
       html += '<div class="headline"><strong>' + esc(ctx.name) + "</strong> · " +
         esc(categoryName(ctx.category)) + (ctx.custom ? " (직접 입력)" : "") +
         " · 결제 금액을 넣으면 순위가 나옵니다</div>";
@@ -590,6 +652,7 @@
     }
 
     var ranked = rankAll(ctx, amount, owned);
+    html += categoryPrompt(ctx);
     html += '<div class="headline"><strong>' + esc(ctx.name) + "</strong>에서 " +
       '<strong class="num">' + won(amount) + "</strong> 결제 시 · 비교한 혜택 " + ranked.total + "건" +
       (state.onlyOwned && state.owned.length ? " · 보유 앱만" : "") + "</div>";
@@ -636,6 +699,7 @@
   /* ── 이벤트 ───────────────────────────────────────────── */
   function pickMerchant(id) {
     state.merchantId = id;
+    state.categoryOverride = null;
     state.custom = null;
     state.pendingQuery = null;
     el.search.value = "";
@@ -700,6 +764,13 @@
     el.search.focus();
   });
 
+  el.results.addEventListener("click", function (e) {
+    var btn = e.target.closest("button[data-setcat]");
+    if (!btn) return;
+    state.categoryOverride = btn.dataset.setcat;
+    renderResults();
+  });
+
   el.amount.addEventListener("input", function () {
     var v = parseInt(el.amount.value.replace(/[^0-9]/g, "") || "0", 10);
     if (v > 100000000) v = 100000000;
@@ -751,7 +822,7 @@
 
   /* ── 시작 ─────────────────────────────────────────────── */
   el.stampDate.textContent = DB.updatedAt;
-  el.stampCount.textContent = "결제처 " + DB.merchants.length + "곳 · 혜택 " + ALL_BENEFITS.length + "건";
+  el.stampCount.textContent = "결제처 " + MERCHANTS.length + "곳 · 혜택 " + ALL_BENEFITS.length + "건";
   el.feedStatus.innerHTML = feedStatusText();
   renderExamples();
   render();

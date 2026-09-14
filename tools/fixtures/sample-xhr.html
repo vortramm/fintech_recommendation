@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><title>XHR 렌더링 픽스처</title></head>
+<body>
+<!-- 카드사 혜택 목록의 실제 구조를 흉내 냅니다: HTML 은 비어 있고 목록은 XHR 로 옵니다. -->
+<h1>전체 LINK 혜택</h1>
+<p>총 <b id="count">0</b>개의 혜택</p>
+<ul id="list"></ul>
+<script>
+  fetch("/api/link.json")
+    .then((r) => r.json())
+    .then((j) => {
+      const rows = j.data.benefitList;
+      document.getElementById("count").textContent = rows.length;
+      document.getElementById("list").innerHTML = rows
+        .map((b) => "<li>" + b.mchtNm + " " + b.dcRt + "% 할인 (최대 " + b.maxDcAmt + "원)</li>")
+        .join("");
+    });
+</script>
+</body></html>

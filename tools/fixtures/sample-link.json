@@ -1,0 +1,10 @@
+{
+  "resultCode": "0000",
+  "data": {
+    "benefitList": [
+      { "mchtNm": "이마트", "dcRt": 5, "maxDcAmt": "5,000", "minPayAmt": "50,000", "prd": "9.1~9.30" },
+      { "mchtNm": "쿠팡", "dcRt": 3, "maxDcAmt": "3,000", "minPayAmt": "30,000", "prd": "9.1~9.30" },
+      { "mchtNm": "무신사", "dcRt": 7, "maxDcAmt": "10,000", "minPayAmt": "50,000", "prd": "9.5~9.20" }
+    ]
+  }
+}

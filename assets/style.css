@@ -582,3 +582,17 @@ button, input { font: inherit; color: inherit; }
 .program-todo { font-size: 12px; color: var(--line-strong); }
 :root[data-theme="dark"] .program-todo,
 :root:not([data-theme="light"]) .program-todo { color: var(--muted); }
+
+.program-list li { flex-wrap: wrap; }
+.program-state {
+  font-size: 11px;
+  font-family: var(--f-mono);
+  border-radius: 4px;
+  padding: 1px 6px;
+  border: 1px solid var(--line-strong);
+  color: var(--muted);
+}
+.program-state.ok { color: var(--accent); border-color: var(--accent); }
+.program-state.warn { color: var(--warn); border-color: var(--warn); }
+
+.fallback.inline { margin: 0 0 4px; background: var(--surface); }

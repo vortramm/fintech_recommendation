@@ -2,25 +2,34 @@
 /**
  * 혜택 수집기
  *
- * data/sources.json 의 public 목록을 헤드리스 브라우저로 열어 혜택·이벤트 공지를 긁고,
+ * data/sources.json 을 읽어 카드사·핀테크의 공개 혜택 목록을 긁고,
  * data/feed.js (페이지가 <script> 로 읽음) 와 data/feed.json (기계용) 을 만듭니다.
  *
- *   node tools/collect.mjs                 전체 수집
- *   node tools/collect.mjs --only payco    id 에 payco 가 들어간 소스만
- *   node tools/collect.mjs --timeout 45000 소스당 대기 시간(ms)
+ *   npm run collect                        전체 수집
+ *   node tools/collect.mjs --only samsung  id 에 samsung 이 들어간 소스만
+ *   node tools/collect.mjs --dump          받은 JSON 응답을 tools/captures/ 에 저장
+ *   node tools/collect.mjs --selftest      네트워크 없이 수집 로직 점검
  *
- * 왜 단순 fetch 가 아니라 브라우저인가:
- *   카드사 페이지는 대부분 자바스크립트로 목록을 그리고, 일부는 서버가 봇 요청에 503 을
- *   돌려줍니다. 실제 브라우저로 열어야 내용이 나옵니다.
+ * 수집 대상은 두 종류입니다.
+ *   programs  LINK · 마이샵 · 하나PICK · 꾹 처럼 "공통 혜택 풀은 공개, 적용 대상은 개인화" 인 것.
+ *             누구에게 열리는지는 로그인해야 알 수 있지만, 어떤 가맹점이 이번 달 목록에
+ *             올라와 있는지는 공통이므로 그 부분만 가져옵니다.
+ *   public    이벤트 · 쿠폰 목록처럼 통째로 공개된 것.
  *
- * 수집 결과는 두 갈래로 나눕니다.
- *   structured  가맹점·할인율·한도까지 정확히 뽑아낸 것. 순위 계산에 바로 들어갑니다.
- *   raw         제목·기간·링크만 건진 것. "요즘 뜬 혜택"에 원문 링크로만 띄웁니다.
- * 숫자를 잘못 읽어 순위를 망치는 것보다, 못 읽은 건 못 읽었다고 두는 편이 낫습니다.
+ * 왜 헤드리스 브라우저인가:
+ *   카드사 목록은 거의 전부 XHR 로 내려와 정적 HTML 에는 "총 0개" 만 남습니다.
+ *   그래서 페이지를 실제로 띄우고, DOM 과 네트워크 응답(JSON)을 함께 봅니다.
+ *
+ * 수집 결과는 세 갈래입니다.
+ *   structured  가맹점·할인율·한도까지 읽어낸 것. 순위 계산에 들어갑니다.
+ *   raw         제목·기간·링크만 건진 것. "요즘 뜬 혜택"에 링크로만 띄웁니다.
+ *   hints       혜택 목록처럼 보이는 JSON 응답의 생김새. 여기 보고 pick 매핑을 적어 주면
+ *               다음 수집부터 그 소스가 structured 로 승격됩니다.
  */
 
 import { chromium } from "playwright";
-import { readFile, writeFile } from "node:fs/promises";
+import { readFile, writeFile, mkdir } from "node:fs/promises";
+import { createServer } from "node:http";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 
@@ -29,147 +38,297 @@ const UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
            "(KHTML, like Gecko) Chrome/124.0 Safari/537.36";
 
 const args = process.argv.slice(2);
-const argOf = (name, fallback) => {
-  const i = args.indexOf(name);
-  return i === -1 ? fallback : args[i + 1];
-};
+const argOf = (n, d) => (args.indexOf(n) === -1 ? d : args[args.indexOf(n) + 1]);
 const ONLY = argOf("--only", null);
-const SELFTEST = args.includes("--selftest");
 const TIMEOUT = parseInt(argOf("--timeout", "30000"), 10);
+const DUMP = args.includes("--dump");
+const SELFTEST = args.includes("--selftest");
 
-/* 공지 제목에서 건질 만한 값 */
+/* ── 텍스트에서 건질 값 ───────────────────────────────────── */
 const MONEY = /(\d[\d,]*)\s*원/;
 const PERCENT = /(\d+(?:\.\d+)?)\s*%/;
-const PERIOD = /(\d{1,2})\s*[.\/월]\s*(\d{1,2})\s*[일]?\s*[~\-]\s*(\d{1,2})\s*[.\/월]\s*(\d{1,2})/;
+const PERIOD = /(\d{1,2})\s*[.\/월]\s*(\d{1,2})\s*일?\s*[~\-]\s*(\d{1,2})\s*[.\/월]\s*(\d{1,2})/;
+const NOISE = /공지|약관|회사소개|채용|개인정보|고객센터|로그인|회원가입/;
 
 function looksLikeBenefit(text, keywords) {
   if (!text) return false;
   const t = text.replace(/\s+/g, " ").trim();
   if (t.length < 6 || t.length > 120) return false;
-  if (!keywords.some((k) => t.includes(k))) return false;
+  if (NOISE.test(t)) return false;
+  if (keywords && keywords.length && !keywords.some((k) => t.includes(k))) return false;
   return PERCENT.test(t) || MONEY.test(t) || /쿠폰|캐시백|적립|할인/.test(t);
 }
 
-/* 페이지 안에서 실행 — 링크 텍스트를 긁어옵니다 */
+function money(v) {
+  if (v == null) return null;
+  const n = typeof v === "number" ? v : parseInt(String(v).replace(/[^0-9]/g, ""), 10);
+  return Number.isFinite(n) && n > 0 ? n : null;
+}
+
+/* ── DOM 에서 긁기 ────────────────────────────────────────── */
 function harvest() {
   const out = [];
-  document.querySelectorAll("a[href]").forEach((a) => {
-    const text = (a.innerText || a.textContent || "").replace(/\s+/g, " ").trim();
+  document.querySelectorAll("a[href], li, button").forEach((node) => {
+    const text = (node.innerText || node.textContent || "").replace(/\s+/g, " ").trim();
     if (!text) return;
-    const box = a.closest("li, article, div") || a;
-    const around = (box.innerText || "").replace(/\s+/g, " ").trim().slice(0, 240);
-    out.push({ text, href: a.href, around });
+    const link = node.closest("a[href]");
+    const box = node.closest("li, article, div") || node;
+    out.push({
+      text,
+      href: link ? link.href : null,
+      around: (box.innerText || "").replace(/\s+/g, " ").trim().slice(0, 240)
+    });
   });
   return out;
 }
 
-async function collectSource(browser, src) {
-  const row = { id: src.id, app: src.app, name: src.name, url: src.url, status: "error", count: 0 };
-  if (!src.url) { row.status = "no-url"; return { row, items: [] }; }
+/* ── JSON 응답에서 뽑기 ───────────────────────────────────── */
+const pluck = (obj, path) =>
+  String(path || "").split(".").filter(Boolean).reduce((o, k) => (o == null ? o : o[k]), obj);
 
-  const ctx = await browser.newContext({ userAgent: UA, locale: "ko-KR", viewport: { width: 1280, height: 2000 } });
+/* pick 매핑이 있으면 정확히 뽑고, 없으면 생김새만 힌트로 남깁니다. */
+function fromCaptures(captures, src) {
+  const structured = [];
+  const hints = [];
+
+  for (const cap of captures) {
+    if (src.pick && (!src.pick.match || cap.url.includes(src.pick.match))) {
+      const rows = pluck(cap.body, src.pick.path);
+      if (Array.isArray(rows)) {
+        const m = src.pick.map || {};
+        for (const row of rows) {
+          const name = m.merchantName ? pluck(row, m.merchantName) : null;
+          if (!name) continue;
+          const rate = m.rate ? Number(pluck(row, m.rate)) : null;
+          const fixed = m.fixed ? money(pluck(row, m.fixed)) : null;
+          if (!rate && !fixed) continue;
+          structured.push({
+            scope: "merchant",
+            merchantName: String(name).trim(),
+            app: src.app,
+            kind: rate ? "rate" : "fixed",
+            rate: rate ? (rate > 1 ? rate / 100 : rate) : undefined,
+            amount: fixed || undefined,
+            cap: m.cap ? money(pluck(row, m.cap)) : undefined,
+            minAmount: m.minAmount ? money(pluck(row, m.minAmount)) : undefined,
+            benefitType: m.benefitType ? String(pluck(row, m.benefitType)) : "할인",
+            condition: (src.program ? src.program + " 혜택 켜고 결제" : src.name + " 쿠폰 적용"),
+            monthlyCap: m.period ? String(pluck(row, m.period)) : undefined,
+            source: src.id
+          });
+        }
+        continue;
+      }
+    }
+
+    /* 매핑이 없을 때: 혜택 목록처럼 생긴 배열을 찾아 힌트로 남깁니다 */
+    const stack = [{ node: cap.body, path: "" }];
+    while (stack.length) {
+      const { node, path } = stack.pop();
+      if (Array.isArray(node)) {
+        if (node.length >= 3 && node[0] && typeof node[0] === "object") {
+          const sample = JSON.stringify(node[0]);
+          if (/할인|적립|가맹|혜택|쿠폰|dc|benef|mcht|discount/i.test(sample)) {
+            hints.push({
+              source: src.id, url: cap.url, path: path || "(root)",
+              rows: node.length, keys: Object.keys(node[0]).slice(0, 25),
+              sample: sample.slice(0, 400)
+            });
+          }
+        }
+        continue;
+      }
+      if (node && typeof node === "object") {
+        for (const k of Object.keys(node)) stack.push({ node: node[k], path: path ? path + "." + k : k });
+      }
+    }
+  }
+  return { structured, hints };
+}
+
+/* ── 소스 한 곳 수집 ──────────────────────────────────────── */
+async function collectSource(browser, src) {
+  const row = { id: src.id, app: src.app, name: src.program || src.name, url: src.url,
+                kind: src.program ? "program" : "public", status: "error", count: 0, structured: 0 };
+  if (!src.url) { row.status = "no-url"; return { row, raw: [], structured: [], hints: [] }; }
+
+  const ctx = await browser.newContext({ userAgent: UA, locale: "ko-KR", viewport: { width: 1280, height: 2200 } });
   const page = await ctx.newPage();
+  const captures = [];
+
+  page.on("response", async (res) => {
+    try {
+      if (res.request().resourceType() === "document") return;
+      if (!/json/i.test(res.headers()["content-type"] || "")) return;
+      const body = await res.json().catch(() => null);
+      if (!body) return;
+      const text = JSON.stringify(body);
+      if (text.length < 80 || text.length > 2_000_000) return;
+      captures.push({ url: res.url(), size: text.length, body });
+    } catch { /* 응답 본문을 못 읽으면 넘어갑니다 */ }
+  });
+
   try {
     const res = await page.goto(src.url, { waitUntil: "domcontentloaded", timeout: TIMEOUT });
     const code = res ? res.status() : 0;
+    row.http = code;
     if (code >= 400) {
       row.status = code === 403 || code === 503 ? "blocked" : "http-" + code;
-      row.http = code;
-      return { row, items: [] };
+      return { row, raw: [], structured: [], hints: [] };
     }
-    await page.waitForTimeout(2500);                       /* 목록이 그려질 시간 */
-    await page.mouse.wheel(0, 4000).catch(() => {});       /* 무한스크롤 대비 */
-    await page.waitForTimeout(1200);
 
-    const seen = new Set();
-    const items = [];
-    for (const hit of await page.evaluate(harvest)) {
-      if (!looksLikeBenefit(hit.text, src.keywords)) continue;
-      const key = hit.text.slice(0, 60);
-      if (seen.has(key)) continue;
-      seen.add(key);
-      const period = (hit.around.match(PERIOD) || [])[0] || null;
-      items.push({
-        app: src.app,
-        source: src.id,
-        sourceName: src.name,
-        title: hit.text,
-        url: hit.href,
-        period,
-        percent: (hit.text.match(PERCENT) || [])[1] ? Number(RegExp.$1) : null,
-        won: (hit.text.match(MONEY) || [])[1] ? Number(RegExp.$1.replace(/,/g, "")) : null
+    await page.waitForLoadState("networkidle", { timeout: TIMEOUT }).catch(() => {});
+    await page.mouse.wheel(0, 6000).catch(() => {});
+    await page.waitForTimeout(1500);
+
+    /* 링크와 그 부모 li 가 같은 문구를 물고 오므로, 긴 쪽(기간이 덧붙은 것)을 버립니다 */
+    const hits = (await page.evaluate(harvest))
+      .filter((h) => looksLikeBenefit(h.text, src.keywords))
+      .sort((a, b) => a.text.length - b.text.length);
+
+    const kept = [];
+    const raw = [];
+    for (const hit of hits) {
+      const flat = hit.text.replace(/\s+/g, "");
+      if (kept.some((k) => flat.includes(k) || k.includes(flat))) continue;
+      kept.push(flat);
+      const pc = hit.text.match(PERCENT);
+      const mn = hit.text.match(MONEY);
+      raw.push({
+        app: src.app, source: src.id, sourceName: src.program || src.name,
+        title: hit.text, url: hit.href || src.url,
+        period: (hit.around.match(PERIOD) || [])[0] || null,
+        percent: pc ? Number(pc[1]) : null,
+        won: mn ? Number(mn[1].replace(/,/g, "")) : null
       });
-      if (items.length >= 40) break;
+      if (raw.length >= 60) break;
     }
-    row.status = items.length ? "ok" : "empty";
-    row.http = code;
-    row.count = items.length;
-    return { row, items };
+
+    const picked = fromCaptures(captures, src);
+
+    if (DUMP && captures.length) {
+      await mkdir(join(ROOT, "tools/captures"), { recursive: true });
+      await writeFile(join(ROOT, "tools/captures", src.id + ".json"),
+        JSON.stringify(captures.map((c) => ({ url: c.url, size: c.size, body: c.body })), null, 2));
+    }
+
+    row.captures = captures.length;
+    row.count = raw.length;
+    row.structured = picked.structured.length;
+    if (picked.structured.length || raw.length) row.status = "ok";
+    else {
+      const body = (await page.evaluate(() => document.body.innerText || "")).slice(0, 4000);
+      row.status = /로그인|인증서|본인확인/.test(body) ? "login-required" : "empty";
+    }
+    return { row, raw, structured: picked.structured, hints: picked.hints };
   } catch (err) {
     row.error = String(err.message || err).split("\n")[0].slice(0, 160);
-    return { row, items: [] };
+    return { row, raw: [], structured: [], hints: [] };
   } finally {
     await ctx.close().catch(() => {});
   }
 }
 
-/* 추출 규칙이 살아 있는지 로컬 픽스처로 확인합니다 — 네트워크 없이 돕니다. */
+/* ── 자체 점검 — 픽스처를 로컬 서버로 띄워 DOM · XHR 양쪽을 확인 ── */
 async function selftest() {
+  const files = {
+    "/list.html": [200, "text/html; charset=utf-8", await readFile(join(ROOT, "tools/fixtures/sample-events.html"), "utf8")],
+    "/xhr.html": [200, "text/html; charset=utf-8", await readFile(join(ROOT, "tools/fixtures/sample-xhr.html"), "utf8")],
+    "/api/link.json": [200, "application/json; charset=utf-8", await readFile(join(ROOT, "tools/fixtures/sample-link.json"), "utf8")]
+  };
+  const server = createServer((req, res) => {
+    const hit = files[req.url.split("?")[0]];
+    if (!hit) { res.writeHead(404); res.end(); return; }
+    res.writeHead(hit[0], { "content-type": hit[1] });
+    res.end(hit[2]);
+  });
+  await new Promise((r) => server.listen(0, "127.0.0.1", r));
+  const base = "http://127.0.0.1:" + server.address().port;
+
   const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH || undefined, args: ["--no-sandbox"] });
-  const { row, items } = await collectSource(browser, {
-    id: "selftest", app: "test", name: "픽스처",
-    url: "file://" + join(ROOT, "tools/fixtures/sample-events.html"),
+
+  const dom = await collectSource(browser, {
+    id: "selftest-dom", app: "test", name: "픽스처(DOM)", url: base + "/list.html",
     keywords: ["할인", "적립", "쿠폰", "캐시백"]
   });
-  await browser.close();
-  console.log("상태:", row.status, "· 추출", items.length, "건");
-  items.forEach(function (i) {
-    console.log("  -", i.title, "| 기간:", i.period || "없음",
-      "| %:", i.percent === null ? "-" : i.percent, "| 원:", i.won === null ? "-" : i.won);
+  console.log("DOM 수집:", dom.row.status, "· 공지", dom.raw.length, "건");
+  dom.raw.forEach((i) => console.log("   -", i.title, "|", i.period || "기간없음"));
+
+  const xhr = await collectSource(browser, {
+    id: "selftest-xhr", app: "samsung", program: "LINK", url: base + "/xhr.html",
+    keywords: ["할인", "적립"],
+    pick: { match: "/api/link.json", path: "data.benefitList",
+            map: { merchantName: "mchtNm", rate: "dcRt", cap: "maxDcAmt", minAmount: "minPayAmt", period: "prd" } }
   });
-  const okay = items.length === 4 && items.every((i) => !/공지|약관|회사소개/.test(i.title));
-  console.log(okay ? "\n자체 점검 통과 — 혜택만 골라내고 공지·약관은 걸렀습니다." : "\n자체 점검 실패");
-  process.exit(okay ? 0 : 1);
+  console.log("\nXHR 수집:", xhr.row.status, "· 구조화", xhr.structured.length, "건 (응답", xhr.row.captures, "개)");
+  xhr.structured.forEach((b) =>
+    console.log("   -", b.merchantName, (b.rate * 100).toFixed(1) + "%", "한도", b.cap, "최소", b.minAmount));
+
+  const noPick = await collectSource(browser, {
+    id: "selftest-hint", app: "test", name: "픽스처(힌트)", url: base + "/xhr.html", keywords: ["할인"]
+  });
+  console.log("\n매핑 없을 때 힌트:", noPick.hints.length, "건");
+  noPick.hints.forEach((h) => console.log("   - path:", h.path, "| rows:", h.rows, "| keys:", h.keys.join(",")));
+
+  await browser.close();
+  server.close();
+
+  const ok = dom.raw.length === 4 && xhr.structured.length === 3 && noPick.hints.length >= 1;
+  console.log(ok ? "\n자체 점검 통과 — DOM · XHR · 힌트 세 경로 모두 동작합니다."
+                 : "\n자체 점검 실패");
+  process.exit(ok ? 0 : 1);
 }
 
+/* ── 실행 ─────────────────────────────────────────────────── */
 async function main() {
   if (SELFTEST) return selftest();
-  const sources = JSON.parse(await readFile(join(ROOT, "data/sources.json"), "utf8"));
-  const targets = sources.public.filter((s) => !ONLY || s.id.includes(ONLY));
 
-  const proxyUrl = process.env.HTTPS_PROXY || process.env.https_proxy || null;
+  const reg = JSON.parse(await readFile(join(ROOT, "data/sources.json"), "utf8"));
+  const targets = []
+    .concat(reg.programs.filter((p) => p.collect).map((p) => ({ ...p, url: p.catalogUrl || p.url })))
+    .concat(reg.public)
+    .filter((s) => !ONLY || s.id.includes(ONLY));
+
+  const proxy = process.env.HTTPS_PROXY || process.env.https_proxy || null;
   const browser = await chromium.launch({
     executablePath: process.env.CHROMIUM_PATH || undefined,
-    proxy: proxyUrl ? { server: proxyUrl } : undefined,
+    proxy: proxy ? { server: proxy } : undefined,
     args: ["--no-sandbox"]
   });
 
-  const rows = [], raw = [];
+  const rows = [], raw = [], structured = [], hints = [];
   for (const src of targets) {
-    process.stdout.write(`· ${src.id.padEnd(18)} `);
-    const { row, items } = await collectSource(browser, src);
-    rows.push(row);
-    raw.push(...items);
-    console.log(`${row.status}${row.count ? " (" + row.count + "건)" : ""}${row.error ? " — " + row.error : ""}`);
+    process.stdout.write("· " + src.id.padEnd(24));
+    const r = await collectSource(browser, src);
+    rows.push(r.row);
+    raw.push(...r.raw);
+    structured.push(...r.structured);
+    hints.push(...r.hints);
+    console.log(r.row.status +
+      (r.row.structured ? " · 구조화 " + r.row.structured : "") +
+      (r.row.count ? " · 공지 " + r.row.count : "") +
+      (r.row.error ? " — " + r.row.error : ""));
   }
   await browser.close();
 
   const feed = {
     collectedAt: new Date().toISOString(),
     sources: rows,
-    personal: sources.personal,
-    structured: [],   /* 소스별 전용 파서를 붙이면 여기에 쌓입니다 */
-    raw
+    programs: reg.programs,
+    structured,
+    raw,
+    hints
   };
 
-  await writeFile(join(ROOT, "data/feed.json"), JSON.stringify(feed, null, 2) + "\n");
+  const body = JSON.stringify(feed, null, 2);
+  await writeFile(join(ROOT, "data/feed.json"), body + "\n");
   await writeFile(join(ROOT, "data/feed.js"),
-    "/* tools/collect.mjs 가 생성합니다. 직접 고치지 마세요. */\n" +
-    "window.DISCOUNT_FEED = " + JSON.stringify(feed, null, 2) + ";\n");
+    "/* tools/collect.mjs 가 생성합니다. 직접 고치지 마세요. */\nwindow.DISCOUNT_FEED = " + body + ";\n");
 
   const ok = rows.filter((r) => r.status === "ok").length;
-  console.log(`\n수집 완료 — 소스 ${rows.length}곳 중 ${ok}곳 성공, 공지 ${raw.length}건`);
-  console.log("→ data/feed.js, data/feed.json");
+  console.log("\n소스 " + rows.length + "곳 중 " + ok + "곳 성공 · 구조화 " + structured.length +
+    "건 · 공지 " + raw.length + "건 · 힌트 " + hints.length + "건");
+  if (hints.length) console.log("힌트를 보고 data/sources.json 에 pick 매핑을 적으면 structured 로 올라갑니다.");
 }
 
 main().catch((e) => { console.error(e); process.exit(1); });
