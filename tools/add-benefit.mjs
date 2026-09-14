@@ -6,6 +6,7 @@
  * 로그인 벽이나 앱 전용이라 자동 수집이 안 되는 것들을 여기에 모읍니다.
  *
  *   node tools/add-benefit.mjs "토스에서 11번가 3.5% 적립 쿠폰을 확인해보세요"
+ *   node tools/add-benefit.mjs "$(pbpaste)"        여러 줄을 붙여넣으면 줄마다 등록합니다
  *   node tools/add-benefit.mjs "..." --cap 10000 --min 20000 --until 2026-09-30
  *   node tools/add-benefit.mjs --list          등록된 것 보기
  *   node tools/add-benefit.mjs --remove 3      3번 지우기
@@ -50,13 +51,40 @@ async function saveStore(list) {
     "window.DISCOUNT_MANUAL = " + JSON.stringify({ updatedAt: new Date().toISOString(), benefits: list }, null, 2) + ";\n");
 }
 
+/* 공유 문구는 앱 이름 대신 프로그램 이름으로 적히는 경우가 많습니다 */
+const APP_ALIASES = {
+  bccard:   ["페이북", "마이태그", "BC카드", "비씨카드"],
+  shinhan:  ["마이샵", "SOL페이", "쏠페이", "신한플레이", "신한카드", "신한"],
+  samsung:  ["LINK", "링크", "모니모", "삼성카드"],
+  woori:    ["꾹", "우리WON", "우리원", "우리카드"],
+  hana:     ["하나PICK", "하나픽", "하나페이", "하나카드", "원큐"],
+  kbpay:    ["KB Pay", "KB페이", "국민카드", "KB국민"],
+  hyundai:  ["현대카드", "M포인트"],
+  lotte:    ["디지로카", "롯데카드"],
+  nhpay:    ["NH페이", "농협카드", "NH카드"],
+  toss:     ["토스페이", "토스"],
+  kakaopay: ["카카오페이"],
+  naverpay: ["네이버페이", "네이버 페이"],
+  payco:    ["페이코", "PAYCO"],
+  ssgpay:   ["SSG페이", "쓱페이"],
+  smilepay: ["스마일페이", "스마일캐시"]
+};
+
 function findApp(db, text) {
   const explicit = argOf("--app", null);
   if (explicit) return explicit;
-  const names = Object.keys(db.apps).map((id) => ({ id, name: db.apps[id].name.replace(/\s*\(.*\)/, "") }));
-  names.sort((a, b) => b.name.length - a.name.length);
-  const hit = names.find((a) => text.includes(a.name));
-  return hit ? hit.id : null;
+  const low = text.toLowerCase();
+  const candidates = [];
+  for (const id of Object.keys(db.apps)) {
+    const names = [db.apps[id].name.replace(/\s*\(.*\)/, "")].concat(APP_ALIASES[id] || []);
+    for (const n of names) {
+      if (low.includes(String(n).toLowerCase())) candidates.push({ id, len: String(n).length });
+    }
+  }
+  if (!candidates.length) return null;
+  /* 가장 긴 이름이 걸린 쪽을 씁니다 ("신한카드" 가 "신한" 보다 우선) */
+  candidates.sort((a, b) => b.len - a.len);
+  return candidates[0].id;
 }
 
 function findMerchant(db, text) {
@@ -80,6 +108,26 @@ function parseValue(text) {
   const man = text.match(/([\d.]+)\s*만\s*원?/);
   if (man) return { kind: "fixed", amount: Math.round(parseFloat(man[1]) * 10000) };
   return null;
+}
+
+function buildEntry(db, text, app, merchant, value) {
+  const cap = argOf("--cap", null);
+  return {
+    scope: "merchant",
+    merchant: merchant.id,
+    merchantName: merchant.name,
+    app,
+    ...value,
+    cap: cap ? parseInt(cap, 10) : undefined,
+    minAmount: argOf("--min", null) ? parseInt(argOf("--min"), 10) : undefined,
+    benefitType: /적립|캐시백|포인트/.test(text) ? "적립" : "할인",
+    condition: db.apps[app].name.replace(/\s*\(.*\)/, "") + " 앱에서 쿠폰 받고 결제",
+    until: argOf("--until", null) || undefined,
+    url: argOf("--url", null) || undefined,
+    note: text.trim(),
+    addedAt: new Date().toISOString().slice(0, 10),
+    source: "manual"
+  };
 }
 
 async function main() {
@@ -110,6 +158,23 @@ async function main() {
     process.exit(1);
   }
 
+  /* 여러 줄을 붙여넣으면 줄마다 하나씩 등록합니다 */
+  const lines = text.split(/\n+/).map((l) => l.trim()).filter((l) => l.length > 4);
+  if (lines.length > 1) {
+    let added = 0;
+    for (const line of lines) {
+      const a = findApp(db, line), m = findMerchant(db, line), v = parseValue(line);
+      if (!a || !m || !v) { console.log(`건너뜀: ${line.slice(0, 50)} (앱·결제처·값 중 못 찾은 것이 있습니다)`); continue; }
+      list.push(buildEntry(db, line, a, m, v));
+      added++;
+      const vv = v.kind === "rate" ? Number((v.rate * 100).toFixed(2)) + "%" : v.amount.toLocaleString("ko-KR") + "원";
+      console.log(`등록 — [${db.apps[a].name}] ${m.name} ${vv}`);
+    }
+    if (added) await saveStore(list);
+    console.log(`\n${added}건 등록했습니다.`);
+    return;
+  }
+
   const app = findApp(db, text);
   const merchant = findMerchant(db, text);
   const value = parseValue(text);
@@ -118,24 +183,7 @@ async function main() {
   if (!merchant) { console.error("어느 결제처인지 못 알아봤습니다. --merchant <id> 로 알려주세요."); process.exit(1); }
   if (!value) { console.error("할인율이나 금액을 못 찾았습니다. (예: 3.5% / 2,000원)"); process.exit(1); }
 
-  const cap = argOf("--cap", null);
-  const entry = {
-    scope: "merchant",
-    merchant: merchant.id,
-    merchantName: merchant.name,
-    app,
-    ...value,
-    cap: cap ? parseInt(cap, 10) : undefined,
-    minAmount: argOf("--min", null) ? parseInt(argOf("--min"), 10) : undefined,
-    benefitType: /적립|캐시백|포인트/.test(text) ? "적립" : "할인",
-    condition: db.apps[app].name.replace(/\s*\(.*\)/, "") + " 앱에서 쿠폰 받고 결제",
-    until: argOf("--until", null) || undefined,
-    url: argOf("--url", null) || undefined,
-    note: text.trim(),
-    addedAt: new Date().toISOString().slice(0, 10),
-    source: "manual"
-  };
-
+  const entry = buildEntry(db, text, app, merchant, value);
   list.push(entry);
   await saveStore(list);
 

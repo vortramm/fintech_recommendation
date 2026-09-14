@@ -323,21 +323,6 @@
         "혜택"
       ],
       "explore": true
-    },
-    {
-      "id": "bc-share-probe",
-      "app": "bccard",
-      "name": "페이북 공유링크 (조사용)",
-      "url": "https://ui.vpay.co.kr/s/IqZm/785?landingId=P0603PG005R&outCd=10001",
-      "keywords": [
-        "할인",
-        "적립",
-        "쿠폰",
-        "혜택",
-        "캐시백"
-      ],
-      "explore": true,
-      "note": "마이태그 공유 링크가 뒤에서 혜택 정보를 API 로 받아오는지 확인하려고 임시로 넣었습니다."
     }
   ]
 }

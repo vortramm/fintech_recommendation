@@ -1,6 +1,6 @@
 /* tools/add-benefit.mjs 가 생성합니다. 앱에서 보고 직접 등록한 혜택입니다. */
 window.DISCOUNT_MANUAL = {
-  "updatedAt": "2026-09-14T05:15:32.623Z",
+  "updatedAt": "2026-09-14T05:22:11.613Z",
   "benefits": [
     {
       "scope": "merchant",
