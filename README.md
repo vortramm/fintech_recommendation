@@ -85,14 +85,28 @@ CORS 헤더를 주지 않아서 브라우저가 응답을 막고, 대부분 봇 
 LINK 페이지는 "총 0개의 혜택"만 보입니다). 그래서 수집기는 페이지를 브라우저로 띄운 뒤
 **DOM 과 네트워크 JSON 응답을 함께** 봅니다.
 
-| 프로그램 | 등록된 주소 | 비고 |
+실제로 돌려 본 결과입니다 (2026-09-14).
+
+| 프로그램 | 결과 | 비고 |
 | --- | --- | --- |
-| 삼성카드 LINK | 전체 LINK 혜택 페이지 | 목록이 XHR 로 내려옴 |
-| 신한 마이샵 | 마이샵 소개 페이지 | 매월 1일 목록 교체 |
-| 우리 꾹 | 혜택 서비스 페이지 | '담기' 전 목록은 공통 |
-| 페이북 마이태그 | 마이태그 안내 페이지 | 월 단위 태그 교체 |
-| 하나PICK | 혜택 메인 | 전용 주소 미확인 |
+| 삼성카드 LINK | **수집됨 · 111건** | `apis.samsungcard.com/svc-link/not-logged-in/link` — 이름 그대로 비로그인 공개 API |
+| 우리 꾹 | **수집됨 · 73건** | `m.wooricard.com/…/retrieveBnfMainList.pwkjson` — 할인율·한도·최소금액까지 |
+| 신한 마이샵 | 로그인 필요 | 비로그인으로는 목록이 내려오지 않음 |
+| 페이북 마이태그 | 목록 없음 | 카탈로그가 앱 안에 있음 |
+| 하나PICK | 공지 2건만 | 전용 주소 미확인 |
 | KB Pay · 현대 · 롯데 | 미등록 | 공개 주소 확인 필요 |
+
+### 전용 파서
+
+수집한 JSON 을 혜택으로 바꾸는 코드는 `tools/parsers.mjs` 에 있습니다.
+
+- **삼성 LINK** — `linkSvMaiEvnNm`(캠페인명)에서 가맹점 이름만 남기고,
+  `linkSvFvrDvCn`("7,000원" / "40%")을 금액이면 정액 혜택으로 씁니다.
+- **우리 꾹** — `rqDcAm`(할인금액) · `rqDcRt`(할인율) · `bnfCndTxt`("5만원 이상 결제 시")를
+  읽고, 한도는 설명 HTML 의 "일 한도 2만원" 에서 뽑습니다.
+
+**한도를 못 찾은 할인율은 순위에 넣지 않습니다.** 25% 를 무제한으로 잡으면 순위가 통째로
+뒤집히기 때문에, 그런 항목은 "요즘 뜬 혜택 공지"에 퍼센트만 적어 링크로 띄웁니다.
 
 ### 수집 결과는 세 갈래입니다
 
@@ -146,6 +160,7 @@ npm run selftest                     # 네트워크 없이 수집 로직 점검
 npm run collect                      # 전체 수집 → data/feed.js
 npm run collect -- --dump            # 받은 JSON 응답을 tools/captures/ 에 저장
 npm run collect -- --only samsung    # 특정 소스만
+node tools/collect.mjs --replay tools/captures   # 저장된 캡처로 파서만 다시 돌리기
 ```
 
 `npm run collect` 뒤의 `--` 를 빠뜨리면 옵션이 스크립트로 전달되지 않습니다.
@@ -165,6 +180,7 @@ data/benefits.js      기본 혜택 데이터  ← 평소 고칠 곳
 data/sources.json     수집 대상 주소록  ← 혜택 페이지 주소를 여기에 모읍니다
 data/feed.js          자동 수집 결과 (생성 파일, 직접 수정 금지)
 tools/collect.mjs     수집기 (헤드리스 크로미엄)
+tools/parsers.mjs     소스별 전용 파서 (삼성 LINK · 우리 꾹)
 tools/from-har.mjs    앱 캡처(HAR) → pick 매핑 생성
 docs/find-app-endpoints.md   앱에서 혜택 목록 주소 찾는 방법
 .github/workflows/refresh-benefits.yml   6시간마다 수집 → 커밋

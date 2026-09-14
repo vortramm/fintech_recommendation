@@ -15,7 +15,8 @@
         "캐시백",
         "쿠폰"
       ],
-      "note": "공통 혜택 풀은 공개돼 있으나 목록이 XHR로 내려옵니다. 실제 적용은 앱에서 '링크' 를 눌러야 됩니다."
+      "note": "공개 API(svc-link/not-logged-in/link)에서 이번 달 LINK 목록을 받습니다. 적용은 앱에서 '링크'를 눌러야 됩니다.",
+      "parser": "samsung-link"
     },
     {
       "id": "shinhan-myshop",
@@ -45,7 +46,8 @@
         "쿠폰",
         "꾹"
       ],
-      "note": "'담기' 를 눌러야 적용됩니다. 담기 전 목록은 공통입니다."
+      "note": "공개 API(retrieveBnfMainList)에서 '꾹' 목록을 받습니다. 적용은 앱에서 '담기'를 눌러야 됩니다.",
+      "parser": "woori-kkook"
     },
     {
       "id": "bc-mytag",
@@ -147,25 +149,16 @@
       ]
     },
     {
-      "id": "payco-events",
-      "app": "payco",
-      "name": "PAYCO 이벤트",
-      "url": "https://events.payco.com/",
-      "keywords": [
-        "이벤트",
-        "할인",
-        "쿠폰"
-      ]
-    },
-    {
       "id": "toss-feed",
       "app": "toss",
       "name": "토스피드 혜택 글",
       "url": "https://toss.im/tossfeed",
       "keywords": [
-        "혜택",
         "할인",
-        "쿠폰"
+        "적립",
+        "쿠폰",
+        "혜택",
+        "캐시백"
       ]
     },
     {
@@ -200,17 +193,6 @@
         "할인",
         "이벤트",
         "마이태그"
-      ]
-    },
-    {
-      "id": "samsung-events",
-      "app": "samsung",
-      "name": "삼성카드 이벤트",
-      "url": "https://www.samsungcard.com/personal/event/UHPPEV0101M0.jsp",
-      "keywords": [
-        "할인",
-        "이벤트",
-        "캐시백"
       ]
     },
     {

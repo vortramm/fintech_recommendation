@@ -28,6 +28,7 @@
  */
 
 import { chromium } from "playwright";
+import { PARSERS } from "./parsers.mjs";
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { createServer } from "node:http";
 import { fileURLToPath } from "node:url";
@@ -44,6 +45,7 @@ const TIMEOUT = parseInt(argOf("--timeout", "30000"), 10);
 const DUMP = args.includes("--dump");
 const SOURCES = argOf("--sources", "data/sources.json");
 const SELFTEST = args.includes("--selftest");
+const REPLAY = argOf("--replay", null);
 
 /* ── 텍스트에서 건질 값 ───────────────────────────────────── */
 const MONEY = /(\d[\d,]*)\s*원/;
@@ -87,12 +89,28 @@ function harvest() {
 const pluck = (obj, path) =>
   String(path || "").split(".").filter(Boolean).reduce((o, k) => (o == null ? o : o[k]), obj);
 
-/* pick 매핑이 있으면 정확히 뽑고, 없으면 생김새만 힌트로 남깁니다. */
+const HINT_KEY = /mcht|merch|shop|store|brand|가맹|fvr|benef|혜택|disc|dc[A-Z]|cpn|coupon|amt|rate|evnt|event|prd|기간/;
+const HINT_SKIP = /\/lottie\/|\/images\/|\.png|\.svg/i;
+
+/* 전용 파서 > pick 매핑 > 힌트 순으로 처리합니다. */
 function fromCaptures(captures, src) {
   const structured = [];
+  const extraRaw = [];
   const hints = [];
+  const seenHint = new Set();
+
+  const parser = src.parser ? PARSERS[src.parser] : null;
 
   for (const cap of captures) {
+    if (parser && cap.url.includes(parser.match)) {
+      const rows = pluck(cap.body, parser.path);
+      if (Array.isArray(rows)) {
+        const got = parser.run(rows, src);
+        structured.push(...got.structured);
+        extraRaw.push(...got.raw);
+        continue;
+      }
+    }
     if (src.pick && (!src.pick.match || cap.url.includes(src.pick.match))) {
       const rows = pluck(cap.body, src.pick.path);
       if (Array.isArray(rows)) {
@@ -123,17 +141,20 @@ function fromCaptures(captures, src) {
     }
 
     /* 매핑이 없을 때: 혜택 목록처럼 생긴 배열을 찾아 힌트로 남깁니다 */
+    if (HINT_SKIP.test(cap.url)) continue;
     const stack = [{ node: cap.body, path: "" }];
     while (stack.length) {
       const { node, path } = stack.pop();
       if (Array.isArray(node)) {
-        if (node.length >= 3 && node[0] && typeof node[0] === "object") {
-          const sample = JSON.stringify(node[0]);
-          if (/할인|적립|가맹|혜택|쿠폰|dc|benef|mcht|discount/i.test(sample)) {
+        if (node.length >= 3 && node[0] && typeof node[0] === "object" && !Array.isArray(node[0])) {
+          const keys = Object.keys(node[0]);
+          const key = cap.url.split("?")[0] + "#" + (path || "(root)");
+          if (keys.length >= 3 && keys.some((k) => HINT_KEY.test(k)) && !seenHint.has(key)) {
+            seenHint.add(key);
             hints.push({
-              source: src.id, url: cap.url, path: path || "(root)",
-              rows: node.length, keys: Object.keys(node[0]).slice(0, 25),
-              sample: sample.slice(0, 400)
+              source: src.id, url: cap.url.split("?")[0], path: path || "(root)",
+              rows: node.length, keys: keys.slice(0, 25),
+              sample: JSON.stringify(node[0]).slice(0, 400)
             });
           }
         }
@@ -144,7 +165,7 @@ function fromCaptures(captures, src) {
       }
     }
   }
-  return { structured, hints };
+  return { structured, raw: extraRaw, hints };
 }
 
 /* ── 소스 한 곳 수집 ──────────────────────────────────────── */
@@ -183,7 +204,8 @@ async function collectSource(browser, src) {
     await page.waitForTimeout(1500);
 
     /* 링크와 그 부모 li 가 같은 문구를 물고 오므로, 긴 쪽(기간이 덧붙은 것)을 버립니다 */
-    const hits = (await page.evaluate(harvest))
+    const harvested = (await page.evaluate(harvest).catch(() => null)) || [];
+    const hits = harvested
       .filter((h) => looksLikeBenefit(h.text, src.keywords))
       .sort((a, b) => a.text.length - b.text.length);
 
@@ -206,6 +228,7 @@ async function collectSource(browser, src) {
     }
 
     const picked = fromCaptures(captures, src);
+    raw.push(...picked.raw);
 
     if (DUMP && captures.length) {
       await mkdir(join(ROOT, "tools/captures"), { recursive: true });
@@ -281,8 +304,47 @@ async function selftest() {
 }
 
 /* ── 실행 ─────────────────────────────────────────────────── */
+/* 저장된 캡처로 파서만 다시 돌립니다 — 네트워크 없이 파서를 고칠 때 씁니다 */
+async function replay(dir) {
+  const reg = JSON.parse(await readFile(join(ROOT, "data/sources.json"), "utf8"));
+  const all = [].concat(reg.programs, reg.public);
+  const feedPath = join(ROOT, "data/feed.json");
+  let feed;
+  try { feed = JSON.parse(await readFile(feedPath, "utf8")); }
+  catch { feed = { collectedAt: new Date().toISOString(), sources: [], raw: [] }; }
+
+  const structured = [], addedRaw = [];
+  const { readdir } = await import("node:fs/promises");
+  for (const file of await readdir(dir)) {
+    if (!file.endsWith(".json")) continue;
+    const id = file.replace(/\.json$/, "");
+    const src = all.find((s) => s.id === id);
+    if (!src) { console.log("· " + id.padEnd(24) + "sources.json 에 없음 — 건너뜀"); continue; }
+    const captures = JSON.parse(await readFile(join(dir, file), "utf8"));
+    const got = fromCaptures(captures, { ...src, url: src.catalogUrl || src.url });
+    structured.push(...got.structured);
+    addedRaw.push(...got.raw);
+    console.log("· " + id.padEnd(24) + "구조화 " + got.structured.length + " · 공지 " + got.raw.length);
+  }
+
+  feed.structured = structured;
+  feed.raw = (feed.raw || []).filter((r) => !addedRaw.some((a) => a.title === r.title)).concat(addedRaw);
+  feed.programs = reg.programs;
+  for (const row of feed.sources || []) {
+    const mine = structured.filter((b) => b.source === row.id).length;
+    if (mine) { row.structured = mine; row.status = "ok"; }
+  }
+
+  const body = JSON.stringify(feed, null, 2);
+  await writeFile(feedPath, body + "\n");
+  await writeFile(join(ROOT, "data/feed.js"),
+    "/* tools/collect.mjs 가 생성합니다. 직접 고치지 마세요. */\nwindow.DISCOUNT_FEED = " + body + ";\n");
+  console.log("\n구조화 " + structured.length + "건 · 공지 " + feed.raw.length + "건 → data/feed.js");
+}
+
 async function main() {
   if (SELFTEST) return selftest();
+  if (REPLAY) return replay(REPLAY);
 
   const regPath = SOURCES.startsWith("/") ? SOURCES : join(ROOT, SOURCES);
   const reg = JSON.parse(await readFile(regPath, "utf8"));
