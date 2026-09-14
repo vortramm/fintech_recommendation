@@ -14,24 +14,38 @@
     return s.replace(/\.?0+$/, "") + "%";
   }
   function manwon(n) {
-    if (n >= 10000) {
-      var v = n / 10000;
-      return (Math.round(v * 10) / 10) + "만원";
-    }
+    if (n >= 10000) return (Math.round((n / 10000) * 10) / 10) + "만원";
     return num(n) + "원";
   }
-  /* 축 라벨: 단위를 "만"으로 통일합니다 */
   function axisLabel(n) {
     if (n === 0) return "0";
     if (n >= 10000) return (Math.round((n / 10000) * 10) / 10) + "만";
     return num(n);
   }
-  /* 받침에 맞는 조사 — josa("토스", "이/가") → "토스가" */
-  function josa(word, pair) {
+  function josaSuffix(word, pair) {
     var parts = pair.split("/");
     var code = word.charCodeAt(word.length - 1);
     var hasFinal = code >= 0xAC00 && code <= 0xD7A3 ? (code - 0xAC00) % 28 > 0 : false;
-    return word + (hasFinal ? parts[0] : parts[1]);
+    return hasFinal ? parts[0] : parts[1];
+  }
+  function esc(s) {
+    return String(s).replace(/[&<>"]/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+    });
+  }
+
+  /* 한글 초성 — "ㅋㄹ" 로도 크림이 검색되게 */
+  var CHO = "ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎ";
+  function chosung(str) {
+    var out = "";
+    for (var i = 0; i < str.length; i++) {
+      var c = str.charCodeAt(i);
+      out += (c >= 0xAC00 && c <= 0xD7A3) ? CHO[Math.floor((c - 0xAC00) / 588)] : str[i];
+    }
+    return out;
+  }
+  function isChosungQuery(q) {
+    return q.length > 0 && /^[ㄱ-ㅎ]+$/.test(q);
   }
 
   /* ── 혜택 한 건 계산 ──────────────────────────────────── */
@@ -61,9 +75,7 @@
       raw = benefit.amount;
       res.formula = "정액 " + won(benefit.amount);
     } else if (benefit.kind === "tiered") {
-      var tier = benefit.tiers
-        .slice()
-        .sort(function (a, b) { return b.min - a.min; })
+      var tier = benefit.tiers.slice().sort(function (a, b) { return b.min - a.min; })
         .filter(function (t) { return amount >= t.min; })[0];
       if (!tier) {
         var lowest = benefit.tiers.reduce(function (a, b) { return a.min < b.min ? a : b; });
@@ -88,52 +100,93 @@
     return res;
   }
 
-  /* ── 순위 ─────────────────────────────────────────────── */
-  function rankAll(merchantId, amount, ownedFilter) {
-    var rows = DB.benefits
-      .filter(function (b) { return b.merchant === merchantId; })
-      .filter(function (b) { return !ownedFilter || ownedFilter.indexOf(b.app) !== -1; })
+  /* 금액을 모를 때 보여줄 최대 할인 규모 */
+  function ceilingOf(b) {
+    if (b.cap != null) return b.cap;
+    if (b.kind === "fixed") return b.amount;
+    if (b.kind === "tiered") {
+      return b.tiers.reduce(function (m, t) { return Math.max(m, t.amount); }, 0);
+    }
+    return Infinity;
+  }
+
+  /* ── 결제처 해석 ──────────────────────────────────────── */
+  function merchantById(id) {
+    return DB.merchants.filter(function (m) { return m.id === id; })[0];
+  }
+  function categoryName(id) {
+    return DB.categories[id] ? DB.categories[id].name : id;
+  }
+
+  function searchMerchants(q) {
+    q = q.trim().toLowerCase();
+    if (!q) return [];
+    var cho = isChosungQuery(q);
+    var scored = [];
+    DB.merchants.forEach(function (m) {
+      var names = [m.name].concat(m.aliases || []);
+      var best = -1;
+      names.forEach(function (n) {
+        var low = n.toLowerCase();
+        var hit = cho ? (chosung(low).indexOf(q) === 0 ? 1 : chosung(low).indexOf(q) > 0 ? 2 : -1)
+                      : (low === q ? 0 : low.indexOf(q) === 0 ? 1 : low.indexOf(q) > 0 ? 2 : -1);
+        if (hit >= 0 && (best === -1 || hit < best)) best = hit;
+      });
+      if (best === -1 && !cho && categoryName(m.category).toLowerCase().indexOf(q) !== -1) best = 3;
+      if (best >= 0) scored.push({ m: m, score: best });
+    });
+    scored.sort(function (a, b) {
+      if (a.score !== b.score) return a.score - b.score;
+      return a.m.name.localeCompare(b.m.name, "ko");
+    });
+    return scored.map(function (s) { return s.m; });
+  }
+
+  /* ── 혜택 모으기 · 순위 ───────────────────────────────── */
+  function candidates(ctx) {
+    return DB.benefits.filter(function (b) {
+      if (b.funding === "prepaid") return false;               /* 현금성(머니 충전) 결제 제외 */
+      if (b.scope === "merchant") return ctx.merchantId === b.merchant;
+      return b.category === ctx.category;
+    });
+  }
+
+  function rankAll(ctx, amount, owned) {
+    var rows = candidates(ctx)
+      .filter(function (b) { return !owned || owned.indexOf(b.app) !== -1; })
       .map(function (b) { return evaluate(b, amount); });
 
-    var typeWeight = function (r) { return r.benefit.benefitType === "할인" ? 0 : 1; };
+    var weight = function (r) { return r.benefit.benefitType === "할인" ? 0 : 1; };
 
     var eligible = rows.filter(function (r) { return r.eligible; }).sort(function (a, b) {
       if (b.discount !== a.discount) return b.discount - a.discount;
-      if (typeWeight(a) !== typeWeight(b)) return typeWeight(a) - typeWeight(b);
+      if (weight(a) !== weight(b)) return weight(a) - weight(b);
       return a.app.name.localeCompare(b.app.name, "ko");
     });
-
     var blocked = rows.filter(function (r) { return !r.eligible; }).sort(function (a, b) {
       return (a.benefit.minAmount || 0) - (b.benefit.minAmount || 0);
     });
-
     return { eligible: eligible, blocked: blocked, total: rows.length };
   }
 
-  function bestAt(merchantId, amount, ownedFilter) {
-    return rankAll(merchantId, amount, ownedFilter).eligible[0] || null;
-  }
-
-  /* ── 금액에 따른 1위 변경 지점 ────────────────────────── */
-  function switchPoints(merchantId, ownedFilter, maxAmount) {
+  function switchPoints(ctx, owned, maxAmount) {
     var step = Math.max(1000, Math.round(maxAmount / 300 / 1000) * 1000);
-    var points = [];
-    var prev = null;
+    var points = [], prev = null;
     for (var a = step; a <= maxAmount; a += step) {
-      var win = bestAt(merchantId, a, ownedFilter);
-      var id = win ? win.benefit.app + ":" + win.benefit.condition : null;
-      if (id && prev && id !== prev.id) {
-        points.push({ amount: a, from: prev.win, to: win });
-      }
-      if (id) prev = { id: id, win: win };
+      var top = rankAll(ctx, a, owned).eligible[0];
+      var id = top ? top.benefit.app + ":" + top.benefit.condition : null;
+      if (id && prev && id !== prev.id) points.push({ amount: a, from: prev.win, to: top });
+      if (id) prev = { id: id, win: top };
     }
     return points;
   }
 
   /* ── 상태 ─────────────────────────────────────────────── */
   var state = {
-    merchant: "11st",
-    amount: 50000,
+    merchantId: null,
+    custom: null,        /* { name, category } — 목록에 없는 결제처를 직접 입력한 경우 */
+    pendingQuery: null,  /* 업종 선택을 기다리는 검색어 */
+    amount: null,
     onlyOwned: false,
     owned: []
   };
@@ -156,87 +209,113 @@
     return state.onlyOwned && state.owned.length ? state.owned : null;
   }
 
-  function merchantById(id) {
-    return DB.merchants.filter(function (m) { return m.id === id; })[0];
+  function context() {
+    if (state.merchantId) {
+      var m = merchantById(state.merchantId);
+      return { name: m.name, category: m.category, merchantId: m.id, custom: false };
+    }
+    if (state.custom) {
+      return { name: state.custom.name, category: state.custom.category, merchantId: null, custom: true };
+    }
+    return null;
   }
 
   /* ── DOM ──────────────────────────────────────────────── */
-  var $ = function (sel) { return document.querySelector(sel); };
+  var $ = function (s) { return document.querySelector(s); };
   var el = {
     search: $("#merchant-search"),
     suggest: $("#merchant-suggest"),
-    popular: $("#merchant-popular"),
+    picked: $("#merchant-picked"),
+    fallback: $("#category-fallback"),
+    examples: $("#merchant-examples"),
     amount: $("#amount"),
     presets: $("#amount-presets"),
     onlyOwned: $("#only-owned"),
     appChips: $("#app-chips"),
     results: $("#results"),
-    stampDate: $("#stamp-date")
+    stampDate: $("#stamp-date"),
+    stampCount: $("#stamp-count")
   };
 
-  function esc(s) {
-    return String(s).replace(/[&<>"]/g, function (c) {
-      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
-    });
-  }
-
-  /* 결제처 검색 */
-  function matchMerchants(q) {
-    q = q.trim().toLowerCase();
-    if (!q) return DB.merchants.slice(0, 8);
-    return DB.merchants.filter(function (m) {
-      var hay = [m.name, m.category].concat(m.aliases || []).join(" ").toLowerCase();
-      return hay.indexOf(q) !== -1;
-    });
-  }
-
+  /* 검색 드롭다운 */
   function renderSuggest(q, open) {
-    if (!open) { el.suggest.hidden = true; el.suggest.innerHTML = ""; return; }
-    var list = matchMerchants(q);
-    if (!list.length) {
-      el.suggest.innerHTML = '<li class="empty">"' + esc(q) + '" 에 등록된 결제처가 없어요. 데이터 파일에 추가할 수 있습니다.</li>';
-    } else {
-      el.suggest.innerHTML = list.map(function (m) {
-        var count = DB.benefits.filter(function (b) { return b.merchant === m.id; }).length;
-        return '<li><button type="button" data-id="' + m.id + '">' +
-          "<span>" + esc(m.name) + "</span>" +
-          '<span class="cat">' + esc(m.category) + " · 혜택 " + count + "건</span>" +
-          "</button></li>";
-      }).join("");
-    }
+    if (!open || !q.trim()) { el.suggest.hidden = true; el.suggest.innerHTML = ""; return; }
+    var list = searchMerchants(q).slice(0, 10);
+    var html = list.map(function (m) {
+      var n = candidates({ merchantId: m.id, category: m.category }).length;
+      return '<li><button type="button" data-id="' + m.id + '">' +
+        "<span>" + esc(m.name) + "</span>" +
+        '<span class="cat">' + esc(categoryName(m.category)) + " · 혜택 " + n + "건</span>" +
+        "</button></li>";
+    }).join("");
+    html += '<li><button type="button" class="custom" data-custom="1">' +
+      '<span>“' + esc(q.trim()) + '” 직접 입력</span>' +
+      '<span class="cat">업종을 고르면 비교됩니다</span></button></li>';
+    el.suggest.innerHTML = html;
     el.suggest.hidden = false;
   }
 
-  function renderPopular() {
-    var ids = ["11st", "coupang", "baemin", "starbucks", "oliveyoung", "gs25", "emart", "musinsa"];
-    el.popular.innerHTML = ids.map(function (id) {
+  /* 고른 결제처 표시 */
+  function renderPicked() {
+    var ctx = context();
+    if (!ctx) { el.picked.hidden = true; el.picked.innerHTML = ""; return; }
+    el.picked.innerHTML =
+      "<div>" +
+        '<div class="picked-name">' + esc(ctx.name) + "</div>" +
+        '<div class="picked-cat">' + esc(categoryName(ctx.category)) +
+          (ctx.custom ? " · 직접 입력" : "") + "</div>" +
+      "</div>" +
+      '<button type="button" class="linkish" id="clear-merchant">바꾸기</button>';
+    el.picked.hidden = false;
+  }
+
+  /* 업종 고르기 (목록에 없는 결제처) */
+  function renderFallback() {
+    if (!state.pendingQuery) { el.fallback.hidden = true; el.fallback.innerHTML = ""; return; }
+    el.fallback.innerHTML =
+      "<p><b>“" + esc(state.pendingQuery) + "”</b>" +
+      josaSuffix(state.pendingQuery, "은/는") + " 아직 목록에 없어요. 업종을 고르면 그 업종 혜택으로 비교합니다.</p>" +
+      '<div class="chips">' + Object.keys(DB.categories).map(function (c) {
+        return '<button type="button" class="chip" data-cat="' + c + '">' +
+          esc(DB.categories[c].name) + "</button>";
+      }).join("") + "</div>";
+    el.fallback.hidden = false;
+  }
+
+  function renderExamples() {
+    var ids = ["kream", "coupang", "baemin", "starbucks", "netflix", "oliveyoung"];
+    el.examples.innerHTML = ids.map(function (id) {
       var m = merchantById(id);
-      return '<button type="button" class="chip" data-id="' + id + '" aria-pressed="' +
-        (state.merchant === id) + '">' + esc(m.name) + "</button>";
+      return '<button type="button" class="chip" data-id="' + id + '">' + esc(m.name) + "</button>";
     }).join("");
   }
 
   function renderAppChips() {
     el.appChips.innerHTML = Object.keys(DB.apps).map(function (id) {
-      var a = DB.apps[id];
       return '<button type="button" class="chip" data-app="' + id + '" aria-pressed="' +
-        (state.owned.indexOf(id) !== -1) + '">' + esc(a.name.replace(/\s*\(.*\)/, "")) + "</button>";
+        (state.owned.indexOf(id) !== -1) + '">' +
+        esc(DB.apps[id].name.replace(/\s*\(.*\)/, "")) + "</button>";
     }).join("");
   }
 
-  /* 결과 */
+  /* ── 결과 조각 ────────────────────────────────────────── */
+  function scopeTag(b) {
+    return b.scope === "merchant"
+      ? '<span class="tag scope-merchant">가맹점 전용</span>'
+      : '<span class="tag scope-category">' + esc(categoryName(b.category)) + " 업종</span>";
+  }
+
   function metaTags(r) {
     var b = r.benefit;
-    var tags = ['<span class="tag type-' + b.benefitType + '">' + b.benefitType + "</span>"];
-    if (r.capped) tags.push('<span class="tag capped">한도 도달</span>');
-    if (b.cap != null && !r.capped) tags.push('<span class="tag">한도 ' + won(b.cap) + "</span>");
-    if (b.minAmount) tags.push('<span class="tag">' + won(b.minAmount) + " 이상</span>");
-    if (b.monthlyCap) tags.push('<span class="tag">' + esc(b.monthlyCap) + "</span>");
-    return '<div class="meta">' + tags.join("") + "</div>";
+    var t = [scopeTag(b), '<span class="tag type-' + b.benefitType + '">' + b.benefitType + "</span>"];
+    if (r.capped) t.push('<span class="tag capped">한도 도달</span>');
+    else if (b.cap != null) t.push('<span class="tag">한도 ' + won(b.cap) + "</span>");
+    if (b.minAmount) t.push('<span class="tag">' + won(b.minAmount) + " 이상</span>");
+    if (b.monthlyCap) t.push('<span class="tag">' + esc(b.monthlyCap) + "</span>");
+    return '<div class="meta">' + t.join("") + "</div>";
   }
 
   function renderWinner(r, amount, runnerUp) {
-    var gap = runnerUp ? r.discount - runnerUp.discount : 0;
     return '<section class="winner" aria-labelledby="winner-name">' +
       '<div class="winner-top">' +
         "<div>" +
@@ -252,8 +331,8 @@
       '<div class="winner-body">' +
         '<div class="calc">' + esc(r.formula) + "</div>" +
         "<p>" + esc(r.benefit.condition) +
-          (runnerUp ? " · 2위 " + esc(runnerUp.app.name) + "보다 " + won(gap) + " 더 아낍니다." : "") +
-        "</p>" +
+          (runnerUp ? " · 2위 " + esc(runnerUp.app.name) + "보다 " +
+            won(r.discount - runnerUp.discount) + " 더 아낍니다." : "") + "</p>" +
         metaTags(r) +
         (r.benefit.note ? '<p class="gap">' + esc(r.benefit.note) + "</p>" : "") +
       "</div>" +
@@ -282,16 +361,51 @@
       '<div class="who">' +
         '<div class="app-name">' + esc(r.app.name) + "</div>" +
         '<div class="reason">' + esc(r.reason) + "</div>" +
+        metaTags(r) +
       "</div>" +
       '<div class="figure"><div class="amt">조건 미충족</div></div>' +
     "</li>";
   }
 
+  /* 금액을 아직 안 넣었을 때 — 혜택 목록만 */
+  function renderPreview(ctx) {
+    var list = candidates(ctx)
+      .filter(function (b) { var o = ownedFilter(); return !o || o.indexOf(b.app) !== -1; })
+      .sort(function (a, b) { return ceilingOf(b) - ceilingOf(a); });
+
+    if (!list.length) {
+      return '<div class="empty-state">이 업종에 등록된 혜택이 없습니다. ' +
+        "<code>data/benefits.js</code> 에 추가해 주세요.</div>";
+    }
+
+    return '<section class="list-card">' +
+      '<div class="section-title"><h2>' + esc(ctx.name) + "에서 쓸 수 있는 혜택 " + list.length + "건</h2>" +
+      '<span class="hint">금액을 넣으면 실제 할인액으로 순위를 매깁니다</span></div>' +
+      '<ul class="rank-list">' + list.map(function (b) {
+        var head = b.kind === "rate" ? pct(b.rate)
+          : b.kind === "fixed" ? won(b.amount) + " 정액"
+          : "구간별 정액";
+        var ceil = ceilingOf(b);
+        return '<li class="rank-row preview">' +
+          '<div class="rank">·</div>' +
+          '<div class="who">' +
+            '<div class="app-name">' + esc(DB.apps[b.app].name) + "</div>" +
+            '<div class="cond">' + esc(b.condition) + "</div>" +
+            metaTags({ benefit: b, capped: false }) +
+          "</div>" +
+          '<div class="figure">' +
+            '<div class="amt">' + esc(head) + "</div>" +
+            '<div class="rate">' + (ceil === Infinity ? "한도 없음" : "최대 " + won(ceil)) + "</div>" +
+          "</div>" +
+        "</li>";
+      }).join("") + "</ul></section>";
+  }
+
   /* 금액대별 할인액 그래프 */
-  function renderChart(merchantId, amount, series) {
+  function renderChart(ctx, amount, series) {
     if (series.length < 2) return "";
 
-    var W = 640, H = 240, padL = 58, padR = 16, padT = 16, padB = 34;
+    var W = 640, H = 240, padL = 58, padR = 16, padT = 26, padB = 34;
     var maxX = Math.max(100000, Math.ceil((amount * 2) / 50000) * 50000);
     var samples = 60;
     var colors = ["var(--accent)", "var(--ochre)", "var(--warn)"];
@@ -307,28 +421,23 @@
     });
 
     var maxY = 0;
-    lines.forEach(function (l) {
-      l.pts.forEach(function (p) { if (p.y > maxY) maxY = p.y; });
-    });
+    lines.forEach(function (l) { l.pts.forEach(function (p) { if (p.y > maxY) maxY = p.y; }); });
     if (maxY <= 0) return "";
     maxY = Math.ceil(maxY / 1000) * 1000;
 
     var sx = function (v) { return padL + (v / maxX) * (W - padL - padR); };
     var sy = function (v) { return H - padB - (v / maxY) * (H - padT - padB); };
 
-    var xTicks = [0, maxX * 0.25, maxX * 0.5, maxX * 0.75, maxX];
-    var yTicks = [0, maxY / 2, maxY];
-
     var svg = '<svg viewBox="0 0 ' + W + " " + H + '" role="img" aria-label="결제금액에 따른 앱별 할인액 변화">';
     svg += '<text x="0" y="11" font-size="10" font-family="var(--f-body)" fill="var(--muted)">할인액(원)</text>';
 
-    yTicks.forEach(function (t) {
+    [0, maxY / 2, maxY].forEach(function (t) {
       svg += '<line x1="' + padL + '" y1="' + sy(t) + '" x2="' + (W - padR) + '" y2="' + sy(t) +
         '" stroke="var(--line)" stroke-width="1" fill="none"/>' +
         '<text x="' + (padL - 8) + '" y="' + (sy(t) + 4) + '" text-anchor="end" font-size="11" ' +
         'font-family="var(--f-mono)" fill="var(--muted)">' + num(t) + "</text>";
     });
-    xTicks.forEach(function (t) {
+    [0, maxX * 0.25, maxX * 0.5, maxX * 0.75, maxX].forEach(function (t) {
       svg += '<text x="' + sx(t) + '" y="' + (H - padB + 18) + '" text-anchor="middle" font-size="11" ' +
         'font-family="var(--f-mono)" fill="var(--muted)">' + axisLabel(Math.round(t)) + "</text>";
     });
@@ -360,10 +469,9 @@
         esc(DB.apps[l.benefit.app].name) + "</span>";
     }).join("");
 
-    var notes = switchPoints(merchantId, ownedFilter(), maxX).slice(0, 3).map(function (p) {
-      return "<li>" + esc(manwon(p.amount)) + " 이상부터는 <b>" + esc(p.to.app.name) +
-        "</b>" + esc(josa(p.to.app.name, "이/가").slice(p.to.app.name.length)) +
-        " " + esc(p.from.app.name) + "보다 유리해집니다.</li>";
+    var notes = switchPoints(ctx, ownedFilter(), maxX).slice(0, 3).map(function (p) {
+      return "<li>" + esc(manwon(p.amount)) + " 이상부터는 <b>" + esc(p.to.app.name) + "</b>" +
+        josaSuffix(p.to.app.name, "이/가") + " " + esc(p.from.app.name) + "보다 유리해집니다.</li>";
     }).join("");
 
     return '<section class="chart-card">' +
@@ -375,37 +483,65 @@
     "</section>";
   }
 
+  var FOOTNOTE = '<section class="note-card">' +
+    "<b>계산 방식</b> · 할인율 × 결제금액을 구한 뒤 할인 한도와 최소 결제금액을 적용해 실제로 깎이는 " +
+    "금액으로 줄을 세웁니다. 같은 금액이면 적립보다 즉시할인을 앞에 둡니다. 월 한도·선착순 여부는 " +
+    "계산에 넣지 않고 표시만 하니 앱에서 남은 횟수를 확인하세요. " +
+    "머니 충전·선불 잔액 같은 <b>현금성 결제 혜택은 비교에서 제외</b>하고 카드 결제만 다룹니다.<br>" +
+    "<b>데이터</b> · " + esc(DB.source) + " 값은 <code>data/benefits.js</code> 한 파일에 모여 있습니다." +
+  "</section>";
+
+  function renderEmpty() {
+    return '<div class="hero-empty">' +
+      "<h2>결제할 곳을 입력해 보세요</h2>" +
+      "<p>등록된 결제처면 그 가맹점 전용 제휴까지, 없는 곳이면 업종을 골라 " +
+      "그 업종에 걸린 카드사앱·핀테크앱 혜택을 비교합니다.</p>" +
+      '<div class="steps">' +
+        "<div><b>1</b> 결제처 입력 <span>이름·영문·초성 모두 검색됩니다</span></div>" +
+        "<div><b>2</b> 결제 금액 입력 <span>한도와 최소금액까지 반영해 계산합니다</span></div>" +
+        "<div><b>3</b> 순위 확인 <span>실제로 깎이는 금액 순으로 정렬됩니다</span></div>" +
+      "</div>" +
+    "</div>" + FOOTNOTE;
+  }
+
   function renderResults() {
-    var m = merchantById(state.merchant);
+    var ctx = context();
+    if (!ctx) { el.results.innerHTML = renderEmpty(); return; }
+
+    var owned = ownedFilter();
     var amount = state.amount;
-    var ranked = rankAll(state.merchant, amount, ownedFilter());
     var html = "";
 
-    html += '<div class="headline"><strong>' + esc(m.name) + "</strong>에서 " +
-      '<strong class="num">' + won(amount) + "</strong> 결제 시 · 등록된 혜택 " + ranked.total + "건" +
-      (state.onlyOwned && state.owned.length ? " · 보유 앱만 보는 중" : "") + "</div>";
+    if (!amount) {
+      html += '<div class="headline"><strong>' + esc(ctx.name) + "</strong> · " +
+        esc(categoryName(ctx.category)) + (ctx.custom ? " (직접 입력)" : "") +
+        " · 결제 금액을 넣으면 순위가 나옵니다</div>";
+      html += renderPreview(ctx);
+      el.results.innerHTML = html + FOOTNOTE;
+      return;
+    }
+
+    var ranked = rankAll(ctx, amount, owned);
+    html += '<div class="headline"><strong>' + esc(ctx.name) + "</strong>에서 " +
+      '<strong class="num">' + won(amount) + "</strong> 결제 시 · 비교한 혜택 " + ranked.total + "건" +
+      (state.onlyOwned && state.owned.length ? " · 보유 앱만" : "") + "</div>";
 
     if (!ranked.eligible.length) {
       html += '<div class="empty-state">' +
         (ranked.total
           ? "이 금액에서는 조건을 채우는 혜택이 없습니다. 금액을 올리거나 보유 앱 필터를 풀어 보세요."
-          : "등록된 혜택이 없습니다. <code>data/benefits.js</code> 에 추가해 주세요.") +
-        "</div>";
+          : "등록된 혜택이 없습니다. <code>data/benefits.js</code> 에 추가해 주세요.") + "</div>";
     } else {
       var top = ranked.eligible[0];
       html += renderWinner(top, amount, ranked.eligible[1]);
-
       if (ranked.eligible.length > 1) {
         html += '<section class="list-card">' +
-          '<div class="section-title"><h2>나머지 순위</h2>' +
-          '<span class="hint">1위와의 차이</span></div>' +
+          '<div class="section-title"><h2>나머지 순위</h2><span class="hint">1위와의 차이</span></div>' +
           '<ul class="rank-list">' +
           ranked.eligible.slice(1).map(function (r, i) { return renderRow(r, i + 2, top); }).join("") +
           "</ul></section>";
       }
-
-      html += renderChart(state.merchant, amount,
-        ranked.eligible.slice(0, 3).map(function (r) { return r.benefit; }));
+      html += renderChart(ctx, amount, ranked.eligible.slice(0, 3).map(function (r) { return r.benefit; }));
     }
 
     if (ranked.blocked.length) {
@@ -415,52 +551,89 @@
         '<ul class="rank-list">' + ranked.blocked.map(renderBlocked).join("") + "</ul></section>";
     }
 
-    html += '<section class="note-card">' +
-      "<b>계산 방식</b> · 할인율 × 결제금액을 구한 뒤 할인 한도와 최소 결제금액을 적용해 " +
-      "실제로 깎이는 금액으로 줄을 세웁니다. 같은 금액이면 적립보다 즉시할인을 앞에 둡니다. " +
-      "월 한도·선착순 여부는 계산에 넣지 않고 표시만 하니 앱에서 남은 횟수를 확인하세요.<br>" +
-      "<b>데이터</b> · " + esc(DB.source) + " 값은 <code>data/benefits.js</code> 한 파일에 모여 있습니다." +
-    "</section>";
-
-    el.results.innerHTML = html;
+    el.results.innerHTML = html + FOOTNOTE;
   }
 
   function render() {
-    renderPopular();
+    renderPicked();
+    renderFallback();
     renderAppChips();
     el.onlyOwned.checked = state.onlyOwned;
     renderResults();
   }
 
   /* ── 이벤트 ───────────────────────────────────────────── */
+  function pickMerchant(id) {
+    state.merchantId = id;
+    state.custom = null;
+    state.pendingQuery = null;
+    el.search.value = "";
+    renderSuggest("", false);
+    render();
+  }
+
   el.search.addEventListener("input", function () { renderSuggest(el.search.value, true); });
   el.search.addEventListener("focus", function () { renderSuggest(el.search.value, true); });
   el.search.addEventListener("blur", function () {
     setTimeout(function () { renderSuggest("", false); }, 120);
   });
-  el.suggest.addEventListener("mousedown", function (e) { e.preventDefault(); });
-  el.suggest.addEventListener("click", function (e) {
-    var btn = e.target.closest("button[data-id]");
-    if (!btn) return;
-    state.merchant = btn.dataset.id;
+  el.search.addEventListener("keydown", function (e) {
+    if (e.key !== "Enter") return;
+    e.preventDefault();
+    var q = el.search.value.trim();
+    if (!q) return;
+    var hit = searchMerchants(q)[0];
+    if (hit) { pickMerchant(hit.id); return; }
+    state.merchantId = null;
+    state.custom = null;
+    state.pendingQuery = q;
     el.search.value = "";
     renderSuggest("", false);
     render();
   });
 
-  el.popular.addEventListener("click", function (e) {
-    var btn = e.target.closest("button[data-id]");
+  el.suggest.addEventListener("mousedown", function (e) { e.preventDefault(); });
+  el.suggest.addEventListener("click", function (e) {
+    var btn = e.target.closest("button");
     if (!btn) return;
-    state.merchant = btn.dataset.id;
+    if (btn.dataset.id) { pickMerchant(btn.dataset.id); return; }
+    if (btn.dataset.custom) {
+      state.merchantId = null;
+      state.custom = null;
+      state.pendingQuery = el.search.value.trim();
+      el.search.value = "";
+      renderSuggest("", false);
+      render();
+    }
+  });
+
+  el.examples.addEventListener("click", function (e) {
+    var btn = e.target.closest("button[data-id]");
+    if (btn) pickMerchant(btn.dataset.id);
+  });
+
+  el.fallback.addEventListener("click", function (e) {
+    var btn = e.target.closest("button[data-cat]");
+    if (!btn) return;
+    state.custom = { name: state.pendingQuery, category: btn.dataset.cat };
+    state.pendingQuery = null;
     render();
   });
 
+  el.picked.addEventListener("click", function (e) {
+    if (!e.target.closest("#clear-merchant")) return;
+    state.merchantId = null;
+    state.custom = null;
+    state.pendingQuery = null;
+    render();
+    el.search.focus();
+  });
+
   el.amount.addEventListener("input", function () {
-    var digits = el.amount.value.replace(/[^0-9]/g, "");
-    var v = parseInt(digits || "0", 10);
+    var v = parseInt(el.amount.value.replace(/[^0-9]/g, "") || "0", 10);
     if (v > 100000000) v = 100000000;
     el.amount.value = v ? num(v) : "";
-    state.amount = v;
+    state.amount = v || null;
     renderResults();
   });
 
@@ -481,8 +654,7 @@
   el.appChips.addEventListener("click", function (e) {
     var btn = e.target.closest("button[data-app]");
     if (!btn) return;
-    var id = btn.dataset.app;
-    var i = state.owned.indexOf(id);
+    var id = btn.dataset.app, i = state.owned.indexOf(id);
     if (i === -1) state.owned.push(id); else state.owned.splice(i, 1);
     persist();
     renderAppChips();
@@ -490,7 +662,8 @@
   });
 
   /* ── 시작 ─────────────────────────────────────────────── */
-  el.amount.value = num(state.amount);
   el.stampDate.textContent = DB.updatedAt;
+  el.stampCount.textContent = "결제처 " + DB.merchants.length + "곳 · 혜택 " + DB.benefits.length + "건";
+  renderExamples();
   render();
 })();

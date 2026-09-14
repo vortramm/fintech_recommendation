@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>어디서 결제할까</title>
-<meta name="description" content="결제처와 금액을 넣으면 카드사앱·핀테크앱 중 실제로 가장 많이 깎이는 앱을 찾아줍니다.">
+<meta name="description" content="결제처를 입력하면 할인해 주는 카드사앱·핀테크앱을 찾아 실제 할인액 순으로 정렬합니다.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap">
@@ -17,12 +17,12 @@
     <div>
       <p class="eyebrow">결제 전 30초</p>
       <h1>어디서 결제해야 <em>가장 많이 깎일까</em></h1>
-      <p>결제처와 금액을 넣으면 할인 한도까지 계산해서 앱 순위를 매깁니다.</p>
+      <p>결제처를 입력하면 할인해 주는 앱을 찾아 실제 할인액 순으로 세웁니다.</p>
     </div>
     <div class="stamp">
       <b>데이터 기준</b>
       <span class="num" id="stamp-date">–</span>
-      <span>· 앱에서 한 번 더 확인하세요</span>
+      <span id="stamp-count"></span>
     </div>
   </div>
 </header>
@@ -33,16 +33,18 @@
     <div class="field">
       <label class="title" for="merchant-search">어디서 결제하나요</label>
       <div class="search">
-        <input type="text" id="merchant-search" placeholder="결제처 검색 · 예: 11번가, 배민" aria-describedby="merchant-popular">
+        <input type="text" id="merchant-search" placeholder="결제처 입력 · 크림, KREAM, ㅋㄹ">
         <ul class="suggest" id="merchant-suggest" hidden></ul>
       </div>
-      <div class="chips" id="merchant-popular"></div>
+      <div class="picked" id="merchant-picked" hidden></div>
+      <div class="fallback" id="category-fallback" hidden></div>
+      <div class="chips" id="merchant-examples"></div>
     </div>
 
     <div class="field">
       <label class="title" for="amount">얼마를 결제하나요</label>
       <div class="amount-input">
-        <input type="text" id="amount" inputmode="numeric" aria-label="결제 금액(원)">
+        <input type="text" id="amount" inputmode="numeric" placeholder="예: 50,000" aria-label="결제 금액(원)">
         <span class="unit">원</span>
       </div>
       <div class="chips" id="amount-presets">

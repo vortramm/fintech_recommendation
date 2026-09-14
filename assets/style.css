@@ -71,6 +71,9 @@
 
 * { box-sizing: border-box; }
 
+/* 클래스 선언이 UA의 [hidden] 규칙을 덮어쓰지 않도록 */
+[hidden] { display: none !important; }
+
 body {
   margin: 0;
   background: var(--bg);
@@ -424,3 +427,93 @@ button, input { font: inherit; color: inherit; }
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; animation: none !important; }
 }
+
+/* ── 결제처 입력 · 업종 고르기 ───────────────────────────── */
+.suggest li button.custom { border-top: 1px solid var(--line); margin-top: 4px; padding-top: 10px; }
+.suggest li button.custom span:first-child { color: var(--accent); font-weight: 500; }
+
+.picked {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 10px;
+  padding: 10px 12px;
+  border: 1px solid var(--accent);
+  background: var(--accent-soft);
+  border-radius: 8px;
+}
+.picked-name { font-weight: 600; font-size: 15px; color: var(--accent-ink); }
+.picked-cat { font-size: 12px; color: var(--ink-soft); }
+.linkish {
+  border: 0;
+  background: none;
+  color: var(--accent-ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-size: 12.5px;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.fallback {
+  margin-top: 10px;
+  padding: 12px;
+  border: 1px dashed var(--line-strong);
+  border-radius: 8px;
+  background: var(--surface-2);
+}
+.fallback p { font-size: 13px; color: var(--ink-soft); }
+.fallback b { color: var(--ink); }
+
+/* ── 혜택 출처 배지 ──────────────────────────────────────── */
+.tag.scope-merchant {
+  color: var(--accent-ink);
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  font-weight: 500;
+}
+.tag.scope-category { color: var(--muted); }
+
+.rank-row.preview .rank { color: var(--line-strong); }
+.rank-row.preview .figure .amt { font-size: 15px; }
+
+/* ── 시작 화면 ───────────────────────────────────────────── */
+.hero-empty {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 34px 28px;
+}
+.hero-empty h2 {
+  font-family: var(--f-display);
+  font-size: clamp(21px, 3.4vw, 27px);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.hero-empty > p { color: var(--muted); font-size: 14px; max-width: 52ch; }
+.steps { display: grid; gap: 10px; margin-top: 22px; }
+.steps > div {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+  font-size: 14px;
+  font-weight: 500;
+}
+.steps b {
+  font-family: var(--f-mono);
+  color: var(--accent);
+  font-size: 12px;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  width: 20px;
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+}
+.steps span { color: var(--muted); font-size: 13px; font-weight: 400; }
