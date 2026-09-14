@@ -182,6 +182,33 @@ function fromCaptures(captures, src) {
 /* ── 소스 한 곳 수집 ──────────────────────────────────────── */
 import { existsSync } from "node:fs";
 
+/* 브라우저 실행 설정을 한 군데서 정합니다.
+   구형 맥처럼 Playwright 크로미엄을 못 받는 환경에서는 이미 깔린 크롬을 씁니다.
+     BROWSER_CHANNEL=chrome  이미 설치된 크롬 사용
+     CHROMIUM_PATH=/경로     실행 파일을 직접 지정 */
+function launchOptions(headless) {
+  const proxy = process.env.HTTPS_PROXY || process.env.https_proxy || null;
+  const opts = {
+    headless,
+    args: ["--no-sandbox"],
+    ...(proxy ? { proxy: { server: proxy, bypass: "localhost,127.0.0.1,::1" } } : {})
+  };
+  if (process.env.BROWSER_CHANNEL) opts.channel = process.env.BROWSER_CHANNEL;
+  else if (process.env.CHROMIUM_PATH) opts.executablePath = process.env.CHROMIUM_PATH;
+  return opts;
+}
+
+async function openBrowser(headless = true) {
+  try {
+    return await chromium.launch(launchOptions(headless));
+  } catch (err) {
+    console.error("\n브라우저를 띄우지 못했습니다: " + String(err.message || err).split("\n")[0]);
+    console.error("· Playwright 크로미엄이 없으면: npx playwright install chromium");
+    console.error("· 구형 맥이라 설치가 안 되면 이미 깔린 크롬을 쓰세요: BROWSER_CHANNEL=chrome npm run ...");
+    process.exit(1);
+  }
+}
+
 function authPathFor(id) { return join(ROOT, AUTH_DIR, id + ".json"); }
 function hasAuth(id) { return existsSync(authPathFor(id)); }
 
@@ -195,7 +222,7 @@ async function login(sourceId) {
   const src = [].concat(reg.programs, reg.public).find((x) => x.id === sourceId);
   if (!src) { console.error(`sources.json 에 id "${sourceId}" 가 없습니다.`); process.exit(1); }
 
-  const browser = await chromium.launch({ headless: false, executablePath: process.env.CHROMIUM_PATH || undefined });
+  const browser = await openBrowser(false);
   const ctx = await browser.newContext({ userAgent: UA, locale: "ko-KR" });
   const page = await ctx.newPage();
   await page.goto(src.catalogUrl || src.url);
@@ -342,7 +369,7 @@ async function selftest() {
   await new Promise((r) => server.listen(0, "127.0.0.1", r));
   const base = "http://127.0.0.1:" + server.address().port;
 
-  const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH || undefined, args: ["--no-sandbox"] });
+  const browser = await openBrowser(true);
 
   const dom = await collectSource(browser, {
     id: "selftest-dom", app: "test", name: "픽스처(DOM)", url: base + "/list.html",
@@ -419,12 +446,7 @@ async function replay(dir) {
 
 /* 주소 하나만 열어 보고 혜택 목록 응답이 있는지 봅니다 — sources.json 을 고치기 전에 확인용 */
 async function probe(url) {
-  const proxy = process.env.HTTPS_PROXY || process.env.https_proxy || null;
-  const browser = await chromium.launch({
-    executablePath: process.env.CHROMIUM_PATH || undefined,
-    proxy: proxy ? { server: proxy, bypass: "localhost,127.0.0.1,::1" } : undefined,
-    args: ["--no-sandbox"]
-  });
+  const browser = await openBrowser(true);
   const { row, raw, hints } = await collectSource(browser, {
     id: "probe", app: argOf("--app", "probe"), name: "probe", url,
     keywords: ["할인", "적립", "쿠폰", "캐시백", "혜택"]
@@ -555,13 +577,7 @@ async function main() {
     .concat(reg.public)
     .filter((s) => !ONLY || s.id.includes(ONLY));
 
-  const proxy = process.env.HTTPS_PROXY || process.env.https_proxy || null;
-  const browser = await chromium.launch({
-    executablePath: process.env.CHROMIUM_PATH || undefined,
-    /* 프록시를 쓰더라도 로컬 주소는 직접 붙습니다 */
-    proxy: proxy ? { server: proxy, bypass: "localhost,127.0.0.1,::1" } : undefined,
-    args: ["--no-sandbox"]
-  });
+  const browser = await openBrowser(true);
 
   const rows = [], raw = [], structured = [], hints = [];
   for (const src of targets) {

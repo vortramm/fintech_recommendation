@@ -184,6 +184,22 @@ npm run collect -- --only samsung                        # 수집해서 확인
   헤드리스 브라우저로 안정적으로 통과하기 어렵고, 통과시키려 애쓸수록 계정 잠김 위험이 커집니다.
 - 대부분의 카드사 이용약관은 자동화된 접근을 금지합니다.
 
+## 구형 맥에서 브라우저가 안 받아질 때
+
+Playwright 크로미엄은 비교적 최신 macOS 를 요구합니다. `npx playwright install chromium`
+이 실패하거나 실행이 안 되면, 이미 깔린 크롬을 대신 씁니다.
+
+```bash
+BROWSER_CHANNEL=chrome npm run login -- hana-pick
+BROWSER_CHANNEL=chrome npm run collect:mine
+```
+
+크롬도 없다면 실행 파일을 직접 가리켜도 됩니다.
+
+```bash
+export CHROMIUM_PATH="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+```
+
 ## 내 계정으로 가져오기 — 로컬에서만 도는 경로
 
 본인 컴퓨터에서만 돌아갑니다. CI 에서는 막혀 있습니다.

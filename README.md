@@ -173,7 +173,7 @@ node tools/from-har.mjs capture.har --write samsung-link
 
 ```bash
 npm install                          # Node 18 이상
-npx playwright install chromium
+npx playwright install chromium      # 구형 맥이라 실패하면 BROWSER_CHANNEL=chrome 로 우회
 
 npm run selftest                     # 네트워크 없이 수집 로직 점검
 npm run collect                      # 전체 수집 → data/feed.js
