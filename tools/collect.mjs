@@ -203,6 +203,7 @@ async function login(sourceId) {
   console.log("\n브라우저가 열렸습니다. 직접 로그인한 뒤 혜택 목록 화면까지 가 주세요.");
   console.log("다 되면 이 터미널에서 Enter 를 누르세요. (세션만 저장하고 비밀번호는 저장하지 않습니다)");
   await new Promise((resolve) => process.stdin.once("data", resolve));
+  process.stdin.pause();   /* 놓아 주지 않으면 수집이 끝나도 프로세스가 안 끝납니다 */
 
   await mkdir(join(ROOT, AUTH_DIR), { recursive: true });
   await ctx.storageState({ path: authPathFor(sourceId) });
@@ -608,11 +609,19 @@ async function main() {
   /* 로그인 세션으로 모은 것은 개인 혜택이므로 공개 feed 와 분리해 로컬 파일로만 씁니다 */
   const authIds = new Set(rows.filter((r) => r.auth).map((r) => r.id));
   if (authIds.size) {
+    /* 전에 받아 둔 다른 소스의 개인 혜택은 그대로 둡니다 */
+    let prevLocal = { sources: [], structured: [], raw: [] };
+    try {
+      const txt = await readFile(join(ROOT, LOCAL_FEED), "utf8");
+      prevLocal = JSON.parse(txt.slice(txt.indexOf("{"), txt.lastIndexOf("}") + 1));
+    } catch { /* 처음이면 없습니다 */ }
+    const keepLocal = (list) => (list || []).filter((x) => !authIds.has(x.source || x.id));
+
     const personal = {
       collectedAt: feed.collectedAt,
-      sources: rows.filter((r) => authIds.has(r.id)),
-      structured: structured.filter((b) => authIds.has(b.source)),
-      raw: raw.filter((r) => authIds.has(r.source))
+      sources: keepLocal(prevLocal.sources).concat(rows.filter((r) => authIds.has(r.id))),
+      structured: keepLocal(prevLocal.structured).concat(structured.filter((b) => authIds.has(b.source))),
+      raw: keepLocal(prevLocal.raw).concat(raw.filter((r) => authIds.has(r.source)))
     };
     await writeFile(join(ROOT, LOCAL_FEED),
       "/* 내 계정으로 받은 개인 혜택입니다. git 에 올라가지 않습니다. */\n" +
@@ -624,10 +633,15 @@ async function main() {
     feed.raw = feed.raw.filter((r) => !authIds.has(r.source));
   }
 
-  const body = JSON.stringify(feed, null, 2);
-  await writeFile(join(ROOT, "data/feed.json"), body + "\n");
-  await writeFile(join(ROOT, "data/feed.js"),
-    "/* tools/collect.mjs 가 생성합니다. 직접 고치지 마세요. */\nwindow.DISCOUNT_FEED = " + body + ";\n");
+  if (USE_AUTH) {
+    /* 내 세션으로 돌릴 때는 공개 feed 를 다시 쓰지 않습니다 — 레포가 깨끗하게 유지됩니다 */
+    console.log("공개 feed(data/feed.js)는 건드리지 않았습니다.");
+  } else {
+    const body = JSON.stringify(feed, null, 2);
+    await writeFile(join(ROOT, "data/feed.json"), body + "\n");
+    await writeFile(join(ROOT, "data/feed.js"),
+      "/* tools/collect.mjs 가 생성합니다. 직접 고치지 마세요. */\nwindow.DISCOUNT_FEED = " + body + ";\n");
+  }
 
   const ok = rows.filter((r) => r.status === "ok").length;
   console.log("\n소스 " + rows.length + "곳 중 " + ok + "곳 성공 · 구조화 " + structured.length +
