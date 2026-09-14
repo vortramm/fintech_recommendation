@@ -417,7 +417,7 @@ async function main() {
   }
   await browser.close();
 
-  const feed = {
+  let feed = {
     collectedAt: new Date().toISOString(),
     sources: rows,
     programs: reg.programs,
@@ -425,6 +425,25 @@ async function main() {
     raw,
     hints
   };
+
+  /* 일부만 돌렸을 때는 나머지 소스의 결과를 지우지 않고 합칩니다 */
+  if (ONLY) {
+    const touched = new Set(rows.map((r) => r.id));
+    let prev = null;
+    try { prev = JSON.parse(await readFile(join(ROOT, "data/feed.json"), "utf8")); } catch { /* 없으면 그대로 */ }
+    if (prev) {
+      const keep = (list) => (list || []).filter((x) => !touched.has(x.source || x.id));
+      feed = {
+        collectedAt: feed.collectedAt,
+        sources: (prev.sources || []).filter((r) => !touched.has(r.id)).concat(rows),
+        programs: reg.programs,
+        structured: keep(prev.structured).concat(structured),
+        raw: keep(prev.raw).concat(raw),
+        hints: keep(prev.hints).concat(hints)
+      };
+      console.log("(부분 수집 — 나머지 소스 결과는 그대로 두었습니다)");
+    }
+  }
 
   const body = JSON.stringify(feed, null, 2);
   await writeFile(join(ROOT, "data/feed.json"), body + "\n");
