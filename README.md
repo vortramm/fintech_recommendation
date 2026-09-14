@@ -137,12 +137,14 @@ LINK 페이지는 "총 0개의 혜택"만 보입니다). 그래서 수집기는 
 내 것만 보고 싶다면 **로컬 전용** 경로가 있습니다 (CI 에서는 막혀 있습니다).
 
 ```bash
-npm run collect -- --login hana-pick        # 브라우저에서 직접 로그인
-npm run collect -- --auth --only hana-pick  # 저장된 세션으로 수집
+npm run login -- hana-pick   # 브라우저에서 직접 로그인 → Enter → 바로 수집까지
+npm run collect:mine         # 저장된 세션으로 다시 수집
+npm run inspect              # 받은 응답 구조만 확인 (개인정보는 가림)
 ```
 
-세션 쿠키는 `.auth/`, 결과는 `data/feed.local.js` 에만 쌓이고 둘 다 `.gitignore` 입니다.
-아이디·비밀번호는 저장하지 않습니다. 자세한 내용은
+세션 쿠키는 `.auth/`, 응답 원본은 `.auth-captures/`, 결과는 `data/feed.local.js` 에만
+쌓이고 모두 `.gitignore` 입니다. 아이디·비밀번호는 저장하지 않습니다. 수집된 개인 혜택은
+화면에서 **"내 계정"** 배지를 달고, 공개 목록과 겹치면 내 쪽을 우선합니다. 자세한 내용은
 [docs/find-app-endpoints.md](docs/find-app-endpoints.md) 를 보세요.
 
 ### 주소를 못 찾은 프로그램은

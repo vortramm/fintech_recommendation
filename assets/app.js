@@ -33,7 +33,12 @@
       var c = {}; for (var k in b) if (Object.prototype.hasOwnProperty.call(b, k)) c[k] = b[k];
       c.origin = "local"; return c;
     });
-    return pub.concat(mine);
+    var keyOf = function (b) {
+      return [b.app, b.merchant || b.merchantName, b.kind, b.amount || b.rate].join("|");
+    };
+    var mineKeys = {};
+    mine.forEach(function (b) { mineKeys[keyOf(b)] = true; });
+    return pub.filter(function (b) { return !mineKeys[keyOf(b)]; }).concat(mine);
   }
 
   var ALL_BENEFITS = DB.benefits.concat(
@@ -581,6 +586,7 @@
       return { cls: "ok", label: "수집 " + (row.structured || row.count) + "건" };
     }
     if (row.status === "login-required") return { cls: "warn", label: "로그인 필요" };
+    if (row.status === "session-expired") return { cls: "warn", label: "세션 만료" };
     if (row.status === "blocked") return { cls: "warn", label: "차단됨" };
     if (row.status === "no-url") return { cls: "idle", label: "주소 미확인" };
     if (row.status === "empty") return { cls: "warn", label: "목록 없음" };

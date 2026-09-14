@@ -40,7 +40,7 @@ const UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
 
 const args = process.argv.slice(2);
 const argOf = (n, d) => (args.indexOf(n) === -1 ? d : args[args.indexOf(n) + 1]);
-const ONLY = argOf("--only", null);
+let ONLY = argOf("--only", null);
 const TIMEOUT = parseInt(argOf("--timeout", "30000"), 10);
 const DUMP = args.includes("--dump");
 const SOURCES = argOf("--sources", "data/sources.json");
@@ -48,9 +48,10 @@ const SELFTEST = args.includes("--selftest");
 const REPLAY = argOf("--replay", null);
 const PROBE = argOf("--probe", null);
 const LOGIN = argOf("--login", null);
-const USE_AUTH = args.includes("--auth");
+let USE_AUTH = args.includes("--auth");
 const AUTH_DIR = ".auth";           /* 세션 파일 — .gitignore 에 들어 있습니다 */
 const LOCAL_FEED = "data/feed.local.js";
+const INSPECT = argOf("--inspect", null);
 
 /* ── 텍스트에서 건질 값 ───────────────────────────────────── */
 const MONEY = /(\d[\d,]*)\s*원/;
@@ -207,9 +208,13 @@ async function login(sourceId) {
   await ctx.storageState({ path: authPathFor(sourceId) });
   await browser.close();
   console.log(`\n세션을 ${AUTH_DIR}/${sourceId}.json 에 저장했습니다 (git 에 올라가지 않습니다).`);
-  console.log("이제 npm run collect -- --auth --only " + sourceId + " 로 수집하면 됩니다.");
-  console.log("결과는 " + LOCAL_FEED + " 에만 쌓이고 공개 feed 나 레포에는 들어가지 않습니다.");
-  process.exit(0);
+
+  if (args.includes("--no-collect")) {
+    console.log("수집은 npm run collect -- --auth --only " + sourceId + " 로 하면 됩니다.");
+    process.exit(0);
+  }
+  console.log("이어서 바로 수집합니다...\n");
+  return { thenCollect: sourceId };
 }
 
 async function collectSource(browser, src) {
@@ -304,7 +309,7 @@ async function collectSource(browser, src) {
     row.captures = captures.length;
     row.structured = picked.structured.length;
     if (loginWall && !picked.structured.length) {
-      row.status = "login-required";
+      row.status = useAuth ? "session-expired" : "login-required";
       row.count = 0;
       return { row, raw: [], structured: [], hints: picked.hints };
     }
@@ -441,9 +446,97 @@ async function probe(url) {
   raw.slice(0, 8).forEach((r) => console.log("  · " + r.title));
 }
 
+/* 사람을 식별하는 필드만 가립니다. 가맹점명·할인율·기간은 파서를 쓰는 데 필요하므로 남깁니다. */
+const SENSITIVE_KEY = /cust|user|mbr|member|owner|holder|hldr|tel|phone|mdn|^hp$|email|mail|addr|주소|birth|생년|ssn|주민|acct|계좌|cardno|crdno|cardnum|token|session|jwt|auth|^ci$|^di$|이름|고객/i;
+/* 키 이름이 멀쩡해도 값 자체가 전화번호·이메일·카드번호면 가립니다 */
+const SENSITIVE_VALUE = [
+  /\b01[0-9]-?\d{3,4}-?\d{4}\b/,
+  /[\w.+-]+@[\w-]+\.[\w.]+/,
+  /\b\d{4}[- ]?\d{2,4}[-* ]?[\d*]{4}[-* ]?\d{4}\b/,
+  /\b\d{6}[-\s]?[1-4]\d{6}\b/
+];
+
+function maskValue(key, value) {
+  if (value === null || value === undefined) return value;
+  if (SENSITIVE_KEY.test(key)) return "***";
+  if (typeof value === "string") {
+    if (SENSITIVE_VALUE.some((re) => re.test(value))) return "***";
+    if (value.length > 60) return value.slice(0, 40) + "…(" + value.length + "자)";
+  }
+  return value;
+}
+
+function maskRow(row) {
+  const out = {};
+  for (const k of Object.keys(row)) {
+    const v = row[k];
+    out[k] = (v && typeof v === "object") ? (Array.isArray(v) ? "[배열 " + v.length + "]" : "{객체}") : maskValue(k, v);
+  }
+  return out;
+}
+
+/* 로그인 수집분의 구조만 훑어봅니다. 값은 가리므로 그대로 공유해도 됩니다. */
+async function inspect(dir) {
+  const { readdir } = await import("node:fs/promises");
+  const files = (await readdir(dir)).filter((f) => f.endsWith(".json"));
+  if (!files.length) return console.log(dir + " 에 캡처가 없습니다. --auth --dump 로 먼저 수집하세요.");
+
+  console.log("이름·연락처·카드번호 같은 개인 식별 정보는 *** 로 가렸습니다.");
+  console.log("가맹점명·할인율·기간은 파서를 쓰는 데 필요해서 그대로 둡니다.");
+  console.log("공유하기 전에 아래 출력을 한 번 훑어보시고, 가려지지 않은 게 있으면 지워 주세요.\n");
+
+  for (const file of files) {
+    const caps = JSON.parse(await readFile(join(dir, file), "utf8"));
+    console.log("=== " + file.replace(/\.json$/, "") + " · 응답 " + caps.length + "개");
+    const seen = new Set();
+    for (const cap of caps) {
+      if (HINT_SKIP.test(cap.url)) continue;
+      const stack = [{ node: cap.body, path: "" }];
+      while (stack.length) {
+        const { node, path } = stack.pop();
+        if (Array.isArray(node)) {
+          if (node.length >= 1 && node[0] && typeof node[0] === "object" && !Array.isArray(node[0])) {
+            const key = cap.url.split("?")[0] + "#" + (path || "(root)");
+            if (seen.has(key)) continue;
+            seen.add(key);
+            console.log("  " + cap.url.split("?")[0]);
+            console.log("    path: " + (path || "(root)") + " · " + node.length + "행");
+            console.log("    " + JSON.stringify(maskRow(node[0])).slice(0, 600));
+          }
+          continue;
+        }
+        if (node && typeof node === "object") {
+          /* 컬럼별 배열(신한 마이샵 같은 모양)도 잡습니다 */
+          const cols = Object.keys(node).filter((k) => Array.isArray(node[k]) && node[k].length);
+          if (cols.length >= 3 && cols.every((k) => typeof node[k][0] !== "object")) {
+            const key = cap.url.split("?")[0] + "#cols:" + (path || "(root)");
+            if (!seen.has(key)) {
+              seen.add(key);
+              console.log("  " + cap.url.split("?")[0]);
+              console.log("    path: " + (path || "(root)") + " · 컬럼별 배열 " + cols.length + "개 × " + node[cols[0]].length + "행");
+              const sample = {};
+              for (const k of cols.slice(0, 18)) sample[k] = maskValue(k, node[k][0]);
+              console.log("    " + JSON.stringify(sample).slice(0, 600));
+            }
+          }
+          for (const k of Object.keys(node)) stack.push({ node: node[k], path: path ? path + "." + k : k });
+        }
+      }
+    }
+    console.log("");
+  }
+}
+
 async function main() {
   if (SELFTEST) return selftest();
-  if (LOGIN) return login(LOGIN);
+  if (INSPECT) return inspect(INSPECT);
+  if (LOGIN) {
+    const r = await login(LOGIN);
+    if (!r || !r.thenCollect) return;
+    /* 로그인 직후 그 소스만 바로 수집합니다 */
+    USE_AUTH = true;
+    ONLY = r.thenCollect;
+  }
   if (USE_AUTH && process.env.CI) {
     console.error("--auth 는 CI 에서 쓸 수 없습니다. 개인 세션으로 받은 혜택은 공개 feed 에 넣지 않습니다.");
     process.exit(1);
@@ -453,8 +546,11 @@ async function main() {
 
   const regPath = SOURCES.startsWith("/") ? SOURCES : join(ROOT, SOURCES);
   const reg = JSON.parse(await readFile(regPath, "utf8"));
+  /* 공개 수집에서 빼 둔 프로그램도, 내 세션이 있으면 대상에 넣습니다 (하나PICK 처럼) */
   const targets = []
-    .concat(reg.programs.filter((p) => p.collect).map((p) => ({ ...p, url: p.catalogUrl || p.url })))
+    .concat(reg.programs
+      .filter((p) => p.collect || (USE_AUTH && hasAuth(p.id)))
+      .map((p) => ({ ...p, url: p.catalogUrl || p.url })))
     .concat(reg.public)
     .filter((s) => !ONLY || s.id.includes(ONLY));
 
