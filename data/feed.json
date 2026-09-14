@@ -1,7 +1,185 @@
 {
-  "collectedAt": null,
-  "note": "아직 수집 전입니다. `npm run collect` 를 돌리거나 GitHub Actions 가 실행되면 갱신됩니다.",
-  "sources": [],
+  "collectedAt": "2026-09-14T04:24:21.567Z",
+  "sources": [
+    {
+      "id": "samsung-link",
+      "app": "samsung",
+      "name": "LINK",
+      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
+      "kind": "program",
+      "status": "ok",
+      "count": 60,
+      "structured": 0,
+      "http": 200,
+      "captures": 115
+    },
+    {
+      "id": "shinhan-myshop",
+      "app": "shinhan",
+      "name": "마이샵",
+      "url": "https://www.shinhancard.com/pconts/html/benefit/myShop/intro/MOBFM501R01.html",
+      "kind": "program",
+      "status": "login-required",
+      "count": 0,
+      "structured": 0,
+      "http": 200,
+      "captures": 8
+    },
+    {
+      "id": "woori-kkook",
+      "app": "woori",
+      "name": "꾹",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
+      "kind": "program",
+      "status": "ok",
+      "count": 60,
+      "structured": 0,
+      "http": 200,
+      "captures": 8
+    },
+    {
+      "id": "bc-mytag",
+      "app": "bccard",
+      "name": "마이태그",
+      "url": "https://www.bccard.com/app/card/ContentsLinkActn.do?pgm_id=ind1200",
+      "kind": "program",
+      "status": "error",
+      "count": 0,
+      "structured": 0,
+      "http": 200,
+      "error": "Cannot read properties of undefined (reading 'filter')"
+    },
+    {
+      "id": "hana-pick",
+      "app": "hana",
+      "name": "하나PICK",
+      "url": "https://www.hanacard.co.kr/OPP00000000M.web",
+      "kind": "program",
+      "status": "ok",
+      "count": 2,
+      "structured": 0,
+      "http": 200,
+      "captures": 0
+    },
+    {
+      "id": "toss-benefit",
+      "app": "toss",
+      "name": "토스 혜택",
+      "url": "https://pay.toss.im/",
+      "kind": "program",
+      "status": "ok",
+      "count": 2,
+      "structured": 0,
+      "http": 200,
+      "captures": 7
+    },
+    {
+      "id": "payco-coupon-program",
+      "app": "payco",
+      "name": "페이코 쿠폰",
+      "url": "https://coupons.payco.com/coupon-list",
+      "kind": "program",
+      "status": "ok",
+      "count": 3,
+      "structured": 0,
+      "http": 200,
+      "captures": 0
+    },
+    {
+      "id": "payco-coupons",
+      "app": "payco",
+      "name": "PAYCO 쿠폰 리스트",
+      "url": "https://coupons.payco.com/coupon-list",
+      "kind": "public",
+      "status": "ok",
+      "count": 3,
+      "structured": 0,
+      "http": 200,
+      "captures": 0
+    },
+    {
+      "id": "payco-events",
+      "app": "payco",
+      "name": "PAYCO 이벤트",
+      "url": "https://events.payco.com/",
+      "kind": "public",
+      "status": "http-404",
+      "count": 0,
+      "structured": 0,
+      "http": 404
+    },
+    {
+      "id": "toss-feed",
+      "app": "toss",
+      "name": "토스피드 혜택 글",
+      "url": "https://toss.im/tossfeed",
+      "kind": "public",
+      "status": "empty",
+      "count": 0,
+      "structured": 0,
+      "http": 200,
+      "captures": 4
+    },
+    {
+      "id": "woori-events",
+      "app": "woori",
+      "name": "우리카드 진행중인 이벤트",
+      "url": "https://pc.wooricard.com/dcpc/yh1/bnf/bnf02/prgevnt/H1BNF202S00.do",
+      "kind": "public",
+      "status": "ok",
+      "count": 12,
+      "structured": 0,
+      "http": 200,
+      "captures": 3
+    },
+    {
+      "id": "hana-events",
+      "app": "hana",
+      "name": "하나카드 이벤트",
+      "url": "https://www.hanacard.co.kr/OPP35000000D.web?schID=ncd&mID=OPP35000000D&CT_ID=00001",
+      "kind": "public",
+      "status": "ok",
+      "count": 2,
+      "structured": 0,
+      "http": 200,
+      "captures": 0
+    },
+    {
+      "id": "bc-events",
+      "app": "bccard",
+      "name": "BC카드 이벤트",
+      "url": "https://www.bccard.com/app/card/evntList.do",
+      "kind": "public",
+      "status": "login-required",
+      "count": 0,
+      "structured": 0,
+      "http": 200,
+      "captures": 1
+    },
+    {
+      "id": "samsung-events",
+      "app": "samsung",
+      "name": "삼성카드 이벤트",
+      "url": "https://www.samsungcard.com/personal/event/UHPPEV0101M0.jsp",
+      "kind": "public",
+      "status": "http-404",
+      "count": 0,
+      "structured": 0,
+      "http": 404
+    },
+    {
+      "id": "shinhan-events",
+      "app": "shinhan",
+      "name": "신한카드 이벤트",
+      "url": "https://www.shinhancard.com/pconts/html/benefit/event/index.html",
+      "kind": "public",
+      "status": "login-required",
+      "count": 0,
+      "structured": 0,
+      "http": 200,
+      "captures": 8
+    }
+  ],
   "programs": [
     {
       "id": "samsung-link",
@@ -136,6 +314,3408 @@
     }
   ],
   "structured": [],
-  "raw": [],
-  "hints": []
+  "raw": [
+    {
+      "app": "samsung",
+      "source": "samsung-link",
+      "sourceName": "LINK",
+      "title": "다이슨 5% 할인",
+      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
+      "period": null,
+      "percent": 5,
+      "won": null
+    },
+    {
+      "app": "samsung",
+      "source": "samsung-link",
+      "sourceName": "LINK",
+      "title": "이지듀 6% 할인",
+      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
+      "period": null,
+      "percent": 6,
+      "won": null
+    },
+    {
+      "app": "samsung",
+      "source": "samsung-link",
+      "sourceName": "LINK",
+      "title": "솔드아웃 5% 할인",
+      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
+      "period": null,
+      "percent": 5,
+      "won": null
+    },
+    {
+      "app": "samsung",
+      "source": "samsung-link",
+      "sourceName": "LINK",
+      "title": "올더뮤 16% 할인",
+      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
+      "period": null,
+      "percent": 16,
+      "won": null
+    },
+    {
+      "app": "samsung",
+      "source": "samsung-link",
+      "sourceName": "LINK",
+      "title": "풀무원 15% 할인",
+      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
+      "period": null,
+      "percent": 15,
+      "won": null
+    },
+    {
+      "app": "samsung",
+      "source": "samsung-link",
+      "sourceName": "LINK",
+      "title": "프로쉬 10% 할인",
+      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
+      "period": null,
+      "percent": 10,
+      "won": null
+    },
+    {
+      "app": "samsung",
+      "source": "samsung-link",
+      "sourceName": "LINK",
+      "title": "덴프스 25% 할인",
+      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
+      "period": null,
+      "percent": 25,
+      "won": null
+    },
+    {
+      "app": "samsung",
+      "source": "samsung-link",
+      "sourceName": "LINK",
+      "title": "한끼통살 7% 할인",
+      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
+      "period": null,
+      "percent": 7,
+      "won": null
+    },
+    {
+      "app": "samsung",
+      "source": "samsung-link",
+      "sourceName": "LINK",
+      "title": "아워홈 12% 할인",
+      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
+      "period": null,
+      "percent": 12,
+      "won": null
+    },
+    {
+      "app": "samsung",
+      "source": "samsung-link",
+      "sourceName": "LINK",
+      "title": "정원e샵 7% 할인",
+      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
+      "period": null,
+      "percent": 7,
+      "won": null
+    },
+    {
+      "app": "samsung",
+      "source": "samsung-link",
+      "sourceName": "LINK",
+      "title": "여신티켓 10% 할인",
+      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
+      "period": null,
+      "percent": 10,
+      "won": null
+    },
+    {
+      "app": "samsung",
+      "source": "samsung-link",
+      "sourceName": "LINK",
+      "title": "KREAM 2% 할인",
+      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
+      "period": null,
+      "percent": 2,
+      "won": null
+    },
+    {
+      "app": "samsung",
+      "source": "samsung-link",
+      "sourceName": "LINK",
+      "title": "번개장터 10% 할인",
+      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
+      "period": null,
+      "percent": 10,
+      "won": null
+    },
+    {
+      "app": "samsung",
+      "source": "samsung-link",
+      "sourceName": "LINK",
+      "title": "드시모네 16% 할인",
+      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
+      "period": null,
+      "percent": 16,
+      "won": null
+    },
+    {
+      "app": "samsung",
+      "source": "samsung-link",
+      "sourceName": "LINK",
+      "title": "원더브라 10% 할인",
+      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
+      "period": null,
+      "percent": 10,
+      "won": null
+    },
+    {
+      "app": "samsung",
+      "source": "samsung-link",
+      "sourceName": "LINK",
+      "title": "뉴트리원 15% 할인",
+      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
+      "period": null,
+      "percent": 15,
+      "won": null
+    },
+    {
+      "app": "samsung",
+      "source": "samsung-link",
+      "sourceName": "LINK",
+      "title": "닥터피엘 12% 할인",
+      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
+      "period": null,
+      "percent": 12,
+      "won": null
+    },
+    {
+      "app": "samsung",
+      "source": "samsung-link",
+      "sourceName": "LINK",
+      "title": "바바더닷컴 5% 할인",
+      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
+      "period": null,
+      "percent": 5,
+      "won": null
+    },
+    {
+      "app": "samsung",
+      "source": "samsung-link",
+      "sourceName": "LINK",
+      "title": "셀렉스몰 12% 할인",
+      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
+      "period": null,
+      "percent": 12,
+      "won": null
+    },
+    {
+      "app": "samsung",
+      "source": "samsung-link",
+      "sourceName": "LINK",
+      "title": "안국건강 15% 할인",
+      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
+      "period": null,
+      "percent": 15,
+      "won": null
+    },
+    {
+      "app": "samsung",
+      "source": "samsung-link",
+      "sourceName": "LINK",
+      "title": "셰프애찬 12% 할인",
+      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
+      "period": null,
+      "percent": 12,
+      "won": null
+    },
+    {
+      "app": "samsung",
+      "source": "samsung-link",
+      "sourceName": "LINK",
+      "title": "감탄브라 10% 할인",
+      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
+      "period": null,
+      "percent": 10,
+      "won": null
+    },
+    {
+      "app": "samsung",
+      "source": "samsung-link",
+      "sourceName": "LINK",
+      "title": "CJ더마켓 1만원 할인",
+      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
+      "period": null,
+      "percent": null,
+      "won": null
+    },
+    {
+      "app": "samsung",
+      "source": "samsung-link",
+      "sourceName": "LINK",
+      "title": "쿠팡 1,000원 할인",
+      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
+      "period": null,
+      "percent": null,
+      "won": 1000
+    },
+    {
+      "app": "samsung",
+      "source": "samsung-link",
+      "sourceName": "LINK",
+      "title": "푸드올로지 20% 할인",
+      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
+      "period": null,
+      "percent": 20,
+      "won": null
+    },
+    {
+      "app": "samsung",
+      "source": "samsung-link",
+      "sourceName": "LINK",
+      "title": "대웅제약몰 16% 할인",
+      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
+      "period": null,
+      "percent": 16,
+      "won": null
+    },
+    {
+      "app": "samsung",
+      "source": "samsung-link",
+      "sourceName": "LINK",
+      "title": "한화리조트 10% 할인",
+      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
+      "period": null,
+      "percent": 10,
+      "won": null
+    },
+    {
+      "app": "samsung",
+      "source": "samsung-link",
+      "sourceName": "LINK",
+      "title": "W컨셉 2만/5만원 할인",
+      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
+      "period": null,
+      "percent": null,
+      "won": null
+    },
+    {
+      "app": "samsung",
+      "source": "samsung-link",
+      "sourceName": "LINK",
+      "title": "SSG.COM 5% 할인",
+      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
+      "period": null,
+      "percent": 5,
+      "won": null
+    },
+    {
+      "app": "samsung",
+      "source": "samsung-link",
+      "sourceName": "LINK",
+      "title": "삼성카드 쇼핑 7% 할인",
+      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
+      "period": null,
+      "percent": 7,
+      "won": null
+    },
+    {
+      "app": "samsung",
+      "source": "samsung-link",
+      "sourceName": "LINK",
+      "title": "W컨셉 6,000원 할인",
+      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
+      "period": null,
+      "percent": null,
+      "won": 6000
+    },
+    {
+      "app": "samsung",
+      "source": "samsung-link",
+      "sourceName": "LINK",
+      "title": "DKSHOP 12% 할인",
+      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
+      "period": null,
+      "percent": 12,
+      "won": null
+    },
+    {
+      "app": "samsung",
+      "source": "samsung-link",
+      "sourceName": "LINK",
+      "title": "정관장 1만/2만원 할인",
+      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
+      "period": null,
+      "percent": null,
+      "won": null
+    },
+    {
+      "app": "samsung",
+      "source": "samsung-link",
+      "sourceName": "LINK",
+      "title": "메가마트 3,000원 할인",
+      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
+      "period": null,
+      "percent": null,
+      "won": 3000
+    },
+    {
+      "app": "samsung",
+      "source": "samsung-link",
+      "sourceName": "LINK",
+      "title": "11번가 최대 2천원 할인",
+      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
+      "period": null,
+      "percent": null,
+      "won": null
+    },
+    {
+      "app": "samsung",
+      "source": "samsung-link",
+      "sourceName": "LINK",
+      "title": "CGV 매점 할인쿠폰 혜택",
+      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
+      "period": null,
+      "percent": null,
+      "won": null
+    },
+    {
+      "app": "samsung",
+      "source": "samsung-link",
+      "sourceName": "LINK",
+      "title": "지그재그 2,000원 할인",
+      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
+      "period": null,
+      "percent": null,
+      "won": 2000
+    },
+    {
+      "app": "samsung",
+      "source": "samsung-link",
+      "sourceName": "LINK",
+      "title": "파스쿠찌 3,000원 할인",
+      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
+      "period": null,
+      "percent": null,
+      "won": 3000
+    },
+    {
+      "app": "samsung",
+      "source": "samsung-link",
+      "sourceName": "LINK",
+      "title": "쉐이크쉑 2,000원 할인",
+      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
+      "period": null,
+      "percent": null,
+      "won": 2000
+    },
+    {
+      "app": "samsung",
+      "source": "samsung-link",
+      "sourceName": "LINK",
+      "title": "이니스프리 5,000원 할인",
+      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
+      "period": null,
+      "percent": null,
+      "won": 5000
+    },
+    {
+      "app": "samsung",
+      "source": "samsung-link",
+      "sourceName": "LINK",
+      "title": "파리바게뜨 1천/2천원 할인",
+      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
+      "period": null,
+      "percent": null,
+      "won": null
+    },
+    {
+      "app": "samsung",
+      "source": "samsung-link",
+      "sourceName": "LINK",
+      "title": "파스타맛집 3,000원 할인",
+      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
+      "period": null,
+      "percent": null,
+      "won": 3000
+    },
+    {
+      "app": "samsung",
+      "source": "samsung-link",
+      "sourceName": "LINK",
+      "title": "신라면세점 최대 5만원 할인",
+      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
+      "period": null,
+      "percent": null,
+      "won": null
+    },
+    {
+      "app": "samsung",
+      "source": "samsung-link",
+      "sourceName": "LINK",
+      "title": "안다르 10% 할인쿠폰 혜택",
+      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
+      "period": null,
+      "percent": 10,
+      "won": null
+    },
+    {
+      "app": "samsung",
+      "source": "samsung-link",
+      "sourceName": "LINK",
+      "title": "CU편의점택배 500원 할인",
+      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
+      "period": null,
+      "percent": null,
+      "won": 500
+    },
+    {
+      "app": "samsung",
+      "source": "samsung-link",
+      "sourceName": "LINK",
+      "title": "CJ더마켓 5,000원 할인",
+      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
+      "period": null,
+      "percent": null,
+      "won": 5000
+    },
+    {
+      "app": "samsung",
+      "source": "samsung-link",
+      "sourceName": "LINK",
+      "title": "골핑/골프존마켓 10% 할인",
+      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
+      "period": null,
+      "percent": 10,
+      "won": null
+    },
+    {
+      "app": "samsung",
+      "source": "samsung-link",
+      "sourceName": "LINK",
+      "title": "매일유업 공식몰 10% 할인",
+      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
+      "period": null,
+      "percent": 10,
+      "won": null
+    },
+    {
+      "app": "samsung",
+      "source": "samsung-link",
+      "sourceName": "LINK",
+      "title": "스피드메이트 8종 쿠폰 혜택",
+      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
+      "period": null,
+      "percent": null,
+      "won": null
+    },
+    {
+      "app": "samsung",
+      "source": "samsung-link",
+      "sourceName": "LINK",
+      "title": "JAJU 12% 할인쿠폰 혜택",
+      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
+      "period": null,
+      "percent": 12,
+      "won": null
+    },
+    {
+      "app": "samsung",
+      "source": "samsung-link",
+      "sourceName": "LINK",
+      "title": "유독 유튜브 라이트 할인 혜택",
+      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
+      "period": null,
+      "percent": null,
+      "won": null
+    },
+    {
+      "app": "samsung",
+      "source": "samsung-link",
+      "sourceName": "LINK",
+      "title": "젝시믹스 온라인몰 11% 할인",
+      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
+      "period": null,
+      "percent": 11,
+      "won": null
+    },
+    {
+      "app": "samsung",
+      "source": "samsung-link",
+      "sourceName": "LINK",
+      "title": "착한가격업소 2,000원 할인",
+      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
+      "period": null,
+      "percent": null,
+      "won": 2000
+    },
+    {
+      "app": "samsung",
+      "source": "samsung-link",
+      "sourceName": "LINK",
+      "title": "돼지구이대전 3,000원 할인",
+      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
+      "period": null,
+      "percent": null,
+      "won": 3000
+    },
+    {
+      "app": "samsung",
+      "source": "samsung-link",
+      "sourceName": "LINK",
+      "title": "한국타이어 20,000원 할인",
+      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
+      "period": null,
+      "percent": null,
+      "won": 20000
+    },
+    {
+      "app": "samsung",
+      "source": "samsung-link",
+      "sourceName": "LINK",
+      "title": "하이마트 최대 100만원 캐시백",
+      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
+      "period": null,
+      "percent": null,
+      "won": null
+    },
+    {
+      "app": "samsung",
+      "source": "samsung-link",
+      "sourceName": "LINK",
+      "title": "G마켓·옥션 1/2/5천원 할인",
+      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
+      "period": null,
+      "percent": null,
+      "won": null
+    },
+    {
+      "app": "samsung",
+      "source": "samsung-link",
+      "sourceName": "LINK",
+      "title": "유독 교보문고 SAM 할인 혜택",
+      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
+      "period": null,
+      "percent": null,
+      "won": null
+    },
+    {
+      "app": "samsung",
+      "source": "samsung-link",
+      "sourceName": "LINK",
+      "title": "이디야커피 앱 2,000원 할인",
+      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
+      "period": null,
+      "percent": null,
+      "won": 2000
+    },
+    {
+      "app": "samsung",
+      "source": "samsung-link",
+      "sourceName": "LINK",
+      "title": "bhc치킨 앱 2,000원 할인",
+      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
+      "period": null,
+      "percent": null,
+      "won": 2000
+    },
+    {
+      "app": "woori",
+      "source": "woori-kkook",
+      "sourceName": "꾹",
+      "title": "우리 미리할인",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
+      "period": null,
+      "percent": null,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-kkook",
+      "sourceName": "꾹",
+      "title": "오토 미리할인신규",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
+      "period": null,
+      "percent": null,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-kkook",
+      "sourceName": "꾹",
+      "title": "찜카 10%청구할인 담기",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
+      "period": null,
+      "percent": 10,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-kkook",
+      "sourceName": "꾹",
+      "title": "세라젬 5%청구할인 담기",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
+      "period": null,
+      "percent": 5,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-kkook",
+      "sourceName": "꾹",
+      "title": "센스맘 7%청구할인 담기",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
+      "period": null,
+      "percent": 7,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-kkook",
+      "sourceName": "꾹",
+      "title": "링티 10%청구할인 담기",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
+      "period": null,
+      "percent": 10,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-kkook",
+      "sourceName": "꾹",
+      "title": "랩노쉬 8%청구할인 담기",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
+      "period": null,
+      "percent": 8,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-kkook",
+      "sourceName": "꾹",
+      "title": "Lee 7%청구할인 담기",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
+      "period": null,
+      "percent": 7,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-kkook",
+      "sourceName": "꾹",
+      "title": "이지듀 6%청구할인 담기",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
+      "period": null,
+      "percent": 6,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-kkook",
+      "sourceName": "꾹",
+      "title": "칼린 12%청구할인 담기",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
+      "period": null,
+      "percent": 12,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-kkook",
+      "sourceName": "꾹",
+      "title": "클룹 10%청구할인 담기",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
+      "period": null,
+      "percent": 10,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-kkook",
+      "sourceName": "꾹",
+      "title": "보오글 12%청구할인 담기",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
+      "period": null,
+      "percent": 12,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-kkook",
+      "sourceName": "꾹",
+      "title": "듀이셀 20%청구할인 담기",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
+      "period": null,
+      "percent": 20,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-kkook",
+      "sourceName": "꾹",
+      "title": "아워홈 12%청구할인 담기",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
+      "period": null,
+      "percent": 12,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-kkook",
+      "sourceName": "꾹",
+      "title": "올더뮤 16%청구할인 담기",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
+      "period": null,
+      "percent": 16,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-kkook",
+      "sourceName": "꾹",
+      "title": "욜로딜 10%청구할인 담기",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
+      "period": null,
+      "percent": 10,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-kkook",
+      "sourceName": "꾹",
+      "title": "갓바디 10%청구할인 담기",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
+      "period": null,
+      "percent": 10,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-kkook",
+      "sourceName": "꾹",
+      "title": "유심사 10%청구할인 담기",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
+      "period": null,
+      "percent": 10,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-kkook",
+      "sourceName": "꾹",
+      "title": "HDEX 7%청구할인 담기",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
+      "period": null,
+      "percent": 7,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-kkook",
+      "sourceName": "꾹",
+      "title": "정원e샵 7%청구할인 담기",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
+      "period": null,
+      "percent": 7,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-kkook",
+      "sourceName": "꾹",
+      "title": "프로쉬 10%청구할인 담기",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
+      "period": null,
+      "percent": 10,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-kkook",
+      "sourceName": "꾹",
+      "title": "한끼통살 7%청구할인 담기",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
+      "period": null,
+      "percent": 7,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-kkook",
+      "sourceName": "꾹",
+      "title": "혼바디 20%청구할인 담기",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
+      "period": null,
+      "percent": 20,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-kkook",
+      "sourceName": "꾹",
+      "title": "덴프스 25%청구할인 마감",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
+      "period": null,
+      "percent": 25,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-kkook",
+      "sourceName": "꾹",
+      "title": "오뚜기몰 10%청구할인 담기",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
+      "period": null,
+      "percent": 10,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-kkook",
+      "sourceName": "꾹",
+      "title": "KKday 3%청구할인 담기",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
+      "period": null,
+      "percent": 3,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-kkook",
+      "sourceName": "꾹",
+      "title": "바바더닷컴 5%청구할인 담기",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
+      "period": null,
+      "percent": 5,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-kkook",
+      "sourceName": "꾹",
+      "title": "삼대오백 16%청구할인 담기",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
+      "period": null,
+      "percent": 16,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-kkook",
+      "sourceName": "꾹",
+      "title": "비에날씬 10%청구할인 담기",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
+      "period": null,
+      "percent": 10,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-kkook",
+      "sourceName": "꾹",
+      "title": "바디나인 10%청구할인 담기",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
+      "period": null,
+      "percent": 10,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-kkook",
+      "sourceName": "꾹",
+      "title": "세스코몰 25%청구할인 담기",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
+      "period": null,
+      "percent": 25,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-kkook",
+      "sourceName": "꾹",
+      "title": "몽베스트 12%청구할인 담기",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
+      "period": null,
+      "percent": 12,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-kkook",
+      "sourceName": "꾹",
+      "title": "매일유업 10%청구할인 담기",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
+      "period": null,
+      "percent": 10,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-kkook",
+      "sourceName": "꾹",
+      "title": "셀렉스몰 12%청구할인 담기",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
+      "period": null,
+      "percent": 12,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-kkook",
+      "sourceName": "꾹",
+      "title": "레드닥터 12%청구할인 담기",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
+      "period": null,
+      "percent": 12,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-kkook",
+      "sourceName": "꾹",
+      "title": "셰프애찬 12%청구할인 담기",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
+      "period": null,
+      "percent": 12,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-kkook",
+      "sourceName": "꾹",
+      "title": "땡큐파머 25%청구할인 담기",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
+      "period": null,
+      "percent": 25,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-kkook",
+      "sourceName": "꾹",
+      "title": "드시모네 16%청구할인 담기",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
+      "period": null,
+      "percent": 16,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-kkook",
+      "sourceName": "꾹",
+      "title": "동국제약 10%청구할인 담기",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
+      "period": null,
+      "percent": 10,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-kkook",
+      "sourceName": "꾹",
+      "title": "대웅제약 16%청구할인 담기",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
+      "period": null,
+      "percent": 16,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-kkook",
+      "sourceName": "꾹",
+      "title": "수면공감 10%청구할인 담기",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
+      "period": null,
+      "percent": 10,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-kkook",
+      "sourceName": "꾹",
+      "title": "닥터피엘 12%청구할인 담기",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
+      "period": null,
+      "percent": 12,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-kkook",
+      "sourceName": "꾹",
+      "title": "뉴트리원 15%청구할인 담기",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
+      "period": null,
+      "percent": 15,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-kkook",
+      "sourceName": "꾹",
+      "title": "안국건강 15%청구할인 담기",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
+      "period": null,
+      "percent": 15,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-kkook",
+      "sourceName": "꾹",
+      "title": "원더브라 10%청구할인 담기",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
+      "period": null,
+      "percent": 10,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-kkook",
+      "sourceName": "꾹",
+      "title": "젝시믹스 11%청구할인 담기",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
+      "period": null,
+      "percent": 11,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-kkook",
+      "sourceName": "꾹",
+      "title": "조선비책 10%청구할인 담기",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
+      "period": null,
+      "percent": 10,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-kkook",
+      "sourceName": "꾹",
+      "title": "성분에디터 16%청구할인 담기",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
+      "period": null,
+      "percent": 16,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-kkook",
+      "sourceName": "꾹",
+      "title": "블라우풍트 12%청구할인 담기",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
+      "period": null,
+      "percent": 12,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-kkook",
+      "sourceName": "꾹",
+      "title": "마른파이브 15%청구할인 담기",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
+      "period": null,
+      "percent": 15,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-kkook",
+      "sourceName": "꾹",
+      "title": "그로서리서울 7%청구할인 담기",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
+      "period": null,
+      "percent": 7,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-kkook",
+      "sourceName": "꾹",
+      "title": "플레이텍스 16%청구할인 담기",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
+      "period": null,
+      "percent": 16,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-kkook",
+      "sourceName": "꾹",
+      "title": "푸드올로지 20%청구할인 담기",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
+      "period": null,
+      "percent": 20,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-kkook",
+      "sourceName": "꾹",
+      "title": "G마켓 5,000원청구할인 담기",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
+      "period": null,
+      "percent": null,
+      "won": 5000
+    },
+    {
+      "app": "woori",
+      "source": "woori-kkook",
+      "sourceName": "꾹",
+      "title": "더블유젯바이오 8%청구할인 담기",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
+      "period": null,
+      "percent": 8,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-kkook",
+      "sourceName": "꾹",
+      "title": "바이오가이아 10%청구할인 담기",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
+      "period": null,
+      "percent": 10,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-kkook",
+      "sourceName": "꾹",
+      "title": "헬시플레이스 10%청구할인 담기",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
+      "period": null,
+      "percent": 10,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-kkook",
+      "sourceName": "꾹",
+      "title": "지방세 5,000원청구할인 알림",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
+      "period": null,
+      "percent": null,
+      "won": 5000
+    },
+    {
+      "app": "woori",
+      "source": "woori-kkook",
+      "sourceName": "꾹",
+      "title": "CJ더마켓 8천원 청구할인 마감",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
+      "period": null,
+      "percent": null,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-kkook",
+      "sourceName": "꾹",
+      "title": "CGV 1.1만원 관람쿠폰 진행중",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
+      "period": null,
+      "percent": null,
+      "won": null
+    },
+    {
+      "app": "hana",
+      "source": "hana-pick",
+      "sourceName": "하나PICK",
+      "title": "영화할인/예매",
+      "url": "https://www.hanacard.co.kr/OPP00000000M.web",
+      "period": null,
+      "percent": null,
+      "won": null
+    },
+    {
+      "app": "hana",
+      "source": "hana-pick",
+      "sourceName": "하나PICK",
+      "title": "나만의 혜택카드혜택이용실적이달의 혜택금액모바일쿠폰하나머니VIP 서비스가맹점 조회",
+      "url": "https://www.hanacard.co.kr/OPP00000000M.web",
+      "period": null,
+      "percent": null,
+      "won": null
+    },
+    {
+      "app": "toss",
+      "source": "toss-benefit",
+      "sourceName": "토스 혜택",
+      "title": "쿠폰 광고 알아보기",
+      "url": "https://pay.toss.im/blog/tosspay_coupon_ad/",
+      "period": null,
+      "percent": null,
+      "won": null
+    },
+    {
+      "app": "toss",
+      "source": "toss-benefit",
+      "sourceName": "토스 혜택",
+      "title": "성과보장형 쿠폰 광고",
+      "url": "https://pay.toss.im/inquiry?type=coupon-ads",
+      "period": null,
+      "percent": null,
+      "won": null
+    },
+    {
+      "app": "payco",
+      "source": "payco-coupon-program",
+      "sourceName": "페이코 쿠폰",
+      "title": "← PAYCO 전체 쿠폰 보러가기",
+      "url": "https://coupons.payco.com/coupon-list",
+      "period": null,
+      "percent": null,
+      "won": null
+    },
+    {
+      "app": "payco",
+      "source": "payco-coupon-program",
+      "sourceName": "페이코 쿠폰",
+      "title": "쿠폰 사용 조건 및 상세한 내용은 이벤트 페이지에서 확인 가능합니다.",
+      "url": "https://coupons.payco.com/coupon-list",
+      "period": null,
+      "percent": null,
+      "won": null
+    },
+    {
+      "app": "payco",
+      "source": "payco-coupon-program",
+      "sourceName": "페이코 쿠폰",
+      "title": "본 정보는 PAYCO 공식 제공 쿠폰 기준이며, 실시간 업데이트 됩니다.",
+      "url": "https://coupons.payco.com/coupon-list",
+      "period": null,
+      "percent": null,
+      "won": null
+    },
+    {
+      "app": "payco",
+      "source": "payco-coupons",
+      "sourceName": "PAYCO 쿠폰 리스트",
+      "title": "← PAYCO 전체 쿠폰 보러가기",
+      "url": "https://coupons.payco.com/coupon-list",
+      "period": null,
+      "percent": null,
+      "won": null
+    },
+    {
+      "app": "payco",
+      "source": "payco-coupons",
+      "sourceName": "PAYCO 쿠폰 리스트",
+      "title": "쿠폰 사용 조건 및 상세한 내용은 이벤트 페이지에서 확인 가능합니다.",
+      "url": "https://coupons.payco.com/coupon-list",
+      "period": null,
+      "percent": null,
+      "won": null
+    },
+    {
+      "app": "payco",
+      "source": "payco-coupons",
+      "sourceName": "PAYCO 쿠폰 리스트",
+      "title": "본 정보는 PAYCO 공식 제공 쿠폰 기준이며, 실시간 업데이트 됩니다.",
+      "url": "https://coupons.payco.com/coupon-list",
+      "period": null,
+      "percent": null,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-events",
+      "sourceName": "우리카드 진행중인 이벤트",
+      "title": "카드일시불(선입금 오토캐시백)",
+      "url": "https://pc.wooricard.com/dcpc/yh1/bnf/bnf02/prgevnt/H1BNF202S00.do",
+      "period": null,
+      "percent": null,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-events",
+      "sourceName": "우리카드 진행중인 이벤트",
+      "title": "카드의정석 시즌 2는 1.2% 할인이 기본!자세히보기",
+      "url": "https://pc.wooricard.com/dcpc/yh1/crd/crd01/H1CRD101S02.do?cdPrdCd=102997",
+      "period": null,
+      "percent": 1.2,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-events",
+      "sourceName": "우리카드 진행중인 이벤트",
+      "title": "트립닷컴에서도 역시 우리카드 트립닷컴에서 우리카드로 호텔 결제하고 7% 할인받자",
+      "url": "https://pc.wooricard.com/dcpc/yh1/bnf/bnf02/prgevnt/H1BNF202S00.do",
+      "period": null,
+      "percent": 7,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-events",
+      "sourceName": "우리카드 진행중인 이벤트",
+      "title": "[우리 캐시백 챌린지] 추석 명절 캐시백 도전 목표금액 챌린지 달성하고 캐시백 받으세요",
+      "url": "https://pc.wooricard.com/dcpc/yh1/bnf/bnf02/prgevnt/H1BNF202S00.do",
+      "period": null,
+      "percent": null,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-events",
+      "sourceName": "우리카드 진행중인 이벤트",
+      "title": "해외 캐시백 챌린지 : 목표달성 이벤트 해외 결제 목표 달성하면? 달성 보상금 캐시백 지급!",
+      "url": "https://pc.wooricard.com/dcpc/yh1/bnf/bnf02/prgevnt/H1BNF202S00.do",
+      "period": null,
+      "percent": null,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-events",
+      "sourceName": "우리카드 진행중인 이벤트",
+      "title": "[우리 365 챌린지] 3번, 60만원씩 쓰면 5% 캐시백 3 : 3번 결제, 6 : 60만원씩 쓰면 5 : 5% 캐시백 드려요",
+      "url": "https://pc.wooricard.com/dcpc/yh1/bnf/bnf02/prgevnt/H1BNF202S00.do",
+      "period": null,
+      "percent": 5,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-events",
+      "sourceName": "우리카드 진행중인 이벤트",
+      "title": "캐시백 해외에서 SUPER 이용하고 최대 150만원 SUPER한 할인 혜택까지 응모기간 2026.09.01 ~ 2026.09.30",
+      "url": "https://pc.wooricard.com/dcpc/yh1/bnf/bnf02/prgevnt/H1BNF202S00.do",
+      "period": null,
+      "percent": null,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-events",
+      "sourceName": "우리카드 진행중인 이벤트",
+      "title": "9월 SK스토아 최대 7% 청구할인! 우리카드로 5만원 이상 결제 시 최대 7% 청구할인! 응모기간 2026.09.01 ~ 2026.09.30",
+      "url": "https://pc.wooricard.com/dcpc/yh1/bnf/bnf02/prgevnt/H1BNF202S00.do",
+      "period": null,
+      "percent": 7,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-events",
+      "sourceName": "우리카드 진행중인 이벤트",
+      "title": "할인 우리카드로 핫!하게 ‘우리핫!콤보’ 3천원 할인 우리카드로 핫!도그세트 할인받고, 영화는 더 핫!하게 응모기간 2026.09.04 ~ 2026.09.30",
+      "url": "https://pc.wooricard.com/dcpc/yh1/bnf/bnf02/prgevnt/H1BNF202S00.do",
+      "period": null,
+      "percent": null,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-events",
+      "sourceName": "우리카드 진행중인 이벤트",
+      "title": "캐시백 자동납부 모아모아 캐시백 이벤트 매월 나가는 생활요금 우리카드로 자동납부하면 최대 3.2만원 캐시백 혜택을 준대요! 응모기간 2026.09.01 ~ 2026.09.30",
+      "url": "https://pc.wooricard.com/dcpc/yh1/bnf/bnf02/prgevnt/H1BNF202S00.do",
+      "period": null,
+      "percent": null,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-events",
+      "sourceName": "우리카드 진행중인 이벤트",
+      "title": "할인 ‘장자크 상페 특별전’ 30% 할인이벤트 20세기 프랑스를 대표하는 삽화가 ‘장자크 상페’ 특별 회고전 우리카드 단독 30% 할인! 응모기간 2026.09.10 ~ 2027.01.03",
+      "url": "https://pc.wooricard.com/dcpc/yh1/bnf/bnf02/prgevnt/H1BNF202S00.do",
+      "period": null,
+      "percent": 30,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-events",
+      "sourceName": "우리카드 진행중인 이벤트",
+      "title": "캐시백 모빌리티 업종 자동납부 연속이용 이벤트 자주 이용하는 택시/카셰어링/주차장 비용 우리카드로 연속 이용하고 최대 8천원 캐시백 받아 가세요! 응모기간 2026.09.07 ~ 2026.09.30",
+      "url": "https://pc.wooricard.com/dcpc/yh1/bnf/bnf02/prgevnt/H1BNF202S00.do",
+      "period": null,
+      "percent": null,
+      "won": null
+    },
+    {
+      "app": "hana",
+      "source": "hana-events",
+      "sourceName": "하나카드 이벤트",
+      "title": "영화할인/예매",
+      "url": "https://www.hanacard.co.kr/OPP35000000D.web?schID=ncd&mID=OPP35000000D&CT_ID=00001",
+      "period": null,
+      "percent": null,
+      "won": null
+    },
+    {
+      "app": "hana",
+      "source": "hana-events",
+      "sourceName": "하나카드 이벤트",
+      "title": "오토캐시백안내선입금방식신청체크카드방식신청신용 방식 신청",
+      "url": "https://www.hanacard.co.kr/OPP35000000D.web?schID=ncd&mID=OPP35000000D&CT_ID=00001",
+      "period": null,
+      "percent": null,
+      "won": null
+    }
+  ],
+  "hints": [
+    {
+      "source": "samsung-link",
+      "url": "https://static11.samsungcard.com/wcms/home/benefit/link/PGHPPCCBenefitLinkViewCalendar001.json",
+      "path": "wcmsJson",
+      "rows": 17,
+      "keys": [
+        "month",
+        "tab"
+      ],
+      "sample": "{\"month\":{\"title\":\"202501\",\"contents\":\"<!-- s : wcms html --> <p class=\\\"wcms-tit-h7\\\">새로운 LINK 소식을 알려드립니다.</p> <div class=\\\"wcms-link-calendar wcms-space-4\\\"> <div class=\\\"month\\\"> <p class=\\\"wcms-tit-h7\\\">2025년 1월</p> </div> <ul class=\\\"week wcms-space-4\\\"> <li>일</li> <li>월</li> <li>화</li> <li>수</li> <li>목</li> <li>금</li> <li>토</li> </ul> <ul class=\\\"day\\\"> <!-- * 기본 <li><span class=\\\"date\\\">1</"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://apis.samsungcard.com/svc-link/not-logged-in/link",
+      "path": "payload.listLinkSvOjInqrVO",
+      "rows": 111,
+      "keys": [
+        "inqrCt1",
+        "inqrCt2",
+        "inqrCt3",
+        "qryCndtCn",
+        "cstMngtNo",
+        "mrktAgYn",
+        "linksvcFvrDtlTpc",
+        "cmpEntrYn",
+        "cmsId",
+        "cmpId",
+        "oferNo",
+        "cmpTitNm",
+        "linkSvFvrNm",
+        "linkSvFvrCn",
+        "linkSvFvrDvCn",
+        "linkSvMaiEvnNm",
+        "linkSvSubEvnNm",
+        "vlStrtdt",
+        "linkSvFvrStrtdt",
+        "linkSvFvrEnddt",
+        "linkSvThmnlCntsFileNm",
+        "linkSvCntsFileNm",
+        "cmpSmtagrsFitScore",
+        "linkSvFvrDvC",
+        "massCmpDvC"
+      ],
+      "sample": "{\"inqrCt1\":null,\"inqrCt2\":null,\"inqrCt3\":null,\"qryCndtCn\":null,\"cstMngtNo\":0,\"mrktAgYn\":null,\"linksvcFvrDtlTpc\":\"01\",\"cmpEntrYn\":\"N\",\"cmsId\":3754418,\"cmpId\":\"M261107080\",\"oferNo\":null,\"cmpTitNm\":\"[9/16 단 하루] 대웅제약몰 LINK Day| \",\"linkSvFvrNm\":\" \",\"linkSvFvrCn\":\" \",\"linkSvFvrDvCn\":\"40%\",\"linkSvMaiEvnNm\":\"[9/16 단 하루] 대웅제약몰 LINK Day\",\"linkSvSubEvnNm\":\" \",\"vlStrtdt\":\"20260912\",\"linkSvFvrStrtdt\":\"20260912"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://apis.samsungcard.com/svc-link/popularity-benefit",
+      "path": "payload.searchPplrFvrSub01RVO",
+      "rows": 5,
+      "keys": [
+        "linksvcFvrApyYn",
+        "linkSvFvrNm",
+        "linkSvFvrCn",
+        "linkSvFvrDvC",
+        "linkSvFvrDvCn",
+        "linkSvFvrStrtdt",
+        "linkSvFvrEnddt",
+        "linkSvThmnlCntsFileNm",
+        "linkSvCntsFileNm",
+        "linkSvMaiEvnNm",
+        "linkSvSubEvnNm",
+        "linkFvrDtlTpc",
+        "cmpId",
+        "cmsId",
+        "bsdt",
+        "sexC",
+        "age",
+        "cmpEntrCt",
+        "lgsysTrsYn",
+        "sysFstRgTs",
+        "sysFstRgUsid",
+        "sysLtChTs",
+        "sysLtChUsid",
+        "cmpTitNm",
+        "linksvcThmnlImgNm"
+      ],
+      "sample": "{\"linksvcFvrApyYn\":\"Y\",\"linkSvFvrNm\":\" \",\"linkSvFvrCn\":\" \",\"linkSvFvrDvC\":\"02\",\"linkSvFvrDvCn\":\"최대 2만 모니머니\",\"linkSvFvrStrtdt\":\"20260801\",\"linkSvFvrEnddt\":\"20260930\",\"linkSvThmnlCntsFileNm\":\"/wcms/event/link_benefit_v2/3751798_15276.html\",\"linkSvCntsFileNm\":\"/wcms/event/link_benefit_v2/3751798_15274.html\",\"linkSvMaiEvnNm\":\"모니모페이 해외 혜택\",\"linkSvSubEvnNm\":\" \",\"linkFvrDtlTpc\":null,\"cmpId\":\"M261106556\","
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "samsung-link",
+      "url": "https://www.samsungcard.com/home/images/lottie/btn_link_white.json",
+      "path": "assets",
+      "rows": 6,
+      "keys": [
+        "id",
+        "w",
+        "h",
+        "u",
+        "p",
+        "e"
+      ],
+      "sample": "{\"id\":\"image_0\",\"w\":72,\"h\":72,\"u\":\"\",\"p\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAx0lEQVR4nO3bwQnDMBAAQSk1hFSaMlKpcQ9JCWtwENjM/IWORT9xcyy2PT/fM+df+3v+a5YjHisvuyKBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBBoCBQECgIFAQKAgWBgkBhnv0rvzsvKAgUBAoCBYGCQEGgIFAQKAgUBAoCBYGCQEGgsHTvYQy7"
+    },
+    {
+      "source": "shinhan-myshop",
+      "url": "https://www.shinhancard.com/mob/static/json/vendor/eventBanner.json?v=1789359716132",
+      "path": "root.evtBnn",
+      "rows": 47,
+      "keys": [
+        "hpgBnnId",
+        "hpgBnnTcd",
+        "hpgBnnTilNm",
+        "hpgBnnSmrTt",
+        "hpgBnnImgPhNm",
+        "hpgBnnImgRplChaVl",
+        "hpgBnnBgrOloVl",
+        "hpgBnnMovUrlTcd",
+        "hpgBnnMovUrlAr",
+        "hpgBnnBtnDescTt",
+        "hpgBnnBtnUrlAr",
+        "hpgBnnTarSmmCcd",
+        "hpgBnnOnlMktBjChoFcd",
+        "hpgBnnEmKdVl",
+        "hpgBnnXpoTrmFcd",
+        "hpgBnnBulStd",
+        "hpgBnnBulEdd",
+        "hpgBnnWbMoId",
+        "hpgBnnWbMoBjGpId",
+        "hpgBnnWbBulSmrTt",
+        "hpgBnnXpoF",
+        "hpgBnnIckEn",
+        "hpgBnnDlTt",
+        "hpgBnnBulSrTm",
+        "hpgBnnBulEdTm"
+      ],
+      "sample": "{\"hpgBnnId\":\"BM2026052907\",\"hpgBnnTcd\":\"01\",\"hpgBnnTilNm\":\"연회비 100% 캐시백\",\"hpgBnnSmrTt\":\"신규 고객 전용 이벤트\",\"hpgBnnImgPhNm\":\"/pconts/images/banner/20251029369064_7.png\",\"hpgBnnImgRplChaVl\":\"연회비100%캐시백신규고객전용이벤트\",\"hpgBnnBgrOloVl\":\"#182230\",\"hpgBnnMovUrlTcd\":\" \",\"hpgBnnMovUrlAr\":\"/pconts/html/benefit/event/1238667_2239.html\",\"hpgBnnBtnDescTt\":\"자세히 보기\",\"hpgBnnBtnUrlAr\":\"/pconts/html/benefit/event/1238667_22"
+    },
+    {
+      "source": "shinhan-myshop",
+      "url": "https://www.shinhancard.com/mob/static/json/vendor/menu-solid.json?v=1789359716130",
+      "path": "root.menu",
+      "rows": 6,
+      "keys": [
+        "id",
+        "title",
+        "depth",
+        "cateYn",
+        "newMenuYn",
+        "pcDesc",
+        "iaTitle",
+        "menu",
+        "memCd",
+        "crdCd",
+        "menuDesc",
+        "label"
+      ],
+      "sample": "{\"id\":\"ms1\",\"title\":\"마이\",\"depth\":\"1\",\"cateYn\":\"N\",\"newMenuYn\":\"N\",\"pcDesc\":\"이용내역과 정보를 쉽게 관리해보세요\",\"iaTitle\":\"마이\",\"menu\":[{\"id\":\"ms2\",\"title\":\"마이페이지\",\"depth\":\"2\",\"parentId\":\"ms1\",\"iconClass\":\"Mypages\",\"cateYn\":\"N\",\"newMenuYn\":\"N\",\"link\":\"/mob/MOBFM006N/MOBFM006R01.shc\",\"iaTitle\":\"마이페이지\",\"menu\":[],\"memCd\":\"01\",\"crdCd\":\"3\",\"menuDesc\":\"N\",\"label\":\"\"},{\"id\":\"ms3\",\"title\":\"이용내역\",\"depth\":\"2\",\"parentId\":\"m"
+    },
+    {
+      "source": "woori-kkook",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/retrieveBnfMainList.pwkjson",
+      "path": "bnfMainList",
+      "rows": 73,
+      "keys": [
+        "cloNo",
+        "cloSvcCd",
+        "camNo",
+        "segNo",
+        "ofrGrpNo",
+        "ofrCd",
+        "svcCdSdt",
+        "svcCdEdt",
+        "mchNo",
+        "mchNm",
+        "mchBzctgCd",
+        "cloTpcd",
+        "luckkYn",
+        "rltmEntCn",
+        "entAvlCn",
+        "cloBnfCd",
+        "nintisMcn",
+        "rqDcAm",
+        "rqDcRt",
+        "evntTitl",
+        "bnfCndTxt",
+        "tagInf",
+        "usplcInf",
+        "usplcUrlAd",
+        "useAdvCont"
+      ],
+      "sample": "{\"cloNo\":100001587,\"cloSvcCd\":\"M01973\",\"camNo\":\"C2609090O\",\"segNo\":\"03\",\"ofrGrpNo\":\"00\",\"ofrCd\":\"E31\",\"svcCdSdt\":\"20260909\",\"svcCdEdt\":\"20260930\",\"mchNo\":\"10000242\",\"mchNm\":\"토스페이\",\"mchBzctgCd\":\"9\",\"cloTpcd\":\"1\",\"luckkYn\":\"N\",\"rltmEntCn\":0,\"entAvlCn\":0,\"cloBnfCd\":\"6\",\"nintisMcn\":0,\"rqDcAm\":0,\"rqDcRt\":0,\"evntTitl\":\" 토스 포인트 최대 5천원\",\"bnfCndTxt\":\"토스 페이스페이 첫 결제 시\",\"tagInf\":\"토스페이\",\"usplcInf\":\"토스페이\",\"uspl"
+    },
+    {
+      "source": "woori-kkook",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/selectEtcCtgrList.pwkjson",
+      "path": "bnfMainList",
+      "rows": 4,
+      "keys": [
+        "cloNo",
+        "cloSvcCd",
+        "mchNo",
+        "mchNm",
+        "mchBzctgCd",
+        "cloTpcd",
+        "luckkYn",
+        "rltmEntCn",
+        "entAvlCn",
+        "cloBnfCd",
+        "nintisMcn",
+        "rqDcAm",
+        "rqDcRt",
+        "evntTitl",
+        "bnfCndTxt",
+        "usplcInf",
+        "usplcUrlAd",
+        "useAdvCont",
+        "evntAtnitmTxt",
+        "rvwNoTxt",
+        "selStaDh",
+        "selEndDh",
+        "xpsStaDh",
+        "evntPriRk",
+        "cloPtpeSrno"
+      ],
+      "sample": "{\"cloNo\":100001582,\"cloSvcCd\":\"9999999\",\"mchNo\":\"10000227\",\"mchNm\":\"CGV\",\"mchBzctgCd\":\"7\",\"cloTpcd\":\"1\",\"luckkYn\":\"N\",\"rltmEntCn\":0,\"entAvlCn\":0,\"cloBnfCd\":\"7\",\"nintisMcn\":0,\"rqDcAm\":0,\"rqDcRt\":0,\"evntTitl\":\"1.1만원 관람쿠폰\",\"bnfCndTxt\":\"1.1만원 결제\",\"usplcInf\":\"CGV\",\"usplcUrlAd\":\"https://cgv.co.kr/evt/eventDetail?evntNo=202609049962\",\"useAdvCont\":\"&lt;li&gt;&lt;b&gt;① 영화 관람권 혜택&lt;/b&gt;&lt;/li&gt;\\r\\n&l"
+    },
+    {
+      "source": "toss-feed",
+      "url": "https://api-public.toss.im/api-public/v3/ipd-thor/api/v1/workspaces/159/posts",
+      "path": "success.results",
+      "rows": 20,
+      "keys": [
+        "id",
+        "updatedTime",
+        "createdTime",
+        "category",
+        "categories",
+        "series",
+        "seriesSlug",
+        "title",
+        "subtitle",
+        "bottomButtonConfig",
+        "coverConfig",
+        "thumbnailConfig",
+        "key",
+        "minAge",
+        "isDisplaying",
+        "isDisplayingPublishedTime",
+        "workspaceId",
+        "isPublished",
+        "publishedTime",
+        "likeCount",
+        "commentBoard",
+        "relatedPostTitle",
+        "relatedPosts",
+        "disclaimer",
+        "seoConfig"
+      ],
+      "sample": "{\"id\":39427,\"updatedTime\":\"2026-09-14T10:36:21+09:00\",\"createdTime\":\"2025-08-07T13:53:48+09:00\",\"category\":null,\"categories\":[],\"series\":null,\"seriesSlug\":null,\"title\":\"7월 넷째 주, 경제퀴즈에 도전하세요\",\"subtitle\":null,\"bottomButtonConfig\":{\"ctaType\":\"ONLY_BUTTON\",\"imageUrl\":null,\"imageAlt\":null,\"title\":null,\"description\":null,\"ctaName\":\"자세히 알아보기\",\"landingUrl\":\"https://toss.im/tossfeed/article/tosspick-2025-1"
+    },
+    {
+      "source": "toss-feed",
+      "url": "https://api-public.toss.im/api-public/v3/ipd-thor/api/v1/workspaces/4/posts?size=8&page=1",
+      "path": "success.results",
+      "rows": 8,
+      "keys": [
+        "id",
+        "updatedTime",
+        "createdTime",
+        "category",
+        "categories",
+        "series",
+        "seriesSlug",
+        "title",
+        "subtitle",
+        "bottomButtonConfig",
+        "coverConfig",
+        "thumbnailConfig",
+        "key",
+        "minAge",
+        "isDisplaying",
+        "isDisplayingPublishedTime",
+        "workspaceId",
+        "isPublished",
+        "publishedTime",
+        "likeCount",
+        "commentBoard",
+        "relatedPostTitle",
+        "relatedPosts",
+        "disclaimer",
+        "seoConfig"
+      ],
+      "sample": "{\"id\":53021,\"updatedTime\":\"2026-09-14T13:19:20+09:00\",\"createdTime\":\"2026-09-10T10:42:46+09:00\",\"category\":\"인터뷰\",\"categories\":[{\"name\":\"인터뷰\",\"id\":149,\"slug\":\"interview\",\"parentId\":161,\"iconUrl\":null},{\"name\":\"영상\",\"id\":153,\"slug\":\"video\",\"parentId\":161,\"iconUrl\":null},{\"name\":\"시사·트렌드\",\"id\":1549,\"slug\":null,\"parentId\":null,\"iconUrl\":null},{\"name\":\"인터뷰\",\"id\":1551,\"slug\":null,\"parentId\":null,\"iconUrl\""
+    },
+    {
+      "source": "shinhan-events",
+      "url": "https://www.shinhancard.com/mob/static/json/vendor/eventBanner.json?v=1789359857484",
+      "path": "root.evtBnn",
+      "rows": 47,
+      "keys": [
+        "hpgBnnId",
+        "hpgBnnTcd",
+        "hpgBnnTilNm",
+        "hpgBnnSmrTt",
+        "hpgBnnImgPhNm",
+        "hpgBnnImgRplChaVl",
+        "hpgBnnBgrOloVl",
+        "hpgBnnMovUrlTcd",
+        "hpgBnnMovUrlAr",
+        "hpgBnnBtnDescTt",
+        "hpgBnnBtnUrlAr",
+        "hpgBnnTarSmmCcd",
+        "hpgBnnOnlMktBjChoFcd",
+        "hpgBnnEmKdVl",
+        "hpgBnnXpoTrmFcd",
+        "hpgBnnBulStd",
+        "hpgBnnBulEdd",
+        "hpgBnnWbMoId",
+        "hpgBnnWbMoBjGpId",
+        "hpgBnnWbBulSmrTt",
+        "hpgBnnXpoF",
+        "hpgBnnIckEn",
+        "hpgBnnDlTt",
+        "hpgBnnBulSrTm",
+        "hpgBnnBulEdTm"
+      ],
+      "sample": "{\"hpgBnnId\":\"BM2026052907\",\"hpgBnnTcd\":\"01\",\"hpgBnnTilNm\":\"연회비 100% 캐시백\",\"hpgBnnSmrTt\":\"신규 고객 전용 이벤트\",\"hpgBnnImgPhNm\":\"/pconts/images/banner/20251029369064_7.png\",\"hpgBnnImgRplChaVl\":\"연회비100%캐시백신규고객전용이벤트\",\"hpgBnnBgrOloVl\":\"#182230\",\"hpgBnnMovUrlTcd\":\" \",\"hpgBnnMovUrlAr\":\"/pconts/html/benefit/event/1238667_2239.html\",\"hpgBnnBtnDescTt\":\"자세히 보기\",\"hpgBnnBtnUrlAr\":\"/pconts/html/benefit/event/1238667_22"
+    },
+    {
+      "source": "shinhan-events",
+      "url": "https://www.shinhancard.com/mob/static/json/vendor/menu-solid.json?v=1789359857482",
+      "path": "root.menu",
+      "rows": 6,
+      "keys": [
+        "id",
+        "title",
+        "depth",
+        "cateYn",
+        "newMenuYn",
+        "pcDesc",
+        "iaTitle",
+        "menu",
+        "memCd",
+        "crdCd",
+        "menuDesc",
+        "label"
+      ],
+      "sample": "{\"id\":\"ms1\",\"title\":\"마이\",\"depth\":\"1\",\"cateYn\":\"N\",\"newMenuYn\":\"N\",\"pcDesc\":\"이용내역과 정보를 쉽게 관리해보세요\",\"iaTitle\":\"마이\",\"menu\":[{\"id\":\"ms2\",\"title\":\"마이페이지\",\"depth\":\"2\",\"parentId\":\"ms1\",\"iconClass\":\"Mypages\",\"cateYn\":\"N\",\"newMenuYn\":\"N\",\"link\":\"/mob/MOBFM006N/MOBFM006R01.shc\",\"iaTitle\":\"마이페이지\",\"menu\":[],\"memCd\":\"01\",\"crdCd\":\"3\",\"menuDesc\":\"N\",\"label\":\"\"},{\"id\":\"ms3\",\"title\":\"이용내역\",\"depth\":\"2\",\"parentId\":\"m"
+    }
+  ]
 }
