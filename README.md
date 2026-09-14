@@ -131,14 +131,24 @@ node tools/from-har.mjs capture.har --write samsung-link
 
 ### 직접 돌려보기
 
+설치 없이 돌리려면 레포의 **Actions → 혜택 데이터 갱신 → Run workflow** 를 누르면 됩니다.
+소스별 상태와 pick 매핑 후보가 로그에 그대로 찍히고, 받은 JSON 응답 원본은
+`benefit-capture` 아티팩트로 내려받을 수 있습니다. 자세한 순서는
+[docs/find-app-endpoints.md](docs/find-app-endpoints.md) 의 0단계에 있습니다.
+
+내 컴퓨터에서 돌린다면:
+
 ```bash
-npm install
+npm install                          # Node 18 이상
 npx playwright install chromium
+
+npm run selftest                     # 네트워크 없이 수집 로직 점검
 npm run collect                      # 전체 수집 → data/feed.js
-node tools/collect.mjs --only samsung # 특정 소스만
-node tools/collect.mjs --dump         # 받은 JSON 응답을 tools/captures/ 에 저장
-node tools/collect.mjs --selftest     # 네트워크 없이 DOM·XHR·힌트 세 경로 점검
+npm run collect -- --dump            # 받은 JSON 응답을 tools/captures/ 에 저장
+npm run collect -- --only samsung    # 특정 소스만
 ```
+
+`npm run collect` 뒤의 `--` 를 빠뜨리면 옵션이 스크립트로 전달되지 않습니다.
 
 소스를 추가하려면 `data/sources.json` 에 넣으면 됩니다. `programs` 는 LINK 처럼
 "공통 목록은 공개, 적용은 개인화"인 프로그램, `public` 은 통째로 공개된 이벤트·쿠폰

@@ -1,10 +1,21 @@
 name: 혜택 데이터 갱신
 
 # 게릴라성 혜택은 며칠만 열리기도 해서 하루 네 번 돌립니다.
+# 수동 실행(Run workflow)으로 특정 소스만 돌리거나, 받은 JSON 응답을 통째로 받아볼 수 있습니다.
 on:
   schedule:
     - cron: "0 21,3,9,15 * * *"   # UTC — 한국시간 06시, 12시, 18시, 24시
   workflow_dispatch:
+    inputs:
+      only:
+        description: "특정 소스만 (id 일부, 예: samsung / payco / link). 비우면 전체"
+        required: false
+        default: ""
+      dump:
+        description: "받은 JSON 응답을 통째로 저장해 아티팩트로 올리기"
+        type: boolean
+        required: false
+        default: true
 
 permissions:
   contents: write
@@ -24,11 +35,32 @@ jobs:
           npm install --no-audit --no-fund
           npx playwright install --with-deps chromium
 
+      - name: 수집 로직 자체 점검
+        run: node tools/collect.mjs --selftest
+
       - name: 혜택 수집
-        run: node tools/collect.mjs
+        id: collect
         continue-on-error: true   # 일부 소스가 막혀도 나머지는 반영합니다
+        run: |
+          ARGS=""
+          if [ -n "${{ inputs.only }}" ]; then ARGS="$ARGS --only ${{ inputs.only }}"; fi
+          if [ "${{ inputs.dump }}" = "true" ]; then ARGS="$ARGS --dump"; fi
+          echo "실행: node tools/collect.mjs $ARGS"
+          node tools/collect.mjs $ARGS
+
+      - name: 수집 결과 업로드
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: benefit-capture
+          path: |
+            data/feed.json
+            tools/captures/
+          if-no-files-found: warn
+          retention-days: 7
 
       - name: 변경분 커밋
+        if: always()
         run: |
           git config user.name "benefit-collector"
           git config user.email "noreply@github.com"

@@ -6,6 +6,8 @@
   "type": "module",
   "scripts": {
     "collect": "node tools/collect.mjs",
+    "collect:dump": "node tools/collect.mjs --dump",
+    "selftest": "node tools/collect.mjs --selftest && node tools/from-har.mjs --selftest",
     "serve": "python3 -m http.server 8080"
   },
   "devDependencies": {

@@ -42,6 +42,7 @@ const argOf = (n, d) => (args.indexOf(n) === -1 ? d : args[args.indexOf(n) + 1])
 const ONLY = argOf("--only", null);
 const TIMEOUT = parseInt(argOf("--timeout", "30000"), 10);
 const DUMP = args.includes("--dump");
+const SOURCES = argOf("--sources", "data/sources.json");
 const SELFTEST = args.includes("--selftest");
 
 /* ── 텍스트에서 건질 값 ───────────────────────────────────── */
@@ -234,7 +235,7 @@ async function selftest() {
   const files = {
     "/list.html": [200, "text/html; charset=utf-8", await readFile(join(ROOT, "tools/fixtures/sample-events.html"), "utf8")],
     "/xhr.html": [200, "text/html; charset=utf-8", await readFile(join(ROOT, "tools/fixtures/sample-xhr.html"), "utf8")],
-    "/api/link.json": [200, "application/json; charset=utf-8", await readFile(join(ROOT, "tools/fixtures/sample-link.json"), "utf8")]
+    "/api/link.json": [200, "application/json; charset=utf-8", await readFile(join(ROOT, "tools/fixtures/api/link.json"), "utf8")]
   };
   const server = createServer((req, res) => {
     const hit = files[req.url.split("?")[0]];
@@ -283,7 +284,8 @@ async function selftest() {
 async function main() {
   if (SELFTEST) return selftest();
 
-  const reg = JSON.parse(await readFile(join(ROOT, "data/sources.json"), "utf8"));
+  const regPath = SOURCES.startsWith("/") ? SOURCES : join(ROOT, SOURCES);
+  const reg = JSON.parse(await readFile(regPath, "utf8"));
   const targets = []
     .concat(reg.programs.filter((p) => p.collect).map((p) => ({ ...p, url: p.catalogUrl || p.url })))
     .concat(reg.public)
@@ -292,7 +294,8 @@ async function main() {
   const proxy = process.env.HTTPS_PROXY || process.env.https_proxy || null;
   const browser = await chromium.launch({
     executablePath: process.env.CHROMIUM_PATH || undefined,
-    proxy: proxy ? { server: proxy } : undefined,
+    /* 프록시를 쓰더라도 로컬 주소는 직접 붙습니다 */
+    proxy: proxy ? { server: proxy, bypass: "localhost,127.0.0.1,::1" } : undefined,
     args: ["--no-sandbox"]
   });
 
@@ -328,7 +331,17 @@ async function main() {
   const ok = rows.filter((r) => r.status === "ok").length;
   console.log("\n소스 " + rows.length + "곳 중 " + ok + "곳 성공 · 구조화 " + structured.length +
     "건 · 공지 " + raw.length + "건 · 힌트 " + hints.length + "건");
-  if (hints.length) console.log("힌트를 보고 data/sources.json 에 pick 매핑을 적으면 structured 로 올라갑니다.");
+  if (hints.length) {
+    console.log("\n혜택 목록처럼 보이는 응답 (pick 매핑 후보)");
+    hints.slice(0, 12).forEach((h, i) => {
+      console.log(" " + (i + 1) + ") [" + h.source + "] " + h.url);
+      console.log("    path: " + h.path + " · " + h.rows + "행");
+      console.log("    keys: " + h.keys.join(", "));
+      console.log("    sample: " + h.sample.slice(0, 200));
+    });
+    console.log("\n이 내용을 data/sources.json 의 pick 에 옮기거나, 앱 캡처가 있다면");
+    console.log("node tools/from-har.mjs capture.har --write <source-id> 를 쓰세요.");
+  }
 }
 
 main().catch((e) => { console.error(e); process.exit(1); });

@@ -77,7 +77,7 @@ window.DISCOUNT_FEED = {
         "쿠폰",
         "PICK"
       ],
-      "note": "하나PICK 전용 주소를 확인하지 못해 혜택 메인을 걸어 두었습니다."
+      "note": "하나PICK 전용 주소 미확인. 앱/모바일(m.hanacard.co.kr)에서 주소를 잡아 catalogUrl 에 넣어 주세요 — docs/find-app-endpoints.md"
     },
     {
       "id": "kb-pay",

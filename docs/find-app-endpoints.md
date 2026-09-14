@@ -8,18 +8,68 @@ LINK · 마이샵 · 하나PICK · 꾹의 공통 목록은 웹 페이지의 정�
 
 ---
 
-## 0단계 — 웹 쪽부터 (도구 없이, 5분)
+## 0단계 — 웹 쪽부터 (앱 없이)
 
-앱과 웹이 같은 API 를 쓰는 경우가 많습니다. 수집기가 이미 브라우저로 페이지를 띄우고
-JSON 응답을 받아 두므로, 먼저 이것부터 돌려 보세요.
+앱과 웹이 같은 API 를 쓰는 경우가 많습니다. 수집기가 페이지를 브라우저로 띄우고 그때
+오가는 JSON 응답을 받아 두므로, 앱을 건드리기 전에 이것부터 돌려 보세요.
 
-```bash
-npm run collect -- --dump --only samsung
-cat data/feed.json | head -40          # hints 에 잡힌 경로 확인
-ls tools/captures/                     # 받은 응답 원본
+### 방법 A — GitHub 에서 클릭으로 (설치 없음, 권장)
+
+1. 레포 → **Actions** 탭 → 왼쪽에서 **혜택 데이터 갱신** 선택
+2. 오른쪽 **Run workflow** 버튼
+3. 입력값
+   - `only` — 특정 소스만 돌리려면 `samsung` 처럼 id 일부를 넣고, 전체면 비워 둡니다
+   - `dump` — 켜 두면 받은 JSON 응답 원본을 통째로 저장합니다 (기본 켜짐)
+4. 실행이 끝나면 두 군데를 봅니다
+   - **로그** — 소스별 상태와 "혜택 목록처럼 보이는 응답 (pick 매핑 후보)" 가 그대로 찍힙니다.
+     보통 이것만 복사해도 매핑을 적을 수 있습니다.
+   - **Artifacts → benefit-capture** — `data/feed.json` 과 `tools/captures/*.json`(응답 원본)
+
+로그가 이런 모양으로 나옵니다.
+
+```
+· samsung-link            ok · 공지 12
+· shinhan-myshop          login-required
+· woori-kkook             blocked
+
+혜택 목록처럼 보이는 응답 (pick 매핑 후보)
+ 1) [samsung-link] https://www.samsungcard.com/.../benefitList.json
+    path: data.benefitList · 24행
+    keys: mchtNm, dcRt, maxDcAmt, minPayAmt, prd
+    sample: {"mchtNm":"이마트","dcRt":5,"maxDcAmt":"5,000",...}
 ```
 
-`hints` 에 `path: data.benefitList` 같은 게 찍히면 그걸로 끝입니다. 앱까지 갈 필요 없습니다.
+`login-required` 나 `blocked` 만 잔뜩 나오면 그때 1단계(앱) 로 넘어가면 됩니다.
+
+### 방법 B — 내 컴퓨터에서
+
+```bash
+git clone -b claude/payment-discount-finder-stcobp https://github.com/vortramm/fintech_recommendation
+cd fintech_recommendation
+
+npm install                      # Node 18 이상
+npx playwright install chromium  # 헤드리스 브라우저, 한 번만
+
+npm run selftest                 # 네트워크 없이 수집 로직 점검 (먼저 여기부터)
+npm run collect -- --dump --only samsung   # 삼성카드만, 응답 원본까지 저장
+npm run collect -- --dump                  # 전체
+```
+
+`npm run collect` 뒤의 `--` 를 빠뜨리면 옵션이 스크립트로 전달되지 않으니 주의하세요.
+
+보는 곳은 세 군데입니다.
+
+```bash
+# 1. 터미널에 찍힌 소스별 상태와 pick 매핑 후보  ← 보통 이거면 충분합니다
+# 2. 받은 응답 원본
+ls tools/captures/ && head -c 600 tools/captures/samsung-link.json
+# 3. 수집 결과 요약
+python3 -c "import json;d=json.load(open('data/feed.json'));print(d['sources']);print(len(d['hints']),'hints')"
+```
+
+`hints` 에 `path: data.benefitList` 같은 게 잡히면 거기서 끝입니다. 그 값을
+`data/sources.json` 의 해당 소스에 `pick` 으로 적고 다시 수집하면 순위에 들어갑니다.
+앱까지 갈 필요가 없습니다.
 
 ## 1단계 — 앱의 "공유하기" (도구 없이, 1분)
 
