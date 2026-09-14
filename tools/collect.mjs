@@ -247,14 +247,22 @@ async function collectSource(browser, src) {
       if (html) await writeFile(join(ROOT, "tools/captures", src.id + ".html"), html);
     }
 
+    /* 로그인 화면으로 튕긴 경우: 메뉴 문구 몇 개가 혜택처럼 걸려도 ok 로 보면 안 됩니다 */
+    const title = await page.title().catch(() => "");
+    const bodyText = await page.evaluate(() => (document.body && document.body.innerText || "").slice(0, 3000)).catch(() => "");
+    const loginWall = /로그인 방법|로그인하기|간편로그인|인증서 로그인|본인확인/.test(title + " " + bodyText) ||
+                      /^\s*로그인/.test(title);
+
     row.captures = captures.length;
-    row.count = raw.length;
     row.structured = picked.structured.length;
-    if (picked.structured.length || raw.length) row.status = "ok";
-    else {
-      const body = (await page.evaluate(() => document.body.innerText || "")).slice(0, 4000);
-      row.status = /로그인|인증서|본인확인/.test(body) ? "login-required" : "empty";
+    if (loginWall && !picked.structured.length) {
+      row.status = "login-required";
+      row.count = 0;
+      return { row, raw: [], structured: [], hints: picked.hints };
     }
+    row.count = raw.length;
+    if (picked.structured.length || raw.length) row.status = "ok";
+    else row.status = /로그인|인증서|본인확인/.test(bodyText) ? "login-required" : "empty";
     return { row, raw, structured: picked.structured, hints: picked.hints };
   } catch (err) {
     row.error = String(err.message || err).split("\n")[0].slice(0, 160);

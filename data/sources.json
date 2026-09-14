@@ -76,14 +76,14 @@
       "program": "하나PICK",
       "url": "https://www.hanacard.co.kr/OPP00000000M.web",
       "catalogUrl": "https://m.hanacard.co.kr/MKPICK1020M.web",
-      "collect": true,
+      "collect": false,
       "keywords": [
         "할인",
         "적립",
         "쿠폰",
         "PICK"
       ],
-      "note": "하나PICK 목록. 모바일 페이지 HTML 의 메뉴 링크(/MKPICK1020M.web)에서 찾았습니다.",
+      "note": "하나PICK 목록(/MKPICK1020M.web)은 로그인 화면으로 넘어갑니다. 공개 카탈로그가 없어 수집하지 않고 바로가기만 제공합니다.",
       "verified": true
     },
     {
