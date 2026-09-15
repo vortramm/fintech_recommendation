@@ -1,6 +1,6 @@
 /* tools/collect.mjs 가 생성합니다. 직접 고치지 마세요. */
 window.DISCOUNT_FEED = {
-  "collectedAt": "2026-09-14T05:19:15.490Z",
+  "collectedAt": "2026-09-15T23:33:46.483Z",
   "sources": [
     {
       "id": "samsung-link",
@@ -10,9 +10,9 @@ window.DISCOUNT_FEED = {
       "kind": "program",
       "status": "ok",
       "count": 106,
-      "structured": 60,
+      "structured": 57,
       "http": 200,
-      "captures": 115
+      "captures": 111
     },
     {
       "id": "shinhan-myshop",
@@ -33,7 +33,7 @@ window.DISCOUNT_FEED = {
       "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
       "kind": "program",
       "status": "ok",
-      "count": 74,
+      "count": 76,
       "structured": 63,
       "http": 200,
       "captures": 8
@@ -96,7 +96,7 @@ window.DISCOUNT_FEED = {
       "count": 0,
       "structured": 0,
       "http": 200,
-      "captures": 2
+      "captures": 4
     },
     {
       "id": "woori-events",
@@ -105,7 +105,7 @@ window.DISCOUNT_FEED = {
       "url": "https://pc.wooricard.com/dcpc/yh1/bnf/bnf02/prgevnt/H1BNF202S00.do",
       "kind": "public",
       "status": "ok",
-      "count": 12,
+      "count": 10,
       "structured": 0,
       "http": 200,
       "captures": 3
@@ -116,11 +116,10 @@ window.DISCOUNT_FEED = {
       "name": "하나카드 이벤트",
       "url": "https://m.hanacard.co.kr/MKEVT1000M.web",
       "kind": "public",
-      "status": "ok",
-      "count": 10,
+      "status": "error",
+      "count": 0,
       "structured": 0,
-      "http": 200,
-      "captures": 0
+      "error": "page.goto: Timeout 30000ms exceeded."
     },
     {
       "id": "bc-events",
@@ -213,7 +212,7 @@ window.DISCOUNT_FEED = {
       "url": "https://m.kbcard.com/",
       "kind": "public",
       "status": "ok",
-      "count": 8,
+      "count": 9,
       "structured": 0,
       "http": 200,
       "captures": 2
@@ -237,22 +236,10 @@ window.DISCOUNT_FEED = {
       "url": "https://www.lottecard.co.kr/",
       "kind": "public",
       "status": "ok",
-      "count": 28,
+      "count": 29,
       "structured": 0,
       "http": 200,
       "captures": 4
-    },
-    {
-      "id": "bc-share-probe",
-      "app": "bccard",
-      "name": "페이북 공유링크 (조사용)",
-      "url": "https://ui.vpay.co.kr/s/IqZm/785?landingId=P0603PG005R&outCd=10001",
-      "kind": "public",
-      "status": "empty",
-      "count": 0,
-      "structured": 0,
-      "http": 200,
-      "captures": 0
     }
   ],
   "programs": [
@@ -400,13 +387,13 @@ window.DISCOUNT_FEED = {
   "structured": [
     {
       "scope": "merchant",
-      "merchantName": "풀무원",
+      "merchantName": "DB손해보험",
       "app": "samsung",
       "kind": "fixed",
-      "amount": 7000,
+      "amount": 30000,
       "benefitType": "할인",
       "condition": "삼성카드 앱에서 LINK 혜택 링크 후 결제",
-      "monthlyCap": "9.10~9.15",
+      "monthlyCap": "9.16~9.30",
       "source": "samsung-link"
     },
     {
@@ -440,39 +427,6 @@ window.DISCOUNT_FEED = {
       "benefitType": "할인",
       "condition": "삼성카드 앱에서 LINK 혜택 링크 후 결제",
       "monthlyCap": "9.7~9.28",
-      "source": "samsung-link"
-    },
-    {
-      "scope": "merchant",
-      "merchantName": "메가마트",
-      "app": "samsung",
-      "kind": "fixed",
-      "amount": 3000,
-      "benefitType": "할인",
-      "condition": "삼성카드 앱에서 LINK 혜택 링크 후 결제",
-      "monthlyCap": "9.1~9.15",
-      "source": "samsung-link"
-    },
-    {
-      "scope": "merchant",
-      "merchantName": "파리바게뜨",
-      "app": "samsung",
-      "kind": "fixed",
-      "amount": 1000,
-      "benefitType": "할인",
-      "condition": "삼성카드 앱에서 LINK 혜택 링크 후 결제",
-      "monthlyCap": "9.1~9.15",
-      "source": "samsung-link"
-    },
-    {
-      "scope": "merchant",
-      "merchantName": "Spot Mart/Pandora 매장",
-      "app": "samsung",
-      "kind": "fixed",
-      "amount": 2000,
-      "benefitType": "할인",
-      "condition": "삼성카드 앱에서 LINK 혜택 링크 후 결제",
-      "monthlyCap": "9.1~9.15",
       "source": "samsung-link"
     },
     {
@@ -1636,19 +1590,6 @@ window.DISCOUNT_FEED = {
     },
     {
       "scope": "merchant",
-      "merchantName": "아워홈",
-      "app": "woori",
-      "kind": "rate",
-      "rate": 0.12,
-      "cap": 20000,
-      "minAmount": 100,
-      "benefitType": "할인",
-      "condition": "우리카드 앱에서 '꾹' 혜택 담은 뒤 결제 · 100원 이상 결제 시",
-      "monthlyCap": "8.26~9.30 · 1일 1회",
-      "source": "woori-kkook"
-    },
-    {
-      "scope": "merchant",
       "merchantName": "안국건강",
       "app": "woori",
       "kind": "rate",
@@ -1934,19 +1875,6 @@ window.DISCOUNT_FEED = {
     },
     {
       "scope": "merchant",
-      "merchantName": "코레일(KTX)",
-      "app": "woori",
-      "kind": "rate",
-      "rate": 0.1,
-      "cap": 5000,
-      "minAmount": 30000,
-      "benefitType": "할인",
-      "condition": "우리카드 앱에서 '꾹' 혜택 담은 뒤 결제 · 3만원 이상 결제 시",
-      "monthlyCap": "8.27~9.30 · 1인 1회",
-      "source": "woori-kkook"
-    },
-    {
-      "scope": "merchant",
       "merchantName": "푸드올로지",
       "app": "woori",
       "kind": "rate",
@@ -1969,6 +1897,32 @@ window.DISCOUNT_FEED = {
       "benefitType": "할인",
       "condition": "우리카드 앱에서 '꾹' 혜택 담은 뒤 결제 · 3만원 이상 결제 시",
       "monthlyCap": "8.26~9.30 · 1일 1회",
+      "source": "woori-kkook"
+    },
+    {
+      "scope": "merchant",
+      "merchantName": "아워홈",
+      "app": "woori",
+      "kind": "rate",
+      "rate": 0.12,
+      "cap": 20000,
+      "minAmount": 100,
+      "benefitType": "할인",
+      "condition": "우리카드 앱에서 '꾹' 혜택 담은 뒤 결제 · 100원 이상 결제 시",
+      "monthlyCap": "8.26~9.30 · 1일 1회",
+      "source": "woori-kkook"
+    },
+    {
+      "scope": "merchant",
+      "merchantName": "코레일(KTX)",
+      "app": "woori",
+      "kind": "rate",
+      "rate": 0.1,
+      "cap": 5000,
+      "minAmount": 30000,
+      "benefitType": "할인",
+      "condition": "우리카드 앱에서 '꾹' 혜택 담은 뒤 결제 · 3만원 이상 결제 시",
+      "monthlyCap": "8.27~9.30 · 1인 1회",
       "source": "woori-kkook"
     },
     {
@@ -2169,25 +2123,14 @@ window.DISCOUNT_FEED = {
     },
     {
       "scope": "merchant",
-      "merchantName": "닥터피엘(오늘만 총 28% 혜택)",
+      "merchantName": "대웅제약몰(오늘만 총 40% 혜택)",
       "app": "shinhan",
       "kind": "rate",
-      "rate": 0.16,
-      "cap": 30000,
+      "rate": 0.24,
+      "cap": 100000,
       "benefitType": "할인",
       "condition": "신한 SOL페이에서 마이샵 '혜택 ON' 후 결제",
-      "monthlyCap": "9.14~9.14",
-      "source": "shinhan-myshop-coupon"
-    },
-    {
-      "scope": "merchant",
-      "merchantName": "CU편의점택배(온라인예약)",
-      "app": "shinhan",
-      "kind": "fixed",
-      "amount": 500,
-      "benefitType": "할인",
-      "condition": "신한 SOL페이에서 마이샵 '혜택 ON' 후 결제",
-      "monthlyCap": "9.1~9.15",
+      "monthlyCap": "9.16~9.16",
       "source": "shinhan-myshop-coupon"
     },
     {
@@ -2750,6 +2693,17 @@ window.DISCOUNT_FEED = {
     },
     {
       "scope": "merchant",
+      "merchantName": "CU편의점택배(온라인예약)",
+      "app": "shinhan",
+      "kind": "fixed",
+      "amount": 500,
+      "benefitType": "할인",
+      "condition": "신한 SOL페이에서 마이샵 '혜택 ON' 후 결제",
+      "monthlyCap": "9.16~9.30",
+      "source": "shinhan-myshop-coupon"
+    },
+    {
+      "scope": "merchant",
       "merchantName": "웅진마켓",
       "app": "shinhan",
       "kind": "rate",
@@ -3194,16 +3148,6 @@ window.DISCOUNT_FEED = {
       "app": "samsung",
       "source": "samsung-link",
       "sourceName": "LINK",
-      "title": "메가마트 3,000원 할인",
-      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
-      "period": null,
-      "percent": null,
-      "won": 3000
-    },
-    {
-      "app": "samsung",
-      "source": "samsung-link",
-      "sourceName": "LINK",
       "title": "11번가 최대 2천원 할인",
       "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
       "period": null,
@@ -3259,16 +3203,6 @@ window.DISCOUNT_FEED = {
       "period": null,
       "percent": null,
       "won": 5000
-    },
-    {
-      "app": "samsung",
-      "source": "samsung-link",
-      "sourceName": "LINK",
-      "title": "파리바게뜨 1천/2천원 할인",
-      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
-      "period": null,
-      "percent": null,
-      "won": null
     },
     {
       "app": "samsung",
@@ -3414,6 +3348,16 @@ window.DISCOUNT_FEED = {
       "app": "samsung",
       "source": "samsung-link",
       "sourceName": "LINK",
+      "title": "DB손해보험 최대 3만원 캐시백",
+      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
+      "period": null,
+      "percent": null,
+      "won": null
+    },
+    {
+      "app": "samsung",
+      "source": "samsung-link",
+      "sourceName": "LINK",
       "title": "하이마트 최대 100만원 캐시백",
       "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
       "period": null,
@@ -3459,6 +3403,16 @@ window.DISCOUNT_FEED = {
       "period": null,
       "percent": null,
       "won": 2000
+    },
+    {
+      "app": "samsung",
+      "source": "samsung-link",
+      "sourceName": "LINK",
+      "title": "GS25편의점택배 300원 할인",
+      "url": "https://www.samsungcard.com/home/benefit/link/PGHPPCCBenefitLinkViewIndex001",
+      "period": null,
+      "percent": null,
+      "won": 300
     },
     {
       "app": "samsung",
@@ -4224,16 +4178,6 @@ window.DISCOUNT_FEED = {
       "app": "shinhan",
       "source": "shinhan-myshop",
       "sourceName": "마이샵",
-      "title": "D-DAY 닥터피엘 12% 캐시백",
-      "url": "https://www.shinhancard.com/mob/MOBFM501N/MOBFM501R81.shc",
-      "period": null,
-      "percent": 12,
-      "won": null
-    },
-    {
-      "app": "shinhan",
-      "source": "shinhan-myshop",
-      "sourceName": "마이샵",
       "title": "한국야쿠르트 프레딧 2천원 캐시백",
       "url": "https://www.shinhancard.com/mob/MOBFM501N/MOBFM501R81.shc",
       "period": null,
@@ -4258,6 +4202,16 @@ window.DISCOUNT_FEED = {
       "url": "https://www.shinhancard.com/mob/MOBFM501N/MOBFM501R81.shc",
       "period": null,
       "percent": null,
+      "won": null
+    },
+    {
+      "app": "shinhan",
+      "source": "shinhan-myshop",
+      "sourceName": "마이샵",
+      "title": "D-DAY 대웅제약몰 16% 캐시백",
+      "url": "https://www.shinhancard.com/mob/MOBFM501N/MOBFM501R81.shc",
+      "period": null,
+      "percent": 16,
       "won": null
     },
     {
@@ -4344,20 +4298,20 @@ window.DISCOUNT_FEED = {
       "app": "shinhan",
       "source": "shinhan-myshop",
       "sourceName": "마이샵",
-      "title": "D-DAY 닥터피엘(오늘만 총 28% 혜택) 16% 캐시백(당일 쿠폰)",
-      "url": "https://www.shinhancard.com/mob/MOBFM501N/MOBFM501R81.shc",
-      "period": null,
-      "percent": 28,
+      "title": "추석선물세트 준비 CJ더마켓 1만원 캐시백으로 9월 9일 ~ 9월 22일",
+      "url": "javascript:void(0);",
+      "period": "9월 9일 ~ 9월 22",
+      "percent": null,
       "won": null
     },
     {
       "app": "shinhan",
       "source": "shinhan-myshop",
       "sourceName": "마이샵",
-      "title": "추석선물세트 준비 CJ더마켓 1만원 캐시백으로 9월 9일 ~ 9월 22일",
-      "url": "javascript:void(0);",
-      "period": "9월 9일 ~ 9월 22",
-      "percent": null,
+      "title": "D-DAY 대웅제약몰(오늘만 총 40% 혜택) 24% 캐시백(당일 쿠폰)",
+      "url": "https://www.shinhancard.com/mob/MOBFM501N/MOBFM501R81.shc",
+      "period": null,
+      "percent": 40,
       "won": null
     },
     {
@@ -4514,20 +4468,20 @@ window.DISCOUNT_FEED = {
       "app": "shinhan",
       "source": "shinhan-myshop",
       "sourceName": "마이샵",
-      "title": "닥터피엘 12% 캐시백 (한도는 앱에서 확인)",
+      "title": "대웅제약몰 16% 캐시백 (한도는 앱에서 확인)",
       "url": "https://www.shinhancard.com/mob/MOBFM501N/MOBFM501R81.shc",
       "period": null,
-      "percent": 12,
+      "percent": 16,
       "won": null
     },
     {
       "app": "shinhan",
       "source": "shinhan-myshop",
       "sourceName": "마이샵",
-      "title": "닥터피엘(오늘만 총 28% 혜택) 16% 캐시백(당일 쿠폰) (한도는 앱에서 확인)",
+      "title": "대웅제약몰(오늘만 총 40% 혜택) 24% 캐시백(당일 쿠폰) (한도는 앱에서 확인)",
       "url": "https://www.shinhancard.com/mob/MOBFM501N/MOBFM501R81.shc",
       "period": null,
-      "percent": 16,
+      "percent": 24,
       "won": null
     },
     {
@@ -4854,16 +4808,6 @@ window.DISCOUNT_FEED = {
       "app": "woori",
       "source": "woori-kkook",
       "sourceName": "꾹",
-      "title": "아워홈 12%청구할인 담기",
-      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
-      "period": null,
-      "percent": 12,
-      "won": null
-    },
-    {
-      "app": "woori",
-      "source": "woori-kkook",
-      "sourceName": "꾹",
       "title": "올더뮤 16%청구할인 담기",
       "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
       "period": null,
@@ -4958,6 +4902,16 @@ window.DISCOUNT_FEED = {
       "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
       "period": null,
       "percent": 25,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-kkook",
+      "sourceName": "꾹",
+      "title": "아워홈 12%청구할인 마감",
+      "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
+      "period": null,
+      "percent": 12,
       "won": null
     },
     {
@@ -5354,11 +5308,11 @@ window.DISCOUNT_FEED = {
       "app": "woori",
       "source": "woori-kkook",
       "sourceName": "꾹",
-      "title": "트립스토어 최대 5만원 청구할인 (50/100/300/500만원 이상 결제 시)",
-      "url": "https://www.tripstore.kr/promotion/250801_promotion_wooricard",
-      "period": "8.27~9.30",
+      "title": "LFmall VIP 혜택 (LFmall VIP 혜택)",
+      "url": "https://m.lfmall.co.kr/app/event/113127?af=WORICD01",
+      "period": "9.1~9.30",
       "percent": null,
-      "won": 50000
+      "won": null
     },
     {
       "app": "woori",
@@ -5409,6 +5363,26 @@ window.DISCOUNT_FEED = {
       "period": "9.1~9.30",
       "percent": null,
       "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-kkook",
+      "sourceName": "꾹",
+      "title": "트립스토어 최대 5만원 청구할인 (50/100/300/500만원 이상 결제 시)",
+      "url": "https://www.tripstore.kr/promotion/260401_promotion_wooricard",
+      "period": "8.27~9.30",
+      "percent": null,
+      "won": 50000
+    },
+    {
+      "app": "woori",
+      "source": "woori-kkook",
+      "sourceName": "꾹",
+      "title": "더중앙플러스 1개월 구독권 10,100원 즉시할인 (1개월 이용권)",
+      "url": "https://www.joongang.co.kr/purchase/coupon/register?couponNo=",
+      "period": "9.14~12.31",
+      "percent": null,
+      "won": 10100
     },
     {
       "app": "woori",
@@ -5584,7 +5558,7 @@ window.DISCOUNT_FEED = {
       "app": "woori",
       "source": "woori-events",
       "sourceName": "우리카드 진행중인 이벤트",
-      "title": "해외 캐시백 챌린지 : 목표달성 이벤트 해외 결제 목표 달성하면? 달성 보상금 캐시백 지급!",
+      "title": "해외에서 위비트래블과 함께라면 최대 20만원 캐시백 응모기간 2026.09.15 ~ 2026.10.15",
       "url": "https://pc.wooricard.com/dcpc/yh1/bnf/bnf02/prgevnt/H1BNF202S00.do",
       "period": null,
       "percent": null,
@@ -5604,20 +5578,10 @@ window.DISCOUNT_FEED = {
       "app": "woori",
       "source": "woori-events",
       "sourceName": "우리카드 진행중인 이벤트",
-      "title": "캐시백 해외에서 SUPER 이용하고 최대 150만원 SUPER한 할인 혜택까지 응모기간 2026.09.01 ~ 2026.09.30",
+      "title": "캐시백 해외 캐시백 챌린지 : 목표달성 이벤트 해외 결제 목표 달성하면? 달성 보상금 캐시백 지급! 응모기간 2026.08.26 ~ 2026.10.31",
       "url": "https://pc.wooricard.com/dcpc/yh1/bnf/bnf02/prgevnt/H1BNF202S00.do",
       "period": null,
       "percent": null,
-      "won": null
-    },
-    {
-      "app": "woori",
-      "source": "woori-events",
-      "sourceName": "우리카드 진행중인 이벤트",
-      "title": "9월 SK스토아 최대 7% 청구할인! 우리카드로 5만원 이상 결제 시 최대 7% 청구할인! 응모기간 2026.09.01 ~ 2026.09.30",
-      "url": "https://pc.wooricard.com/dcpc/yh1/bnf/bnf02/prgevnt/H1BNF202S00.do",
-      "period": null,
-      "percent": 7,
       "won": null
     },
     {
@@ -5625,16 +5589,6 @@ window.DISCOUNT_FEED = {
       "source": "woori-events",
       "sourceName": "우리카드 진행중인 이벤트",
       "title": "할인 우리카드로 핫!하게 ‘우리핫!콤보’ 3천원 할인 우리카드로 핫!도그세트 할인받고, 영화는 더 핫!하게 응모기간 2026.09.04 ~ 2026.09.30",
-      "url": "https://pc.wooricard.com/dcpc/yh1/bnf/bnf02/prgevnt/H1BNF202S00.do",
-      "period": null,
-      "percent": null,
-      "won": null
-    },
-    {
-      "app": "woori",
-      "source": "woori-events",
-      "sourceName": "우리카드 진행중인 이벤트",
-      "title": "캐시백 자동납부 모아모아 캐시백 이벤트 매월 나가는 생활요금 우리카드로 자동납부하면 최대 3.2만원 캐시백 혜택을 준대요! 응모기간 2026.09.01 ~ 2026.09.30",
       "url": "https://pc.wooricard.com/dcpc/yh1/bnf/bnf02/prgevnt/H1BNF202S00.do",
       "period": null,
       "percent": null,
@@ -5659,106 +5613,6 @@ window.DISCOUNT_FEED = {
       "period": null,
       "percent": null,
       "won": null
-    },
-    {
-      "app": "hana",
-      "source": "hana-events",
-      "sourceName": "하나카드 이벤트",
-      "title": "할인/캐쉬백",
-      "url": "javascript:void(0);",
-      "period": null,
-      "percent": null,
-      "won": null
-    },
-    {
-      "app": "hana",
-      "source": "hana-events",
-      "sourceName": "하나카드 이벤트",
-      "title": "에버랜드 본인+동반 3인 최대 42% 즉시할인 2026.09.11 ~ 2026.11.22",
-      "url": "https://m.hanacard.co.kr/MKEVT1000M.web",
-      "period": null,
-      "percent": 42,
-      "won": null
-    },
-    {
-      "app": "hana",
-      "source": "hana-events",
-      "sourceName": "하나카드 이벤트",
-      "title": "브랜드 위크 메가MGC커피 50% 할인! 9월 2026.09.14 ~ 2029.09.18",
-      "url": "https://m.hanacard.co.kr/MKEVT1000M.web",
-      "period": null,
-      "percent": 50,
-      "won": null
-    },
-    {
-      "app": "hana",
-      "source": "hana-events",
-      "sourceName": "하나카드 이벤트",
-      "title": "클럽디오아시스 스파&워터파크 최대 45% 현장할인 2026.09.01 ~ 2026.09.30",
-      "url": "https://m.hanacard.co.kr/MKEVT1000M.web",
-      "period": null,
-      "percent": 45,
-      "won": null
-    },
-    {
-      "app": "hana",
-      "source": "hana-events",
-      "sourceName": "하나카드 이벤트",
-      "title": "MOVING카드 5종 100% 연회비 캐시백 이벤트 2026.09.01 ~ 2026.09.30",
-      "url": "https://m.hanacard.co.kr/MKEVT1000M.web",
-      "period": null,
-      "percent": 100,
-      "won": null
-    },
-    {
-      "app": "hana",
-      "source": "hana-events",
-      "sourceName": "하나카드 이벤트",
-      "title": "삼성월렛 최대 5만원 캐시백 +배스킨라빈스 100% 2026.08.01 ~ 2026.09.30",
-      "url": "https://m.hanacard.co.kr/MKEVT1000M.web",
-      "period": null,
-      "percent": 100,
-      "won": null
-    },
-    {
-      "app": "hana",
-      "source": "hana-events",
-      "sourceName": "하나카드 이벤트",
-      "title": "다이소 할인권 받기 피싱케어 플러스 신규가입 이벤트! 2026.09.01 ~ 2026.09.30",
-      "url": "https://m.hanacard.co.kr/MKEVT1000M.web",
-      "period": null,
-      "percent": null,
-      "won": null
-    },
-    {
-      "app": "hana",
-      "source": "hana-events",
-      "sourceName": "하나카드 이벤트",
-      "title": "유니온페이(UPI) 중국, 베트남, 일본 10% 즉시할인 2026.09.01 ~ 2026.10.31",
-      "url": "https://m.hanacard.co.kr/MKEVT1000M.web",
-      "period": null,
-      "percent": 10,
-      "won": null
-    },
-    {
-      "app": "hana",
-      "source": "hana-events",
-      "sourceName": "하나카드 이벤트",
-      "title": "하나 나라사랑카드 나라사랑 BOOST 캐시백 최대 6만원 2026.07.01 ~ 2026.12.31",
-      "url": "https://m.hanacard.co.kr/MKEVT1000M.web",
-      "period": null,
-      "percent": null,
-      "won": null
-    },
-    {
-      "app": "hana",
-      "source": "hana-events",
-      "sourceName": "하나카드 이벤트",
-      "title": "나라사랑 혜택충전 하나 나라사랑카드 AI 스마트팩 9,900원 캐시백 지급! 2026.09.07 ~ 2026.09.30",
-      "url": "https://m.hanacard.co.kr/MKEVT1000M.web",
-      "period": null,
-      "percent": null,
-      "won": 9900
     },
     {
       "app": "shinhan",
@@ -6384,6 +6238,16 @@ window.DISCOUNT_FEED = {
       "app": "kbpay",
       "source": "kbpay-main",
       "sourceName": "KB Pay (탐색)",
+      "title": "트리니티항공 리브랜딩 기념 특별 할인",
+      "url": "https://m.kbcard.com/BON/DVIEW/MBBV0004?evntId=1001982",
+      "period": null,
+      "percent": null,
+      "won": null
+    },
+    {
+      "app": "kbpay",
+      "source": "kbpay-main",
+      "sourceName": "KB Pay (탐색)",
       "title": "KB Pay 첫 만남 기념 커피 쿠폰 받기",
       "url": "https://m.kbcard.com/BON/DVIEW/MBBV0004?evntId=1001827",
       "period": null,
@@ -6474,10 +6338,40 @@ window.DISCOUNT_FEED = {
       "app": "lotte",
       "source": "lotte-main",
       "sourceName": "롯데카드 (탐색)",
+      "title": "LOCA LIKIT 1.2 모든 가맹점 1.2% 할인",
+      "url": "https://www.lottecard.co.kr/",
+      "period": null,
+      "percent": 1.2,
+      "won": null
+    },
+    {
+      "app": "lotte",
+      "source": "lotte-main",
+      "sourceName": "롯데카드 (탐색)",
+      "title": "LOCA LIKIT Eat 음식점, 배달앱, 커피 60% 할인",
+      "url": "https://www.lottecard.co.kr/",
+      "period": null,
+      "percent": 60,
+      "won": null
+    },
+    {
+      "app": "lotte",
+      "source": "lotte-main",
+      "sourceName": "롯데카드 (탐색)",
       "title": "유심사 20% 즉시할인 2026.9.11 ~ 9.30 터치하기",
       "url": "https://www.lottecard.co.kr/",
       "period": "9.11 ~ 9.30",
       "percent": 20,
+      "won": null
+    },
+    {
+      "app": "lotte",
+      "source": "lotte-main",
+      "sourceName": "롯데카드 (탐색)",
+      "title": "LOCA LIKIT Play 주유, 영화, 스트리밍 60% 할인",
+      "url": "https://www.lottecard.co.kr/",
+      "period": null,
+      "percent": 60,
       "won": null
     },
     {
@@ -6494,16 +6388,6 @@ window.DISCOUNT_FEED = {
       "app": "lotte",
       "source": "lotte-main",
       "sourceName": "롯데카드 (탐색)",
-      "title": "연회비캐시백 LOCA LIKIT 1.2 모든 가맹점 1.2% 할인",
-      "url": "https://www.lottecard.co.kr/",
-      "period": null,
-      "percent": 1.2,
-      "won": null
-    },
-    {
-      "app": "lotte",
-      "source": "lotte-main",
-      "sourceName": "롯데카드 (탐색)",
       "title": "닥터피엘 12% 결제일 할인 2026.9.1 ~ 9.30 터치하기",
       "url": "https://www.lottecard.co.kr/",
       "period": "9.1 ~ 9.30",
@@ -6514,20 +6398,20 @@ window.DISCOUNT_FEED = {
       "app": "lotte",
       "source": "lotte-main",
       "sourceName": "롯데카드 (탐색)",
-      "title": "디지로카 Monaco 어디서나 1% 할인 배달의민족, 쿠팡이츠 5% 할인",
+      "title": "LOCA LIKIT Shop 온라인 쇼핑, 미용실, 편의점 60% 할인",
       "url": "https://www.lottecard.co.kr/",
       "period": null,
-      "percent": 1,
+      "percent": 60,
       "won": null
     },
     {
       "app": "lotte",
       "source": "lotte-main",
       "sourceName": "롯데카드 (탐색)",
-      "title": "연회비캐시백 LOCA LIKIT Eat 음식점, 배달앱, 커피 60% 할인",
+      "title": "디지로카 Monaco 어디서나 1% 할인 배달의민족, 쿠팡이츠 5% 할인",
       "url": "https://www.lottecard.co.kr/",
       "period": null,
-      "percent": 60,
+      "percent": 1,
       "won": null
     },
     {
@@ -6554,10 +6438,10 @@ window.DISCOUNT_FEED = {
       "app": "lotte",
       "source": "lotte-main",
       "sourceName": "롯데카드 (탐색)",
-      "title": "연회비캐시백 LOCA LIKIT Play 주유, 영화, 스트리밍 60% 할인",
+      "title": "디지로카 Paris 어디서나 0.7% 할인 쿠팡, 네이버페이 최대 5% 할인",
       "url": "https://www.lottecard.co.kr/",
       "period": null,
-      "percent": 60,
+      "percent": 0.7,
       "won": null
     },
     {
@@ -6614,10 +6498,10 @@ window.DISCOUNT_FEED = {
       "app": "lotte",
       "source": "lotte-main",
       "sourceName": "롯데카드 (탐색)",
-      "title": "연회비캐시백 LOCA LIKIT Shop 온라인 쇼핑, 미용실, 편의점 60% 할인",
+      "title": "롯데백화점 롯데카드 롯데백화점에서 할인받고 최대 58만원 상당 혜택까지 바로가기 >",
       "url": "https://www.lottecard.co.kr/",
       "period": null,
-      "percent": 60,
+      "percent": null,
       "won": null
     },
     {
@@ -6634,7 +6518,17 @@ window.DISCOUNT_FEED = {
       "app": "lotte",
       "source": "lotte-main",
       "sourceName": "롯데카드 (탐색)",
-      "title": "LOCA PLATINUM 마일리지형 1,500원당 1마일리지 적립스페셜기프트 서비스!",
+      "title": "[단하루9/16]대웅제약몰 40% 결제일 할인 2026.9.16 ~ 9.16 터치하기",
+      "url": "https://www.lottecard.co.kr/",
+      "period": "9.16 ~ 9.16",
+      "percent": 40,
+      "won": null
+    },
+    {
+      "app": "lotte",
+      "source": "lotte-main",
+      "sourceName": "롯데카드 (탐색)",
+      "title": "LOCA PLATINUM 마일리지형 1,500원당 1마일리지 적립 스페셜기프트 서비스!",
       "url": "https://www.lottecard.co.kr/",
       "period": null,
       "percent": null,
@@ -6644,40 +6538,10 @@ window.DISCOUNT_FEED = {
       "app": "lotte",
       "source": "lotte-main",
       "sourceName": "롯데카드 (탐색)",
-      "title": "[단하루9/14] 닥터피엘 28% 결제일 할인 2026.9.14 ~ 9.14 터치하기",
-      "url": "https://www.lottecard.co.kr/",
-      "period": "9.14 ~ 9.14",
-      "percent": 28,
-      "won": null
-    },
-    {
-      "app": "lotte",
-      "source": "lotte-main",
-      "sourceName": "롯데카드 (탐색)",
-      "title": "호텔스닷컴 아멕스카드 추가 20% 즉시 할인 2026.09.02 ~ 2026.10.07",
+      "title": "디지로카 Las Vegas 어디서나 최대 2% 할인 국내 가맹점 2~3개월 무이자 할부",
       "url": "https://www.lottecard.co.kr/",
       "period": null,
-      "percent": 20,
-      "won": null
-    },
-    {
-      "app": "lotte",
-      "source": "lotte-main",
-      "sourceName": "롯데카드 (탐색)",
-      "title": "[단하루9/14] 이니스프리 1만원 결제일 할인 2026.9.14 ~ 9.14 터치하기",
-      "url": "https://www.lottecard.co.kr/",
-      "period": "9.14 ~ 9.14",
-      "percent": null,
-      "won": null
-    },
-    {
-      "app": "lotte",
-      "source": "lotte-main",
-      "sourceName": "롯데카드 (탐색)",
-      "title": "[단하루9/14] 이니스프리 6천원 결제일 할인 2026.9.14 ~ 9.14 터치하기",
-      "url": "https://www.lottecard.co.kr/",
-      "period": "9.14 ~ 9.14",
-      "percent": null,
+      "percent": 2,
       "won": null
     },
     {
@@ -6694,30 +6558,40 @@ window.DISCOUNT_FEED = {
       "app": "lotte",
       "source": "lotte-main",
       "sourceName": "롯데카드 (탐색)",
-      "title": "연회비캐시백 디지로카 Paris 어디서나 0.7% 할인 쿠팡, 네이버페이 최대 5% 할인",
+      "title": "LOCA LIKIT 1.5 / 2.0 간단하게 할인받고 최대 65만원 상당 혜택 바로가기 >",
       "url": "https://www.lottecard.co.kr/",
       "period": null,
-      "percent": 0.7,
+      "percent": null,
       "won": null
     },
     {
       "app": "lotte",
       "source": "lotte-main",
       "sourceName": "롯데카드 (탐색)",
-      "title": "연회비캐시백 디지로카 Las Vegas 어디서나 최대 2% 할인 국내 가맹점 2~3개월 무이자 할부",
+      "title": "롯데카드 TELLO SE SKT 통신요금 할인 프로모션 2026.09.16 ~ 2026.09.30",
       "url": "https://www.lottecard.co.kr/",
       "period": null,
-      "percent": 2,
+      "percent": null,
       "won": null
     },
     {
       "app": "lotte",
       "source": "lotte-main",
       "sourceName": "롯데카드 (탐색)",
-      "title": "롯데백화점 Flex 카드 국내외 가맹점 L.POINT 0.5%적립커피50%, 스트리밍 30% 결제일 할인!",
+      "title": "롯데백화점 Flex 카드 국내외 가맹점 L.POINT 0.5%적립 커피50%, 스트리밍 30% 결제일 할인!",
       "url": "https://www.lottecard.co.kr/",
       "period": null,
       "percent": 0.5,
+      "won": null
+    },
+    {
+      "app": "lotte",
+      "source": "lotte-main",
+      "sourceName": "롯데카드 (탐색)",
+      "title": "Toss Mobile × LOCA SKT KT LGU+ 알뜰폰 요금 2년간 월 최대 3만원 할인 바로가기 >",
+      "url": "https://www.lottecard.co.kr/",
+      "period": null,
+      "percent": null,
       "won": null
     },
     {
@@ -6732,6 +6606,40 @@ window.DISCOUNT_FEED = {
     }
   ],
   "hints": [
+    {
+      "source": "toss-feed",
+      "url": "https://api-public.toss.im/api-public/v3/ipd-thor/api/v1/workspaces/159/posts",
+      "path": "success.results",
+      "rows": 20,
+      "keys": [
+        "id",
+        "updatedTime",
+        "createdTime",
+        "category",
+        "categories",
+        "series",
+        "seriesSlug",
+        "title",
+        "subtitle",
+        "bottomButtonConfig",
+        "coverConfig",
+        "thumbnailConfig",
+        "key",
+        "minAge",
+        "isDisplaying",
+        "isDisplayingPublishedTime",
+        "workspaceId",
+        "isPublished",
+        "publishedTime",
+        "likeCount",
+        "commentBoard",
+        "relatedPostTitle",
+        "relatedPosts",
+        "disclaimer",
+        "seoConfig"
+      ],
+      "sample": "{\"id\":39427,\"updatedTime\":\"2026-09-16T08:20:28+09:00\",\"createdTime\":\"2025-08-07T13:53:48+09:00\",\"category\":null,\"categories\":[],\"series\":null,\"seriesSlug\":null,\"title\":\"7월 넷째 주, 경제퀴즈에 도전하세요\",\"subtitle\":null,\"bottomButtonConfig\":{\"ctaType\":\"ONLY_BUTTON\",\"imageUrl\":null,\"imageAlt\":null,\"title\":null,\"description\":null,\"ctaName\":\"자세히 알아보기\",\"landingUrl\":\"https://toss.im/tossfeed/article/tosspick-2025-1"
+    },
     {
       "source": "toss-feed",
       "url": "https://api-public.toss.im/api-public/v3/ipd-thor/api/v1/workspaces/4/posts",
@@ -6764,7 +6672,7 @@ window.DISCOUNT_FEED = {
         "disclaimer",
         "seoConfig"
       ],
-      "sample": "{\"id\":53021,\"updatedTime\":\"2026-09-14T14:10:29+09:00\",\"createdTime\":\"2026-09-10T10:42:46+09:00\",\"category\":\"인터뷰\",\"categories\":[{\"name\":\"인터뷰\",\"id\":149,\"slug\":\"interview\",\"parentId\":161,\"iconUrl\":null},{\"name\":\"영상\",\"id\":153,\"slug\":\"video\",\"parentId\":161,\"iconUrl\":null},{\"name\":\"시사·트렌드\",\"id\":1549,\"slug\":null,\"parentId\":null,\"iconUrl\":null},{\"name\":\"인터뷰\",\"id\":1551,\"slug\":null,\"parentId\":null,\"iconUrl\""
+      "sample": "{\"id\":53021,\"updatedTime\":\"2026-09-16T08:15:45+09:00\",\"createdTime\":\"2026-09-10T10:42:46+09:00\",\"category\":\"인터뷰\",\"categories\":[{\"name\":\"인터뷰\",\"id\":149,\"slug\":\"interview\",\"parentId\":161,\"iconUrl\":null},{\"name\":\"영상\",\"id\":153,\"slug\":\"video\",\"parentId\":161,\"iconUrl\":null},{\"name\":\"시사·트렌드\",\"id\":1549,\"slug\":null,\"parentId\":null,\"iconUrl\":null},{\"name\":\"인터뷰\",\"id\":1551,\"slug\":null,\"parentId\":null,\"iconUrl\""
     },
     {
       "source": "woori-events",
@@ -6784,7 +6692,7 @@ window.DISCOUNT_FEED = {
         "offset",
         "totalPageCount"
       ],
-      "sample": "{\"bannerSj\":\"우리카드 할부 종합 안내\",\"bannerCn\":\"필요한 지출은 계속 생기는데, 일시불이 부담될 때는?&lt;br&gt;\\r\\n할부로 나눠서 결제하세요 !\",\"altrtvText\":\"우리카드 할부 종합 안내\",\"scrinMvmnUrl\":\"/yh1/bnf/bnf02/prgevnt/H1BNF202S01.do?30006060\",\"fileCoursWeb\":\"/webcontent/evntFileList/2026/6/29/8258f133-3a72-43b1-909f-fb78de364e1b.png\",\"evntSrno\":\"30006060\",\"evntItgCfcd\":\"1\",\"itgYn\":\"N\",\"fixedLengthVo\":false,\"offset\":0,\"totalPageCount\":1}"
+      "sample": "{\"bannerSj\":\"추석맞이, 우리카드 전가맹점 무이자\",\"bannerCn\":\"추석을 맞이하여 전가맹점 무이자 3개월 제공&lt;br&gt;\\r\\n우리카드 이용해서 풍족한 명절을 보내세요\",\"altrtvText\":\"추석맞이, 우리카드 전가맹점 무이자\",\"scrinMvmnUrl\":\"/yh1/bnf/bnf02/prgevnt/H1BNF202S01.do?30006299\",\"fileCoursWeb\":\"/webcontent/evntFileList/2026/9/14/01e7110c-dcfc-474e-95bc-8928c5b1cafd.png\",\"evntSrno\":\"30006299\",\"evntItgCfcd\":\"1\",\"itgYn\":\"N\",\"fixedLengthVo\":false,\"offset\":0,\"totalPageCount"
     },
     {
       "source": "woori-events",
@@ -6820,10 +6728,8 @@ window.DISCOUNT_FEED = {
         "evntEdt",
         "cardEvntNm",
         "evntSumTxt",
-        "evntBnfImgCdNm",
         "evntPriRk",
         "priXpsTgtYn",
-        "evntKwrdTagList",
         "listCnt",
         "fileCoursWeb",
         "fileCoursWebTxt",
@@ -6837,9 +6743,11 @@ window.DISCOUNT_FEED = {
         "evntXpsRkCd",
         "myPickYn",
         "setupValueApplcCo",
-        "prgEvntOrderExist"
+        "prgEvntOrderExist",
+        "entHisYn",
+        "mblDocTitlTxt"
       ],
-      "sample": "{\"evntSrno\":\"30006060\",\"evntItgTpcd\":\"1\",\"evntItgCfcd\":\"1\",\"evntSdt\":\"2026.07.01\",\"evntEdt\":\"2026.09.30\",\"cardEvntNm\":\"우리카드 할부 종합 안내\",\"evntSumTxt\":\"필요한 지출은 계속 생기는데, 일시불이 부담될 때는?&lt;br&gt;\\r\\n할부로 나눠서 결제하세요 !\\r\\n\",\"evntBnfImgCdNm\":\"5\",\"evntPriRk\":\"0\",\"priXpsTgtYn\":\"Y\",\"evntKwrdTagList\":\"#온라인 #쇼핑 #여행 #백화점 #무이자\",\"listCnt\":0,\"fileCoursWeb\":\"/webcontent/evntFileList/2026/6/29/8d08a2ae-b49b-4177-8923-7fe"
+      "sample": "{\"evntSrno\":\"30006299\",\"evntItgTpcd\":\"1\",\"evntItgCfcd\":\"1\",\"evntSdt\":\"2026.09.14\",\"evntEdt\":\"2026.09.27\",\"cardEvntNm\":\"추석맞이, 우리카드 전가맹점 무이자\",\"evntSumTxt\":\"추석을 맞이하여 전가맹점 무이자 3개월 제공&lt;br&gt;\\r\\n우리카드 이용해서 풍족한 명절을 보내세요\",\"evntPriRk\":\"0\",\"priXpsTgtYn\":\"Y\",\"listCnt\":0,\"fileCoursWeb\":\"/webcontent/evntFileList/2026/9/14/0f844027-9ab5-49b6-af14-9f2adb98921f.png\",\"fileCoursWebTxt\":\"추석맞이, 우리카드 전가맹점 무이자\",\"docT"
     },
     {
       "source": "ssgpay-main",
@@ -6873,7 +6781,7 @@ window.DISCOUNT_FEED = {
         "currentPage",
         "pageSize"
       ],
-      "sample": "{\"contextPath\":null,\"mdn\":null,\"userNo\":null,\"appId\":null,\"errorMessage\":null,\"resultCode\":null,\"resultMsg\":null,\"returnUrl\":null,\"route\":\"W\",\"gnbNum\":null,\"startDate\":null,\"endDate\":null,\"instDate\":\"2026.09.11\",\"updtDate\":null,\"custId\":null,\"totalCnt\":null,\"rType\":null,\"os\":null,\"deviceNum\":null,\"signTyp\":null,\"startPage\":null,\"endPage\":null,\"searchCategory\":null,\"currentPage\":1,\"pageSize\":10,\"st"
+      "sample": "{\"contextPath\":null,\"mdn\":null,\"userNo\":null,\"appId\":null,\"errorMessage\":null,\"resultCode\":null,\"resultMsg\":null,\"returnUrl\":null,\"route\":\"W\",\"gnbNum\":null,\"startDate\":null,\"endDate\":null,\"instDate\":\"2026.09.14\",\"updtDate\":null,\"custId\":null,\"totalCnt\":null,\"rType\":null,\"os\":null,\"deviceNum\":null,\"signTyp\":null,\"startPage\":null,\"endPage\":null,\"searchCategory\":null,\"currentPage\":1,\"pageSize\":10,\"st"
     }
   ]
 };
