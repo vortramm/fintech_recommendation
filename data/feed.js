@@ -1,6 +1,6 @@
 /* tools/collect.mjs 가 생성합니다. 직접 고치지 마세요. */
 window.DISCOUNT_FEED = {
-  "collectedAt": "2026-09-15T23:33:46.483Z",
+  "collectedAt": "2026-09-16T08:08:03.140Z",
   "sources": [
     {
       "id": "samsung-link",
@@ -116,10 +116,11 @@ window.DISCOUNT_FEED = {
       "name": "하나카드 이벤트",
       "url": "https://m.hanacard.co.kr/MKEVT1000M.web",
       "kind": "public",
-      "status": "error",
-      "count": 0,
+      "status": "ok",
+      "count": 10,
       "structured": 0,
-      "error": "page.goto: Timeout 30000ms exceeded."
+      "http": 200,
+      "captures": 0
     },
     {
       "id": "bc-events",
@@ -4268,9 +4269,9 @@ window.DISCOUNT_FEED = {
       "app": "shinhan",
       "source": "shinhan-myshop",
       "sourceName": "마이샵",
-      "title": "이탈리아 한 입! 라그릴리아 캐시백 9월 1일 ~ 9월 31일",
+      "title": "이탈리아 한 입! 라그릴리아 캐시백 9월 1일 ~ 9월 30일",
       "url": "javascript:void(0);",
-      "period": "9월 1일 ~ 9월 31",
+      "period": "9월 1일 ~ 9월 30",
       "percent": null,
       "won": null
     },
@@ -4328,9 +4329,9 @@ window.DISCOUNT_FEED = {
       "app": "shinhan",
       "source": "shinhan-myshop",
       "sourceName": "마이샵",
-      "title": "시원한 음료, 달달 디저트 파리바게뜨 캐시백 혜택! 9월 1일 ~ 9월 31일",
+      "title": "시원한 음료, 달달 디저트 파리바게뜨 캐시백 혜택! 9월 1일 ~ 9월 30일",
       "url": "javascript:void(0);",
-      "period": "9월 1일 ~ 9월 31",
+      "period": "9월 1일 ~ 9월 30",
       "percent": null,
       "won": null
     },
@@ -5248,7 +5249,7 @@ window.DISCOUNT_FEED = {
       "app": "woori",
       "source": "woori-kkook",
       "sourceName": "꾹",
-      "title": "지방세 5,000원청구할인 알림",
+      "title": "지방세 5,000원청구할인 담기",
       "url": "https://m.wooricard.com/dcmw/yh1/bnf/bnf08/M1BNF208S00.do",
       "period": null,
       "percent": null,
@@ -5528,6 +5529,16 @@ window.DISCOUNT_FEED = {
       "app": "woori",
       "source": "woori-events",
       "sourceName": "우리카드 진행중인 이벤트",
+      "title": "해외에서 위비트래블과 함께라면 최대 20만원 캐시백",
+      "url": "https://pc.wooricard.com/dcpc/yh1/bnf/bnf02/prgevnt/H1BNF202S00.do",
+      "period": null,
+      "percent": null,
+      "won": null
+    },
+    {
+      "app": "woori",
+      "source": "woori-events",
+      "sourceName": "우리카드 진행중인 이벤트",
       "title": "카드의정석 시즌 2는 1.2% 할인이 기본!자세히보기",
       "url": "https://pc.wooricard.com/dcpc/yh1/crd/crd01/H1CRD101S02.do?cdPrdCd=102997",
       "period": null,
@@ -5549,16 +5560,6 @@ window.DISCOUNT_FEED = {
       "source": "woori-events",
       "sourceName": "우리카드 진행중인 이벤트",
       "title": "[우리 캐시백 챌린지] 추석 명절 캐시백 도전 목표금액 챌린지 달성하고 캐시백 받으세요",
-      "url": "https://pc.wooricard.com/dcpc/yh1/bnf/bnf02/prgevnt/H1BNF202S00.do",
-      "period": null,
-      "percent": null,
-      "won": null
-    },
-    {
-      "app": "woori",
-      "source": "woori-events",
-      "sourceName": "우리카드 진행중인 이벤트",
-      "title": "해외에서 위비트래블과 함께라면 최대 20만원 캐시백 응모기간 2026.09.15 ~ 2026.10.15",
       "url": "https://pc.wooricard.com/dcpc/yh1/bnf/bnf02/prgevnt/H1BNF202S00.do",
       "period": null,
       "percent": null,
@@ -5613,6 +5614,106 @@ window.DISCOUNT_FEED = {
       "period": null,
       "percent": null,
       "won": null
+    },
+    {
+      "app": "hana",
+      "source": "hana-events",
+      "sourceName": "하나카드 이벤트",
+      "title": "할인/캐쉬백",
+      "url": "javascript:void(0);",
+      "period": null,
+      "percent": null,
+      "won": null
+    },
+    {
+      "app": "hana",
+      "source": "hana-events",
+      "sourceName": "하나카드 이벤트",
+      "title": "에버랜드 본인+동반 3인 최대 42% 즉시할인 2026.09.11 ~ 2026.11.22",
+      "url": "https://m.hanacard.co.kr/MKEVT1000M.web",
+      "period": null,
+      "percent": 42,
+      "won": null
+    },
+    {
+      "app": "hana",
+      "source": "hana-events",
+      "sourceName": "하나카드 이벤트",
+      "title": "브랜드 위크 메가MGC커피 50% 할인! 9월 2026.09.14 ~ 2029.09.18",
+      "url": "https://m.hanacard.co.kr/MKEVT1000M.web",
+      "period": null,
+      "percent": 50,
+      "won": null
+    },
+    {
+      "app": "hana",
+      "source": "hana-events",
+      "sourceName": "하나카드 이벤트",
+      "title": "클럽디오아시스 스파&워터파크 최대 45% 현장할인 2026.09.01 ~ 2026.09.30",
+      "url": "https://m.hanacard.co.kr/MKEVT1000M.web",
+      "period": null,
+      "percent": 45,
+      "won": null
+    },
+    {
+      "app": "hana",
+      "source": "hana-events",
+      "sourceName": "하나카드 이벤트",
+      "title": "MOVING카드 5종 100% 연회비 캐시백 이벤트 2026.09.01 ~ 2026.09.30",
+      "url": "https://m.hanacard.co.kr/MKEVT1000M.web",
+      "period": null,
+      "percent": 100,
+      "won": null
+    },
+    {
+      "app": "hana",
+      "source": "hana-events",
+      "sourceName": "하나카드 이벤트",
+      "title": "삼성월렛 최대 5만원 캐시백 +배스킨라빈스 100% 2026.08.01 ~ 2026.09.30",
+      "url": "https://m.hanacard.co.kr/MKEVT1000M.web",
+      "period": null,
+      "percent": 100,
+      "won": null
+    },
+    {
+      "app": "hana",
+      "source": "hana-events",
+      "sourceName": "하나카드 이벤트",
+      "title": "다이소 할인권 받기 피싱케어 플러스 신규가입 이벤트! 2026.09.01 ~ 2026.09.30",
+      "url": "https://m.hanacard.co.kr/MKEVT1000M.web",
+      "period": null,
+      "percent": null,
+      "won": null
+    },
+    {
+      "app": "hana",
+      "source": "hana-events",
+      "sourceName": "하나카드 이벤트",
+      "title": "유니온페이(UPI) 중국, 베트남, 일본 10% 즉시할인 2026.09.01 ~ 2026.10.31",
+      "url": "https://m.hanacard.co.kr/MKEVT1000M.web",
+      "period": null,
+      "percent": 10,
+      "won": null
+    },
+    {
+      "app": "hana",
+      "source": "hana-events",
+      "sourceName": "하나카드 이벤트",
+      "title": "하나 나라사랑카드 나라사랑 BOOST 캐시백 최대 6만원 2026.07.01 ~ 2026.12.31",
+      "url": "https://m.hanacard.co.kr/MKEVT1000M.web",
+      "period": null,
+      "percent": null,
+      "won": null
+    },
+    {
+      "app": "hana",
+      "source": "hana-events",
+      "sourceName": "하나카드 이벤트",
+      "title": "나라사랑 혜택충전 하나 나라사랑카드 AI 스마트팩 9,900원 캐시백 지급! 2026.09.07 ~ 2026.09.30",
+      "url": "https://m.hanacard.co.kr/MKEVT1000M.web",
+      "period": null,
+      "percent": null,
+      "won": 9900
     },
     {
       "app": "shinhan",
@@ -6338,10 +6439,10 @@ window.DISCOUNT_FEED = {
       "app": "lotte",
       "source": "lotte-main",
       "sourceName": "롯데카드 (탐색)",
-      "title": "LOCA LIKIT 1.2 모든 가맹점 1.2% 할인",
+      "title": "LOCA LIKIT 1.5 간단하게 최대 1.5% 혜택",
       "url": "https://www.lottecard.co.kr/",
       "period": null,
-      "percent": 1.2,
+      "percent": 1.5,
       "won": null
     },
     {
@@ -6638,7 +6739,7 @@ window.DISCOUNT_FEED = {
         "disclaimer",
         "seoConfig"
       ],
-      "sample": "{\"id\":39427,\"updatedTime\":\"2026-09-16T08:20:28+09:00\",\"createdTime\":\"2025-08-07T13:53:48+09:00\",\"category\":null,\"categories\":[],\"series\":null,\"seriesSlug\":null,\"title\":\"7월 넷째 주, 경제퀴즈에 도전하세요\",\"subtitle\":null,\"bottomButtonConfig\":{\"ctaType\":\"ONLY_BUTTON\",\"imageUrl\":null,\"imageAlt\":null,\"title\":null,\"description\":null,\"ctaName\":\"자세히 알아보기\",\"landingUrl\":\"https://toss.im/tossfeed/article/tosspick-2025-1"
+      "sample": "{\"id\":39427,\"updatedTime\":\"2026-09-16T16:54:12+09:00\",\"createdTime\":\"2025-08-07T13:53:48+09:00\",\"category\":null,\"categories\":[],\"series\":null,\"seriesSlug\":null,\"title\":\"7월 넷째 주, 경제퀴즈에 도전하세요\",\"subtitle\":null,\"bottomButtonConfig\":{\"ctaType\":\"ONLY_BUTTON\",\"imageUrl\":null,\"imageAlt\":null,\"title\":null,\"description\":null,\"ctaName\":\"자세히 알아보기\",\"landingUrl\":\"https://toss.im/tossfeed/article/tosspick-2025-1"
     },
     {
       "source": "toss-feed",
@@ -6672,7 +6773,7 @@ window.DISCOUNT_FEED = {
         "disclaimer",
         "seoConfig"
       ],
-      "sample": "{\"id\":53021,\"updatedTime\":\"2026-09-16T08:15:45+09:00\",\"createdTime\":\"2026-09-10T10:42:46+09:00\",\"category\":\"인터뷰\",\"categories\":[{\"name\":\"인터뷰\",\"id\":149,\"slug\":\"interview\",\"parentId\":161,\"iconUrl\":null},{\"name\":\"영상\",\"id\":153,\"slug\":\"video\",\"parentId\":161,\"iconUrl\":null},{\"name\":\"시사·트렌드\",\"id\":1549,\"slug\":null,\"parentId\":null,\"iconUrl\":null},{\"name\":\"인터뷰\",\"id\":1551,\"slug\":null,\"parentId\":null,\"iconUrl\""
+      "sample": "{\"id\":53021,\"updatedTime\":\"2026-09-16T16:59:26+09:00\",\"createdTime\":\"2026-09-10T10:42:46+09:00\",\"category\":\"인터뷰\",\"categories\":[{\"name\":\"인터뷰\",\"id\":149,\"slug\":\"interview\",\"parentId\":161,\"iconUrl\":null},{\"name\":\"영상\",\"id\":153,\"slug\":\"video\",\"parentId\":161,\"iconUrl\":null},{\"name\":\"시사·트렌드\",\"id\":1549,\"slug\":null,\"parentId\":null,\"iconUrl\":null},{\"name\":\"인터뷰\",\"id\":1551,\"slug\":null,\"parentId\":null,\"iconUrl\""
     },
     {
       "source": "woori-events",
