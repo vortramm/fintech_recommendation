@@ -1,6 +1,6 @@
 /* tools/collect.mjs 가 생성합니다. 직접 고치지 마세요. */
 window.DISCOUNT_FEED = {
-  "collectedAt": "2026-09-16T08:08:03.140Z",
+  "collectedAt": "2026-09-16T13:56:23.900Z",
   "sources": [
     {
       "id": "samsung-link",
@@ -168,7 +168,7 @@ window.DISCOUNT_FEED = {
       "count": 0,
       "structured": 0,
       "http": 200,
-      "captures": 4
+      "captures": 0
     },
     {
       "id": "naverpay-main",
@@ -6539,16 +6539,6 @@ window.DISCOUNT_FEED = {
       "app": "lotte",
       "source": "lotte-main",
       "sourceName": "롯데카드 (탐색)",
-      "title": "디지로카 Paris 어디서나 0.7% 할인 쿠팡, 네이버페이 최대 5% 할인",
-      "url": "https://www.lottecard.co.kr/",
-      "period": null,
-      "percent": 0.7,
-      "won": null
-    },
-    {
-      "app": "lotte",
-      "source": "lotte-main",
-      "sourceName": "롯데카드 (탐색)",
       "title": "돌하루팡(제주) 10% 즉시 할인 쿠폰 2026.9.1 ~ 9.30 터치하기",
       "url": "https://www.lottecard.co.kr/",
       "period": "9.1 ~ 9.30",
@@ -6599,16 +6589,6 @@ window.DISCOUNT_FEED = {
       "app": "lotte",
       "source": "lotte-main",
       "sourceName": "롯데카드 (탐색)",
-      "title": "롯데백화점 롯데카드 롯데백화점에서 할인받고 최대 58만원 상당 혜택까지 바로가기 >",
-      "url": "https://www.lottecard.co.kr/",
-      "period": null,
-      "percent": null,
-      "won": null
-    },
-    {
-      "app": "lotte",
-      "source": "lotte-main",
-      "sourceName": "롯데카드 (탐색)",
       "title": "글로벌 eSIM 10GB 33.2% 즉시할인 2026.9.7 ~ 10.31 터치하기",
       "url": "https://www.lottecard.co.kr/",
       "period": "9.7 ~ 10.31",
@@ -6619,17 +6599,7 @@ window.DISCOUNT_FEED = {
       "app": "lotte",
       "source": "lotte-main",
       "sourceName": "롯데카드 (탐색)",
-      "title": "[단하루9/16]대웅제약몰 40% 결제일 할인 2026.9.16 ~ 9.16 터치하기",
-      "url": "https://www.lottecard.co.kr/",
-      "period": "9.16 ~ 9.16",
-      "percent": 40,
-      "won": null
-    },
-    {
-      "app": "lotte",
-      "source": "lotte-main",
-      "sourceName": "롯데카드 (탐색)",
-      "title": "LOCA PLATINUM 마일리지형 1,500원당 1마일리지 적립 스페셜기프트 서비스!",
+      "title": "LOCA PLATINUM 마일리지형 1,500원당 1마일리지 적립스페셜기프트 서비스!",
       "url": "https://www.lottecard.co.kr/",
       "period": null,
       "percent": null,
@@ -6639,10 +6609,10 @@ window.DISCOUNT_FEED = {
       "app": "lotte",
       "source": "lotte-main",
       "sourceName": "롯데카드 (탐색)",
-      "title": "디지로카 Las Vegas 어디서나 최대 2% 할인 국내 가맹점 2~3개월 무이자 할부",
+      "title": "[단하루9/16]대웅제약몰 40% 결제일 할인 2026.9.16 ~ 9.16 터치하기",
       "url": "https://www.lottecard.co.kr/",
-      "period": null,
-      "percent": 2,
+      "period": "9.16 ~ 9.16",
+      "percent": 40,
       "won": null
     },
     {
@@ -6659,7 +6629,27 @@ window.DISCOUNT_FEED = {
       "app": "lotte",
       "source": "lotte-main",
       "sourceName": "롯데카드 (탐색)",
+      "title": "연회비캐시백 디지로카 Paris 어디서나 0.7% 할인 쿠팡, 네이버페이 최대 5% 할인",
+      "url": "https://www.lottecard.co.kr/",
+      "period": null,
+      "percent": 0.7,
+      "won": null
+    },
+    {
+      "app": "lotte",
+      "source": "lotte-main",
+      "sourceName": "롯데카드 (탐색)",
       "title": "LOCA LIKIT 1.5 / 2.0 간단하게 할인받고 최대 65만원 상당 혜택 바로가기 >",
+      "url": "https://www.lottecard.co.kr/",
+      "period": null,
+      "percent": null,
+      "won": null
+    },
+    {
+      "app": "lotte",
+      "source": "lotte-main",
+      "sourceName": "롯데카드 (탐색)",
+      "title": "EVENT 롯데백화점 롯데카드 롯데백화점에서 할인받고 최대 58만원 상당 혜택까지 바로가기 >",
       "url": "https://www.lottecard.co.kr/",
       "period": null,
       "percent": null,
@@ -6679,7 +6669,17 @@ window.DISCOUNT_FEED = {
       "app": "lotte",
       "source": "lotte-main",
       "sourceName": "롯데카드 (탐색)",
-      "title": "롯데백화점 Flex 카드 국내외 가맹점 L.POINT 0.5%적립 커피50%, 스트리밍 30% 결제일 할인!",
+      "title": "연회비캐시백 디지로카 Las Vegas 어디서나 최대 2% 할인 국내 가맹점 2~3개월 무이자 할부",
+      "url": "https://www.lottecard.co.kr/",
+      "period": null,
+      "percent": 2,
+      "won": null
+    },
+    {
+      "app": "lotte",
+      "source": "lotte-main",
+      "sourceName": "롯데카드 (탐색)",
+      "title": "롯데백화점 Flex 카드 국내외 가맹점 L.POINT 0.5%적립커피50%, 스트리밍 30% 결제일 할인!",
       "url": "https://www.lottecard.co.kr/",
       "period": null,
       "percent": 0.5,
@@ -6689,7 +6689,7 @@ window.DISCOUNT_FEED = {
       "app": "lotte",
       "source": "lotte-main",
       "sourceName": "롯데카드 (탐색)",
-      "title": "Toss Mobile × LOCA SKT KT LGU+ 알뜰폰 요금 2년간 월 최대 3만원 할인 바로가기 >",
+      "title": "EVENT Toss Mobile × LOCA SKT KT LGU+ 알뜰폰 요금 2년간 월 최대 3만원 할인 바로가기 >",
       "url": "https://www.lottecard.co.kr/",
       "period": null,
       "percent": null,
@@ -6739,7 +6739,7 @@ window.DISCOUNT_FEED = {
         "disclaimer",
         "seoConfig"
       ],
-      "sample": "{\"id\":39427,\"updatedTime\":\"2026-09-16T16:54:12+09:00\",\"createdTime\":\"2025-08-07T13:53:48+09:00\",\"category\":null,\"categories\":[],\"series\":null,\"seriesSlug\":null,\"title\":\"7월 넷째 주, 경제퀴즈에 도전하세요\",\"subtitle\":null,\"bottomButtonConfig\":{\"ctaType\":\"ONLY_BUTTON\",\"imageUrl\":null,\"imageAlt\":null,\"title\":null,\"description\":null,\"ctaName\":\"자세히 알아보기\",\"landingUrl\":\"https://toss.im/tossfeed/article/tosspick-2025-1"
+      "sample": "{\"id\":39427,\"updatedTime\":\"2026-09-16T21:28:14+09:00\",\"createdTime\":\"2025-08-07T13:53:48+09:00\",\"category\":null,\"categories\":[],\"series\":null,\"seriesSlug\":null,\"title\":\"7월 넷째 주, 경제퀴즈에 도전하세요\",\"subtitle\":null,\"bottomButtonConfig\":{\"ctaType\":\"ONLY_BUTTON\",\"imageUrl\":null,\"imageAlt\":null,\"title\":null,\"description\":null,\"ctaName\":\"자세히 알아보기\",\"landingUrl\":\"https://toss.im/tossfeed/article/tosspick-2025-1"
     },
     {
       "source": "toss-feed",
@@ -6773,7 +6773,7 @@ window.DISCOUNT_FEED = {
         "disclaimer",
         "seoConfig"
       ],
-      "sample": "{\"id\":53021,\"updatedTime\":\"2026-09-16T16:59:26+09:00\",\"createdTime\":\"2026-09-10T10:42:46+09:00\",\"category\":\"인터뷰\",\"categories\":[{\"name\":\"인터뷰\",\"id\":149,\"slug\":\"interview\",\"parentId\":161,\"iconUrl\":null},{\"name\":\"영상\",\"id\":153,\"slug\":\"video\",\"parentId\":161,\"iconUrl\":null},{\"name\":\"시사·트렌드\",\"id\":1549,\"slug\":null,\"parentId\":null,\"iconUrl\":null},{\"name\":\"인터뷰\",\"id\":1551,\"slug\":null,\"parentId\":null,\"iconUrl\""
+      "sample": "{\"id\":53021,\"updatedTime\":\"2026-09-16T22:25:27+09:00\",\"createdTime\":\"2026-09-10T10:42:46+09:00\",\"category\":\"인터뷰\",\"categories\":[{\"name\":\"인터뷰\",\"id\":149,\"slug\":\"interview\",\"parentId\":161,\"iconUrl\":null},{\"name\":\"영상\",\"id\":153,\"slug\":\"video\",\"parentId\":161,\"iconUrl\":null},{\"name\":\"시사·트렌드\",\"id\":1549,\"slug\":null,\"parentId\":null,\"iconUrl\":null},{\"name\":\"인터뷰\",\"id\":1551,\"slug\":null,\"parentId\":null,\"iconUrl\""
     },
     {
       "source": "woori-events",
