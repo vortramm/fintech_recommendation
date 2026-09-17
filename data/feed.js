@@ -1,6 +1,6 @@
 /* tools/collect.mjs 가 생성합니다. 직접 고치지 마세요. */
 window.DISCOUNT_FEED = {
-  "collectedAt": "2026-09-16T23:28:09.263Z",
+  "collectedAt": "2026-09-17T08:14:19.031Z",
   "sources": [
     {
       "id": "samsung-link",
@@ -116,11 +116,10 @@ window.DISCOUNT_FEED = {
       "name": "하나카드 이벤트",
       "url": "https://m.hanacard.co.kr/MKEVT1000M.web",
       "kind": "public",
-      "status": "ok",
-      "count": 10,
+      "status": "error",
+      "count": 0,
       "structured": 0,
-      "http": 200,
-      "captures": 0
+      "error": "page.goto: Timeout 30000ms exceeded."
     },
     {
       "id": "bc-events",
@@ -168,7 +167,7 @@ window.DISCOUNT_FEED = {
       "count": 0,
       "structured": 0,
       "http": 200,
-      "captures": 4
+      "captures": 3
     },
     {
       "id": "naverpay-main",
@@ -212,11 +211,10 @@ window.DISCOUNT_FEED = {
       "name": "KB Pay (탐색)",
       "url": "https://m.kbcard.com/",
       "kind": "public",
-      "status": "ok",
-      "count": 9,
+      "status": "blocked",
+      "count": 0,
       "structured": 0,
-      "http": 200,
-      "captures": 2
+      "http": 403
     },
     {
       "id": "hyundai-main",
@@ -5563,106 +5561,6 @@ window.DISCOUNT_FEED = {
       "won": null
     },
     {
-      "app": "hana",
-      "source": "hana-events",
-      "sourceName": "하나카드 이벤트",
-      "title": "할인/캐쉬백",
-      "url": "javascript:void(0);",
-      "period": null,
-      "percent": null,
-      "won": null
-    },
-    {
-      "app": "hana",
-      "source": "hana-events",
-      "sourceName": "하나카드 이벤트",
-      "title": "에버랜드 본인+동반 3인 최대 42% 즉시할인 2026.09.11 ~ 2026.11.22",
-      "url": "https://m.hanacard.co.kr/MKEVT1000M.web",
-      "period": null,
-      "percent": 42,
-      "won": null
-    },
-    {
-      "app": "hana",
-      "source": "hana-events",
-      "sourceName": "하나카드 이벤트",
-      "title": "브랜드 위크 메가MGC커피 50% 할인! 9월 2026.09.14 ~ 2029.09.18",
-      "url": "https://m.hanacard.co.kr/MKEVT1000M.web",
-      "period": null,
-      "percent": 50,
-      "won": null
-    },
-    {
-      "app": "hana",
-      "source": "hana-events",
-      "sourceName": "하나카드 이벤트",
-      "title": "클럽디오아시스 스파&워터파크 최대 45% 현장할인 2026.09.01 ~ 2026.09.30",
-      "url": "https://m.hanacard.co.kr/MKEVT1000M.web",
-      "period": null,
-      "percent": 45,
-      "won": null
-    },
-    {
-      "app": "hana",
-      "source": "hana-events",
-      "sourceName": "하나카드 이벤트",
-      "title": "MOVING카드 5종 100% 연회비 캐시백 이벤트 2026.09.01 ~ 2026.09.30",
-      "url": "https://m.hanacard.co.kr/MKEVT1000M.web",
-      "period": null,
-      "percent": 100,
-      "won": null
-    },
-    {
-      "app": "hana",
-      "source": "hana-events",
-      "sourceName": "하나카드 이벤트",
-      "title": "삼성월렛 최대 5만원 캐시백 +배스킨라빈스 100% 2026.08.01 ~ 2026.09.30",
-      "url": "https://m.hanacard.co.kr/MKEVT1000M.web",
-      "period": null,
-      "percent": 100,
-      "won": null
-    },
-    {
-      "app": "hana",
-      "source": "hana-events",
-      "sourceName": "하나카드 이벤트",
-      "title": "다이소 할인권 받기 피싱케어 플러스 신규가입 이벤트! 2026.09.01 ~ 2026.09.30",
-      "url": "https://m.hanacard.co.kr/MKEVT1000M.web",
-      "period": null,
-      "percent": null,
-      "won": null
-    },
-    {
-      "app": "hana",
-      "source": "hana-events",
-      "sourceName": "하나카드 이벤트",
-      "title": "유니온페이(UPI) 중국, 베트남, 일본 10% 즉시할인 2026.09.01 ~ 2026.10.31",
-      "url": "https://m.hanacard.co.kr/MKEVT1000M.web",
-      "period": null,
-      "percent": 10,
-      "won": null
-    },
-    {
-      "app": "hana",
-      "source": "hana-events",
-      "sourceName": "하나카드 이벤트",
-      "title": "하나 나라사랑카드 나라사랑 BOOST 캐시백 최대 6만원 2026.07.01 ~ 2026.12.31",
-      "url": "https://m.hanacard.co.kr/MKEVT1000M.web",
-      "period": null,
-      "percent": null,
-      "won": null
-    },
-    {
-      "app": "hana",
-      "source": "hana-events",
-      "sourceName": "하나카드 이벤트",
-      "title": "나라사랑 혜택충전 하나 나라사랑카드 AI 스마트팩 9,900원 캐시백 지급! 2026.09.07 ~ 2026.09.30",
-      "url": "https://m.hanacard.co.kr/MKEVT1000M.web",
-      "period": null,
-      "percent": null,
-      "won": 9900
-    },
-    {
       "app": "shinhan",
       "source": "shinhan-myshop-coupon",
       "sourceName": "신한 마이샵 쿠폰",
@@ -6273,96 +6171,6 @@ window.DISCOUNT_FEED = {
       "won": null
     },
     {
-      "app": "kbpay",
-      "source": "kbpay-main",
-      "sourceName": "KB Pay (탐색)",
-      "title": "스타샵 할인+",
-      "url": "https://m.kbcard.com/",
-      "period": null,
-      "percent": null,
-      "won": null
-    },
-    {
-      "app": "kbpay",
-      "source": "kbpay-main",
-      "sourceName": "KB Pay (탐색)",
-      "title": "트리니티항공 리브랜딩 기념 특별 할인",
-      "url": "https://m.kbcard.com/BON/DVIEW/MBBV0004?evntId=1001982",
-      "period": null,
-      "percent": null,
-      "won": null
-    },
-    {
-      "app": "kbpay",
-      "source": "kbpay-main",
-      "sourceName": "KB Pay (탐색)",
-      "title": "KB Pay 첫 만남 기념 커피 쿠폰 받기",
-      "url": "https://m.kbcard.com/BON/DVIEW/MBBV0004?evntId=1001827",
-      "period": null,
-      "percent": null,
-      "won": null
-    },
-    {
-      "app": "kbpay",
-      "source": "kbpay-main",
-      "sourceName": "KB Pay (탐색)",
-      "title": "신차 결제하고 최대 1.3% 청구(캐시백)할인",
-      "url": "https://m.kbcard.com/BON/DVIEW/MBBV0004?evntId=1000020",
-      "period": null,
-      "percent": 1.3,
-      "won": null
-    },
-    {
-      "app": "kbpay",
-      "source": "kbpay-main",
-      "sourceName": "KB Pay (탐색)",
-      "title": "생활 속 혜택 리터당 주유 60원 대중교통 10% 할인 굿데이카드",
-      "url": "https://m.kbcard.com/CRD/DVIEW/MCAMCXHIACRC0002?mainCC=b&allianceCode=09061",
-      "period": null,
-      "percent": 10,
-      "won": 60
-    },
-    {
-      "app": "kbpay",
-      "source": "kbpay-main",
-      "sourceName": "KB Pay (탐색)",
-      "title": "심플하게 할인받자 전월 실적없이 국내 1% 해외가맹점 2% 할인 ALL 카드",
-      "url": "https://m.kbcard.com/cards/credit-cards/kb-all-card",
-      "period": null,
-      "percent": 1,
-      "won": null
-    },
-    {
-      "app": "kbpay",
-      "source": "kbpay-main",
-      "sourceName": "KB Pay (탐색)",
-      "title": "‘나’에게 진심 서비스 KB Pay 10% OTT 30% 할인 MY WE:SH 카드",
-      "url": "https://m.kbcard.com/CRD/DVIEW/MCAMCXHIACRC0002?mainCC=b&allianceCode=09923",
-      "period": null,
-      "percent": 10,
-      "won": null
-    },
-    {
-      "app": "kbpay",
-      "source": "kbpay-main",
-      "sourceName": "KB Pay (탐색)",
-      "title": "프로여행러를 위한 카드 국내 할인 혜택 해외 이용수수료 면제 트래블러스 체크카드 (토심이)",
-      "url": "https://m.kbcard.com/CRD/DVIEW/MCAMCXHIACRC0002?mainCC=b&allianceCode=09564",
-      "period": null,
-      "percent": null,
-      "won": null
-    },
-    {
-      "app": "kbpay",
-      "source": "kbpay-main",
-      "sourceName": "KB Pay (탐색)",
-      "title": "꽉 채운 일상 혜택에 KB Pay 2% 할인! 국민대표 체크카드 시즌2 노리2 체크카드 (KB Pay)",
-      "url": "https://m.kbcard.com/CRD/DVIEW/MCAMCXHIACRC0002?mainCC=b&allianceCode=07964",
-      "period": null,
-      "percent": 2,
-      "won": null
-    },
-    {
       "app": "lotte",
       "source": "lotte-main",
       "sourceName": "롯데카드 (탐색)",
@@ -6486,16 +6294,6 @@ window.DISCOUNT_FEED = {
       "app": "lotte",
       "source": "lotte-main",
       "sourceName": "롯데카드 (탐색)",
-      "title": "디지로카 Paris 어디서나 0.7% 할인 쿠팡, 네이버페이 최대 5% 할인",
-      "url": "https://www.lottecard.co.kr/",
-      "period": null,
-      "percent": 0.7,
-      "won": null
-    },
-    {
-      "app": "lotte",
-      "source": "lotte-main",
-      "sourceName": "롯데카드 (탐색)",
       "title": "돌하루팡(제주) 10% 즉시 할인 쿠폰 2026.9.1 ~ 9.30 터치하기",
       "url": "https://www.lottecard.co.kr/",
       "period": "9.1 ~ 9.30",
@@ -6546,16 +6344,6 @@ window.DISCOUNT_FEED = {
       "app": "lotte",
       "source": "lotte-main",
       "sourceName": "롯데카드 (탐색)",
-      "title": "롯데백화점 롯데카드 롯데백화점에서 할인받고 최대 58만원 상당 혜택까지 바로가기 >",
-      "url": "https://www.lottecard.co.kr/",
-      "period": null,
-      "percent": null,
-      "won": null
-    },
-    {
-      "app": "lotte",
-      "source": "lotte-main",
-      "sourceName": "롯데카드 (탐색)",
       "title": "글로벌 eSIM 10GB 33.2% 즉시할인 2026.9.7 ~ 10.31 터치하기",
       "url": "https://www.lottecard.co.kr/",
       "period": "9.7 ~ 10.31",
@@ -6566,17 +6354,7 @@ window.DISCOUNT_FEED = {
       "app": "lotte",
       "source": "lotte-main",
       "sourceName": "롯데카드 (탐색)",
-      "title": "[단하루9/18] 셀렉스몰 20% 결제일 할인 2026.9.18 ~ 9.18 터치하기",
-      "url": "https://www.lottecard.co.kr/",
-      "period": "9.18 ~ 9.18",
-      "percent": 20,
-      "won": null
-    },
-    {
-      "app": "lotte",
-      "source": "lotte-main",
-      "sourceName": "롯데카드 (탐색)",
-      "title": "LOCA PLATINUM 마일리지형 1,500원당 1마일리지 적립 스페셜기프트 서비스!",
+      "title": "LOCA PLATINUM 마일리지형 1,500원당 1마일리지 적립스페셜기프트 서비스!",
       "url": "https://www.lottecard.co.kr/",
       "period": null,
       "percent": null,
@@ -6586,10 +6364,10 @@ window.DISCOUNT_FEED = {
       "app": "lotte",
       "source": "lotte-main",
       "sourceName": "롯데카드 (탐색)",
-      "title": "디지로카 Las Vegas 어디서나 최대 2% 할인 국내 가맹점 2~3개월 무이자 할부",
+      "title": "[단하루9/18] 셀렉스몰 20% 결제일 할인 2026.9.18 ~ 9.18 터치하기",
       "url": "https://www.lottecard.co.kr/",
-      "period": null,
-      "percent": 2,
+      "period": "9.18 ~ 9.18",
+      "percent": 20,
       "won": null
     },
     {
@@ -6606,6 +6384,16 @@ window.DISCOUNT_FEED = {
       "app": "lotte",
       "source": "lotte-main",
       "sourceName": "롯데카드 (탐색)",
+      "title": "연회비캐시백 디지로카 Paris 어디서나 0.7% 할인 쿠팡, 네이버페이 최대 5% 할인",
+      "url": "https://www.lottecard.co.kr/",
+      "period": null,
+      "percent": 0.7,
+      "won": null
+    },
+    {
+      "app": "lotte",
+      "source": "lotte-main",
+      "sourceName": "롯데카드 (탐색)",
       "title": "LOCA LIKIT 1.5 / 2.0 간단하게 할인받고 최대 65만원 상당 혜택 바로가기 >",
       "url": "https://www.lottecard.co.kr/",
       "period": null,
@@ -6616,7 +6404,7 @@ window.DISCOUNT_FEED = {
       "app": "lotte",
       "source": "lotte-main",
       "sourceName": "롯데카드 (탐색)",
-      "title": "롯데카드 TELLO SE SKT 통신요금 할인 프로모션 2026.09.16 ~ 2026.09.30",
+      "title": "EVENT 롯데백화점 롯데카드 롯데백화점에서 할인받고 최대 58만원 상당 혜택까지 바로가기 >",
       "url": "https://www.lottecard.co.kr/",
       "period": null,
       "percent": null,
@@ -6626,7 +6414,17 @@ window.DISCOUNT_FEED = {
       "app": "lotte",
       "source": "lotte-main",
       "sourceName": "롯데카드 (탐색)",
-      "title": "롯데백화점 Flex 카드 국내외 가맹점 L.POINT 0.5%적립 커피50%, 스트리밍 30% 결제일 할인!",
+      "title": "연회비캐시백 디지로카 Las Vegas 어디서나 최대 2% 할인 국내 가맹점 2~3개월 무이자 할부",
+      "url": "https://www.lottecard.co.kr/",
+      "period": null,
+      "percent": 2,
+      "won": null
+    },
+    {
+      "app": "lotte",
+      "source": "lotte-main",
+      "sourceName": "롯데카드 (탐색)",
+      "title": "롯데백화점 Flex 카드 국내외 가맹점 L.POINT 0.5%적립커피50%, 스트리밍 30% 결제일 할인!",
       "url": "https://www.lottecard.co.kr/",
       "period": null,
       "percent": 0.5,
@@ -6636,7 +6434,17 @@ window.DISCOUNT_FEED = {
       "app": "lotte",
       "source": "lotte-main",
       "sourceName": "롯데카드 (탐색)",
-      "title": "Toss Mobile × LOCA SKT KT LGU+ 알뜰폰 요금 2년간 월 최대 3만원 할인 바로가기 >",
+      "title": "EVENT Toss Mobile × LOCA SKT KT LGU+ 알뜰폰 요금 2년간 월 최대 3만원 할인 바로가기 >",
+      "url": "https://www.lottecard.co.kr/",
+      "period": null,
+      "percent": null,
+      "won": null
+    },
+    {
+      "app": "lotte",
+      "source": "lotte-main",
+      "sourceName": "롯데카드 (탐색)",
+      "title": "롯데 유니온페이 카드로 일본에서 누리는 특별한 혜택 2026.09.16 ~ 2027.12.31 힐튼 아너스 아멕스 프리미엄 25만원 캐시백 2026.09.16 ~ 2026.09.30",
       "url": "https://www.lottecard.co.kr/",
       "period": null,
       "percent": null,
@@ -6686,7 +6494,7 @@ window.DISCOUNT_FEED = {
         "disclaimer",
         "seoConfig"
       ],
-      "sample": "{\"id\":53021,\"updatedTime\":\"2026-09-17T08:02:44+09:00\",\"createdTime\":\"2026-09-10T10:42:46+09:00\",\"category\":\"인터뷰\",\"categories\":[{\"name\":\"인터뷰\",\"id\":149,\"slug\":\"interview\",\"parentId\":161,\"iconUrl\":null},{\"name\":\"영상\",\"id\":153,\"slug\":\"video\",\"parentId\":161,\"iconUrl\":null},{\"name\":\"시사·트렌드\",\"id\":1549,\"slug\":null,\"parentId\":null,\"iconUrl\":null},{\"name\":\"인터뷰\",\"id\":1551,\"slug\":null,\"parentId\":null,\"iconUrl\""
+      "sample": "{\"id\":53021,\"updatedTime\":\"2026-09-17T17:03:49+09:00\",\"createdTime\":\"2026-09-10T10:42:46+09:00\",\"category\":\"인터뷰\",\"categories\":[{\"name\":\"인터뷰\",\"id\":149,\"slug\":\"interview\",\"parentId\":161,\"iconUrl\":null},{\"name\":\"영상\",\"id\":153,\"slug\":\"video\",\"parentId\":161,\"iconUrl\":null},{\"name\":\"시사·트렌드\",\"id\":1549,\"slug\":null,\"parentId\":null,\"iconUrl\":null},{\"name\":\"인터뷰\",\"id\":1551,\"slug\":null,\"parentId\":null,\"iconUrl\""
     },
     {
       "source": "woori-events",
