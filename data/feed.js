@@ -1,6 +1,6 @@
 /* tools/collect.mjs 가 생성합니다. 직접 고치지 마세요. */
 window.DISCOUNT_FEED = {
-  "collectedAt": "2026-09-17T23:20:06.480Z",
+  "collectedAt": "2026-09-18T07:48:42.752Z",
   "sources": [
     {
       "id": "samsung-link",
@@ -12,7 +12,7 @@ window.DISCOUNT_FEED = {
       "count": 105,
       "structured": 57,
       "http": 200,
-      "captures": 110
+      "captures": 108
     },
     {
       "id": "shinhan-myshop",
@@ -154,7 +154,7 @@ window.DISCOUNT_FEED = {
       "kind": "public",
       "status": "ok",
       "count": 61,
-      "structured": 73,
+      "structured": 72,
       "http": 200,
       "captures": 10
     },
@@ -200,11 +200,10 @@ window.DISCOUNT_FEED = {
       "name": "NH페이 (탐색)",
       "url": "https://card.nonghyup.com/",
       "kind": "public",
-      "status": "empty",
+      "status": "error",
       "count": 0,
       "structured": 0,
-      "http": 200,
-      "captures": 1
+      "error": "page.goto: net::ERR_CONNECTION_REFUSED at https://card.nonghyup.com/"
     },
     {
       "id": "kbpay-main",
@@ -212,10 +211,11 @@ window.DISCOUNT_FEED = {
       "name": "KB Pay (탐색)",
       "url": "https://m.kbcard.com/",
       "kind": "public",
-      "status": "blocked",
-      "count": 0,
+      "status": "ok",
+      "count": 9,
       "structured": 0,
-      "http": 403
+      "http": 200,
+      "captures": 2
     },
     {
       "id": "hyundai-main",
@@ -236,7 +236,7 @@ window.DISCOUNT_FEED = {
       "url": "https://www.lottecard.co.kr/",
       "kind": "public",
       "status": "ok",
-      "count": 29,
+      "count": 30,
       "structured": 0,
       "http": 200,
       "captures": 4
@@ -1044,16 +1044,6 @@ window.DISCOUNT_FEED = {
     },
     {
       "scope": "merchant",
-      "merchantName": "트리니티항공(구 티웨이항공)",
-      "app": "shinhan",
-      "kind": "fixed",
-      "amount": 30000,
-      "benefitType": "할인",
-      "condition": "신한 SOL페이에서 마이샵 '혜택 ON' 후 결제",
-      "source": "shinhan-myshop"
-    },
-    {
-      "scope": "merchant",
       "merchantName": "GS편의점택배",
       "app": "shinhan",
       "kind": "fixed",
@@ -1098,6 +1088,16 @@ window.DISCOUNT_FEED = {
       "app": "shinhan",
       "kind": "fixed",
       "amount": 4000,
+      "benefitType": "할인",
+      "condition": "신한 SOL페이에서 마이샵 '혜택 ON' 후 결제",
+      "source": "shinhan-myshop"
+    },
+    {
+      "scope": "merchant",
+      "merchantName": "트리니티항공(구 티웨이항공)",
+      "app": "shinhan",
+      "kind": "fixed",
+      "amount": 30000,
       "benefitType": "할인",
       "condition": "신한 SOL페이에서 마이샵 '혜택 ON' 후 결제",
       "source": "shinhan-myshop"
@@ -2653,19 +2653,6 @@ window.DISCOUNT_FEED = {
     },
     {
       "scope": "merchant",
-      "merchantName": "동국제약 건강몰",
-      "app": "shinhan",
-      "kind": "rate",
-      "rate": 0.1,
-      "cap": 30000,
-      "minAmount": 10000,
-      "benefitType": "할인",
-      "condition": "신한 SOL페이에서 마이샵 '혜택 ON' 후 결제 · 10,000원 이상",
-      "monthlyCap": "9.1~9.30",
-      "source": "shinhan-myshop-coupon"
-    },
-    {
-      "scope": "merchant",
       "merchantName": "KKday(케이케이데이)",
       "app": "shinhan",
       "kind": "rate",
@@ -3888,6 +3875,16 @@ window.DISCOUNT_FEED = {
       "app": "shinhan",
       "source": "shinhan-myshop",
       "sourceName": "마이샵",
+      "title": "이지듀 6% 캐시백",
+      "url": "https://www.shinhancard.com/mob/MOBFM501N/MOBFM501R81.shc",
+      "period": null,
+      "percent": 6,
+      "won": null
+    },
+    {
+      "app": "shinhan",
+      "source": "shinhan-myshop",
+      "sourceName": "마이샵",
       "title": "클룹 10% 캐시백",
       "url": "javascript:void(0);",
       "period": null,
@@ -3908,10 +3905,10 @@ window.DISCOUNT_FEED = {
       "app": "shinhan",
       "source": "shinhan-myshop",
       "sourceName": "마이샵",
-      "title": "이지듀 6% 캐시백",
+      "title": "오뚜기 10% 캐시백",
       "url": "https://www.shinhancard.com/mob/MOBFM501N/MOBFM501R81.shc",
       "period": null,
-      "percent": 6,
+      "percent": 10,
       "won": null
     },
     {
@@ -3932,16 +3929,6 @@ window.DISCOUNT_FEED = {
       "url": "javascript:void(0);",
       "period": null,
       "percent": 25,
-      "won": null
-    },
-    {
-      "app": "shinhan",
-      "source": "shinhan-myshop",
-      "sourceName": "마이샵",
-      "title": "오뚜기 10% 캐시백",
-      "url": "https://www.shinhancard.com/mob/MOBFM501N/MOBFM501R81.shc",
-      "period": null,
-      "percent": 10,
       "won": null
     },
     {
@@ -3998,6 +3985,16 @@ window.DISCOUNT_FEED = {
       "app": "shinhan",
       "source": "shinhan-myshop",
       "sourceName": "마이샵",
+      "title": "몽베스트 12% 캐시백",
+      "url": "https://www.shinhancard.com/mob/MOBFM501N/MOBFM501R81.shc",
+      "period": null,
+      "percent": 12,
+      "won": null
+    },
+    {
+      "app": "shinhan",
+      "source": "shinhan-myshop",
+      "sourceName": "마이샵",
       "title": "KT닷컴 10% 캐시백",
       "url": "javascript:void(0);",
       "period": null,
@@ -4012,16 +4009,6 @@ window.DISCOUNT_FEED = {
       "url": "javascript:void(0);",
       "period": null,
       "percent": 15,
-      "won": null
-    },
-    {
-      "app": "shinhan",
-      "source": "shinhan-myshop",
-      "sourceName": "마이샵",
-      "title": "몽베스트 12% 캐시백",
-      "url": "https://www.shinhancard.com/mob/MOBFM501N/MOBFM501R81.shc",
-      "period": null,
-      "percent": 12,
       "won": null
     },
     {
@@ -4108,16 +4095,6 @@ window.DISCOUNT_FEED = {
       "app": "shinhan",
       "source": "shinhan-myshop",
       "sourceName": "마이샵",
-      "title": "에어프레미아 10% 할인쿠폰",
-      "url": "javascript:void(0);",
-      "period": null,
-      "percent": 10,
-      "won": null
-    },
-    {
-      "app": "shinhan",
-      "source": "shinhan-myshop",
-      "sourceName": "마이샵",
       "title": "동국제약건강몰 10% 캐시백",
       "url": "https://www.shinhancard.com/mob/MOBFM501N/MOBFM501R81.shc",
       "period": null,
@@ -4128,11 +4105,11 @@ window.DISCOUNT_FEED = {
       "app": "shinhan",
       "source": "shinhan-myshop",
       "sourceName": "마이샵",
-      "title": "GS편의점택배 200원 캐시백",
+      "title": "에어프레미아 10% 할인쿠폰",
       "url": "javascript:void(0);",
       "period": null,
-      "percent": null,
-      "won": 200
+      "percent": 10,
+      "won": null
     },
     {
       "app": "shinhan",
@@ -4158,11 +4135,11 @@ window.DISCOUNT_FEED = {
       "app": "shinhan",
       "source": "shinhan-myshop",
       "sourceName": "마이샵",
-      "title": "CJ더마켓 10,000원 캐시백",
-      "url": "https://www.shinhancard.com/mob/MOBFM501N/MOBFM501R81.shc",
+      "title": "GS편의점택배 200원 캐시백",
+      "url": "javascript:void(0);",
       "period": null,
       "percent": null,
-      "won": 10000
+      "won": 200
     },
     {
       "app": "shinhan",
@@ -4173,6 +4150,16 @@ window.DISCOUNT_FEED = {
       "period": null,
       "percent": 12,
       "won": null
+    },
+    {
+      "app": "shinhan",
+      "source": "shinhan-myshop",
+      "sourceName": "마이샵",
+      "title": "CJ더마켓 10,000원 캐시백",
+      "url": "https://www.shinhancard.com/mob/MOBFM501N/MOBFM501R81.shc",
+      "period": null,
+      "percent": null,
+      "won": 10000
     },
     {
       "app": "shinhan",
@@ -4378,56 +4365,6 @@ window.DISCOUNT_FEED = {
       "app": "shinhan",
       "source": "shinhan-myshop",
       "sourceName": "마이샵",
-      "title": "KKday(케이케이데이) 5% 캐시백 (한도는 앱에서 확인)",
-      "url": "https://www.shinhancard.com/mob/MOBFM501N/MOBFM501R81.shc",
-      "period": null,
-      "percent": 5,
-      "won": null
-    },
-    {
-      "app": "shinhan",
-      "source": "shinhan-myshop",
-      "sourceName": "마이샵",
-      "title": "유심사 10% 캐시백 (한도는 앱에서 확인)",
-      "url": "https://www.shinhancard.com/mob/MOBFM501N/MOBFM501R81.shc",
-      "period": null,
-      "percent": 10,
-      "won": null
-    },
-    {
-      "app": "shinhan",
-      "source": "shinhan-myshop",
-      "sourceName": "마이샵",
-      "title": "에어프레미아 10% 할인쿠폰 (한도는 앱에서 확인)",
-      "url": "https://www.shinhancard.com/mob/MOBFM501N/MOBFM501R81.shc",
-      "period": null,
-      "percent": 10,
-      "won": null
-    },
-    {
-      "app": "shinhan",
-      "source": "shinhan-myshop",
-      "sourceName": "마이샵",
-      "title": "와이파이도시락 최대 20% 할인쿠폰 (한도는 앱에서 확인)",
-      "url": "https://www.shinhancard.com/mob/MOBFM501N/MOBFM501R81.shc",
-      "period": null,
-      "percent": 20,
-      "won": null
-    },
-    {
-      "app": "shinhan",
-      "source": "shinhan-myshop",
-      "sourceName": "마이샵",
-      "title": "더라운지 글로벌eSIM 최대 35% 할인 혜택 (한도는 앱에서 확인)",
-      "url": "https://www.shinhancard.com/mob/MOBFM501N/MOBFM501R81.shc",
-      "period": null,
-      "percent": 35,
-      "won": null
-    },
-    {
-      "app": "shinhan",
-      "source": "shinhan-myshop",
-      "sourceName": "마이샵",
       "title": "프로쉬 10% 캐시백 (한도는 앱에서 확인)",
       "url": "https://www.shinhancard.com/mob/MOBFM501N/MOBFM501R81.shc",
       "period": null,
@@ -4462,36 +4399,6 @@ window.DISCOUNT_FEED = {
       "url": "https://www.shinhancard.com/mob/MOBFM501N/MOBFM501R81.shc",
       "period": null,
       "percent": 25,
-      "won": null
-    },
-    {
-      "app": "shinhan",
-      "source": "shinhan-myshop",
-      "sourceName": "마이샵",
-      "title": "오뚜기 10% 캐시백 (한도는 앱에서 확인)",
-      "url": "https://www.shinhancard.com/mob/MOBFM501N/MOBFM501R81.shc",
-      "period": null,
-      "percent": 10,
-      "won": null
-    },
-    {
-      "app": "shinhan",
-      "source": "shinhan-myshop",
-      "sourceName": "마이샵",
-      "title": "셀렉스몰(오늘만 20% 혜택) 8% 캐시백(당일 쿠폰) (한도는 앱에서 확인)",
-      "url": "https://www.shinhancard.com/mob/MOBFM501N/MOBFM501R81.shc",
-      "period": null,
-      "percent": 8,
-      "won": null
-    },
-    {
-      "app": "shinhan",
-      "source": "shinhan-myshop",
-      "sourceName": "마이샵",
-      "title": "셀렉스몰 12% 캐시백 (한도는 앱에서 확인)",
-      "url": "https://www.shinhancard.com/mob/MOBFM501N/MOBFM501R81.shc",
-      "period": null,
-      "percent": 12,
       "won": null
     },
     {
@@ -4538,17 +4445,7 @@ window.DISCOUNT_FEED = {
       "app": "shinhan",
       "source": "shinhan-myshop",
       "sourceName": "마이샵",
-      "title": "푸드올로지 20% 캐시백 (한도는 앱에서 확인)",
-      "url": "https://www.shinhancard.com/mob/MOBFM501N/MOBFM501R81.shc",
-      "period": null,
-      "percent": 20,
-      "won": null
-    },
-    {
-      "app": "shinhan",
-      "source": "shinhan-myshop",
-      "sourceName": "마이샵",
-      "title": "클룹 10% 캐시백 (한도는 앱에서 확인)",
+      "title": "오뚜기 10% 캐시백 (한도는 앱에서 확인)",
       "url": "https://www.shinhancard.com/mob/MOBFM501N/MOBFM501R81.shc",
       "period": null,
       "percent": 10,
@@ -4558,17 +4455,7 @@ window.DISCOUNT_FEED = {
       "app": "shinhan",
       "source": "shinhan-myshop",
       "sourceName": "마이샵",
-      "title": "한끼통살 7% 혜택 (한도는 앱에서 확인)",
-      "url": "https://www.shinhancard.com/mob/MOBFM501N/MOBFM501R81.shc",
-      "period": null,
-      "percent": 7.000000000000001,
-      "won": null
-    },
-    {
-      "app": "shinhan",
-      "source": "shinhan-myshop",
-      "sourceName": "마이샵",
-      "title": "랩노쉬 8% 캐시백 (한도는 앱에서 확인)",
+      "title": "셀렉스몰(오늘만 20% 혜택) 8% 캐시백(당일 쿠폰) (한도는 앱에서 확인)",
       "url": "https://www.shinhancard.com/mob/MOBFM501N/MOBFM501R81.shc",
       "period": null,
       "percent": 8,
@@ -4578,10 +4465,10 @@ window.DISCOUNT_FEED = {
       "app": "shinhan",
       "source": "shinhan-myshop",
       "sourceName": "마이샵",
-      "title": "삼대오백 16% 혜택 (한도는 앱에서 확인)",
+      "title": "셀렉스몰 12% 캐시백 (한도는 앱에서 확인)",
       "url": "https://www.shinhancard.com/mob/MOBFM501N/MOBFM501R81.shc",
       "period": null,
-      "percent": 16,
+      "percent": 12,
       "won": null
     },
     {
@@ -4682,6 +4569,106 @@ window.DISCOUNT_FEED = {
       "url": "https://www.shinhancard.com/mob/MOBFM501N/MOBFM501R81.shc",
       "period": null,
       "percent": 5,
+      "won": null
+    },
+    {
+      "app": "shinhan",
+      "source": "shinhan-myshop",
+      "sourceName": "마이샵",
+      "title": "푸드올로지 20% 캐시백 (한도는 앱에서 확인)",
+      "url": "https://www.shinhancard.com/mob/MOBFM501N/MOBFM501R81.shc",
+      "period": null,
+      "percent": 20,
+      "won": null
+    },
+    {
+      "app": "shinhan",
+      "source": "shinhan-myshop",
+      "sourceName": "마이샵",
+      "title": "클룹 10% 캐시백 (한도는 앱에서 확인)",
+      "url": "https://www.shinhancard.com/mob/MOBFM501N/MOBFM501R81.shc",
+      "period": null,
+      "percent": 10,
+      "won": null
+    },
+    {
+      "app": "shinhan",
+      "source": "shinhan-myshop",
+      "sourceName": "마이샵",
+      "title": "한끼통살 7% 혜택 (한도는 앱에서 확인)",
+      "url": "https://www.shinhancard.com/mob/MOBFM501N/MOBFM501R81.shc",
+      "period": null,
+      "percent": 7.000000000000001,
+      "won": null
+    },
+    {
+      "app": "shinhan",
+      "source": "shinhan-myshop",
+      "sourceName": "마이샵",
+      "title": "랩노쉬 8% 캐시백 (한도는 앱에서 확인)",
+      "url": "https://www.shinhancard.com/mob/MOBFM501N/MOBFM501R81.shc",
+      "period": null,
+      "percent": 8,
+      "won": null
+    },
+    {
+      "app": "shinhan",
+      "source": "shinhan-myshop",
+      "sourceName": "마이샵",
+      "title": "삼대오백 16% 혜택 (한도는 앱에서 확인)",
+      "url": "https://www.shinhancard.com/mob/MOBFM501N/MOBFM501R81.shc",
+      "period": null,
+      "percent": 16,
+      "won": null
+    },
+    {
+      "app": "shinhan",
+      "source": "shinhan-myshop",
+      "sourceName": "마이샵",
+      "title": "KKday(케이케이데이) 5% 캐시백 (한도는 앱에서 확인)",
+      "url": "https://www.shinhancard.com/mob/MOBFM501N/MOBFM501R81.shc",
+      "period": null,
+      "percent": 5,
+      "won": null
+    },
+    {
+      "app": "shinhan",
+      "source": "shinhan-myshop",
+      "sourceName": "마이샵",
+      "title": "유심사 10% 캐시백 (한도는 앱에서 확인)",
+      "url": "https://www.shinhancard.com/mob/MOBFM501N/MOBFM501R81.shc",
+      "period": null,
+      "percent": 10,
+      "won": null
+    },
+    {
+      "app": "shinhan",
+      "source": "shinhan-myshop",
+      "sourceName": "마이샵",
+      "title": "에어프레미아 10% 할인쿠폰 (한도는 앱에서 확인)",
+      "url": "https://www.shinhancard.com/mob/MOBFM501N/MOBFM501R81.shc",
+      "period": null,
+      "percent": 10,
+      "won": null
+    },
+    {
+      "app": "shinhan",
+      "source": "shinhan-myshop",
+      "sourceName": "마이샵",
+      "title": "와이파이도시락 최대 20% 할인쿠폰 (한도는 앱에서 확인)",
+      "url": "https://www.shinhancard.com/mob/MOBFM501N/MOBFM501R81.shc",
+      "period": null,
+      "percent": 20,
+      "won": null
+    },
+    {
+      "app": "shinhan",
+      "source": "shinhan-myshop",
+      "sourceName": "마이샵",
+      "title": "더라운지 글로벌eSIM 최대 35% 할인 혜택 (한도는 앱에서 확인)",
+      "url": "https://www.shinhancard.com/mob/MOBFM501N/MOBFM501R81.shc",
+      "period": null,
+      "percent": 35,
       "won": null
     },
     {
@@ -5638,20 +5625,20 @@ window.DISCOUNT_FEED = {
       "app": "hana",
       "source": "hana-events",
       "sourceName": "하나카드 이벤트",
-      "title": "에버랜드 본인+동반 3인 최대 42% 즉시할인 2026.09.11 ~ 2026.11.22",
-      "url": "https://m.hanacard.co.kr/MKEVT1000M.web",
+      "title": "브랜드 위크 메가MGC커피 50% 할인! 9월 2026.09.14 ~ 2026.09.18",
+      "url": "javascript:void(0);",
       "period": null,
-      "percent": 42,
+      "percent": 50,
       "won": null
     },
     {
       "app": "hana",
       "source": "hana-events",
       "sourceName": "하나카드 이벤트",
-      "title": "브랜드 위크 메가MGC커피 50% 할인! 9월 2026.09.14 ~ 2029.09.18",
-      "url": "javascript:void(0);",
+      "title": "에버랜드 본인+동반 3인 최대 42% 즉시할인 2026.09.11 ~ 2026.11.22",
+      "url": "https://m.hanacard.co.kr/MKEVT1000M.web",
       "period": null,
-      "percent": 50,
+      "percent": 42,
       "won": null
     },
     {
@@ -6298,16 +6285,6 @@ window.DISCOUNT_FEED = {
       "app": "shinhan",
       "source": "shinhan-myshop-coupon",
       "sourceName": "신한 마이샵 쿠폰",
-      "title": "동국제약 건강몰 10% 캐시백",
-      "url": "https://www.shinhancard.com/mob/MOBFM501N/MOBFM501R31.shc",
-      "period": "09.01~09.30",
-      "percent": 10,
-      "won": null
-    },
-    {
-      "app": "shinhan",
-      "source": "shinhan-myshop-coupon",
-      "sourceName": "신한 마이샵 쿠폰",
       "title": "CJ더마켓 10,000원 캐시백",
       "url": "https://www.shinhancard.com/mob/MOBFM501N/MOBFM501R31.shc",
       "period": "09.09~09.22",
@@ -6328,10 +6305,110 @@ window.DISCOUNT_FEED = {
       "app": "shinhan",
       "source": "shinhan-myshop-coupon",
       "sourceName": "신한 마이샵 쿠폰",
+      "title": "라그릴리아 10,000원 캐시백",
+      "url": "https://www.shinhancard.com/mob/MOBFM501N/MOBFM501R31.shc",
+      "period": "09.01~09.30",
+      "percent": null,
+      "won": 10000
+    },
+    {
+      "app": "shinhan",
+      "source": "shinhan-myshop-coupon",
+      "sourceName": "신한 마이샵 쿠폰",
       "title": "청소연구소(가사 청소) 5% 할인 (한도는 앱에서 확인)",
       "url": "https://www.shinhancard.com/mob/MOBFM501N/MOBFM501R31.shc",
       "period": "9.1~9.30",
       "percent": 5,
+      "won": null
+    },
+    {
+      "app": "kbpay",
+      "source": "kbpay-main",
+      "sourceName": "KB Pay (탐색)",
+      "title": "스타샵 할인+",
+      "url": "https://m.kbcard.com/",
+      "period": null,
+      "percent": null,
+      "won": null
+    },
+    {
+      "app": "kbpay",
+      "source": "kbpay-main",
+      "sourceName": "KB Pay (탐색)",
+      "title": "트리니티항공 리브랜딩 기념 특별 할인",
+      "url": "https://m.kbcard.com/BON/DVIEW/MBBV0004?evntId=1001982",
+      "period": null,
+      "percent": null,
+      "won": null
+    },
+    {
+      "app": "kbpay",
+      "source": "kbpay-main",
+      "sourceName": "KB Pay (탐색)",
+      "title": "KB Pay 첫 만남 기념 커피 쿠폰 받기",
+      "url": "https://m.kbcard.com/BON/DVIEW/MBBV0004?evntId=1001827",
+      "period": null,
+      "percent": null,
+      "won": null
+    },
+    {
+      "app": "kbpay",
+      "source": "kbpay-main",
+      "sourceName": "KB Pay (탐색)",
+      "title": "신차 결제하고 최대 1.3% 청구(캐시백)할인",
+      "url": "https://m.kbcard.com/BON/DVIEW/MBBV0004?evntId=1000020",
+      "period": null,
+      "percent": 1.3,
+      "won": null
+    },
+    {
+      "app": "kbpay",
+      "source": "kbpay-main",
+      "sourceName": "KB Pay (탐색)",
+      "title": "생활 속 혜택 리터당 주유 60원 대중교통 10% 할인 굿데이카드",
+      "url": "https://m.kbcard.com/CRD/DVIEW/MCAMCXHIACRC0002?mainCC=b&allianceCode=09061",
+      "period": null,
+      "percent": 10,
+      "won": 60
+    },
+    {
+      "app": "kbpay",
+      "source": "kbpay-main",
+      "sourceName": "KB Pay (탐색)",
+      "title": "심플하게 할인받자 전월 실적없이 국내 1% 해외가맹점 2% 할인 ALL 카드",
+      "url": "https://m.kbcard.com/cards/credit-cards/kb-all-card",
+      "period": null,
+      "percent": 1,
+      "won": null
+    },
+    {
+      "app": "kbpay",
+      "source": "kbpay-main",
+      "sourceName": "KB Pay (탐색)",
+      "title": "‘나’에게 진심 서비스 KB Pay 10% OTT 30% 할인 MY WE:SH 카드",
+      "url": "https://m.kbcard.com/CRD/DVIEW/MCAMCXHIACRC0002?mainCC=b&allianceCode=09923",
+      "period": null,
+      "percent": 10,
+      "won": null
+    },
+    {
+      "app": "kbpay",
+      "source": "kbpay-main",
+      "sourceName": "KB Pay (탐색)",
+      "title": "프로여행러를 위한 카드 국내 할인 혜택 해외 이용수수료 면제 트래블러스 체크카드 (토심이)",
+      "url": "https://m.kbcard.com/CRD/DVIEW/MCAMCXHIACRC0002?mainCC=b&allianceCode=09564",
+      "period": null,
+      "percent": null,
+      "won": null
+    },
+    {
+      "app": "kbpay",
+      "source": "kbpay-main",
+      "sourceName": "KB Pay (탐색)",
+      "title": "꽉 채운 일상 혜택에 KB Pay 2% 할인! 국민대표 체크카드 시즌2 노리2 체크카드 (KB Pay)",
+      "url": "https://m.kbcard.com/CRD/DVIEW/MCAMCXHIACRC0002?mainCC=b&allianceCode=07964",
+      "period": null,
+      "percent": 2,
       "won": null
     },
     {
@@ -6458,16 +6535,6 @@ window.DISCOUNT_FEED = {
       "app": "lotte",
       "source": "lotte-main",
       "sourceName": "롯데카드 (탐색)",
-      "title": "디지로카 Paris 어디서나 0.7% 할인 쿠팡, 네이버페이 최대 5% 할인",
-      "url": "https://www.lottecard.co.kr/",
-      "period": null,
-      "percent": 0.7,
-      "won": null
-    },
-    {
-      "app": "lotte",
-      "source": "lotte-main",
-      "sourceName": "롯데카드 (탐색)",
       "title": "돌하루팡(제주) 10% 즉시 할인 쿠폰 2026.9.1 ~ 9.30 터치하기",
       "url": "https://www.lottecard.co.kr/",
       "period": "9.1 ~ 9.30",
@@ -6518,16 +6585,6 @@ window.DISCOUNT_FEED = {
       "app": "lotte",
       "source": "lotte-main",
       "sourceName": "롯데카드 (탐색)",
-      "title": "롯데백화점 롯데카드 롯데백화점에서 할인받고 최대 58만원 상당 혜택까지 바로가기 >",
-      "url": "https://www.lottecard.co.kr/",
-      "period": null,
-      "percent": null,
-      "won": null
-    },
-    {
-      "app": "lotte",
-      "source": "lotte-main",
-      "sourceName": "롯데카드 (탐색)",
       "title": "글로벌 eSIM 10GB 33.2% 즉시할인 2026.9.7 ~ 10.31 터치하기",
       "url": "https://www.lottecard.co.kr/",
       "period": "9.7 ~ 10.31",
@@ -6538,17 +6595,7 @@ window.DISCOUNT_FEED = {
       "app": "lotte",
       "source": "lotte-main",
       "sourceName": "롯데카드 (탐색)",
-      "title": "[단하루9/18] 셀렉스몰 20% 결제일 할인 2026.9.18 ~ 9.18 터치하기",
-      "url": "https://www.lottecard.co.kr/",
-      "period": "9.18 ~ 9.18",
-      "percent": 20,
-      "won": null
-    },
-    {
-      "app": "lotte",
-      "source": "lotte-main",
-      "sourceName": "롯데카드 (탐색)",
-      "title": "LOCA PLATINUM 마일리지형 1,500원당 1마일리지 적립 스페셜기프트 서비스!",
+      "title": "LOCA PLATINUM 마일리지형 1,500원당 1마일리지 적립스페셜기프트 서비스!",
       "url": "https://www.lottecard.co.kr/",
       "period": null,
       "percent": null,
@@ -6558,10 +6605,10 @@ window.DISCOUNT_FEED = {
       "app": "lotte",
       "source": "lotte-main",
       "sourceName": "롯데카드 (탐색)",
-      "title": "디지로카 Las Vegas 어디서나 최대 2% 할인 국내 가맹점 2~3개월 무이자 할부",
+      "title": "[단하루9/18] 셀렉스몰 20% 결제일 할인 2026.9.18 ~ 9.18 터치하기",
       "url": "https://www.lottecard.co.kr/",
-      "period": null,
-      "percent": 2,
+      "period": "9.18 ~ 9.18",
+      "percent": 20,
       "won": null
     },
     {
@@ -6578,6 +6625,16 @@ window.DISCOUNT_FEED = {
       "app": "lotte",
       "source": "lotte-main",
       "sourceName": "롯데카드 (탐색)",
+      "title": "연회비캐시백 디지로카 Paris 어디서나 0.7% 할인 쿠팡, 네이버페이 최대 5% 할인",
+      "url": "https://www.lottecard.co.kr/",
+      "period": null,
+      "percent": 0.7,
+      "won": null
+    },
+    {
+      "app": "lotte",
+      "source": "lotte-main",
+      "sourceName": "롯데카드 (탐색)",
       "title": "LOCA LIKIT 1.5 / 2.0 간단하게 할인받고 최대 65만원 상당 혜택 바로가기 >",
       "url": "https://www.lottecard.co.kr/",
       "period": null,
@@ -6588,17 +6645,7 @@ window.DISCOUNT_FEED = {
       "app": "lotte",
       "source": "lotte-main",
       "sourceName": "롯데카드 (탐색)",
-      "title": "롯데백화점 Flex 카드 국내외 가맹점 L.POINT 0.5%적립 커피50%, 스트리밍 30% 결제일 할인!",
-      "url": "https://www.lottecard.co.kr/",
-      "period": null,
-      "percent": 0.5,
-      "won": null
-    },
-    {
-      "app": "lotte",
-      "source": "lotte-main",
-      "sourceName": "롯데카드 (탐색)",
-      "title": "Toss Mobile × LOCA SKT KT LGU+ 알뜰폰 요금 2년간 월 최대 3만원 할인 바로가기 >",
+      "title": "EVENT 롯데백화점 롯데카드 롯데백화점에서 할인받고 최대 58만원 상당 혜택까지 바로가기 >",
       "url": "https://www.lottecard.co.kr/",
       "period": null,
       "percent": null,
@@ -6608,7 +6655,47 @@ window.DISCOUNT_FEED = {
       "app": "lotte",
       "source": "lotte-main",
       "sourceName": "롯데카드 (탐색)",
-      "title": "T 라이트 롯데카드 장기할부 캐시백 프로모션 2026.09.16 ~ 2026.09.30 롯데 유니온페이 카드로 일본에서 누리는 특별한 혜택 2026.09.16 ~ 2027.12.31",
+      "title": "연회비캐시백 디지로카 Las Vegas 어디서나 최대 2% 할인 국내 가맹점 2~3개월 무이자 할부",
+      "url": "https://www.lottecard.co.kr/",
+      "period": null,
+      "percent": 2,
+      "won": null
+    },
+    {
+      "app": "lotte",
+      "source": "lotte-main",
+      "sourceName": "롯데카드 (탐색)",
+      "title": "롯데백화점 Flex 카드 국내외 가맹점 L.POINT 0.5%적립커피50%, 스트리밍 30% 결제일 할인!",
+      "url": "https://www.lottecard.co.kr/",
+      "period": null,
+      "percent": 0.5,
+      "won": null
+    },
+    {
+      "app": "lotte",
+      "source": "lotte-main",
+      "sourceName": "롯데카드 (탐색)",
+      "title": "EVENT Toss Mobile × LOCA SKT KT LGU+ 알뜰폰 요금 2년간 월 최대 3만원 할인 바로가기 >",
+      "url": "https://www.lottecard.co.kr/",
+      "period": null,
+      "percent": null,
+      "won": null
+    },
+    {
+      "app": "lotte",
+      "source": "lotte-main",
+      "sourceName": "롯데카드 (탐색)",
+      "title": "롯데 유니온페이 카드로 일본에서 누리는 특별한 혜택 2026.09.16 ~ 2027.12.31 힐튼 아너스 아멕스 프리미엄 25만원 캐시백 2026.09.16 ~ 2026.09.30",
+      "url": "https://www.lottecard.co.kr/",
+      "period": null,
+      "percent": null,
+      "won": null
+    },
+    {
+      "app": "lotte",
+      "source": "lotte-main",
+      "sourceName": "롯데카드 (탐색)",
+      "title": "T 라이트 롯데카드 장기할부 캐시백 프로모션 2026.09.16 ~ 2026.09.30 롯데백화점 쇼핑 전 필수 확인! 알짜 혜택 3가지 활용하기 2026.08.22 ~ 2026.12.31",
       "url": "https://www.lottecard.co.kr/",
       "period": null,
       "percent": null,
@@ -6658,7 +6745,7 @@ window.DISCOUNT_FEED = {
         "disclaimer",
         "seoConfig"
       ],
-      "sample": "{\"id\":53021,\"updatedTime\":\"2026-09-18T08:13:27+09:00\",\"createdTime\":\"2026-09-10T10:42:46+09:00\",\"category\":\"인터뷰\",\"categories\":[{\"name\":\"인터뷰\",\"id\":149,\"slug\":\"interview\",\"parentId\":161,\"iconUrl\":null},{\"name\":\"영상\",\"id\":153,\"slug\":\"video\",\"parentId\":161,\"iconUrl\":null},{\"name\":\"시사·트렌드\",\"id\":1549,\"slug\":null,\"parentId\":null,\"iconUrl\":null},{\"name\":\"인터뷰\",\"id\":1551,\"slug\":null,\"parentId\":null,\"iconUrl\""
+      "sample": "{\"id\":53021,\"updatedTime\":\"2026-09-18T16:23:35+09:00\",\"createdTime\":\"2026-09-10T10:42:46+09:00\",\"category\":\"인터뷰\",\"categories\":[{\"name\":\"인터뷰\",\"id\":149,\"slug\":\"interview\",\"parentId\":161,\"iconUrl\":null},{\"name\":\"영상\",\"id\":153,\"slug\":\"video\",\"parentId\":161,\"iconUrl\":null},{\"name\":\"시사·트렌드\",\"id\":1549,\"slug\":null,\"parentId\":null,\"iconUrl\":null},{\"name\":\"인터뷰\",\"id\":1551,\"slug\":null,\"parentId\":null,\"iconUrl\""
     },
     {
       "source": "woori-events",
