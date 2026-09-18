@@ -1,6 +1,6 @@
 /* tools/collect.mjs 가 생성합니다. 직접 고치지 마세요. */
 window.DISCOUNT_FEED = {
-  "collectedAt": "2026-09-18T18:01:15.434Z",
+  "collectedAt": "2026-09-18T22:58:22.260Z",
   "sources": [
     {
       "id": "samsung-link",
@@ -132,7 +132,7 @@ window.DISCOUNT_FEED = {
       "count": 0,
       "structured": 0,
       "http": 200,
-      "captures": 1
+      "captures": 0
     },
     {
       "id": "shinhan-events",
@@ -200,7 +200,7 @@ window.DISCOUNT_FEED = {
       "name": "NH페이 (탐색)",
       "url": "https://card.nonghyup.com/",
       "kind": "public",
-      "status": "empty",
+      "status": "login-required",
       "count": 0,
       "structured": 0,
       "http": 200,
@@ -224,10 +224,11 @@ window.DISCOUNT_FEED = {
       "name": "현대카드 (탐색)",
       "url": "https://www.hyundaicard.com/",
       "kind": "public",
-      "status": "error",
+      "status": "login-required",
       "count": 0,
       "structured": 0,
-      "error": "page.goto: Timeout 30000ms exceeded."
+      "http": 200,
+      "captures": 1
     },
     {
       "id": "lotte-main",
@@ -6724,7 +6725,7 @@ window.DISCOUNT_FEED = {
         "disclaimer",
         "seoConfig"
       ],
-      "sample": "{\"id\":53021,\"updatedTime\":\"2026-09-19T02:24:24+09:00\",\"createdTime\":\"2026-09-10T10:42:46+09:00\",\"category\":\"인터뷰\",\"categories\":[{\"name\":\"인터뷰\",\"id\":149,\"slug\":\"interview\",\"parentId\":161,\"iconUrl\":null},{\"name\":\"영상\",\"id\":153,\"slug\":\"video\",\"parentId\":161,\"iconUrl\":null},{\"name\":\"시사·트렌드\",\"id\":1549,\"slug\":null,\"parentId\":null,\"iconUrl\":null},{\"name\":\"인터뷰\",\"id\":1551,\"slug\":null,\"parentId\":null,\"iconUrl\""
+      "sample": "{\"id\":53021,\"updatedTime\":\"2026-09-19T07:17:32+09:00\",\"createdTime\":\"2026-09-10T10:42:46+09:00\",\"category\":\"인터뷰\",\"categories\":[{\"name\":\"인터뷰\",\"id\":149,\"slug\":\"interview\",\"parentId\":161,\"iconUrl\":null},{\"name\":\"영상\",\"id\":153,\"slug\":\"video\",\"parentId\":161,\"iconUrl\":null},{\"name\":\"시사·트렌드\",\"id\":1549,\"slug\":null,\"parentId\":null,\"iconUrl\":null},{\"name\":\"인터뷰\",\"id\":1551,\"slug\":null,\"parentId\":null,\"iconUrl\""
     },
     {
       "source": "woori-events",
