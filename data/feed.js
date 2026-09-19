@@ -1,6 +1,6 @@
 /* tools/collect.mjs 가 생성합니다. 직접 고치지 마세요. */
 window.DISCOUNT_FEED = {
-  "collectedAt": "2026-09-19T12:49:53.711Z",
+  "collectedAt": "2026-09-19T17:39:31.140Z",
   "sources": [
     {
       "id": "samsung-link",
@@ -4201,7 +4201,7 @@ window.DISCOUNT_FEED = {
       "app": "shinhan",
       "source": "shinhan-myshop",
       "sourceName": "마이샵",
-      "title": "D-3 CJ더마켓 10,000원 캐시백",
+      "title": "D-2 CJ더마켓 10,000원 캐시백",
       "url": "https://www.shinhancard.com/mob/MOBFM501N/MOBFM501R81.shc",
       "period": null,
       "percent": null,
@@ -6691,7 +6691,7 @@ window.DISCOUNT_FEED = {
         "disclaimer",
         "seoConfig"
       ],
-      "sample": "{\"id\":53021,\"updatedTime\":\"2026-09-19T21:29:37+09:00\",\"createdTime\":\"2026-09-10T10:42:46+09:00\",\"category\":\"인터뷰\",\"categories\":[{\"name\":\"인터뷰\",\"id\":149,\"slug\":\"interview\",\"parentId\":161,\"iconUrl\":null},{\"name\":\"영상\",\"id\":153,\"slug\":\"video\",\"parentId\":161,\"iconUrl\":null},{\"name\":\"시사·트렌드\",\"id\":1549,\"slug\":null,\"parentId\":null,\"iconUrl\":null},{\"name\":\"인터뷰\",\"id\":1551,\"slug\":null,\"parentId\":null,\"iconUrl\""
+      "sample": "{\"id\":53021,\"updatedTime\":\"2026-09-20T02:03:51+09:00\",\"createdTime\":\"2026-09-10T10:42:46+09:00\",\"category\":\"인터뷰\",\"categories\":[{\"name\":\"인터뷰\",\"id\":149,\"slug\":\"interview\",\"parentId\":161,\"iconUrl\":null},{\"name\":\"영상\",\"id\":153,\"slug\":\"video\",\"parentId\":161,\"iconUrl\":null},{\"name\":\"시사·트렌드\",\"id\":1549,\"slug\":null,\"parentId\":null,\"iconUrl\":null},{\"name\":\"인터뷰\",\"id\":1551,\"slug\":null,\"parentId\":null,\"iconUrl\""
     },
     {
       "source": "woori-events",
