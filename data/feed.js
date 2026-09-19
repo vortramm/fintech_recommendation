@@ -1,6 +1,6 @@
 /* tools/collect.mjs 가 생성합니다. 직접 고치지 마세요. */
 window.DISCOUNT_FEED = {
-  "collectedAt": "2026-09-19T07:42:51.929Z",
+  "collectedAt": "2026-09-19T12:49:53.711Z",
   "sources": [
     {
       "id": "samsung-link",
@@ -96,7 +96,7 @@ window.DISCOUNT_FEED = {
       "count": 0,
       "structured": 0,
       "http": 200,
-      "captures": 4
+      "captures": 2
     },
     {
       "id": "woori-events",
@@ -168,7 +168,7 @@ window.DISCOUNT_FEED = {
       "count": 0,
       "structured": 0,
       "http": 200,
-      "captures": 0
+      "captures": 4
     },
     {
       "id": "naverpay-main",
@@ -224,10 +224,11 @@ window.DISCOUNT_FEED = {
       "name": "현대카드 (탐색)",
       "url": "https://www.hyundaicard.com/",
       "kind": "public",
-      "status": "error",
+      "status": "login-required",
       "count": 0,
       "structured": 0,
-      "error": "page.goto: Timeout 30000ms exceeded."
+      "http": 200,
+      "captures": 1
     },
     {
       "id": "lotte-main",
@@ -6370,40 +6371,10 @@ window.DISCOUNT_FEED = {
       "app": "lotte",
       "source": "lotte-main",
       "sourceName": "롯데카드 (탐색)",
-      "title": "LOCA LIKIT 1.5 간단하게 최대 1.5% 혜택",
-      "url": "https://www.lottecard.co.kr/",
-      "period": null,
-      "percent": 1.5,
-      "won": null
-    },
-    {
-      "app": "lotte",
-      "source": "lotte-main",
-      "sourceName": "롯데카드 (탐색)",
-      "title": "LOCA LIKIT Eat 음식점, 배달앱, 커피 60% 할인",
-      "url": "https://www.lottecard.co.kr/",
-      "period": null,
-      "percent": 60,
-      "won": null
-    },
-    {
-      "app": "lotte",
-      "source": "lotte-main",
-      "sourceName": "롯데카드 (탐색)",
       "title": "유심사 20% 즉시할인 2026.9.11 ~ 9.30 터치하기",
       "url": "https://www.lottecard.co.kr/",
       "period": "9.11 ~ 9.30",
       "percent": 20,
-      "won": null
-    },
-    {
-      "app": "lotte",
-      "source": "lotte-main",
-      "sourceName": "롯데카드 (탐색)",
-      "title": "LOCA LIKIT Play 주유, 영화, 스트리밍 60% 할인",
-      "url": "https://www.lottecard.co.kr/",
-      "period": null,
-      "percent": 60,
       "won": null
     },
     {
@@ -6450,10 +6421,10 @@ window.DISCOUNT_FEED = {
       "app": "lotte",
       "source": "lotte-main",
       "sourceName": "롯데카드 (탐색)",
-      "title": "LOCA LIKIT Shop 온라인 쇼핑, 미용실, 편의점 60% 할인",
+      "title": "연회비캐시백 LOCA LIKIT 1.5 간단하게 최대 1.5% 혜택",
       "url": "https://www.lottecard.co.kr/",
       "period": null,
-      "percent": 60,
+      "percent": 1.5,
       "won": null
     },
     {
@@ -6480,6 +6451,16 @@ window.DISCOUNT_FEED = {
       "app": "lotte",
       "source": "lotte-main",
       "sourceName": "롯데카드 (탐색)",
+      "title": "연회비캐시백 LOCA LIKIT Eat 음식점, 배달앱, 커피 60% 할인",
+      "url": "https://www.lottecard.co.kr/",
+      "period": null,
+      "percent": 60,
+      "won": null
+    },
+    {
+      "app": "lotte",
+      "source": "lotte-main",
+      "sourceName": "롯데카드 (탐색)",
       "title": "제주패스(전국) 5% 즉시 할인 쿠폰 2026.9.1 ~ 9.30 터치하기",
       "url": "https://www.lottecard.co.kr/",
       "period": "9.1 ~ 9.30",
@@ -6494,6 +6475,16 @@ window.DISCOUNT_FEED = {
       "url": "https://www.lottecard.co.kr/",
       "period": "9.1 ~ 9.30",
       "percent": 10,
+      "won": null
+    },
+    {
+      "app": "lotte",
+      "source": "lotte-main",
+      "sourceName": "롯데카드 (탐색)",
+      "title": "연회비캐시백 LOCA LIKIT Play 주유, 영화, 스트리밍 60% 할인",
+      "url": "https://www.lottecard.co.kr/",
+      "period": null,
+      "percent": 60,
       "won": null
     },
     {
@@ -6540,6 +6531,16 @@ window.DISCOUNT_FEED = {
       "app": "lotte",
       "source": "lotte-main",
       "sourceName": "롯데카드 (탐색)",
+      "title": "연회비캐시백 LOCA LIKIT Shop 온라인 쇼핑, 미용실, 편의점 60% 할인",
+      "url": "https://www.lottecard.co.kr/",
+      "period": null,
+      "percent": 60,
+      "won": null
+    },
+    {
+      "app": "lotte",
+      "source": "lotte-main",
+      "sourceName": "롯데카드 (탐색)",
       "title": "글로벌 eSIM 10GB 33.2% 즉시할인 2026.9.7 ~ 10.31 터치하기",
       "url": "https://www.lottecard.co.kr/",
       "period": "9.7 ~ 10.31",
@@ -6580,16 +6581,6 @@ window.DISCOUNT_FEED = {
       "app": "lotte",
       "source": "lotte-main",
       "sourceName": "롯데카드 (탐색)",
-      "title": "LOCA LIKIT 1.5 / 2.0 간단하게 할인받고 최대 65만원 상당 혜택 바로가기 >",
-      "url": "https://www.lottecard.co.kr/",
-      "period": null,
-      "percent": null,
-      "won": null
-    },
-    {
-      "app": "lotte",
-      "source": "lotte-main",
-      "sourceName": "롯데카드 (탐색)",
       "title": "EVENT 롯데백화점 롯데카드 롯데백화점에서 할인받고 최대 58만원 상당 혜택까지 바로가기 >",
       "url": "https://www.lottecard.co.kr/",
       "period": null,
@@ -6604,6 +6595,16 @@ window.DISCOUNT_FEED = {
       "url": "https://www.lottecard.co.kr/",
       "period": null,
       "percent": 2,
+      "won": null
+    },
+    {
+      "app": "lotte",
+      "source": "lotte-main",
+      "sourceName": "롯데카드 (탐색)",
+      "title": "EVENT LOCA LIKIT 1.5 / 2.0 간단하게 할인받고 최대 65만원 상당 혜택 바로가기 >",
+      "url": "https://www.lottecard.co.kr/",
+      "period": null,
+      "percent": null,
       "won": null
     },
     {
@@ -6660,40 +6661,6 @@ window.DISCOUNT_FEED = {
   "hints": [
     {
       "source": "toss-feed",
-      "url": "https://api-public.toss.im/api-public/v3/ipd-thor/api/v1/workspaces/159/posts",
-      "path": "success.results",
-      "rows": 20,
-      "keys": [
-        "id",
-        "updatedTime",
-        "createdTime",
-        "category",
-        "categories",
-        "series",
-        "seriesSlug",
-        "title",
-        "subtitle",
-        "bottomButtonConfig",
-        "coverConfig",
-        "thumbnailConfig",
-        "key",
-        "minAge",
-        "isDisplaying",
-        "isDisplayingPublishedTime",
-        "workspaceId",
-        "isPublished",
-        "publishedTime",
-        "likeCount",
-        "commentBoard",
-        "relatedPostTitle",
-        "relatedPosts",
-        "disclaimer",
-        "seoConfig"
-      ],
-      "sample": "{\"id\":39427,\"updatedTime\":\"2026-09-19T16:33:53+09:00\",\"createdTime\":\"2025-08-07T13:53:48+09:00\",\"category\":null,\"categories\":[],\"series\":null,\"seriesSlug\":null,\"title\":\"7월 넷째 주, 경제퀴즈에 도전하세요\",\"subtitle\":null,\"bottomButtonConfig\":{\"ctaType\":\"ONLY_BUTTON\",\"imageUrl\":null,\"imageAlt\":null,\"title\":null,\"description\":null,\"ctaName\":\"자세히 알아보기\",\"landingUrl\":\"https://toss.im/tossfeed/article/tosspick-2025-1"
-    },
-    {
-      "source": "toss-feed",
       "url": "https://api-public.toss.im/api-public/v3/ipd-thor/api/v1/workspaces/4/posts",
       "path": "success.results",
       "rows": 8,
@@ -6724,7 +6691,7 @@ window.DISCOUNT_FEED = {
         "disclaimer",
         "seoConfig"
       ],
-      "sample": "{\"id\":53021,\"updatedTime\":\"2026-09-19T16:34:29+09:00\",\"createdTime\":\"2026-09-10T10:42:46+09:00\",\"category\":\"인터뷰\",\"categories\":[{\"name\":\"인터뷰\",\"id\":149,\"slug\":\"interview\",\"parentId\":161,\"iconUrl\":null},{\"name\":\"영상\",\"id\":153,\"slug\":\"video\",\"parentId\":161,\"iconUrl\":null},{\"name\":\"시사·트렌드\",\"id\":1549,\"slug\":null,\"parentId\":null,\"iconUrl\":null},{\"name\":\"인터뷰\",\"id\":1551,\"slug\":null,\"parentId\":null,\"iconUrl\""
+      "sample": "{\"id\":53021,\"updatedTime\":\"2026-09-19T21:29:37+09:00\",\"createdTime\":\"2026-09-10T10:42:46+09:00\",\"category\":\"인터뷰\",\"categories\":[{\"name\":\"인터뷰\",\"id\":149,\"slug\":\"interview\",\"parentId\":161,\"iconUrl\":null},{\"name\":\"영상\",\"id\":153,\"slug\":\"video\",\"parentId\":161,\"iconUrl\":null},{\"name\":\"시사·트렌드\",\"id\":1549,\"slug\":null,\"parentId\":null,\"iconUrl\":null},{\"name\":\"인터뷰\",\"id\":1551,\"slug\":null,\"parentId\":null,\"iconUrl\""
     },
     {
       "source": "woori-events",
