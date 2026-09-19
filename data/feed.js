@@ -1,6 +1,6 @@
 /* tools/collect.mjs 가 생성합니다. 직접 고치지 마세요. */
 window.DISCOUNT_FEED = {
-  "collectedAt": "2026-09-18T22:58:22.260Z",
+  "collectedAt": "2026-09-19T07:42:51.929Z",
   "sources": [
     {
       "id": "samsung-link",
@@ -132,7 +132,7 @@ window.DISCOUNT_FEED = {
       "count": 0,
       "structured": 0,
       "http": 200,
-      "captures": 0
+      "captures": 1
     },
     {
       "id": "shinhan-events",
@@ -168,7 +168,7 @@ window.DISCOUNT_FEED = {
       "count": 0,
       "structured": 0,
       "http": 200,
-      "captures": 4
+      "captures": 0
     },
     {
       "id": "naverpay-main",
@@ -200,7 +200,7 @@ window.DISCOUNT_FEED = {
       "name": "NH페이 (탐색)",
       "url": "https://card.nonghyup.com/",
       "kind": "public",
-      "status": "login-required",
+      "status": "empty",
       "count": 0,
       "structured": 0,
       "http": 200,
@@ -224,11 +224,10 @@ window.DISCOUNT_FEED = {
       "name": "현대카드 (탐색)",
       "url": "https://www.hyundaicard.com/",
       "kind": "public",
-      "status": "login-required",
+      "status": "error",
       "count": 0,
       "structured": 0,
-      "http": 200,
-      "captures": 1
+      "error": "page.goto: Timeout 30000ms exceeded."
     },
     {
       "id": "lotte-main",
@@ -6221,16 +6220,6 @@ window.DISCOUNT_FEED = {
       "app": "shinhan",
       "source": "shinhan-myshop-coupon",
       "sourceName": "신한 마이샵 쿠폰",
-      "title": "CJ더마켓 10,000원 캐시백",
-      "url": "https://www.shinhancard.com/mob/MOBFM501N/MOBFM501R31.shc",
-      "period": "09.09~09.22",
-      "percent": null,
-      "won": 10000
-    },
-    {
-      "app": "shinhan",
-      "source": "shinhan-myshop-coupon",
-      "sourceName": "신한 마이샵 쿠폰",
       "title": "라그릴리아 20,000원 캐시백",
       "url": "https://www.shinhancard.com/mob/MOBFM501N/MOBFM501R31.shc",
       "period": "09.01~09.30",
@@ -6246,6 +6235,16 @@ window.DISCOUNT_FEED = {
       "period": "09.01~09.30",
       "percent": null,
       "won": 10000
+    },
+    {
+      "app": "shinhan",
+      "source": "shinhan-myshop-coupon",
+      "sourceName": "신한 마이샵 쿠폰",
+      "title": "GS25편의점택배 200원 캐시백",
+      "url": "https://www.shinhancard.com/mob/MOBFM501N/MOBFM501R31.shc",
+      "period": "09.01~09.30",
+      "percent": null,
+      "won": 200
     },
     {
       "app": "shinhan",
@@ -6691,7 +6690,7 @@ window.DISCOUNT_FEED = {
         "disclaimer",
         "seoConfig"
       ],
-      "sample": "{\"id\":39427,\"updatedTime\":\"2026-09-19T02:41:10+09:00\",\"createdTime\":\"2025-08-07T13:53:48+09:00\",\"category\":null,\"categories\":[],\"series\":null,\"seriesSlug\":null,\"title\":\"7월 넷째 주, 경제퀴즈에 도전하세요\",\"subtitle\":null,\"bottomButtonConfig\":{\"ctaType\":\"ONLY_BUTTON\",\"imageUrl\":null,\"imageAlt\":null,\"title\":null,\"description\":null,\"ctaName\":\"자세히 알아보기\",\"landingUrl\":\"https://toss.im/tossfeed/article/tosspick-2025-1"
+      "sample": "{\"id\":39427,\"updatedTime\":\"2026-09-19T16:33:53+09:00\",\"createdTime\":\"2025-08-07T13:53:48+09:00\",\"category\":null,\"categories\":[],\"series\":null,\"seriesSlug\":null,\"title\":\"7월 넷째 주, 경제퀴즈에 도전하세요\",\"subtitle\":null,\"bottomButtonConfig\":{\"ctaType\":\"ONLY_BUTTON\",\"imageUrl\":null,\"imageAlt\":null,\"title\":null,\"description\":null,\"ctaName\":\"자세히 알아보기\",\"landingUrl\":\"https://toss.im/tossfeed/article/tosspick-2025-1"
     },
     {
       "source": "toss-feed",
@@ -6725,7 +6724,7 @@ window.DISCOUNT_FEED = {
         "disclaimer",
         "seoConfig"
       ],
-      "sample": "{\"id\":53021,\"updatedTime\":\"2026-09-19T07:17:32+09:00\",\"createdTime\":\"2026-09-10T10:42:46+09:00\",\"category\":\"인터뷰\",\"categories\":[{\"name\":\"인터뷰\",\"id\":149,\"slug\":\"interview\",\"parentId\":161,\"iconUrl\":null},{\"name\":\"영상\",\"id\":153,\"slug\":\"video\",\"parentId\":161,\"iconUrl\":null},{\"name\":\"시사·트렌드\",\"id\":1549,\"slug\":null,\"parentId\":null,\"iconUrl\":null},{\"name\":\"인터뷰\",\"id\":1551,\"slug\":null,\"parentId\":null,\"iconUrl\""
+      "sample": "{\"id\":53021,\"updatedTime\":\"2026-09-19T16:34:29+09:00\",\"createdTime\":\"2026-09-10T10:42:46+09:00\",\"category\":\"인터뷰\",\"categories\":[{\"name\":\"인터뷰\",\"id\":149,\"slug\":\"interview\",\"parentId\":161,\"iconUrl\":null},{\"name\":\"영상\",\"id\":153,\"slug\":\"video\",\"parentId\":161,\"iconUrl\":null},{\"name\":\"시사·트렌드\",\"id\":1549,\"slug\":null,\"parentId\":null,\"iconUrl\":null},{\"name\":\"인터뷰\",\"id\":1551,\"slug\":null,\"parentId\":null,\"iconUrl\""
     },
     {
       "source": "woori-events",
